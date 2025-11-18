@@ -594,7 +594,7 @@ const DropdownMenu = ({
                         <a
                           key={index}
                           href={menuItem.href || "#"}
-                          className="link-item"
+                          className="link-item hover:bg-gray-50"
                           style={{
                             width: "100%",
                             display: "flex",
@@ -752,7 +752,7 @@ const DropdownMenu = ({
                         <a
                           key={index}
                           href={menuItem.href || "#"}
-                          className="link-item"
+                          className="link-item hover:bg-gray-50"
                           style={{
                             width: "100%",
                             display: "flex",
