@@ -11,7 +11,7 @@
     --popover: 0 0% 100%;
     --popover-foreground: 222.2 84% 4.9%;
     --primary: 262.1 83.3% 57.8%;
-    --primary-foreground: 210 40% 98%;
+    --primary-foreground: 0 0% 100%;
     --secondary: 210 40% 96.1%;
     --secondary-foreground: 222.2 47.4% 11.2%;
     --muted: 210 40% 96.1%;
@@ -32,8 +32,10 @@
     @apply border-border;
   }
   body {
-    @apply bg-background text-foreground;
+    @apply text-foreground;
     font-family: 'Noto Sans', sans-serif;
+    background: linear-gradient(135deg, #e0f2fe 0%, #bae6fd 25%, #ffffff 50%, #e0f2fe 75%, #bae6fd 100%) fixed;
+    overscroll-behavior: none;
   }
 }
 

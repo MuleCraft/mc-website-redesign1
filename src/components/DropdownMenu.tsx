@@ -1,7 +1,6 @@
 import { useState, useEffect } from "react";
 import {
   ChevronRight,
-  Play,
   Circle,
   Eye,
   DollarSign,
@@ -34,6 +33,8 @@ import {
   Headphones,
 } from "lucide-react";
 import { cn } from "@/lib/utils";
+import muImage from "@/assets/mu-image.webp";
+import csi4Image from "@/assets/csi4.png";
 
 interface DropdownItem {
   label: string;
@@ -416,7 +417,7 @@ const DropdownMenu = ({
             <div
               className="flex-1 overflow-y-auto"
               style={{
-                padding: "1.5rem 1.5rem 1.5rem 1rem",
+                padding: "1.5rem 1.5rem 1.5rem 3rem",
                 fontFamily: '"Noto Sans", sans-serif',
               }}
             >
@@ -431,7 +432,7 @@ const DropdownMenu = ({
                       selectedIndex === index && "bg-blue-900/30"
                     )}
                     style={{
-                      padding: "0.75rem 0",
+                      padding: "1rem 0",
                     }}
                   >
                     {/* Selected indicator bar */}
@@ -520,8 +521,8 @@ const DropdownMenu = ({
                         {/* Featured post image */}
                         <div className="w-full h-48 relative overflow-hidden">
                           <img
-                            src="https://boomi.com/wp-content/uploads/TN-forrester-tei-study-25.jpg"
-                            alt="Forrester TEI Study"
+                            src={csi4Image}
+                            alt="GOOSE DevOps Platform"
                             className="w-full h-full object-cover"
                             onError={(e) => {
                               // Fallback to gradient background if image fails to load
@@ -529,12 +530,12 @@ const DropdownMenu = ({
                               target.style.display = "none";
                             }}
                           />
-                          {/* Gradient overlay with ROI text */}
+                          {/* Gradient overlay with GOOSE branding */}
                           <div
                             className="absolute inset-0 flex items-center justify-center"
                             style={{
                               background:
-                                "linear-gradient(135deg, rgba(102, 126, 234, 0.85) 0%, rgba(118, 75, 162, 0.85) 100%)",
+                                "linear-gradient(135deg, rgba(32, 64, 102, 0.75) 0%, rgba(45, 90, 138, 0.75) 100%)",
                             }}
                           >
                             <div className="text-center text-white px-4">
@@ -544,7 +545,7 @@ const DropdownMenu = ({
                                   fontFamily: '"Noto Sans", sans-serif',
                                 }}
                               >
-                                347% ROI
+                                GOOSE
                               </div>
                               <div
                                 className="text-sm opacity-90"
@@ -552,8 +553,7 @@ const DropdownMenu = ({
                                   fontFamily: '"Noto Sans", sans-serif',
                                 }}
                               >
-                                Boomi delivered 347% ROI—because thriving in the
-                                AI era starts with real returns.
+                                Deploy, Scale, Dominate
                               </div>
                             </div>
                           </div>
@@ -567,7 +567,7 @@ const DropdownMenu = ({
                               fontFamily: '"Noto Sans", sans-serif',
                             }}
                           >
-                            Analyst Report
+                            DevOps Platform
                           </div>
                           <h3
                             className="font-semibold text-gray-900 mb-2"
@@ -577,8 +577,7 @@ const DropdownMenu = ({
                               lineHeight: "20px",
                             }}
                           >
-                            Forrester | The Total Economic Impact™ Of The Boomi
-                            Enterprise Platform
+                            GOOSE | Deploy, Scale, Dominate
                           </h3>
                           <p
                             className="text-gray-600 text-sm"
@@ -588,16 +587,14 @@ const DropdownMenu = ({
                               lineHeight: "18px",
                             }}
                           >
-                            Find out how the Boomi Enterprise Platform helps
-                            organizations simplify and save, reduce risk, and
-                            thrive in the AI era.
+                            The ultimate DevOps platform that transforms how you build, deploy, and scale applications. Zero complexity, maximum impact.
                           </p>
                         </div>
                       </div>
                     </div>
                   </div>
                 ) : (
-                  /* Grid view for other menus */
+                  /* Grid view for other menus (Solutions) */
                   <div className="flex gap-6 h-full">
                     {/* Main Grid */}
                     <div className="flex-1 grid grid-cols-2 gap-6">
@@ -637,14 +634,14 @@ const DropdownMenu = ({
                       ))}
                     </div>
 
-                    {/* Sidebar - Featured Post */}
+                    {/* Sidebar - Featured Post for Solutions */}
                     <div className="w-80 flex-shrink-0">
                       <div className="bg-white rounded-lg border border-gray-200 overflow-hidden shadow-sm">
                         {/* Featured post image */}
                         <div className="w-full h-48 relative overflow-hidden">
                           <img
-                            src="https://boomi.com/wp-content/uploads/TN-forrester-tei-study-25.jpg"
-                            alt="Forrester TEI Study"
+                            src={muImage}
+                            alt="MuleSoft Integration Platform"
                             className="w-full h-full object-cover"
                             onError={(e) => {
                               // Fallback to gradient background if image fails to load
@@ -652,32 +649,31 @@ const DropdownMenu = ({
                               target.style.display = "none";
                             }}
                           />
-                          {/* Gradient overlay with ROI text */}
+                          {/* Gradient overlay with MuleSoft branding */}
                           <div
                             className="absolute inset-0 flex items-center justify-center"
                             style={{
                               background:
-                                "linear-gradient(135deg, rgba(102, 126, 234, 0.85) 0%, rgba(118, 75, 162, 0.85) 100%)",
+                                "linear-gradient(135deg, rgba(32, 64, 102, 0.75) 0%, rgba(45, 90, 138, 0.75) 100%)",
                             }}
                           >
                             <div className="text-center text-white px-4">
-                              <div
-                                className="text-5xl font-bold mb-2"
-                                style={{
-                                  fontFamily: '"Noto Sans", sans-serif',
-                                }}
-                              >
-                                347% ROI
-                              </div>
-                              <div
-                                className="text-sm opacity-90"
-                                style={{
-                                  fontFamily: '"Noto Sans", sans-serif',
-                                }}
-                              >
-                                Boomi delivered 347% ROI—because thriving in the
-                                AI era starts with real returns.
-                              </div>
+                          <div
+                            className="text-5xl font-bold mb-2"
+                            style={{
+                              fontFamily: '"Noto Sans", sans-serif',
+                            }}
+                          >
+                            MuleSoft
+                          </div>
+                          <div
+                            className="text-sm opacity-90"
+                            style={{
+                              fontFamily: '"Noto Sans", sans-serif',
+                            }}
+                          >
+                            Integration & API Management Platform
+                          </div>
                             </div>
                           </div>
                         </div>
@@ -690,7 +686,7 @@ const DropdownMenu = ({
                               fontFamily: '"Noto Sans", sans-serif',
                             }}
                           >
-                            Analyst Report
+                            Integration Solutions
                           </div>
                           <h3
                             className="font-semibold text-gray-900 mb-2"
@@ -700,8 +696,7 @@ const DropdownMenu = ({
                               lineHeight: "20px",
                             }}
                           >
-                            Forrester | The Total Economic Impact™ Of The Boomi
-                            Enterprise Platform
+                            MuleSoft Anypoint Platform | Integration & API Management
                           </h3>
                           <p
                             className="text-gray-600 text-sm"
@@ -711,9 +706,7 @@ const DropdownMenu = ({
                               lineHeight: "18px",
                             }}
                           >
-                            Find out how the Boomi Enterprise Platform helps
-                            organizations simplify and save, reduce risk, and
-                            thrive in the AI era.
+                            Connect applications, data, and devices with API-led connectivity and automation solutions.
                           </p>
                         </div>
                       </div>
@@ -733,8 +726,59 @@ const DropdownMenu = ({
                 className="flex items-center gap-2 text-white hover:opacity-80 transition-opacity"
                 style={{ fontFamily: '"Noto Sans", sans-serif' }}
               >
-                <div className="w-5 h-5 flex items-center justify-center">
-                  <Play className="w-4 h-4" fill="white" color="white" />
+                <div className="w-8 h-8 flex items-center justify-center relative">
+                  <svg
+                    width="32"
+                    height="32"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    {/* White square with rounded corners */}
+                    <rect
+                      x="4"
+                      y="4"
+                      width="16"
+                      height="16"
+                      rx="2"
+                      fill="white"
+                    />
+                    {/* Monitor/screen outline */}
+                    <rect
+                      x="6"
+                      y="6"
+                      width="12"
+                      height="8"
+                      rx="1"
+                      stroke="#204066"
+                      strokeWidth="1.5"
+                      fill="none"
+                    />
+                    {/* Play button triangle */}
+                    <path
+                      d="M10 9L14 12L10 15V9Z"
+                      fill="#204066"
+                    />
+                    {/* Bottom lines */}
+                    <line
+                      x1="7"
+                      y1="16"
+                      x2="17"
+                      y2="16"
+                      stroke="#204066"
+                      strokeWidth="1.5"
+                      strokeLinecap="round"
+                    />
+                    <line
+                      x1="7"
+                      y1="18"
+                      x2="17"
+                      y2="18"
+                      stroke="#204066"
+                      strokeWidth="1.5"
+                      strokeLinecap="round"
+                    />
+                  </svg>
                 </div>
                 <span style={{ fontSize: "14px", fontWeight: 500 }}>
                   Request a demo
