@@ -1,20 +1,25 @@
 import { useState, useRef, useEffect } from "react"
-import { Search, Globe, ChevronDown } from "lucide-react"
+import { Search, Globe, ChevronDown, X } from "lucide-react"
 import { Button } from "./ui/button"
 import mulecraftLogo from "../assets/mulecraftlogo.svg"
 import DropdownMenu from "./DropdownMenu"
 
 const Navbar = () => {
   const [openDropdown, setOpenDropdown] = useState<string | null>(null)
+  const [isSearchOpen, setIsSearchOpen] = useState(false)
+  const [isLanguageOpen, setIsLanguageOpen] = useState(false)
+  const [selectedLanguage, setSelectedLanguage] = useState("English")
   const navItemRefs = useRef<{ [key: string]: HTMLAnchorElement | null }>({})
   const navbarRef = useRef<HTMLElement | null>(null)
+  const searchInputRef = useRef<HTMLInputElement | null>(null)
+  const languageButtonRef = useRef<HTMLButtonElement | null>(null)
 
   const navItems = [
-    { label: "Solutions", hasChevron: true },
-    { label: "Products", hasChevron: true },
-    { label: "Resources", hasChevron: true },
-    { label: "About", hasChevron: true },
-    { label: "Contact Sales", hasChevron: false },
+    { label: "Solutions", hasChevron: true, href: "#" },
+    { label: "Products", hasChevron: true, href: "#" },
+    { label: "Resources", hasChevron: false, href: "https://blogs.mulecraft.in/", openInNewTab: true },
+    { label: "About", hasChevron: false, href: "/about" },
+    { label: "Contact Sales", hasChevron: false, href: "/contact-sales" },
   ]
 
   const handleDropdownToggle = (label: string, event: React.MouseEvent<HTMLAnchorElement>) => {
@@ -54,6 +59,37 @@ const Navbar = () => {
       document.removeEventListener('mousedown', handleClickOutside)
     }
   }, [openDropdown])
+
+  // Focus search input when search opens and close language dropdown
+  useEffect(() => {
+    if (isSearchOpen) {
+      if (searchInputRef.current) {
+        searchInputRef.current.focus()
+      }
+      setIsLanguageOpen(false)
+    }
+  }, [isSearchOpen])
+
+  // Handle click outside for language dropdown
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      const target = event.target as Node
+      if (isLanguageOpen && languageButtonRef.current && !languageButtonRef.current.contains(target)) {
+        const languageDropdown = document.querySelector('[data-language-dropdown]')
+        if (languageDropdown && !languageDropdown.contains(target)) {
+          setIsLanguageOpen(false)
+        }
+      }
+    }
+
+    if (isLanguageOpen) {
+      document.addEventListener('mousedown', handleClickOutside)
+    }
+
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside)
+    }
+  }, [isLanguageOpen])
 
   // Dropdown items for left sidebar - different content based on nav item
   const getDropdownItems = () => {
@@ -179,75 +215,235 @@ const Navbar = () => {
     return 'grid' // Always use grid layout for consistent display
   }
 
+  const languages = [
+    { code: "en", name: "English", flag: "🇺🇸" },
+    { code: "de", name: "Deutsch", flag: "🇩🇪" },
+    { code: "fr", name: "Français", flag: "🇫🇷" },
+    { code: "it", name: "Italiano", flag: "🇮🇹" },
+    { code: "ja", name: "日本語", flag: "🇯🇵" },
+  ]
+
+  const handleLanguageSelect = (language: string) => {
+    setSelectedLanguage(language)
+    setIsLanguageOpen(false)
+  }
+
   return (
     <header ref={navbarRef} className="w-full bg-white sticky top-0 z-50 border-b border-gray-200">
       <nav className="w-full max-w-7xl mx-auto pl-0 pr-8 lg:pr-12 xl:pr-16 py-5 flex items-center justify-between min-h-[80px]">
-        {/* Logo and Navigation Links - Left side grouped together */}
-        <div className="flex items-center gap-8 lg:gap-10 xl:gap-12 flex-shrink-0 -ml-2 lg:-ml-4">
-          {/* Logo - Left side */}
-          <div className="flex items-center">
-            <img 
-              src={mulecraftLogo} 
-              alt="Mulecraft Logo" 
-              className="h-8 lg:h-11 w-auto"
-              style={{
-                fontFamily: '"Noto Sans", sans-serif',
-                fontStyle: 'normal',
-                fontSize: '15px',
-                lineHeight: '28px',
-                fontWeight: 400,
-                color: 'rgb(31, 31, 31)'
-              }}
-            />
-          </div>
+        {isSearchOpen ? (
+          /* Search Bar View */
+          <div className="flex items-center w-full gap-4">
+            {/* Logo - Left side */}
+            <div className="flex items-center flex-shrink-0">
+              <img 
+                src={mulecraftLogo} 
+                alt="Mulecraft Logo" 
+                className="h-8 lg:h-11 w-auto"
+                style={{
+                  fontFamily: '"Noto Sans", sans-serif',
+                  fontStyle: 'normal',
+                  fontSize: '15px',
+                  lineHeight: '28px',
+                  fontWeight: 400,
+                  color: 'rgb(31, 31, 31)'
+                }}
+              />
+            </div>
 
-          {/* Navigation Links - Close to logo with small spacing */}
-          <div className="hidden lg:flex items-center gap-6 xl:gap-8 relative">
-            {navItems.map((item) => (
-              <div key={item.label} className="relative">
-                <a
-                  ref={(el) => { navItemRefs.current[item.label] = el }}
-                  href="#"
-                  onClick={(e) => item.hasChevron && handleDropdownToggle(item.label, e)}
-                  className="flex items-center gap-1.5 whitespace-nowrap transition-colors hover:opacity-80"
+            {/* Search Input */}
+            <div className="flex-1 relative">
+              <div className="relative flex items-center">
+                <Search className="absolute left-3 w-5 h-5 text-gray-400" style={{ strokeWidth: 2 }} />
+                <input
+                  ref={searchInputRef}
+                  type="text"
+                  placeholder="Search"
+                  className="w-full pl-10 pr-4 py-2 border border-[#204066] rounded-md focus:outline-none focus:ring-0 shadow-none"
                   style={{
                     fontFamily: '"Noto Sans", sans-serif',
                     fontSize: '15px',
-                    lineHeight: '20px',
-                    fontWeight: 500,
+                    boxShadow: 'none',
+                  }}
+                />
+              </div>
+            </div>
+
+            {/* Close Search Button */}
+            <button
+              onClick={() => setIsSearchOpen(false)}
+              className="p-2 hover:bg-gray-100 rounded-full transition-colors flex-shrink-0"
+              aria-label="Close search"
+            >
+              <X className="w-5 h-5 text-gray-800" />
+            </button>
+
+            {/* Right side icons */}
+            <div className="flex items-center gap-4 flex-shrink-0">
+              <div className="relative">
+                <button 
+                  ref={languageButtonRef}
+                  onClick={() => setIsLanguageOpen(!isLanguageOpen)}
+                  className={`p-2 rounded-full transition-colors ${isLanguageOpen ? 'bg-gray-100' : 'hover:bg-gray-100'}`}
+                  aria-label="Language"
+                >
+                  <Globe className="w-5 h-5 text-gray-800" />
+                </button>
+                {isLanguageOpen && (
+                  <div 
+                    data-language-dropdown
+                    className="absolute right-0 mt-2 w-48 bg-white rounded-md shadow-lg border border-gray-200 py-1 z-50"
+                    style={{ top: '100%' }}
+                  >
+                    {languages.map((lang) => (
+                      <button
+                        key={lang.code}
+                        onClick={() => handleLanguageSelect(lang.name)}
+                        className={`w-full flex items-center gap-3 px-4 py-2.5 text-left hover:bg-gray-100 transition-colors ${
+                          selectedLanguage === lang.name ? 'bg-gray-100' : ''
+                        }`}
+                      >
+                        <span className="text-xl flex-shrink-0">{lang.flag}</span>
+                        <span 
+                          className="text-sm flex-1"
+                          style={{
+                            fontFamily: '"Noto Sans", sans-serif',
+                            color: 'rgb(31, 31, 31)',
+                            fontSize: '14px'
+                          }}
+                        >
+                          {lang.name}
+                        </span>
+                      </button>
+                    ))}
+                  </div>
+                )}
+              </div>
+              <Button variant="default">
+                Schedule demo
+              </Button>
+            </div>
+          </div>
+        ) : (
+          /* Normal Navbar View */
+          <>
+            {/* Logo and Navigation Links - Left side grouped together */}
+            <div className="flex items-center gap-8 lg:gap-10 xl:gap-12 flex-shrink-0 -ml-2 lg:-ml-4">
+              {/* Logo - Left side */}
+              <div className="flex items-center">
+                <img 
+                  src={mulecraftLogo} 
+                  alt="Mulecraft Logo" 
+                  className="h-8 lg:h-11 w-auto"
+                  style={{
+                    fontFamily: '"Noto Sans", sans-serif',
+                    fontStyle: 'normal',
+                    fontSize: '15px',
+                    lineHeight: '28px',
+                    fontWeight: 400,
                     color: 'rgb(31, 31, 31)'
                   }}
-                >
-                  {item.label}
-                  {item.hasChevron && (
-                    <ChevronDown className="w-4 h-4" style={{ color: 'rgb(31, 31, 31)', strokeWidth: 1.7 }} />
-                  )}
-                </a>
-                
+                />
               </div>
-            ))}
-          </div>
-        </div>
 
-        {/* Icons and Buttons - Right side with more spacing */}
-        <div className="flex items-center gap-4 lg:gap-6 flex-shrink-0">
-          {/* Utility Icons */}
-          <div className="hidden md:flex items-center gap-4 lg:gap-5">
-            <button className="p-2 hover:bg-gray-100 rounded-full transition-colors" aria-label="Search">
-              <Search className="w-5 h-9 text-gray-800" style={{ strokeWidth: 2.8 }} />
-            </button>
-            <button className="p-2 hover:bg-gray-100 rounded-full transition-colors" aria-label="Language">
-              <Globe className="w-5 h-5 text-gray-800" />
-            </button>
-          </div>
+              {/* Navigation Links - Close to logo with small spacing */}
+              <div className="hidden lg:flex items-center gap-6 xl:gap-8 relative">
+                {navItems.map((item) => (
+                  <div key={item.label} className="relative">
+                    <a
+                      ref={(el) => { navItemRefs.current[item.label] = el }}
+                      href={item.href}
+                      target={item.openInNewTab ? "_blank" : undefined}
+                      rel={item.openInNewTab ? "noopener noreferrer" : undefined}
+                      onClick={(e) => {
+                        if (item.hasChevron) {
+                          e.preventDefault()
+                          handleDropdownToggle(item.label, e)
+                        }
+                      }}
+                      className="flex items-center gap-1.5 whitespace-nowrap transition-all rounded-md px-2 py-1 hover:bg-gray-100"
+                      style={{
+                        fontFamily: '"Noto Sans", sans-serif',
+                        fontSize: '15px',
+                        lineHeight: '20px',
+                        fontWeight: 500,
+                        color: 'rgb(31, 31, 31)'
+                      }}
+                    >
+                      {item.label}
+                      {item.hasChevron && (
+                        <ChevronDown 
+                          className={`w-4 h-4 transition-transform duration-200 ${openDropdown === item.label ? 'rotate-180' : ''}`}
+                          style={{ color: 'rgb(31, 31, 31)', strokeWidth: 1.7 }} 
+                        />
+                      )}
+                    </a>
+                    
+                  </div>
+                ))}
+              </div>
+            </div>
 
-          {/* Action Button */}
-          <div className="flex items-center">
-            <Button variant="default">
-              Schedule demo
-            </Button>
-          </div>
-        </div>
+            {/* Icons and Buttons - Right side with more spacing */}
+            <div className="flex items-center gap-4 lg:gap-6 flex-shrink-0">
+              {/* Utility Icons */}
+              <div className="hidden md:flex items-center gap-4 lg:gap-5">
+                <button 
+                  onClick={() => setIsSearchOpen(true)}
+                  className="p-2 hover:bg-gray-100 rounded-full transition-colors" 
+                  aria-label="Search"
+                >
+                  <Search className="w-5 h-9 text-gray-800" style={{ strokeWidth: 2.8 }} />
+                </button>
+                <div className="relative">
+                  <button 
+                    ref={languageButtonRef}
+                    onClick={() => setIsLanguageOpen(!isLanguageOpen)}
+                    className={`p-2 rounded-full transition-colors ${isLanguageOpen ? 'bg-gray-100' : 'hover:bg-gray-100'}`}
+                    aria-label="Language"
+                  >
+                    <Globe className="w-5 h-5 text-gray-800" />
+                  </button>
+                  {isLanguageOpen && (
+                    <div 
+                      data-language-dropdown
+                      className="absolute right-0 mt-2 w-48 bg-white rounded-md shadow-lg border border-gray-200 py-1 z-50"
+                      style={{ top: '100%' }}
+                    >
+                      {languages.map((lang) => (
+                        <button
+                          key={lang.code}
+                          onClick={() => handleLanguageSelect(lang.name)}
+                          className={`w-full flex items-center gap-3 px-4 py-2 text-left hover:bg-gray-100 transition-colors ${
+                            selectedLanguage === lang.name ? 'bg-gray-100' : ''
+                          }`}
+                        >
+                          <span className="text-xl">{lang.flag}</span>
+                          <span 
+                            className="text-sm"
+                            style={{
+                              fontFamily: '"Noto Sans", sans-serif',
+                              color: 'rgb(31, 31, 31)'
+                            }}
+                          >
+                            {lang.name}
+                          </span>
+                        </button>
+                      ))}
+                    </div>
+                  )}
+                </div>
+              </div>
+
+              {/* Action Button */}
+              <div className="flex items-center">
+                <Button variant="default">
+                  Schedule demo
+                </Button>
+              </div>
+            </div>
+          </>
+        )}
       </nav>
 
       {/* Full-width Dropdown Menu - Rendered outside nav but inside header */}

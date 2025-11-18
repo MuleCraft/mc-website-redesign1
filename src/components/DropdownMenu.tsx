@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react"
-import { ChevronRight, Play, Circle, Eye, DollarSign, Shield, Lightbulb, Box, RefreshCw, Network, Link2, Code, Monitor, Sparkles, Workflow, Layers, Sync, Package, Zap, BarChart, Users, Gauge, Lock, Book, ChartBar, BookOpen, MessageCircle, RefreshCcw, CheckCircle, Settings, GitBranch, Cloud, Headphones } from "lucide-react"
+import { ChevronRight, Play, Circle, Eye, DollarSign, Shield, Lightbulb, Box, RefreshCw, Network, Link2, Code, Monitor, Sparkles, Workflow, Layers, Package, Zap, BarChart, Users, Gauge, Lock, Book, ChartBar, BookOpen, MessageCircle, RefreshCcw, CheckCircle, Settings, GitBranch, Cloud, Headphones } from "lucide-react"
 import { cn } from "@/lib/utils"
 
 interface DropdownItem {
@@ -114,7 +114,7 @@ const DropdownMenu = ({ items, menuItems, isOpen, onClose, navbarHeight = 80, co
       case "layers":
         return <Layers className={iconClass} size={iconSize} style={{ color: iconColor }} />
       case "sync":
-        return <Sync className={iconClass} size={iconSize} style={{ color: iconColor }} />
+        return <RefreshCw className={iconClass} size={iconSize} style={{ color: iconColor }} />
       case "package":
         return <Package className={iconClass} size={iconSize} style={{ color: iconColor }} />
       case "zap":
@@ -238,39 +238,115 @@ const DropdownMenu = ({ items, menuItems, isOpen, onClose, navbarHeight = 80, co
                   fontFamily: '"Noto Sans", sans-serif',
                 }}
               >
-                {/* Products view - List format */}
+                {/* Products view - List format with featured card */}
                 {navItem === "Products" ? (
-                  <div className="flex-1">
-                    <ul className="space-y-2" style={{ listStyle: 'none', padding: 0, margin: 0 }}>
-                      {displayMenuItems.map((menuItem, index) => (
-                        <li key={index}>
-                          <a
-                            href={menuItem.href || "#"}
-                            className="block p-3 rounded-lg hover:bg-gray-50 transition-colors group"
-                            style={{ fontFamily: '"Noto Sans", sans-serif' }}
+                  <div className="flex gap-6 h-full">
+                    {/* Main List */}
+                    <div className="flex-1">
+                      <ul className="space-y-2" style={{ listStyle: 'none', padding: 0, margin: 0 }}>
+                        {displayMenuItems.map((menuItem, index) => (
+                          <li key={index}>
+                            <a
+                              href={menuItem.href || "#"}
+                              className="block p-3 rounded-lg hover:bg-gray-50 transition-colors group"
+                              style={{ fontFamily: '"Noto Sans", sans-serif' }}
+                            >
+                              <div 
+                                className="font-semibold text-gray-900 mb-1 group-hover:text-[#204066] transition-colors"
+                                style={{
+                                  fontSize: '15px',
+                                  lineHeight: '22px',
+                                }}
+                              >
+                                {menuItem.title}
+                              </div>
+                              <div 
+                                className="text-gray-600"
+                                style={{
+                                  fontSize: '13px',
+                                  lineHeight: '18px',
+                                }}
+                              >
+                                {menuItem.description}
+                              </div>
+                            </a>
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+
+                    {/* Sidebar - Featured Post */}
+                    <div className="w-80 flex-shrink-0">
+                      <div className="bg-white rounded-lg border border-gray-200 overflow-hidden shadow-sm">
+                        {/* Featured post image */}
+                        <div className="w-full h-48 relative overflow-hidden">
+                          <img 
+                            src="https://boomi.com/wp-content/uploads/TN-forrester-tei-study-25.jpg"
+                            alt="Forrester TEI Study"
+                            className="w-full h-full object-cover"
+                            onError={(e) => {
+                              // Fallback to gradient background if image fails to load
+                              const target = e.target as HTMLImageElement
+                              target.style.display = 'none'
+                            }}
+                          />
+                          {/* Gradient overlay with ROI text */}
+                          <div 
+                            className="absolute inset-0 flex items-center justify-center"
+                            style={{
+                              background: 'linear-gradient(135deg, rgba(102, 126, 234, 0.85) 0%, rgba(118, 75, 162, 0.85) 100%)',
+                            }}
                           >
-                            <div 
-                              className="font-semibold text-gray-900 mb-1 group-hover:text-[#204066] transition-colors"
-                              style={{
-                                fontSize: '15px',
-                                lineHeight: '22px',
-                              }}
-                            >
-                              {menuItem.title}
+                            <div className="text-center text-white px-4">
+                              <div 
+                                className="text-5xl font-bold mb-2"
+                                style={{ fontFamily: '"Noto Sans", sans-serif' }}
+                              >
+                                347% ROI
+                              </div>
+                              <div 
+                                className="text-sm opacity-90"
+                                style={{ fontFamily: '"Noto Sans", sans-serif' }}
+                              >
+                                Boomi delivered 347% ROI—because thriving in the AI era starts with real returns.
+                              </div>
                             </div>
-                            <div 
-                              className="text-gray-600"
-                              style={{
-                                fontSize: '13px',
-                                lineHeight: '18px',
-                              }}
-                            >
-                              {menuItem.description}
-                            </div>
-                          </a>
-                        </li>
-                      ))}
-                    </ul>
+                          </div>
+                        </div>
+                        <div className="p-4">
+                          <div 
+                            className="inline-block px-2 py-1 mb-2 rounded-full text-xs font-medium"
+                            style={{
+                              backgroundColor: '#e0e7ff',
+                              color: '#204066',
+                              fontFamily: '"Noto Sans", sans-serif',
+                            }}
+                          >
+                            Analyst Report
+                          </div>
+                          <h3 
+                            className="font-semibold text-gray-900 mb-2"
+                            style={{
+                              fontFamily: '"Noto Sans", sans-serif',
+                              fontSize: '14px',
+                              lineHeight: '20px',
+                            }}
+                          >
+                            Forrester | The Total Economic Impact™ Of The Boomi Enterprise Platform
+                          </h3>
+                          <p 
+                            className="text-gray-600 text-sm"
+                            style={{
+                              fontFamily: '"Noto Sans", sans-serif',
+                              fontSize: '12px',
+                              lineHeight: '18px',
+                            }}
+                          >
+                            Find out how the Boomi Enterprise Platform helps organizations simplify and save, reduce risk, and thrive in the AI era.
+                          </p>
+                        </div>
+                      </div>
+                    </div>
                   </div>
                 ) : (
                   /* Grid view for other menus */
@@ -392,50 +468,19 @@ const DropdownMenu = ({ items, menuItems, isOpen, onClose, navbarHeight = 80, co
 
             {/* Bottom Section - Dark Blue (20% height) */}
             <div 
-              className="h-[20%] bg-[#204066] flex items-center justify-between"
+              className="h-[20%] bg-[#204066] flex items-center"
               style={{ padding: '1.5rem' }}
             >
-              {navItem === "Products" ? (
-                <>
-                  {/* Let's Go Button */}
-                  <button 
-                    className="px-6 py-2 bg-white text-gray-900 rounded-lg hover:bg-gray-100 transition-colors font-semibold"
-                    style={{ 
-                      fontFamily: '"Noto Sans", sans-serif',
-                      fontSize: '14px',
-                    }}
-                  >
-                    Let's Go
-                  </button>
-                  
-                  {/* Request a Demo Text */}
-                  <div className="text-white" style={{ fontFamily: '"Noto Sans", sans-serif' }}>
-                    <div 
-                      className="font-bold mb-1"
-                      style={{ fontSize: '16px' }}
-                    >
-                      Request a Demo
-                    </div>
-                    <div 
-                      className="text-sm opacity-90"
-                      style={{ fontSize: '13px' }}
-                    >
-                      See how MuleCraft connects systems, automates workflows and powers smarter digital experiences.
-                    </div>
-                  </div>
-                </>
-              ) : (
-                <a 
-                  href="#" 
-                  className="flex items-center gap-2 text-white hover:opacity-80 transition-opacity"
-                  style={{ fontFamily: '"Noto Sans", sans-serif' }}
-                >
-                  <div className="w-5 h-5 flex items-center justify-center">
-                    <Play className="w-4 h-4" fill="white" color="white" />
-                  </div>
-                  <span style={{ fontSize: '14px', fontWeight: 500 }}>Request a demo</span>
-                </a>
-              )}
+              <a 
+                href="#" 
+                className="flex items-center gap-2 text-white hover:opacity-80 transition-opacity"
+                style={{ fontFamily: '"Noto Sans", sans-serif' }}
+              >
+                <div className="w-5 h-5 flex items-center justify-center">
+                  <Play className="w-4 h-4" fill="white" color="white" />
+                </div>
+                <span style={{ fontSize: '14px', fontWeight: 500 }}>Request a demo</span>
+              </a>
             </div>
           </div>
         </div>
