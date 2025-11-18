@@ -1,5 +1,6 @@
 import { Facebook, Linkedin, Youtube, Instagram } from "lucide-react";
 import whiteLogo from "@/assets/mulecraftwhitelogo.png";
+import reviewImage from "@/assets/rimage.svg";
 
 const Footer = () => {
   const footerSections = [
@@ -74,20 +75,41 @@ const Footer = () => {
   ];
 
   return (
-    <footer
-      className="w-full text-white"
-      style={{ backgroundColor: "rgb(7, 43, 85)" }}
-    >
-      <div className="w-full max-w-7xl mx-auto pl-0 pr-4 lg:pr-6 xl:pr-8 py-6">
+    <>
+      <style>{`
+        .footer-nav-grid {
+          grid-template-columns: repeat(2, auto);
+        }
+        @media (min-width: 768px) {
+          .footer-nav-grid {
+            grid-template-columns: repeat(4, auto);
+          }
+        }
+        @media (min-width: 1024px) {
+          .footer-nav-grid {
+            grid-template-columns: repeat(7, auto);
+          }
+        }
+        @media (min-width: 1280px) {
+          .footer-nav-grid {
+            grid-template-columns: repeat(8, auto);
+          }
+        }
+      `}</style>
+      <footer
+        className="w-full text-white"
+        style={{ backgroundColor: "rgb(7, 43, 85)" }}
+      >
+        <div className="w-full max-w-[82rem] mx-auto pl-0 pr-4 lg:pr-6 xl:pr-8 py-6">
         {/* Top Section */}
-        <div className="flex flex-col md:flex-row justify-between items-start mb-12 gap-8">
+        <div className="flex flex-col md:flex-row justify-between items-start mb-6 gap-8">
           {/* Logo and Tagline */}
           <div className="flex-1">
-            <div className="mb-4 -ml-2 lg:-ml-4">
+            <div className="mb-4 ">
               <img
                 src={whiteLogo}
                 alt="MuleCraft Logo"
-                className="h-8 lg:h-11 w-auto"
+                className="h-10 lg:h-15 w-auto"
               />
             </div>
             <p className="text-gray-300 text-sm">
@@ -96,38 +118,62 @@ const Footer = () => {
           </div>
 
           {/* Review Box */}
-          <div className="flex items-center gap-3">
-            <div className="bg-white border-2 border-red-500 px-4 py-2 rounded flex items-center gap-2">
-              <div className="flex gap-0.5">
-                {[...Array(5)].map((_, i) => (
-                  <span key={i} className="text-red-500 text-sm">
-                    ★
-                  </span>
-                ))}
-              </div>
-              <span className="text-gray-700 text-xs font-medium">
-                Read our reviews on
-              </span>
-            </div>
-            <div className="bg-red-500 w-10 h-10 rounded flex items-center justify-center">
-              <span className="text-white font-bold text-sm">G2</span>
-            </div>
+          <div className="flex items-center">
+            <img
+              src={reviewImage}
+              alt="G2 Reviews"
+              className="h-auto w-auto"
+              style={{ maxHeight: '60px' }}
+            />
           </div>
         </div>
 
         {/* Navigation Links */}
-        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-8 gap-8 mb-8">
+        <div 
+          className="grid mb-8 footer-nav-grid"
+          style={{
+            gridGap: '1.88rem',
+            gridRowGap: '2rem',
+            paddingLeft: 0,
+            listStyle: 'none',
+            width: '100%',
+            maxWidth: '82rem'
+          }}
+        >
           {footerSections.map((section) => (
             <div key={section.title}>
-              <h3 className="font-bold text-sm mb-4 uppercase">
+              <h3 
+                className="font-bold text-gray-400 uppercase mb-4"
+                style={{
+                  fontSize: '14px',
+                  marginBottom: '1rem'
+                }}
+              >
                 {section.title}
               </h3>
-              <ul className="space-y-2">
+              <ul 
+                className="space-y-2"
+                style={{
+                  padding: 0,
+                  listStyle: 'none',
+                  margin: 0
+                }}
+              >
                 {section.links.map((link) => (
-                  <li key={link}>
+                  <li 
+                    key={link}
+                    style={{
+                      marginBottom: '0.75rem'
+                    }}
+                  >
                     <a
                       href="#"
-                      className="text-gray-300 hover:text-white text-sm transition-colors"
+                      className="text-gray-300 hover:text-white transition-colors"
+                      style={{
+                        fontSize: '13px',
+                        lineHeight: '1.5',
+                        fontFamily: '"Noto Sans", sans-serif'
+                      }}
                     >
                       {link}
                     </a>
@@ -189,6 +235,7 @@ const Footer = () => {
         </div>
       </div>
     </footer>
+    </>
   );
 };
 
