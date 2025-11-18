@@ -12,6 +12,7 @@ const Footer = () => {
         "API-led Connectivity",
         "Custom Connector Development",
         "Unified Operations Monitoring",
+        "Anypoint Platform Consulting",
       ],
     },
     {
@@ -55,16 +56,6 @@ const Footer = () => {
       ],
     },
     {
-      title: "DIGIBEE",
-      links: [
-        "Microservices Orchestration",
-        "Agile Lifecycle Management",
-        "AI-Driven Connector Import",
-        "Cloud/Hybrid Integration",
-        "Managed Integration Services",
-      ],
-    },
-    {
       title: "RESOURCES",
       links: ["Blog", "Training"],
     },
@@ -87,12 +78,12 @@ const Footer = () => {
         }
         @media (min-width: 1024px) {
           .footer-nav-grid {
-            grid-template-columns: repeat(7, auto);
+            grid-template-columns: repeat(6, auto);
           }
         }
         @media (min-width: 1280px) {
           .footer-nav-grid {
-            grid-template-columns: repeat(8, auto);
+            grid-template-columns: repeat(7, auto);
           }
         }
       `}</style>
@@ -100,7 +91,7 @@ const Footer = () => {
         className="w-full text-white"
         style={{ backgroundColor: "rgb(7, 43, 85)" }}
       >
-        <div className="w-full max-w-[82rem] mx-auto pl-0 pr-4 lg:pr-6 xl:pr-8 py-6">
+        <div className="w-full max-w-[82rem] mx-auto pl-0 pr-4 lg:pr-6 xl:pr-8 pt-[5rem] pb-6">
         {/* Top Section */}
         <div className="flex flex-col md:flex-row justify-between items-start mb-6 gap-8">
           {/* Logo and Tagline */}
@@ -112,7 +103,7 @@ const Footer = () => {
                 className="h-10 lg:h-15 w-auto"
               />
             </div>
-            <p className="text-gray-300 text-sm">
+            <p className="text-white text-sm">
               Experts in integration and automation solutions.
             </p>
           </div>
@@ -143,10 +134,11 @@ const Footer = () => {
           {footerSections.map((section) => (
             <div key={section.title}>
               <h3 
-                className="font-bold text-gray-400 uppercase mb-4"
+                className="font-bold uppercase mb-4"
                 style={{
                   fontSize: '14px',
-                  marginBottom: '1rem'
+                  marginBottom: '1rem',
+                  color: '#ccc'
                 }}
               >
                 {section.title}
@@ -168,9 +160,9 @@ const Footer = () => {
                   >
                     <a
                       href="#"
-                      className="text-gray-300 hover:text-white transition-colors"
+                      className="text-white hover:text-white transition-colors"
                       style={{
-                        fontSize: '13px',
+                        fontSize: '14px',
                         lineHeight: '1.5',
                         fontFamily: '"Noto Sans", sans-serif'
                       }}
@@ -188,8 +180,8 @@ const Footer = () => {
         <div className="border-t border-[#7C3AED] my-8"></div>
 
         {/* Bottom Section */}
-        <div className="flex flex-col md:flex-row justify-between items-center gap-4">
-          <div className="flex flex-wrap items-center gap-4 text-sm text-gray-300">
+        <div className="flex flex-col md:flex-row justify-between items-center gap-4 mb-6 pb-6">
+          <div className="flex flex-wrap items-center gap-4 text-sm text-white">
             <span>© 2025 Copyright MuleCraft. All rights reserved.</span>
             <a href="#" className="hover:text-white transition-colors">
               Privacy
@@ -211,25 +203,25 @@ const Footer = () => {
               href="#"
               className="w-8 h-8 flex items-center justify-center hover:bg-white/10 rounded-full transition-colors"
             >
-              <Facebook className="w-5 h-5" />
+              <Facebook className="w-5 h-5 text-white" />
             </a>
             <a
               href="#"
               className="w-8 h-8 flex items-center justify-center hover:bg-white/10 rounded-full transition-colors"
             >
-              <Linkedin className="w-5 h-5" />
+              <Linkedin className="w-5 h-5 text-white" />
             </a>
             <a
               href="#"
               className="w-8 h-8 flex items-center justify-center hover:bg-white/10 rounded-full transition-colors"
             >
-              <Youtube className="w-5 h-5" />
+              <Youtube className="w-5 h-5 text-white" />
             </a>
             <a
               href="#"
               className="w-8 h-8 flex items-center justify-center hover:bg-white/10 rounded-full transition-colors"
             >
-              <Instagram className="w-5 h-5" />
+              <Instagram className="w-5 h-5 text-white" />
             </a>
           </div>
         </div>

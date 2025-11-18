@@ -35,6 +35,9 @@ import {
 import { cn } from "@/lib/utils";
 import muImage from "@/assets/mu-image.webp";
 import csi4Image from "@/assets/csi4.png";
+import csi3Image from "@/assets/csi3.png";
+import csi1Image from "@/assets/csi1.png";
+import playIcon from "@/assets/play.svg";
 
 interface DropdownItem {
   label: string;
@@ -85,6 +88,103 @@ const DropdownMenu = ({
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [JSON.stringify(items.map((i) => i.label))]);
 
+  // Get featured post data based on selected header
+  const getFeaturedPostData = () => {
+    if (navItem === "Products") {
+      const label = selectedItem?.label?.toUpperCase() || "";
+      
+      if (label === "RECENTLY LAUNCHED") {
+        return {
+          image: csi4Image,
+          title: "Recently Launched Products",
+          description: "A learning and integration platform offering AI-powered task generation, transformation playground, and RAML assistant modules with progress tracking.",
+          tag: "New Products"
+        };
+      } else if (label === "MULESOFT") {
+        return {
+          image: csi3Image,
+          title: "MuleSoft Products",
+          description: "A learning and integration platform offering AI-powered task generation, transformation playground, and RAML assistant modules with progress tracking.",
+          tag: "MuleSoft"
+        };
+      } else if (label === "OTHER PRODUCTS") {
+        return {
+          image: csi1Image,
+          title: "Other Products",
+          description: "A SnapLogic playground providing a safe three-panel interface for testing and validating integration scripts with features like import/export, guided workflows, and real-time error handling.",
+          tag: "Products"
+        };
+      }
+      
+      // Default for Products
+      return {
+        image: csi4Image,
+        title: "Recently Launched Products",
+        description: "A learning and integration platform offering AI-powered task generation, transformation playground, and RAML assistant modules with progress tracking.",
+        tag: "New Products"
+      };
+    }
+    
+    if (navItem !== "Solutions") {
+      return {
+        image: muImage,
+        title: "MuleSoft Anypoint Platform | Integration & API Management",
+        description: "Connect applications, data, and devices with API-led connectivity and automation solutions.",
+        tag: "Integration Solutions"
+      };
+    }
+
+    const label = selectedItem?.label?.toLowerCase() || "";
+    
+    const featuredData: { [key: string]: { image: string; title: string; description: string; tag: string } } = {
+      "mulesoft": {
+        image: muImage,
+        title: "MuleSoft Anypoint Platform | Integration & API Management",
+        description: "Connect applications, data, and devices with API-led connectivity and automation solutions.",
+        tag: "Integration Solutions"
+      },
+      "snaplogic": {
+        image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=700&h=467&fit=crop&q=80",
+        title: "SnapLogic | AI-Powered Integration Platform",
+        description: "Transform your business with intelligent, AI-driven integration and automation solutions.",
+        tag: "AI Integration"
+      },
+      "salesforce": {
+        image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=700&h=467&fit=crop&q=80",
+        title: "Salesforce Integration & Automation",
+        description: "Seamlessly connect Salesforce with your entire tech stack for unified customer experiences.",
+        tag: "CRM Integration"
+      },
+      "apigee": {
+        image: "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=700&h=467&fit=crop&q=80",
+        title: "Apigee API Management Platform",
+        description: "Design, secure, and manage APIs with enterprise-grade security and scalability.",
+        tag: "API Management"
+      },
+      "workato": {
+        image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=700&h=467&fit=crop&q=80",
+        title: "Workato | Enterprise Automation Platform",
+        description: "Automate workflows and integrate applications with intelligent recipe-based automation.",
+        tag: "Automation"
+      },
+      "digibee": {
+        image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=700&h=467&fit=crop&q=80",
+        title: "Digibee | Microservices Integration Platform",
+        description: "Build and orchestrate microservices with agile lifecycle management and cloud-native architecture.",
+        tag: "Microservices"
+      }
+    };
+
+    return featuredData[label] || {
+      image: muImage,
+      title: "MuleSoft Anypoint Platform | Integration & API Management",
+      description: "Connect applications, data, and devices with API-led connectivity and automation solutions.",
+      tag: "Integration Solutions"
+    };
+  };
+
+  const featuredPostData = getFeaturedPostData();
+
   // Get menu items - use selectedItem's menuItems if available, otherwise use passed menuItems, otherwise default
   const displayMenuItems: MenuGridItem[] = selectedItem?.menuItems ||
     menuItems || [
@@ -122,7 +222,7 @@ const DropdownMenu = ({
 
   // Icon component renderer
   const renderIcon = (iconName?: string) => {
-    const iconSize = 32;
+    const iconSize = 24;
     const iconClass = "flex-shrink-0";
     const iconColor = "#204066";
 
@@ -409,15 +509,15 @@ const DropdownMenu = ({
         }}
       >
         <div className="flex h-full w-full">
-          {/* Left Sidebar - Dark Blue (25% width) */}
+          {/* Left Sidebar - Dark Blue (27% width) */}
           <div
-            className="text-white w-1/4 flex-shrink-0 flex flex-col"
+            className="text-white w-[26%] flex-shrink-0 flex flex-col"
             style={{ backgroundColor: "#072b55" }}
           >
             <div
               className="flex-1 overflow-y-auto"
               style={{
-                padding: "1.5rem 1.5rem 1.5rem 3rem",
+                padding: "1.5rem 1.5rem 1.5rem 13rem",
                 fontFamily: '"Noto Sans", sans-serif',
               }}
             >
@@ -428,25 +528,35 @@ const DropdownMenu = ({
                     onClick={() => handleItemClick(index)}
                     className={cn(
                       "relative flex items-center justify-between cursor-pointer transition-colors",
-                      "hover:bg-blue-900/40",
-                      selectedIndex === index && "bg-blue-900/30"
+                      "hover:bg-[#204066]",
+                      selectedIndex === index && "bg-[#204066]"
                     )}
                     style={{
-                      padding: "1rem 0",
+                      padding: "0.5rem 0 0.5rem 1rem",
+                      marginBottom: "0.75rem",
                     }}
                   >
                     {/* Selected indicator bar */}
                     {selectedIndex === index && (
-                      <div className="absolute left-0 top-0 bottom-0 w-1 bg-blue-400 rounded-r" />
+                      <div 
+                        className="absolute left-0 rounded-r" 
+                        style={{
+                          top: '0.5rem',
+                          bottom: '0.5rem',
+                          width: '3px',
+                          backgroundColor: '#2d5a8a'
+                        }}
+                      />
                     )}
 
                     {/* Item label */}
                     <span
-                      className="flex-1 text-sm font-medium text-white"
+                      className="flex-1 font-medium"
                       style={{
                         fontFamily: '"Noto Sans", sans-serif',
-                        fontSize: "14px",
-                        lineHeight: "20px",
+                        fontSize: "16px",
+                        lineHeight: "24px",
+                        color: "#ffffff",
                         paddingLeft: selectedIndex === index ? "0.5rem" : "0",
                       }}
                     >
@@ -464,8 +574,8 @@ const DropdownMenu = ({
             </div>
           </div>
 
-          {/* Right Content Area (75% width) */}
-          <div className="w-3/4 flex flex-col">
+          {/* Right Content Area (73% width) */}
+          <div className="w-[73%] flex flex-col">
             {/* Top White Section (80% height) */}
             <div className="flex-1 bg-white overflow-y-auto">
               <div
@@ -475,120 +585,160 @@ const DropdownMenu = ({
                   fontFamily: '"Noto Sans", sans-serif',
                 }}
               >
-                {/* Products view - List format with featured card */}
+                {/* Products view - Grid format with featured card */}
                 {navItem === "Products" ? (
                   <div className="flex gap-6 h-full">
-                    {/* Main List */}
-                    <div className="flex-1">
-                      <ul
-                        className="space-y-2"
-                        style={{ listStyle: "none", padding: 0, margin: 0 }}
-                      >
-                        {displayMenuItems.map((menuItem, index) => (
-                          <li key={index}>
-                            <a
-                              href={menuItem.href || "#"}
-                              className="block p-3 rounded-lg hover:bg-gray-50 transition-colors group"
-                              style={{ fontFamily: '"Noto Sans", sans-serif' }}
+                    {/* Main Grid */}
+                    <div className="flex-1 grid grid-cols-2 gap-6">
+                      {displayMenuItems.map((menuItem, index) => (
+                        <a
+                          key={index}
+                          href={menuItem.href || "#"}
+                          className="link-item"
+                          style={{
+                            width: "100%",
+                            display: "flex",
+                            alignItems: "flex-start",
+                            gap: "8px",
+                            borderRadius: "6px",
+                            height: "fit-content",
+                            padding: "8px",
+                            color: "#1f1f1f",
+                            transition: "background-color .3s ease 0s, color .3s ease 0s",
+                            textDecoration: "none",
+                          }}
+                        >
+                          {/* Icon */}
+                          <div 
+                            className="item-icon" 
+                            style={{
+                              border: "1px solid #cccccc",
+                              width: "44px",
+                              height: "44px",
+                              display: "flex",
+                              alignItems: "center",
+                              justifyContent: "center",
+                              borderRadius: "6px",
+                              flexShrink: 0,
+                              background: "#fff",
+                            }}
+                          >
+                            {menuItem.icon ? renderIcon(menuItem.icon) : renderIcon("box")}
+                          </div>
+
+                          {/* Content */}
+                          <div className="item-content flex-1">
+                            <div
+                              className="item-title"
+                              style={{
+                                fontFamily: '"Noto Sans", sans-serif',
+                                display: "flex",
+                                alignItems: "center",
+                                fontSize: "16px",
+                                lineHeight: "150%",
+                                letterSpacing: "-.32px",
+                                color: "#333",
+                                marginBottom: "0.25rem",
+                              }}
                             >
-                              <div
-                                className="font-semibold text-gray-900 mb-1 group-hover:text-[#204066] transition-colors"
-                                style={{
-                                  fontSize: "15px",
-                                  lineHeight: "22px",
-                                }}
-                              >
-                                {menuItem.title}
-                              </div>
-                              <div
-                                className="text-gray-600"
-                                style={{
-                                  fontSize: "13px",
-                                  lineHeight: "18px",
-                                }}
-                              >
-                                {menuItem.description}
-                              </div>
-                            </a>
-                          </li>
-                        ))}
-                      </ul>
+                              {menuItem.title}
+                            </div>
+                            <div
+                              className="item-description"
+                              style={{
+                                fontFamily: '"Noto Sans", sans-serif',
+                                color: "#707070",
+                                fontSize: "12px",
+                                lineHeight: "1.5",
+                              }}
+                            >
+                              {menuItem.description}
+                            </div>
+                          </div>
+                        </a>
+                      ))}
                     </div>
 
                     {/* Sidebar - Featured Post */}
                     <div className="w-80 flex-shrink-0">
-                      <div className="bg-white rounded-lg border border-gray-200 overflow-hidden shadow-sm">
-                        {/* Featured post image */}
-                        <div className="w-full h-48 relative overflow-hidden">
-                          <img
-                            src={csi4Image}
-                            alt="GOOSE DevOps Platform"
-                            className="w-full h-full object-cover"
-                            onError={(e) => {
-                              // Fallback to gradient background if image fails to load
-                              const target = e.target as HTMLImageElement;
-                              target.style.display = "none";
-                            }}
-                          />
-                          {/* Gradient overlay with GOOSE branding */}
-                          <div
-                            className="absolute inset-0 flex items-center justify-center"
-                            style={{
-                              background:
-                                "linear-gradient(135deg, rgba(32, 64, 102, 0.75) 0%, rgba(45, 90, 138, 0.75) 100%)",
-                            }}
-                          >
-                            <div className="text-center text-white px-4">
-                              <div
-                                className="text-5xl font-bold mb-2"
-                                style={{
-                                  fontFamily: '"Noto Sans", sans-serif',
-                                }}
-                              >
-                                GOOSE
+                      <div 
+                        className="featured-post"
+                        style={{ height: "100%" }}
+                      >
+                        <div 
+                          className="rc-item"
+                          style={{
+                            backgroundColor: "#fff",
+                            borderRadius: "8px",
+                            border: "1px solid #e5e7eb",
+                            overflow: "hidden",
+                            boxShadow: "0 1px 3px 0 rgba(0, 0, 0, 0.1)",
+                            height: "100%",
+                            display: "flex",
+                            flexDirection: "column",
+                          }}
+                        >
+                          <a href="#" style={{ textDecoration: "none", color: "inherit", display: "flex", flexDirection: "column", height: "100%" }}>
+                            <div className="rc-img" style={{ width: "100%", overflow: "hidden" }}>
+                              <img
+                                src={featuredPostData.image}
+                                alt={featuredPostData.title}
+                                loading="lazy"
+                                className="w-full h-full object-cover"
+                                style={{ width: "100%", height: "auto" }}
+                              />
+                            </div>
+                            <div className="rc-content" style={{ padding: "1rem", flex: 1, display: "flex", flexDirection: "column" }}>
+                              <div className="rc-tag">
+                                <span 
+                                  className="post-type"
+                                  style={{
+                                    display: "inline-block",
+                                    padding: "0.25rem 0.5rem",
+                                    marginBottom: "0.5rem",
+                                    borderRadius: "9999px",
+                                    fontSize: "0.75rem",
+                                    fontWeight: 500,
+                                    backgroundColor: "#e0e7ff",
+                                    color: "#204066",
+                                    fontFamily: '"Noto Sans", sans-serif',
+                                  }}
+                                >
+                                  {featuredPostData.tag}
+                                </span>
                               </div>
-                              <div
-                                className="text-sm opacity-90"
-                                style={{
-                                  fontFamily: '"Noto Sans", sans-serif',
-                                }}
-                              >
-                                Deploy, Scale, Dominate
+                              <div className="rc-desc">
+                                <h2 
+                                  className="rc-title"
+                                  style={{
+                                    fontFamily: '"Noto Sans", sans-serif',
+                                    fontSize: "14px",
+                                    lineHeight: "20px",
+                                    fontWeight: 600,
+                                    color: "#333",
+                                    marginBottom: "0.5rem",
+                                    margin: 0,
+                                    padding: 0,
+                                  }}
+                                >
+                                  {featuredPostData.title}
+                                </h2>
+                                <p 
+                                  className="rc-summary show-rc-description"
+                                  style={{
+                                    fontFamily: '"Noto Sans", sans-serif',
+                                    fontSize: "12px",
+                                    lineHeight: "18px",
+                                    color: "#707070",
+                                    margin: 0,
+                                    padding: 0,
+                                  }}
+                                >
+                                  {featuredPostData.description}
+                                </p>
                               </div>
                             </div>
-                          </div>
-                        </div>
-                        <div className="p-4">
-                          <div
-                            className="inline-block px-2 py-1 mb-2 rounded-full text-xs font-medium"
-                            style={{
-                              backgroundColor: "#e0e7ff",
-                              color: "#204066",
-                              fontFamily: '"Noto Sans", sans-serif',
-                            }}
-                          >
-                            DevOps Platform
-                          </div>
-                          <h3
-                            className="font-semibold text-gray-900 mb-2"
-                            style={{
-                              fontFamily: '"Noto Sans", sans-serif',
-                              fontSize: "14px",
-                              lineHeight: "20px",
-                            }}
-                          >
-                            GOOSE | Deploy, Scale, Dominate
-                          </h3>
-                          <p
-                            className="text-gray-600 text-sm"
-                            style={{
-                              fontFamily: '"Noto Sans", sans-serif',
-                              fontSize: "12px",
-                              lineHeight: "18px",
-                            }}
-                          >
-                            The ultimate DevOps platform that transforms how you build, deploy, and scale applications. Zero complexity, maximum impact.
-                          </p>
+                          </a>
                         </div>
                       </div>
                     </div>
@@ -602,29 +752,62 @@ const DropdownMenu = ({
                         <a
                           key={index}
                           href={menuItem.href || "#"}
-                          className="flex items-start gap-4 p-4 rounded-lg hover:bg-gray-50 transition-colors group"
+                          className="link-item"
+                          style={{
+                            width: "100%",
+                            display: "flex",
+                            alignItems: "flex-start",
+                            gap: "8px",
+                            borderRadius: "6px",
+                            height: "fit-content",
+                            padding: "8px",
+                            color: "#1f1f1f",
+                            transition: "background-color .3s ease 0s, color .3s ease 0s",
+                            textDecoration: "none",
+                          }}
                         >
                           {/* Icon */}
-                          {renderIcon(menuItem.icon)}
+                          <div 
+                            className="item-icon" 
+                            style={{
+                              border: "1px solid #cccccc",
+                              width: "44px",
+                              height: "44px",
+                              display: "flex",
+                              alignItems: "center",
+                              justifyContent: "center",
+                              borderRadius: "6px",
+                              flexShrink: 0,
+                              background: "#fff",
+                            }}
+                          >
+                            {renderIcon(menuItem.icon)}
+                          </div>
 
                           {/* Content */}
-                          <div className="flex-1">
+                          <div className="item-content flex-1">
                             <div
-                              className="font-semibold text-gray-900 mb-1 group-hover:text-[#204066] transition-colors"
+                              className="item-title"
                               style={{
                                 fontFamily: '"Noto Sans", sans-serif',
-                                fontSize: "15px",
-                                lineHeight: "22px",
+                                display: "flex",
+                                alignItems: "center",
+                                fontSize: "16px",
+                                lineHeight: "150%",
+                                letterSpacing: "-.32px",
+                                color: "#333",
+                                marginBottom: "0.25rem",
                               }}
                             >
                               {menuItem.title}
                             </div>
                             <div
-                              className="text-gray-600"
+                              className="item-description"
                               style={{
                                 fontFamily: '"Noto Sans", sans-serif',
-                                fontSize: "13px",
-                                lineHeight: "18px",
+                                color: "#707070",
+                                fontSize: "12px",
+                                lineHeight: "1.5",
                               }}
                             >
                               {menuItem.description}
@@ -636,78 +819,84 @@ const DropdownMenu = ({
 
                     {/* Sidebar - Featured Post for Solutions */}
                     <div className="w-80 flex-shrink-0">
-                      <div className="bg-white rounded-lg border border-gray-200 overflow-hidden shadow-sm">
-                        {/* Featured post image */}
-                        <div className="w-full h-48 relative overflow-hidden">
-                          <img
-                            src={muImage}
-                            alt="MuleSoft Integration Platform"
-                            className="w-full h-full object-cover"
-                            onError={(e) => {
-                              // Fallback to gradient background if image fails to load
-                              const target = e.target as HTMLImageElement;
-                              target.style.display = "none";
-                            }}
-                          />
-                          {/* Gradient overlay with MuleSoft branding */}
-                          <div
-                            className="absolute inset-0 flex items-center justify-center"
-                            style={{
-                              background:
-                                "linear-gradient(135deg, rgba(32, 64, 102, 0.75) 0%, rgba(45, 90, 138, 0.75) 100%)",
-                            }}
-                          >
-                            <div className="text-center text-white px-4">
-                          <div
-                            className="text-5xl font-bold mb-2"
-                            style={{
-                              fontFamily: '"Noto Sans", sans-serif',
-                            }}
-                          >
-                            MuleSoft
-                          </div>
-                          <div
-                            className="text-sm opacity-90"
-                            style={{
-                              fontFamily: '"Noto Sans", sans-serif',
-                            }}
-                          >
-                            Integration & API Management Platform
-                          </div>
+                      <div 
+                        className="featured-post"
+                        style={{ height: "100%" }}
+                      >
+                        <div 
+                          className="rc-item"
+                          style={{
+                            backgroundColor: "#fff",
+                            borderRadius: "8px",
+                            border: "1px solid #e5e7eb",
+                            overflow: "hidden",
+                            boxShadow: "0 1px 3px 0 rgba(0, 0, 0, 0.1)",
+                            height: "100%",
+                            display: "flex",
+                            flexDirection: "column",
+                          }}
+                        >
+                          <a href="#" style={{ textDecoration: "none", color: "inherit", display: "flex", flexDirection: "column", height: "100%" }}>
+                            <div className="rc-img" style={{ width: "100%", overflow: "hidden" }}>
+                              <img
+                                src={featuredPostData.image}
+                                alt={featuredPostData.title}
+                                loading="lazy"
+                                className="w-full h-full object-cover"
+                                style={{ width: "100%", height: "auto" }}
+                              />
                             </div>
-                          </div>
-                        </div>
-                        <div className="p-4">
-                          <div
-                            className="inline-block px-2 py-1 mb-2 rounded-full text-xs font-medium"
-                            style={{
-                              backgroundColor: "#e0e7ff",
-                              color: "#204066",
-                              fontFamily: '"Noto Sans", sans-serif',
-                            }}
-                          >
-                            Integration Solutions
-                          </div>
-                          <h3
-                            className="font-semibold text-gray-900 mb-2"
-                            style={{
-                              fontFamily: '"Noto Sans", sans-serif',
-                              fontSize: "14px",
-                              lineHeight: "20px",
-                            }}
-                          >
-                            MuleSoft Anypoint Platform | Integration & API Management
-                          </h3>
-                          <p
-                            className="text-gray-600 text-sm"
-                            style={{
-                              fontFamily: '"Noto Sans", sans-serif',
-                              fontSize: "12px",
-                              lineHeight: "18px",
-                            }}
-                          >
-                            Connect applications, data, and devices with API-led connectivity and automation solutions.
-                          </p>
+                            <div className="rc-content" style={{ padding: "1rem", flex: 1, display: "flex", flexDirection: "column" }}>
+                              <div className="rc-tag">
+                                <span 
+                                  className="post-type"
+                                  style={{
+                                    display: "inline-block",
+                                    padding: "0.25rem 0.5rem",
+                                    marginBottom: "0.5rem",
+                                    borderRadius: "9999px",
+                                    fontSize: "0.75rem",
+                                    fontWeight: 500,
+                                    backgroundColor: "#e0e7ff",
+                                    color: "#204066",
+                                    fontFamily: '"Noto Sans", sans-serif',
+                                  }}
+                                >
+                                  {featuredPostData.tag}
+                                </span>
+                              </div>
+                              <div className="rc-desc">
+                                <h2 
+                                  className="rc-title"
+                                  style={{
+                                    fontFamily: '"Noto Sans", sans-serif',
+                                    fontSize: "14px",
+                                    lineHeight: "20px",
+                                    fontWeight: 600,
+                                    color: "#333",
+                                    marginBottom: "0.5rem",
+                                    margin: 0,
+                                    padding: 0,
+                                  }}
+                                >
+                                  {featuredPostData.title}
+                                </h2>
+                                <p 
+                                  className="rc-summary show-rc-description"
+                                  style={{
+                                    fontFamily: '"Noto Sans", sans-serif',
+                                    fontSize: "12px",
+                                    lineHeight: "18px",
+                                    color: "#707070",
+                                    margin: 0,
+                                    padding: 0,
+                                  }}
+                                >
+                                  {featuredPostData.description}
+                                </p>
+                              </div>
+                            </div>
+                          </a>
                         </div>
                       </div>
                     </div>
@@ -719,68 +908,51 @@ const DropdownMenu = ({
             {/* Bottom Section - Dark Blue (20% height) */}
             <div
               className="h-[20%] bg-[#204066] flex items-center"
-              style={{ padding: "1.5rem" }}
+              style={{ padding: "1.5rem 3rem 1.5rem 1.5rem" }}
             >
               <a
                 href="#"
-                className="flex items-center gap-2 text-white hover:opacity-80 transition-opacity"
-                style={{ fontFamily: '"Noto Sans", sans-serif' }}
+                className="quick-link"
+                style={{
+                  fontFamily: '"Noto Sans", sans-serif',
+                  alignItems: "center",
+                  color: "#fff",
+                  display: "flex",
+                  textDecoration: "none",
+                  transition: "color .3s, background-color .3s",
+                  padding: "8px",
+                  borderRadius: "4px",
+                }}
               >
-                <div className="w-8 h-8 flex items-center justify-center relative">
-                  <svg
-                    width="32"
-                    height="32"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    {/* White square with rounded corners */}
-                    <rect
-                      x="4"
-                      y="4"
-                      width="16"
-                      height="16"
-                      rx="2"
-                      fill="white"
-                    />
-                    {/* Monitor/screen outline */}
-                    <rect
-                      x="6"
-                      y="6"
-                      width="12"
-                      height="8"
-                      rx="1"
-                      stroke="#204066"
-                      strokeWidth="1.5"
-                      fill="none"
-                    />
-                    {/* Play button triangle */}
-                    <path
-                      d="M10 9L14 12L10 15V9Z"
-                      fill="#204066"
-                    />
-                    {/* Bottom lines */}
-                    <line
-                      x1="7"
-                      y1="16"
-                      x2="17"
-                      y2="16"
-                      stroke="#204066"
-                      strokeWidth="1.5"
-                      strokeLinecap="round"
-                    />
-                    <line
-                      x1="7"
-                      y1="18"
-                      x2="17"
-                      y2="18"
-                      stroke="#204066"
-                      strokeWidth="1.5"
-                      strokeLinecap="round"
-                    />
-                  </svg>
+                <div 
+                  className="link-icon"
+                  style={{
+                    alignItems: "center",
+                    backgroundColor: "#fff",
+                    borderRadius: "6px",
+                    display: "flex",
+                    height: "44px",
+                    justifyContent: "center",
+                    width: "44px",
+                    marginRight: "8px",
+                    flexShrink: 0,
+                  }}
+                >
+                  <img 
+                    src={playIcon} 
+                    alt="Request a demo" 
+                    loading="lazy"
+                    style={{ width: "24px", height: "24px" }}
+                  />
                 </div>
-                <span style={{ fontSize: "14px", fontWeight: 500 }}>
+                <span 
+                  className="link-title"
+                  style={{ 
+                    fontSize: "14px", 
+                    fontWeight: 500,
+                    color: "#fff",
+                  }}
+                >
                   Request a demo
                 </span>
               </a>

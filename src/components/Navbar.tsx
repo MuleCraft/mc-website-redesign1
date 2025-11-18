@@ -470,7 +470,12 @@ const Navbar = () => {
               <div className="relative">
                 <button
                   ref={languageButtonRef}
-                  onClick={() => setIsLanguageOpen(!isLanguageOpen)}
+                  onClick={() => {
+                    setIsLanguageOpen(!isLanguageOpen);
+                    if (openDropdown) {
+                      setOpenDropdown(null);
+                    }
+                  }}
                   className={`p-2 rounded-full transition-colors ${
                     isLanguageOpen ? "bg-gray-100" : "hover:bg-gray-100"
                   }`}
@@ -510,7 +515,16 @@ const Navbar = () => {
                   </div>
                 )}
               </div>
-              <Button variant="default">Schedule demo</Button>
+              <Button 
+                variant="default"
+                style={{
+                  background: 'linear-gradient(135deg, #204066 0%, #2d5a8a 50%, #204066 100%)',
+                  color: '#ffffff',
+                  border: 'none',
+                }}
+              >
+                Schedule demo
+              </Button>
             </div>
           </div>
         ) : (
@@ -557,10 +571,17 @@ const Navbar = () => {
                       className="flex items-center gap-1.5 whitespace-nowrap transition-all rounded-md px-2 py-1 hover:bg-gray-100"
                       style={{
                         fontFamily: '"Noto Sans", sans-serif',
-                        fontSize: "15px",
-                        lineHeight: "20px",
+                        color: "#333",
+                        display: "flex",
+                        alignItems: "center",
+                        textDecoration: "none",
                         fontWeight: 500,
-                        color: "rgb(31, 31, 31)",
+                        fontSize: ".9rem",
+                        transition: "color .3s",
+                        position: "relative",
+                        lineHeight: 1,
+                        userSelect: "none",
+                        WebkitUserSelect: "none" as any,
                       }}
                     >
                       {item.label}
@@ -595,7 +616,12 @@ const Navbar = () => {
                 <div className="relative">
                   <button
                     ref={languageButtonRef}
-                    onClick={() => setIsLanguageOpen(!isLanguageOpen)}
+                    onClick={() => {
+                      setIsLanguageOpen(!isLanguageOpen);
+                      if (openDropdown) {
+                        setOpenDropdown(null);
+                      }
+                    }}
                     className={`p-2 rounded-full transition-colors ${
                       isLanguageOpen ? "bg-gray-100" : "hover:bg-gray-100"
                     }`}
@@ -636,7 +662,16 @@ const Navbar = () => {
 
               {/* Action Button */}
               <div className="flex items-center">
-                <Button variant="default">Schedule demo</Button>
+                <Button 
+                variant="default"
+                style={{
+                  background: 'linear-gradient(135deg, #204066 0%, #2d5a8a 50%, #204066 100%)',
+                  color: '#ffffff',
+                  border: 'none',
+                }}
+              >
+                Schedule demo
+              </Button>
               </div>
             </div>
           </>
