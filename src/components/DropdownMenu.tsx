@@ -96,9 +96,9 @@ const DropdownMenu = ({
       if (label === "RECENTLY LAUNCHED") {
         return {
           image: csi4Image,
-          title: "Recently Launched Products",
-          description: "A learning and integration platform offering AI-powered task generation, transformation playground, and RAML assistant modules with progress tracking.",
-          tag: "New Products"
+          title: "GOOSE | Deploy, Scale, Dominate",
+          description: "The ultimate DevOps platform that transforms how you build, deploy, and scale applications. Zero complexity, maximum impact.",
+          tag: "GOOSED"
         };
       } else if (label === "MULESOFT") {
         return {
@@ -119,9 +119,9 @@ const DropdownMenu = ({
       // Default for Products
       return {
         image: csi4Image,
-        title: "Recently Launched Products",
-        description: "A learning and integration platform offering AI-powered task generation, transformation playground, and RAML assistant modules with progress tracking.",
-        tag: "New Products"
+        title: "GOOSE | Deploy, Scale, Dominate",
+        description: "The ultimate DevOps platform that transforms how you build, deploy, and scale applications. Zero complexity, maximum impact.",
+        tag: "GOOSED"
       };
     }
     
