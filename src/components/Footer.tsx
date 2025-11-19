@@ -1,4 +1,9 @@
-import { Facebook, Linkedin, Youtube, Instagram } from "lucide-react";
+import {
+  FaFacebookF,
+  FaLinkedin,
+  FaYoutube,
+  FaInstagram,
+} from "react-icons/fa";
 import whiteLogo from "@/assets/NewMulecraftWhiteLogo.png";
 import reviewImage from "@/assets/mulesoft-partner.webp";
 
@@ -127,7 +132,7 @@ const Footer = () => {
                   className="h-10 lg:h-15 w-auto"
                 />
               </div>
-              <p className="text-white text-sm">
+              <p className="text-white font-size-[14.08px]">
                 Experts in integration and automation solutions.
               </p>
             </div>
@@ -186,8 +191,8 @@ const Footer = () => {
           <div className="border-t border-[#7C3AED] mt-12 mb-8"></div>
 
           {/* Bottom Section */}
-          <div className="flex flex-col md:flex-row justify-between items-center gap-4 mb-6 pb-6">
-            <div className="flex flex-wrap items-center gap-4 text-sm text-white">
+          <div className="flex flex-col md:flex-row justify-between items-center gap-[2rem] mb-6 pb-6 font-size-[14.08px]">
+            <div className="flex flex-wrap items-center gap-6 font-size-[14.08px] text-white px-[4px py-[12px]">
               <span>© 2025 Copyright MuleCraft. All rights reserved.</span>
               <a href="#" className="hover:text-white transition-colors">
                 Privacy
@@ -198,36 +203,21 @@ const Footer = () => {
               <a href="#" className="hover:text-white transition-colors">
                 Terms
               </a>
-              <a href="#" className="hover:text-white transition-colors">
-                GDPR
-              </a>
             </div>
 
             {/* Social Media Icons */}
-            <div className="flex items-center gap-4">
-              <a
-                href="#"
-                className="w-8 h-8 flex items-center justify-center hover:bg-white/10 rounded-full transition-colors"
-              >
-                <Facebook className="w-5 h-5 text-white" />
+            <div className="flex items-center gap-6">
+              <a href="#" className="hover:opacity-80 transition-opacity">
+                <FaFacebookF style={{ color: "white", fontSize: "20px" }} />
               </a>
-              <a
-                href="#"
-                className="w-8 h-8 flex items-center justify-center hover:bg-white/10 rounded-full transition-colors"
-              >
-                <Linkedin className="w-5 h-5 text-white" />
+              <a href="#" className="hover:opacity-80 transition-opacity">
+                <FaLinkedin style={{ color: "white", fontSize: "20px" }} />
               </a>
-              <a
-                href="#"
-                className="w-8 h-8 flex items-center justify-center hover:bg-white/10 rounded-full transition-colors"
-              >
-                <Youtube className="w-5 h-5 text-white" />
+              <a href="#" className="hover:opacity-80 transition-opacity">
+                <FaYoutube style={{ color: "white", fontSize: "20px" }} />
               </a>
-              <a
-                href="#"
-                className="w-8 h-8 flex items-center justify-center hover:bg-white/10 rounded-full transition-colors"
-              >
-                <Instagram className="w-5 h-5 text-white" />
+              <a href="#" className="hover:opacity-80 transition-opacity">
+                <FaInstagram style={{ color: "white", fontSize: "20px" }} />
               </a>
             </div>
           </div>
