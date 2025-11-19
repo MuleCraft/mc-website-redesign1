@@ -6,7 +6,7 @@ import csi4Image from "@/assets/csi4.png";
 import csi6Image from "@/assets/csi6.png";
 import csi8Image from "@/assets/csi8.png";
 import muImage from "@/assets/mu-image.webp";
-import MuleSoftPartnerImage from "@/assets/MuleSoft-partner.webp";
+import MuleSoftPartnerImage from "@/assets/mulesoft-partner.webp";
 import trainingImage from "@/assets/training.png";
 import blogImage from "@/assets/blog.jpg";
 import si1Image from "@/assets/si1.jpg";
