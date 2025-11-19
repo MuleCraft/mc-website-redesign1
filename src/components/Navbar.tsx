@@ -683,7 +683,7 @@ const Navbar = () => {
                       lineHeight: 1,
                       userSelect: "none",
                       WebkitUserSelect: "none" as any,
-                      padding: "0.25rem .5rem",
+                      padding: "0.35rem .75rem",
                     }}
                   >
                     {item.label}
