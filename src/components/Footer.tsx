@@ -133,7 +133,7 @@ const Footer = () => {
                 />
               </div>
               <p className="text-white text-sm">
-                Experts in integration and automation solutions.
+                Trusted experts in integration and workflow automation.
               </p>
             </div>
 
