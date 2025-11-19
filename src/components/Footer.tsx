@@ -5,12 +5,12 @@ import {
   FaInstagram,
 } from "react-icons/fa";
 import whiteLogo from "@/assets/NewMulecraftWhiteLogo.png";
-import reviewImage from "@/assets/mulesoft-partner.webp";
+import reviewImage from "@/assets/MuleSoft-partner.webp";
 
 const Footer = () => {
   const footerSections = [
     {
-      title: "MULESOFT",
+      title: "MuleSoft",
       links: [
         "Mule 4 Migration",
         "B2B Integration",

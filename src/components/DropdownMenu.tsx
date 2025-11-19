@@ -6,7 +6,7 @@ import csi4Image from "@/assets/csi4.png";
 import csi6Image from "@/assets/csi6.png";
 import csi8Image from "@/assets/csi8.png";
 import muImage from "@/assets/mu-image.webp";
-import mulesoftPartnerImage from "@/assets/mulesoft-partner.webp";
+import MuleSoftPartnerImage from "@/assets/MuleSoft-partner.webp";
 import trainingImage from "@/assets/training.png";
 import blogImage from "@/assets/blog.jpg";
 import si1Image from "@/assets/si1.jpg";
@@ -55,9 +55,9 @@ const DropdownMenu = ({
 }: DropdownMenuProps) => {
   const [selectedHeader, setSelectedHeader] = useState<string | null>(null);
 
-  // Initialize selected header for Solutions, Products, and Case studies dropdown
+  // Initialize selected header for Solutions, Products, and Case Studies dropdown
   useEffect(() => {
-    if ((navItem === "Solutions" || navItem === "Products" || navItem === "Case studies") && items.length > 0) {
+    if ((navItem === "Solutions" || navItem === "Products" || navItem === "Case Studies") && items.length > 0) {
       const defaultSelected = items.find((item) => item.isSelected) || items[0];
       setSelectedHeader(defaultSelected.label);
     }
@@ -78,11 +78,11 @@ const DropdownMenu = ({
 
     // Image mapping for each solution header - using specific tech stack/flow diagram images
     const solutionImages: { [key: string]: { image: string; title: string; description: string; href?: string } } = {
-      "Mulesoft": {
+      "MuleSoft": {
         image: si1Image,
         title: "MuleSoft Migration & Integration",
         description: "API-led connectivity & Mule 3 to Mule 4 migration",
-        href: "https://docs.mulesoft.com/mule-runtime/latest/migration-intro",
+        href: "https://docs.MuleSoft.com/mule-runtime/latest/migration-intro",
       },
       "SnapLogic": {
         image: si2Image,
@@ -116,7 +116,7 @@ const DropdownMenu = ({
       },
     };
 
-    const selectedImageCard = solutionImages[selectedHeader || "Mulesoft"];
+    const selectedImageCard = solutionImages[selectedHeader || "MuleSoft"];
 
     return (
       <>
@@ -693,7 +693,7 @@ const DropdownMenu = ({
       "csi6.png": csi6Image,
       "csi8.png": csi8Image,
       "mu-image.webp": muImage,
-      "mulesoft-partner.webp": mulesoftPartnerImage,
+      "MuleSoft-partner.webp": MuleSoftPartnerImage,
       "training.png": trainingImage,
     };
 
@@ -890,8 +890,8 @@ const DropdownMenu = ({
     );
   }
 
-  // Special layout for Case studies dropdown with sidebar (similar to Solutions)
-  if (navItem === "Case studies") {
+  // Special layout for Case Studies dropdown with sidebar (similar to Solutions)
+  if (navItem === "Case Studies") {
     const selectedItem =
       items.find((item) => item.label === selectedHeader) || items[0];
     const menuItems = selectedItem?.menuItems || [];

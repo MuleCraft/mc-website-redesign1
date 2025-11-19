@@ -21,7 +21,7 @@ const Navbar = () => {
   const navItems = [
     { label: "Products", hasChevron: true, href: "#" },
     { label: "Solutions", hasChevron: true, href: "#" },
-    { label: "Case studies", hasChevron: true, href: "#" },
+    { label: "Case Studies", hasChevron: true, href: "#" },
     {
       label: "Resources",
       hasChevron: true,
@@ -190,7 +190,7 @@ const Navbar = () => {
     if (openDropdown === "Solutions") {
       return [
         {
-          label: "Mulesoft",
+          label: "MuleSoft",
           isSelected: true,
           menuItems: [
             {
@@ -388,7 +388,7 @@ const Navbar = () => {
               title: "MuleSoftLP",
               description: "AI-Powered Integration Learning",
               image: "csi3.png",
-              href: "https://mulesoft.dev/",
+              href: "https://MuleSoft.dev/",
             },
             {
               title: "Community Platform",
@@ -443,7 +443,7 @@ const Navbar = () => {
       ];
     }
 
-    if (openDropdown === "Case studies") {
+    if (openDropdown === "Case Studies") {
       return [
         {
           label: "HR Management",
@@ -690,7 +690,7 @@ const Navbar = () => {
                     {item.hasChevron && (
                       <ChevronDown
                         className="w-4 h-4"
-                        style={{ color: "rgb(31, 31, 31)", strokeWidth: 1.7 }}
+                        style={{ color: "rgb(31, 31, 31)", strokeWidth: 1.6 }}
                       />
                     )}
                   </a>
@@ -973,12 +973,46 @@ const Navbar = () => {
               variant="default"
               className="transition-colors duration-200"
               style={{
-                backgroundColor: "rgb(7, 43, 85)",
-                color: "#ffffff",
-                border: "none",
-                padding: "0.375rem 1rem",
+                backgroundColor: "#ffffff",
+                color: "#4B4FE2",
+                border: "1px solid #4B4FE2",
+                padding: "0.675rem 1rem",
                 fontSize: "0.875rem",
                 height: "auto",
+                transition: "all 0.2s ease",
+              }}
+              onMouseEnter={(e) => {
+                e.currentTarget.style.backgroundColor = "#4B4FE2";
+                e.currentTarget.style.color = "#ffffff";
+              }}
+              onMouseLeave={(e) => {
+                e.currentTarget.style.backgroundColor = "#ffffff";
+                e.currentTarget.style.color = "#4B4FE2";
+              }}
+            >
+              Community
+            </Button>
+          </div>
+          <div className="flex items-center" style={{ marginLeft: "1rem" }}>
+            <Button
+              variant="default"
+              className="transition-colors duration-200"
+              style={{
+                backgroundColor: "#4B4FE2",
+                color: "#ffffff",
+                border: "1px solid #4B4FE2",
+                padding: "0.675rem 1rem",
+                fontSize: "0.875rem",
+                height: "auto",
+                transition: "all 0.2s ease",
+              }}
+              onMouseEnter={(e) => {
+                e.currentTarget.style.backgroundColor = "#3a3eb5";
+                e.currentTarget.style.borderColor = "#3a3eb5";
+              }}
+              onMouseLeave={(e) => {
+                e.currentTarget.style.backgroundColor = "#4B4FE2";
+                e.currentTarget.style.borderColor = "#4B4FE2";
               }}
             >
               Schedule demo
