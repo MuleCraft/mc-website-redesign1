@@ -5,7 +5,7 @@ import {
   FaInstagram,
 } from "react-icons/fa";
 import whiteLogo from "@/assets/NewMulecraftWhiteLogo.png";
-import reviewImage from "@/assets/Mulesoft-partner.webp";
+import reviewImage from "@/assets/mulesoft-partner.webp";
 
 const Footer = () => {
   const footerSections = [
