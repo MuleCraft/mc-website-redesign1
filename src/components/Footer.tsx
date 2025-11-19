@@ -188,10 +188,10 @@ const Footer = () => {
           </div>
 
           {/* Divider */}
-          <div className="border-t border-[#7C3AED] mt-12 mb-8"></div>
+          <div className="border-t border-[#7C3AED] mt-12 mb-6"></div>
 
           {/* Bottom Section */}
-          <div className="flex flex-col md:flex-row justify-between items-center gap-[2rem] mb-6 pb-6 text-sm ">
+          <div className="flex flex-col md:flex-row justify-between items-center gap-[2rem] mb-6 pb-3 text-sm ">
             <div className="flex flex-wrap items-center gap-6 text-white px-[4px py-[12px]">
               <span >© 2025 Copyright MuleCraft. All rights reserved.</span>
               <a href="#" className="hover:text-white transition-colors">
