@@ -115,7 +115,7 @@ const Footer = () => {
         className="w-full text-white"
         style={{ backgroundColor: "rgb(7, 43, 85)" }}
       >
-        <div className="w-full max-w-7xl mx-auto pl-4 lg:pl-6 xl:pl-5 pr-4 lg:pr-6 xl:pr-8 pt-[5rem] pb-6">
+        <div className="w-full max-w-9xl mx-auto pl-6 lg:pl-12 xl:pl-12 pr-6 md:pr-12 lg:pr-12 xl:pr-12 pt-[5rem] pb-4">
           {/* Top Section */}
           <div className="flex flex-col md:flex-row justify-between items-start mb-6 gap-8">
             {/* Logo and Tagline */}
@@ -183,7 +183,7 @@ const Footer = () => {
           </div>
 
           {/* Divider */}
-          <div className="border-t border-[#7C3AED] my-12"></div>
+          <div className="border-t border-[#7C3AED] mt-12 mb-8"></div>
 
           {/* Bottom Section */}
           <div className="flex flex-col md:flex-row justify-between items-center gap-4 mb-6 pb-6">

@@ -1,7 +1,8 @@
 import { useState, useRef, useEffect } from "react";
-import { Search, Globe, ChevronDown } from "lucide-react";
+import { Search, Globe, ChevronDown, Monitor, Sun, Moon } from "lucide-react";
 import { Button } from "./ui/button";
 import mulecraftLogo from "../assets/mulecraftlogo.png";
+import themingIcon from "../assets/theming.png";
 import DropdownMenu from "./DropdownMenu";
 
 const Navbar = () => {
@@ -10,12 +11,12 @@ const Navbar = () => {
   const [isLanguageOpen, setIsLanguageOpen] = useState(false);
   const [isThemeOpen, setIsThemeOpen] = useState(false);
   const [selectedLanguage, setSelectedLanguage] = useState("English");
-  // const [selectedTheme, setSelectedTheme] = useState("System");
+  const [selectedTheme, setSelectedTheme] = useState("System");
   const navItemRefs = useRef<{ [key: string]: HTMLAnchorElement | null }>({});
   const navbarRef = useRef<HTMLElement | null>(null);
   const searchInputRef = useRef<HTMLInputElement | null>(null);
   const languageButtonRef = useRef<HTMLButtonElement | null>(null);
-  // const themeButtonRef = useRef<HTMLButtonElement | null>(null);
+  const themeButtonRef = useRef<HTMLButtonElement | null>(null);
 
   const navItems = [
     { label: "Products", hasChevron: true, href: "#" },
@@ -27,7 +28,6 @@ const Navbar = () => {
       href: "#",
     },
     { label: "About", hasChevron: false, href: "/about" },
-    { label: "Careers", hasChevron: false, href: "/careers" },
     { label: "Contact Sales", hasChevron: false, href: "/contact-sales" },
   ];
 
@@ -252,7 +252,7 @@ const Navbar = () => {
           ],
         },
         {
-          label: "Others",
+          label: "Salesforce",
           isSelected: false,
           menuItems: [
             {
@@ -261,50 +261,55 @@ const Navbar = () => {
               icon: "sync",
             },
             {
-              title: "API Proxy Deployment",
-              description: "Secure API exposure",
-              icon: "cloud",
+              title: "Third-party App Connect",
+              description: "Seamless Salesforce integration",
+              icon: "link",
             },
             {
-              title: "Recipe-based Automation",
-              description: "Reusable integration 'recipes'",
-              icon: "book-open",
+              title: "Lightning Flow Automation",
+              description: "Process automation and workflow",
+              icon: "workflow",
             },
             {
-              title: "Microservices Orchestration",
-              description: "Connect/distribute microservices workloads",
-              icon: "git-branch",
+              title: "Salesforce Reports Integration",
+              description: "Data analytics and reporting",
+              icon: "chart",
+            },
+            {
+              title: "Customer 360 Data Mapping",
+              description: "Unified customer data view",
+              icon: "users",
             },
           ],
         },
         {
-          label: "Apigee",
+          label: "n8n",
           isSelected: false,
           menuItems: [
             {
-              title: "API Proxy Deployment",
-              description: "Secure API exposure",
-              icon: "cloud",
+              title: "Workflow Automation",
+              description: "Visual workflow builder and automation",
+              icon: "workflow",
             },
             {
-              title: "Traffic Management",
-              description: "Rate limiting, quota enforcement",
-              icon: "gauge",
+              title: "Self-Hosted Integration",
+              description: "Deploy on your own infrastructure",
+              icon: "server",
             },
             {
-              title: "Threat Protection",
-              description: "OAuth, JWT, security filtering on API level",
-              icon: "lock",
+              title: "Custom Node Development",
+              description: "Build custom integration nodes",
+              icon: "code",
             },
             {
-              title: "Developer Portal",
-              description: "API documentation and onboarding for external devs",
-              icon: "book",
+              title: "API Integration",
+              description: "Connect any API with ease",
+              icon: "link",
             },
             {
-              title: "Analytics & Insights Engine",
-              description: "Request-level tracking, analytics dashboard",
-              icon: "chart",
+              title: "Data Transformation",
+              description: "Transform and process data flows",
+              icon: "refresh-cw",
             },
           ],
         },
@@ -376,65 +381,62 @@ const Navbar = () => {
     if (openDropdown === "Products") {
       return [
         {
-          label: "RECENTLY LAUNCHED",
+          label: "MuleSoft",
           isSelected: true,
           menuItems: [
             {
               title: "MuleSoftLP",
-              description: "Sample description for MuleSoftLP product",
+              description: "AI-Powered Integration Learning",
+              image: "csi3.png",
+              href: "https://mulesoft.dev/",
             },
             {
-              title: "SnapMapper",
-              description: "Sample description for SnapMapper product",
-            },
-            {
-              title: "RAMLify Flow Agent",
-              description: "Sample description for RAMLify Flow Agent product",
-            },
-            {
-              title: "Goose",
-              description: "Sample description for Goose product",
-            },
-          ],
-        },
-        {
-          label: "MULESOFT",
-          isSelected: false,
-          menuItems: [
-            {
-              title: "Community Anypoint Platform",
-              description: "Sample description for Community Anypoint Platform",
-            },
-            {
-              title: "MuleSoftLP",
-              description: "Sample description for MuleSoftLP product",
-            },
-            {
-              title: "MuleCraft Academy",
-              description: "Sample description for MuleCraft Academy",
+              title: "Community Platform",
+              description: "Open-source integration community hub",
+              image: "csi8.png",
+              href: "https://community.platform.mulecraft.in/",
             },
             {
               title: "AnypointLP",
-              description: "Sample description for AnypointLP product",
+              description: "Complete API lifecycle management",
+              image: "csi6.png",
+              href: "https://anypointlp-secondary.lovable.app/",
             },
           ],
         },
         {
-          label: "OTHER PRODUCTS",
+          label: "SnapLogic",
           isSelected: false,
           menuItems: [
             {
-              title: "Mule Migration Nexus",
-              description: "Sample description for Mule Migration Nexus",
+              title: "SnapMapper",
+              description: "Visual data mapping and transformation tool",
+              image: "csi1.png",
+              href: "https://snaplogic.playground.mulecraft.in/",
             },
             {
-              title: "DataWeave Task Generator",
-              description: "Sample description for DataWeave Task Generator",
+              title: "RAMLify Flow Agent",
+              description: "API design and flow automation agent",
+              image: "csi2.png",
+              href: "https://ramlify-flow-agent.lovable.app/",
+            },
+          ],
+        },
+        {
+          label: "Others",
+          isSelected: false,
+          menuItems: [
+            {
+              title: "Goose",
+              description: "Deploy, Scale, Dominate",
+              image: "csi4.png",
+              href: "https://goosed.in/",
             },
             {
-              title: "Datadog Integration Automation",
-              description:
-                "Sample description for Datadog Integration Automation",
+              title: "Training",
+              description: "Learn Today, Lead Tomorrow!",
+              image: "training.png",
+              href: "https://training.mulecraft.in/",
             },
           ],
         },
@@ -590,22 +592,22 @@ const Navbar = () => {
     { code: "ja", name: "日本語", flag: "🇯🇵" },
   ];
 
-  // const themes = [
-  //   { name: "Light", icon: Sun },
-  //   { name: "System", icon: Monitor },
-  //   { name: "Dark", icon: Moon },
-  // ];
+  const themes = [
+    { name: "Light", icon: Sun },
+    { name: "System", icon: Monitor },
+    { name: "Dark", icon: Moon },
+  ];
 
   const handleLanguageSelect = (language: string) => {
     setSelectedLanguage(language);
     setIsLanguageOpen(false);
   };
 
-  // const handleThemeSelect = (theme: string) => {
-  //   setSelectedTheme(theme);
-  //   setIsThemeOpen(false);
-  //   // TODO: Implement theme switching logic here
-  // };
+  const handleThemeSelect = (theme: string) => {
+    setSelectedTheme(theme);
+    setIsThemeOpen(false);
+    // TODO: Implement theme switching logic here
+  };
 
   return (
     <header
@@ -613,7 +615,7 @@ const Navbar = () => {
       className="w-full fixed top-0 z-50 border-b border-gray-200 overflow-visible"
       style={{ backgroundColor: "#fff" }}
     >
-      <nav className="w-full max-w-7xl mx-auto pl-4 lg:pl-6 xl:pl-5 pr-4 lg:pr-6 xl:pr-8 py-2 flex items-center justify-between min-h-[80px] overflow-visible">
+      <nav className="w-full max-w-9xl mx-auto pl-6 lg:pl-6 xl:pl-12 pr-6 lg:pr-6 xl:pr-12 py-2 flex items-center justify-between min-h-[80px] overflow-visible">
         {/* Logo - Left side - Always visible */}
         <div className="flex items-center">
           <div
@@ -875,7 +877,7 @@ const Navbar = () => {
                 </div>
               )}
             </div>
-            {/* Theme icon - commented out for now
+            {/* Theme icon */}
             <div className="relative group">
               <button
                 ref={themeButtonRef}
@@ -893,7 +895,15 @@ const Navbar = () => {
                 }`}
                 aria-label="Theme"
               >
-                <Contrast className="w-5 h-5 text-gray-800" />
+                <img 
+                  src={themingIcon} 
+                  alt="Theme" 
+                  className="w-7 h-6"
+                  style={{ 
+                    objectFit: "contain",
+                    filter: "grayscale(100%) brightness(0.3)"
+                  }}
+                />
               </button>
               {!isThemeOpen && (
                 <div className="absolute bottom-full left-1/2 -translate-x-1/2 mb-0.5 opacity-0 group-hover:opacity-100 transition-opacity duration-200 pointer-events-none z-50" style={{ marginBottom: '2px' }}>
@@ -955,7 +965,6 @@ const Navbar = () => {
                 </div>
               )}
             </div>
-            */}
           </div>
 
           {/* Action Button */}
