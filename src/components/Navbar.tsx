@@ -1,5 +1,5 @@
 import { useState, useRef, useEffect } from "react";
-import { Search, Globe, ChevronDown, X } from "lucide-react";
+import { Search, Globe, ChevronDown } from "lucide-react";
 import { Button } from "./ui/button";
 import mulecraftLogo from "../assets/mulecraftlogo.svg";
 import DropdownMenu from "./DropdownMenu";
@@ -109,6 +109,32 @@ const Navbar = () => {
     };
   }, [isLanguageOpen]);
 
+  // Handle click anywhere in navbar to close search
+  useEffect(() => {
+    const handleNavbarClick = (event: MouseEvent) => {
+      const target = event.target as Node;
+      if (
+        isSearchOpen &&
+        navbarRef.current &&
+        navbarRef.current.contains(target)
+      ) {
+        // Don't close if clicking on the search input itself
+        if (searchInputRef.current && searchInputRef.current.contains(target)) {
+          return;
+        }
+        setIsSearchOpen(false);
+      }
+    };
+
+    if (isSearchOpen) {
+      document.addEventListener("mousedown", handleNavbarClick);
+    }
+
+    return () => {
+      document.removeEventListener("mousedown", handleNavbarClick);
+    };
+  }, [isSearchOpen]);
+
   // Dropdown items for left sidebar - different content based on nav item
   const getDropdownItems = () => {
     if (openDropdown === "Solutions") {
@@ -169,14 +195,14 @@ const Navbar = () => {
               icon: "sync",
             },
             {
-              title: "Embedded Integration for SaaS Platforms",
+              title: "Embedded Integration for SaaS",
               description: "OEM white-label",
               icon: "package",
             },
           ],
         },
         {
-          label: "Salesforce",
+          label: "Others",
           isSelected: false,
           menuItems: [
             {
@@ -185,24 +211,19 @@ const Navbar = () => {
               icon: "sync",
             },
             {
-              title: "Third-party App Connect",
-              description: "DocuSign, Slack, Zoom integration",
-              icon: "link",
+              title: "API Proxy Deployment",
+              description: "Secure API exposure",
+              icon: "cloud",
             },
             {
-              title: "Lightning Flow Automation",
-              description: "Low-code process designer within SF",
-              icon: "zap",
+              title: "Recipe-based Automation",
+              description: "Reusable integration 'recipes'",
+              icon: "book-open",
             },
             {
-              title: "Salesforce Reports Integration",
-              description: "Custom analytics pipelines",
-              icon: "bar-chart",
-            },
-            {
-              title: "Customer 360 Data Mapping",
-              description: "Unified customer view across systems",
-              icon: "users",
+              title: "Microservices Orchestration",
+              description: "Connect/distribute microservices workloads",
+              icon: "git-branch",
             },
           ],
         },
@@ -342,28 +363,16 @@ const Navbar = () => {
               title: "MuleCraft Academy",
               description: "Sample description for MuleCraft Academy",
             },
+            {
+              title: "AnypointLP",
+              description: "Sample description for AnypointLP product",
+            },
           ],
         },
         {
           label: "OTHER PRODUCTS",
           isSelected: false,
           menuItems: [
-            {
-              title: "SnapMapper",
-              description: "Sample description for SnapMapper product",
-            },
-            {
-              title: "RAMLify Flow Agent",
-              description: "Sample description for RAMLify Flow Agent product",
-            },
-            {
-              title: "AnypointLP",
-              description: "Sample description for AnypointLP product",
-            },
-            {
-              title: "Goose",
-              description: "Sample description for Goose product",
-            },
             {
               title: "Mule Migration Nexus",
               description: "Sample description for Mule Migration Nexus",
@@ -412,270 +421,254 @@ const Navbar = () => {
   return (
     <header
       ref={navbarRef}
-      className="w-full bg-white sticky top-0 z-50 border-b border-gray-200"
+      className="w-full sticky top-0 z-50 border-b border-gray-200 overflow-visible"
+      style={{ backgroundColor: "#fff" }}
     >
-      <nav className="w-full max-w-7xl mx-auto pl-0 pr-4 lg:pr-6 xl:pr-8 py-2 flex items-center justify-between min-h-[80px]">
-        {isSearchOpen ? (
-          /* Search Bar View */
-          <div className="flex items-center w-full gap-4">
-            {/* Logo - Left side */}
-            <div className="flex items-center flex-shrink-0">
-              <img
-                src={mulecraftLogo}
-                alt="Mulecraft Logo"
-                className="h-8 lg:h-11 w-auto"
-                style={{
-                  fontFamily: '"Noto Sans", sans-serif',
-                  fontStyle: "normal",
-                  fontSize: "15px",
-                  lineHeight: "28px",
-                  fontWeight: 400,
-                  color: "rgb(31, 31, 31)",
-                }}
-              />
-            </div>
+      <nav className="w-full max-w-7xl mx-auto pl-0 pr-4 lg:pr-6 xl:pr-8 py-2 flex items-center justify-between min-h-[80px] overflow-visible">
+        {/* Logo - Left side - Always visible */}
+        <div className="flex items-center gap-8 lg:gap-10 xl:gap-12 flex-shrink-0 -ml-2 lg:-ml-4">
+          <div className="flex items-center">
+            <img
+              src={mulecraftLogo}
+              alt="Mulecraft Logo"
+              className="h-8 lg:h-11 w-auto"
+              style={{
+                fontFamily: '"Noto Sans", sans-serif',
+                fontStyle: "normal",
+                fontSize: "15px",
+                lineHeight: "28px",
+                fontWeight: 400,
+                color: "rgb(31, 31, 31)",
+              }}
+            />
+          </div>
 
-            {/* Search Input */}
-            <div className="flex-1 relative">
+          {/* Navigation Links - Hidden when search is open */}
+          {!isSearchOpen && (
+            <div className="hidden lg:flex items-center gap-6 xl:gap-8 relative">
+              {navItems.map((item) => (
+                <div key={item.label} className="relative">
+                  <a
+                    ref={(el) => {
+                      navItemRefs.current[item.label] = el;
+                    }}
+                    href={item.href}
+                    target={item.openInNewTab ? "_blank" : undefined}
+                    rel={
+                      item.openInNewTab ? "noopener noreferrer" : undefined
+                    }
+                    onClick={(e) => {
+                      if (item.hasChevron) {
+                        e.preventDefault();
+                        handleDropdownToggle(item.label, e);
+                      }
+                    }}
+                    className="flex items-center gap-1.5 whitespace-nowrap transition-all rounded-md px-2 py-1 hover:bg-gray-100"
+                    style={{
+                      fontFamily: '"Noto Sans", sans-serif',
+                      color: "#333",
+                      display: "flex",
+                      alignItems: "center",
+                      textDecoration: "none",
+                      fontWeight: 500,
+                      fontSize: ".9rem",
+                      transition: "color .3s",
+                      position: "relative",
+                      lineHeight: 1,
+                      userSelect: "none",
+                      WebkitUserSelect: "none" as any,
+                    }}
+                  >
+                    {item.label}
+                    {item.hasChevron && (
+                      <ChevronDown
+                        className={`w-4 h-4 transition-transform duration-200 ${
+                          openDropdown === item.label ? "rotate-180" : ""
+                        }`}
+                        style={{ color: "rgb(31, 31, 31)", strokeWidth: 1.7 }}
+                      />
+                    )}
+                  </a>
+                </div>
+              ))}
+            </div>
+          )}
+        </div>
+
+        {/* Middle section - Search or empty space */}
+        <div className="flex-1 flex items-center justify-center px-4">
+          {isSearchOpen ? (
+            <div className="w-full relative" style={{ maxWidth: "700px" }}>
               <div className="relative flex items-center">
                 <Search
-                  className="absolute left-3 w-5 h-5 text-gray-400"
-                  style={{ strokeWidth: 2 }}
+                  className="absolute left-3 w-5 h-5"
+                  style={{ 
+                    strokeWidth: 2.5,
+                    color: "#4b5563"
+                  }}
                 />
                 <input
                   ref={searchInputRef}
                   type="text"
                   placeholder="Search"
-                  className="w-full pl-10 pr-4 py-2 border border-[#204066] rounded-md focus:outline-none focus:ring-0 shadow-none"
+                  className="w-full pl-10 pr-4 border border-[#204066] rounded-md focus:outline-none focus:ring-0 shadow-none"
                   style={{
                     fontFamily: '"Noto Sans", sans-serif',
                     fontSize: "15px",
                     boxShadow: "none",
+                    color: "#000000",
+                    paddingTop: "0.375rem",
+                    paddingBottom: "0.375rem",
+                    height: "36px",
                   }}
                 />
               </div>
             </div>
+          ) : null}
+        </div>
 
-            {/* Close Search Button */}
-            <button
-              onClick={() => setIsSearchOpen(false)}
-              className="p-2 hover:bg-gray-100 rounded-full transition-colors flex-shrink-0"
-              aria-label="Close search"
-            >
-              <X className="w-5 h-5 text-gray-800" />
-            </button>
-
-            {/* Right side icons */}
-            <div className="flex items-center gap-4 flex-shrink-0">
-              <div className="relative">
-                <button
-                  ref={languageButtonRef}
-                  onClick={() => {
-                    setIsLanguageOpen(!isLanguageOpen);
-                    if (openDropdown) {
-                      setOpenDropdown(null);
-                    }
-                  }}
-                  className={`p-2 rounded-full transition-colors ${
-                    isLanguageOpen ? "bg-gray-100" : "hover:bg-gray-100"
-                  }`}
-                  aria-label="Language"
-                >
-                  <Globe className="w-5 h-5 text-gray-800" />
-                </button>
-                {isLanguageOpen && (
-                  <div
-                    data-language-dropdown
-                    className="absolute right-0 mt-2 w-48 bg-white rounded-md shadow-lg border border-gray-200 py-1 z-50"
-                    style={{ top: "100%" }}
-                  >
-                    {languages.map((lang) => (
-                      <button
-                        key={lang.code}
-                        onClick={() => handleLanguageSelect(lang.name)}
-                        className={`w-full flex items-center gap-3 px-4 py-2.5 text-left hover:bg-gray-100 transition-colors ${
-                          selectedLanguage === lang.name ? "bg-gray-100" : ""
-                        }`}
-                      >
-                        <span className="text-xl flex-shrink-0">
-                          {lang.flag}
-                        </span>
-                        <span
-                          className="text-sm flex-1"
-                          style={{
-                            fontFamily: '"Noto Sans", sans-serif',
-                            color: "rgb(31, 31, 31)",
-                            fontSize: "14px",
-                          }}
-                        >
-                          {lang.name}
-                        </span>
-                      </button>
-                    ))}
-                  </div>
-                )}
-              </div>
-              <Button 
-                variant="default"
-                style={{
-                  background: 'linear-gradient(135deg, #204066 0%, #2d5a8a 50%, #204066 100%)',
-                  color: '#ffffff',
-                  border: 'none',
-                }}
-              >
-                Schedule demo
-              </Button>
-            </div>
-          </div>
-        ) : (
-          /* Normal Navbar View */
-          <>
-            {/* Logo and Navigation Links - Left side grouped together */}
-            <div className="flex items-center gap-8 lg:gap-10 xl:gap-12 flex-shrink-0 -ml-2 lg:-ml-4">
-              {/* Logo - Left side */}
-              <div className="flex items-center">
-                <img
-                  src={mulecraftLogo}
-                  alt="Mulecraft Logo"
-                  className="h-8 lg:h-11 w-auto"
-                  style={{
-                    fontFamily: '"Noto Sans", sans-serif',
-                    fontStyle: "normal",
-                    fontSize: "15px",
-                    lineHeight: "28px",
-                    fontWeight: 400,
-                    color: "rgb(31, 31, 31)",
-                  }}
-                />
-              </div>
-
-              {/* Navigation Links - Close to logo with small spacing */}
-              <div className="hidden lg:flex items-center gap-6 xl:gap-8 relative">
-                {navItems.map((item) => (
-                  <div key={item.label} className="relative">
-                    <a
-                      ref={(el) => {
-                        navItemRefs.current[item.label] = el;
-                      }}
-                      href={item.href}
-                      target={item.openInNewTab ? "_blank" : undefined}
-                      rel={
-                        item.openInNewTab ? "noopener noreferrer" : undefined
-                      }
-                      onClick={(e) => {
-                        if (item.hasChevron) {
-                          e.preventDefault();
-                          handleDropdownToggle(item.label, e);
-                        }
-                      }}
-                      className="flex items-center gap-1.5 whitespace-nowrap transition-all rounded-md px-2 py-1 hover:bg-gray-100"
-                      style={{
-                        fontFamily: '"Noto Sans", sans-serif',
-                        color: "#333",
-                        display: "flex",
-                        alignItems: "center",
-                        textDecoration: "none",
-                        fontWeight: 500,
-                        fontSize: ".9rem",
-                        transition: "color .3s",
-                        position: "relative",
-                        lineHeight: 1,
-                        userSelect: "none",
-                        WebkitUserSelect: "none" as any,
-                      }}
-                    >
-                      {item.label}
-                      {item.hasChevron && (
-                        <ChevronDown
-                          className={`w-4 h-4 transition-transform duration-200 ${
-                            openDropdown === item.label ? "rotate-180" : ""
-                          }`}
-                          style={{ color: "rgb(31, 31, 31)", strokeWidth: 1.7 }}
-                        />
-                      )}
-                    </a>
-                  </div>
-                ))}
-              </div>
-            </div>
-
-            {/* Icons and Buttons - Right side with more spacing */}
-            <div className="flex items-center gap-4 lg:gap-6 flex-shrink-0">
-              {/* Utility Icons */}
-              <div className="hidden md:flex items-center gap-4 lg:gap-5">
+        {/* Right side icons and button - Always in same place */}
+        <div className="flex items-center gap-4 lg:gap-6 flex-shrink-0 overflow-visible">
+          {/* Utility Icons */}
+          <div className="hidden md:flex items-center gap-4 lg:gap-5 overflow-visible">
+            {!isSearchOpen && (
+              <div className="relative group">
                 <button
                   onClick={() => setIsSearchOpen(true)}
-                  className="p-2 hover:bg-gray-100 rounded-full transition-colors"
+                  className="px-1.5 rounded-full transition-colors hover:bg-gray-100"
+                  style={{ paddingTop: 0, paddingBottom: 0 }}
                   aria-label="Search"
                 >
                   <Search
-                    className="w-5 h-9 text-gray-800"
+                    className="w-5 h-5 text-gray-800"
                     style={{ strokeWidth: 2.8 }}
                   />
                 </button>
-                <div className="relative">
-                  <button
-                    ref={languageButtonRef}
-                    onClick={() => {
-                      setIsLanguageOpen(!isLanguageOpen);
-                      if (openDropdown) {
-                        setOpenDropdown(null);
-                      }
+                {/* Tooltip */}
+                <div className="absolute bottom-full left-1/2 -translate-x-1/2 mb-0.5 opacity-0 group-hover:opacity-100 transition-opacity duration-200 pointer-events-none z-50" style={{ marginBottom: '2px' }}>
+                  <div
+                    className="bg-black text-white px-1.5 py-0.5 rounded whitespace-nowrap relative"
+                    style={{
+                      fontFamily: '"Noto Sans", sans-serif',
+                      fontSize: '10px',
+                      lineHeight: '1.2',
                     }}
-                    className={`p-2 rounded-full transition-colors ${
-                      isLanguageOpen ? "bg-gray-100" : "hover:bg-gray-100"
-                    }`}
-                    aria-label="Language"
                   >
-                    <Globe className="w-5 h-5 text-gray-800" />
-                  </button>
-                  {isLanguageOpen && (
+                    Search
+                    {/* Tooltip arrow */}
                     <div
-                      data-language-dropdown
-                      className="absolute right-0 mt-2 w-48 bg-white rounded-md shadow-lg border border-gray-200 py-1 z-50"
-                      style={{ top: "100%" }}
-                    >
-                      {languages.map((lang) => (
-                        <button
-                          key={lang.code}
-                          onClick={() => handleLanguageSelect(lang.name)}
-                          className={`w-full flex items-center gap-3 px-4 py-2 text-left hover:bg-gray-100 transition-colors ${
-                            selectedLanguage === lang.name ? "bg-gray-100" : ""
-                          }`}
-                        >
-                          <span className="text-xl">{lang.flag}</span>
-                          <span
-                            className="text-sm"
-                            style={{
-                              fontFamily: '"Noto Sans", sans-serif',
-                              color: "rgb(31, 31, 31)",
-                            }}
-                          >
-                            {lang.name}
-                          </span>
-                        </button>
-                      ))}
-                    </div>
-                  )}
+                      className="absolute top-full left-1/2 -translate-x-1/2 -mt-px"
+                      style={{
+                        width: 0,
+                        height: 0,
+                        borderLeft: '3px solid transparent',
+                        borderRight: '3px solid transparent',
+                        borderTop: '3px solid #000000',
+                      }}
+                    />
+                  </div>
                 </div>
               </div>
-
-              {/* Action Button */}
-              <div className="flex items-center">
-                <Button 
-                variant="default"
-                style={{
-                  background: 'linear-gradient(135deg, #204066 0%, #2d5a8a 50%, #204066 100%)',
-                  color: '#ffffff',
-                  border: 'none',
+            )}
+            <div className="relative group">
+              <button
+                ref={languageButtonRef}
+                onClick={() => {
+                  setIsLanguageOpen(!isLanguageOpen);
+                  if (openDropdown) {
+                    setOpenDropdown(null);
+                  }
                 }}
+                className={`px-1.5 py-0.5 rounded-full transition-colors ${
+                  isLanguageOpen ? "bg-gray-100" : "hover:bg-gray-100"
+                }`}
+                aria-label="Language"
               >
-                Schedule demo
-              </Button>
-              </div>
+                <Globe className="w-5 h-5 text-gray-800" />
+              </button>
+              {/* Tooltip */}
+              {!isLanguageOpen && (
+                <div className="absolute bottom-full left-1/2 -translate-x-1/2 mb-0.5 opacity-0 group-hover:opacity-100 transition-opacity duration-200 pointer-events-none z-50" style={{ marginBottom: '2px' }}>
+                  <div
+                    className="bg-black text-white px-1.5 py-0.5 rounded whitespace-nowrap relative"
+                    style={{
+                      fontFamily: '"Noto Sans", sans-serif',
+                      fontSize: '10px',
+                      lineHeight: '1.2',
+                    }}
+                  >
+                    Language
+                    {/* Tooltip arrow */}
+                    <div
+                      className="absolute top-full left-1/2 -translate-x-1/2 -mt-px"
+                      style={{
+                        width: 0,
+                        height: 0,
+                        borderLeft: '3px solid transparent',
+                        borderRight: '3px solid transparent',
+                        borderTop: '3px solid #000000',
+                      }}
+                    />
+                  </div>
+                </div>
+              )}
+              {isLanguageOpen && (
+                <div
+                  data-language-dropdown
+                  className="absolute right-0 mt-2 w-48 bg-white rounded-md shadow-lg border border-gray-200 py-1 z-50"
+                  style={{ top: "100%" }}
+                >
+                  {languages.map((lang) => (
+                    <button
+                      key={lang.code}
+                      onClick={() => handleLanguageSelect(lang.name)}
+                      className={`w-full flex items-center gap-3 px-4 py-2 text-left hover:bg-gray-100 transition-colors ${
+                        selectedLanguage === lang.name ? "bg-gray-100" : ""
+                      }`}
+                    >
+                      <span className="text-xl">{lang.flag}</span>
+                      <span
+                        className="text-sm"
+                        style={{
+                          fontFamily: '"Noto Sans", sans-serif',
+                          color: "rgb(31, 31, 31)",
+                        }}
+                      >
+                        {lang.name}
+                      </span>
+                    </button>
+                  ))}
+                </div>
+              )}
             </div>
-          </>
-        )}
+          </div>
+
+          {/* Action Button */}
+          <div className="flex items-center">
+            <Button 
+              variant="default"
+              className="transition-colors duration-200"
+              style={{
+                backgroundColor: '#ffffff',
+                color: '#204066',
+                border: '1px solid #204066',
+                padding: '0.375rem 1rem',
+                fontSize: '0.875rem',
+                height: 'auto',
+              }}
+              onMouseEnter={(e) => {
+                e.currentTarget.style.backgroundColor = '#204066';
+                e.currentTarget.style.color = '#ffffff';
+              }}
+              onMouseLeave={(e) => {
+                e.currentTarget.style.backgroundColor = '#ffffff';
+                e.currentTarget.style.color = '#204066';
+              }}
+            >
+              Schedule demo
+            </Button>
+          </div>
+        </div>
       </nav>
 
       {/* Full-width Dropdown Menu - Rendered outside nav but inside header */}
