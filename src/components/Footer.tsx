@@ -10,7 +10,7 @@ import reviewImage from "@/assets/MuleSoft-partner.webp";
 const Footer = () => {
   const footerSections = [
     {
-      title: "MuleSoft",
+      title: "Why Mulecraft?",
       links: [
         "Mule 4 Migration",
         "B2B Integration",
@@ -21,7 +21,7 @@ const Footer = () => {
       ],
     },
     {
-      title: "SNAPLOGIC",
+      title: "Capabilities",
       links: [
         "AI Integrations",
         "Pipeline Control",
@@ -31,7 +31,7 @@ const Footer = () => {
       ],
     },
     {
-      title: "SALESFORCE",
+      title: "Integrations",
       links: [
         "Live CRM Sync",
         "3rd-Party Connect",
@@ -41,7 +41,7 @@ const Footer = () => {
       ],
     },
     {
-      title: "APIGEE",
+      title: "AI",
       links: [
         "Proxy Deployment",
         "Traffic Control",
