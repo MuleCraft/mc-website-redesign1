@@ -1,7 +1,7 @@
 import { useState, useRef, useEffect } from "react";
-import { Search, Globe, ChevronDown, Monitor, Sun, Moon } from "lucide-react";
+import { Search, Globe, ChevronDown, Monitor, Sun, Moon, Contrast } from "lucide-react";
 import { Button } from "./ui/button";
-import mulecraftLogo from "../assets/mulecraftlogo.svg";
+import mulecraftLogo from "../assets/mulecraftlogo.png";
 import DropdownMenu from "./DropdownMenu";
 
 const Navbar = () => {
@@ -18,30 +18,29 @@ const Navbar = () => {
   const themeButtonRef = useRef<HTMLButtonElement | null>(null);
 
   const navItems = [
-    { label: "Solutions", hasChevron: true, href: "#" },
     { label: "Products", hasChevron: true, href: "#" },
+    { label: "Solutions", hasChevron: true, href: "#" },
+    { label: "Case studies", hasChevron: true, href: "#" },
     {
       label: "Resources",
-      hasChevron: false,
-      href: "https://blogs.mulecraft.in/",
-      openInNewTab: true,
+      hasChevron: true,
+      href: "#",
     },
     { label: "About", hasChevron: false, href: "/about" },
     { label: "Careers", hasChevron: false, href: "/careers" },
     { label: "Contact Sales", hasChevron: false, href: "/contact-sales" },
   ];
 
-  const handleDropdownToggle = (
-    label: string,
-    event: React.MouseEvent<HTMLAnchorElement>
-  ) => {
-    event.preventDefault();
+  const dropdownTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
 
-    if (openDropdown === label) {
-      setOpenDropdown(null);
-    } else {
-      setOpenDropdown(label);
+  const handleDropdownOpen = (label: string) => {
+    // Clear any pending close timeout
+    if (dropdownTimeoutRef.current) {
+      clearTimeout(dropdownTimeoutRef.current);
+      dropdownTimeoutRef.current = null;
     }
+    
+    setOpenDropdown(label);
     
     // Close theme and language dropdowns when opening main dropdowns
     if (isThemeOpen) {
@@ -52,12 +51,42 @@ const Navbar = () => {
     }
   };
 
+  const handleDropdownClose = (delay: number = 300) => {
+    // Clear any existing timeout
+    if (dropdownTimeoutRef.current) {
+      clearTimeout(dropdownTimeoutRef.current);
+    }
+    
+    // Set a timeout to close the dropdown after delay
+    dropdownTimeoutRef.current = setTimeout(() => {
+      setOpenDropdown(null);
+      dropdownTimeoutRef.current = null;
+    }, delay);
+  };
+
+  const handleDropdownCancelClose = () => {
+    // Cancel any pending close
+    if (dropdownTimeoutRef.current) {
+      clearTimeout(dropdownTimeoutRef.current);
+      dropdownTimeoutRef.current = null;
+    }
+  };
+
   const getNavbarHeight = () => {
     if (navbarRef.current) {
       return navbarRef.current.offsetHeight;
     }
     return 80; // Default fallback
   };
+
+  // Cleanup timeout on unmount
+  useEffect(() => {
+    return () => {
+      if (dropdownTimeoutRef.current) {
+        clearTimeout(dropdownTimeoutRef.current);
+      }
+    };
+  }, []);
 
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
@@ -404,6 +433,131 @@ const Navbar = () => {
       ];
     }
 
+    if (openDropdown === "Case studies") {
+      return [
+        {
+          label: "HR Management",
+          isSelected: true,
+          menuItems: [
+            {
+              title: "Corvano Resource Mgmt",
+              description: "Employee record and performance analysis platform",
+            },
+            {
+              title: "Zive HR Management",
+              description: "Automated HR workflows and employee engagement",
+            },
+            {
+              title: "HR Systems Unification",
+              description: "Unifying HR systems for improved efficiency",
+            },
+            {
+              title: "Workday to SAP Sync",
+              description: "SnapLogic iPaaS integration for employee data",
+            },
+          ],
+        },
+        {
+          label: "Healthcare Solutions",
+          isSelected: false,
+          menuItems: [
+            {
+              title: "EDI File Processing",
+              description: "HIPAA-compliant healthcare claims management",
+            },
+            {
+              title: "Payment Workflows",
+              description: "Healthcare payment processing for 2M patients",
+            },
+            {
+              title: "Better Life Pharmacy",
+              description: "HIPAA-compliant pharmacy communication platform",
+            },
+            {
+              title: "Patient Self Scheduling",
+              description: "IVR and AI-powered appointment booking",
+            },
+          ],
+        },
+        {
+          label: "Digital Transformation",
+          isSelected: false,
+          menuItems: [
+            {
+              title: "Manufacturing Transformation",
+              description: "Global manufacturing leader integration framework",
+            },
+            {
+              title: "Equity Automation",
+              description: "Stock purchase and compensation automation",
+            },
+            {
+              title: "Real-Time Monitoring",
+              description: "Financial client monitoring and optimization",
+            },
+            {
+              title: "Dynamics 365 Integration",
+              description: "Automated data processing with RabbitMQ",
+            },
+          ],
+        },
+        {
+          label: "Automation & Platforms",
+          isSelected: false,
+          menuItems: [
+            {
+              title: "Community Anypoint Platform",
+              description: "Open-source integration and deployment tool",
+            },
+            {
+              title: "Email Management",
+              description: "Email categorization and draft generation",
+            },
+            {
+              title: "HeyDrive Driving School",
+              description: "Automated scheduling and billing system",
+            },
+          ],
+        },
+      ];
+    }
+
+    if (openDropdown === "Resources") {
+      return [
+        {
+          label: "Blog",
+          isSelected: true,
+          menuItems: [
+            {
+              title: "Understanding the Basics of GraphQL",
+              description: "GraphQL is a modern, efficient query language for APIs that revolutionizes how we interact with data. Unlike traditional REST APIs, GraphQL enables clients to request only the data they need, minimizing unnecessary data transfer and improving performance.",
+              href: "https://blogs.mulecraft.in/understanding-the-basics-of-graphql/",
+            },
+          ],
+        },
+        {
+          label: "Training",
+          isSelected: false,
+          menuItems: [
+            {
+              title: "Learn Today, Lead Tomorrow!",
+              description: "MuleCraft Academy offers comprehensive training programs to help you master integration technologies and advance your career.",
+              href: "https://training.mulecraft.in/",
+            },
+          ],
+        },
+      ];
+    }
+
+    if (openDropdown === "About") {
+      return [
+        { label: "Our Story", isSelected: true },
+        { label: "Team", isSelected: false },
+        { label: "Partners", isSelected: false },
+        { label: "News & Press", isSelected: false },
+      ];
+    }
+
     // Default for other nav items
     return [
       { label: "Platform Overview", isSelected: true },
@@ -447,48 +601,56 @@ const Navbar = () => {
     <header
       ref={navbarRef}
       className="w-full sticky top-0 z-50 border-b border-gray-200 overflow-visible"
-      style={{ backgroundColor: "#fff" }}
+      style={{ backgroundColor: "#fff", position: "relative" }}
     >
       <nav className="w-full max-w-7xl mx-auto pl-4 lg:pl-6 xl:pl-5 pr-4 lg:pr-6 xl:pr-8 py-2 flex items-center justify-between min-h-[80px] overflow-visible">
         {/* Logo - Left side - Always visible */}
-        <div className="flex items-center gap-8 lg:gap-10 xl:gap-12 flex-shrink-0 -ml-10 lg:-ml-12 xl:-ml-14">
-          <div className="flex items-center">
+        <div className="flex items-center -ml-10 lg:-ml-12 xl:-ml-14" >
+          <div className="flex items-center align-start overflow-hidden" style={{ maxWidth: "150px", maxHeight: "25px" }} overflow-visible>
             <img
               src={mulecraftLogo}
               alt="Mulecraft Logo"
-              className="h-8 lg:h-11 w-auto"
-              style={{
-                fontFamily: '"Noto Sans", sans-serif',
-                fontStyle: "normal",
-                fontSize: "15px",
-                lineHeight: "28px",
-                fontWeight: 400,
-                color: "rgb(31, 31, 31)",
-              }}
+              className="h-[24px] w-[130px] "
+             
             />
           </div>
 
           {/* Navigation Links - Hidden when search is open */}
           {!isSearchOpen && (
-            <div className="hidden lg:flex items-center gap-6 xl:gap-8 relative -ml-6 lg:-ml-8">
+            <div 
+              className="hidden lg:flex items-center relative"
+              style={{ padding: ".5rem 1rem" }}
+            >
               {navItems.map((item) => (
-                <div key={item.label} className="relative">
+                <div 
+                  key={item.label} 
+                  className={`relative group ${openDropdown === item.label ? 'dropdown-active' : ''}`}
+                  onMouseEnter={() => {
+                    if (item.hasChevron) {
+                      handleDropdownOpen(item.label);
+                    }
+                  }}
+                  onMouseLeave={() => {
+                    if (item.hasChevron) {
+                      handleDropdownClose(300);
+                    }
+                  }}
+                >
                   <a
                     ref={(el) => {
                       navItemRefs.current[item.label] = el;
                     }}
                     href={item.href}
-                    target={item.openInNewTab ? "_blank" : undefined}
+                    target={(item as any).openInNewTab ? "_blank" : undefined}
                     rel={
-                      item.openInNewTab ? "noopener noreferrer" : undefined
+                      (item as any).openInNewTab ? "noopener noreferrer" : undefined
                     }
                     onClick={(e) => {
                       if (item.hasChevron) {
                         e.preventDefault();
-                        handleDropdownToggle(item.label, e);
                       }
                     }}
-                    className="flex items-center gap-1.5 whitespace-nowrap transition-all rounded-md px-2 py-1 hover:bg-gray-100"
+                    className="flex items-center gap-1.5 whitespace-nowrap transition-all rounded-md nav-link"
                     style={{
                       fontFamily: '"Noto Sans", sans-serif',
                       color: "#333",
@@ -497,23 +659,36 @@ const Navbar = () => {
                       textDecoration: "none",
                       fontWeight: 500,
                       fontSize: ".9rem",
-                      transition: "color .3s",
+                      transition: "color .3s ease-in-out",
                       position: "relative",
                       lineHeight: 1,
                       userSelect: "none",
                       WebkitUserSelect: "none" as any,
+                      padding: "0.25rem .5rem",
                     }}
                   >
                     {item.label}
                     {item.hasChevron && (
                       <ChevronDown
-                        className={`w-4 h-4 transition-transform duration-200 ${
-                          openDropdown === item.label ? "rotate-180" : ""
-                        }`}
+                        className="w-4 h-4"
                         style={{ color: "rgb(31, 31, 31)", strokeWidth: 1.7 }}
                       />
                     )}
                   </a>
+                  {/* Animated underline at bottom of navbar */}
+                  <span
+                    className="nav-underline"
+                    style={{
+                      position: "absolute",
+                      bottom: "-29px",
+                      left: "0.5rem",
+                      right: "0.5rem",
+                      width: 0,
+                      height: "3px",
+                      backgroundColor: "rgb(7, 43, 85)",
+                      transition: "width 0.3s ease-in-out",
+                    }}
+                  />
                 </div>
               ))}
             </div>
@@ -553,9 +728,12 @@ const Navbar = () => {
         </div>
 
         {/* Right side icons and button - Always in same place */}
-        <div className="flex items-center gap-4 lg:gap-6 flex-shrink-0 overflow-visible -mr-10 lg:-mr-12 xl:-mr-14">
+        <div className="flex items-center flex-shrink-0 overflow-visible -mr-10 lg:-mr-12 xl:-mr-14">
           {/* Utility Icons */}
-          <div className="hidden md:flex items-center gap-4 lg:gap-5 overflow-visible">
+          <div 
+            className="hidden md:flex items-center overflow-visible"
+            style={{ gap: "0.5rem" }}
+          >
             {!isSearchOpen && (
               <div className="relative group">
                 <button
@@ -673,6 +851,7 @@ const Navbar = () => {
                 </div>
               )}
             </div>
+            {/* Theme icon - commented out for now
             <div className="relative group">
               <button
                 ref={themeButtonRef}
@@ -690,15 +869,8 @@ const Navbar = () => {
                 }`}
                 aria-label="Theme"
               >
-                {selectedTheme === "Light" ? (
-                  <Sun className="w-5 h-5 text-gray-800" />
-                ) : selectedTheme === "Dark" ? (
-                  <Moon className="w-5 h-5 text-gray-800" />
-                ) : (
-                  <Monitor className="w-5 h-5 text-gray-800" />
-                )}
+                <Contrast className="w-5 h-5 text-gray-800" />
               </button>
-              {/* Tooltip */}
               {!isThemeOpen && (
                 <div className="absolute bottom-full left-1/2 -translate-x-1/2 mb-0.5 opacity-0 group-hover:opacity-100 transition-opacity duration-200 pointer-events-none z-50" style={{ marginBottom: '2px' }}>
                   <div
@@ -710,7 +882,6 @@ const Navbar = () => {
                     }}
                   >
                     Theme
-                    {/* Tooltip arrow */}
                     <div
                       className="absolute top-full left-1/2 -translate-x-1/2 -mt-px"
                       style={{
@@ -760,28 +931,21 @@ const Navbar = () => {
                 </div>
               )}
             </div>
+            */}
           </div>
 
           {/* Action Button */}
-          <div className="flex items-center">
+          <div className="flex items-center" style={{ marginLeft: "1rem" }}>
             <Button 
               variant="default"
               className="transition-colors duration-200"
               style={{
-                backgroundColor: '#ffffff',
-                color: '#204066',
-                border: '1px solid #204066',
+                backgroundColor: 'rgb(7, 43, 85)',
+                color: '#ffffff',
+                border: 'none',
                 padding: '0.375rem 1rem',
                 fontSize: '0.875rem',
                 height: 'auto',
-              }}
-              onMouseEnter={(e) => {
-                e.currentTarget.style.backgroundColor = '#204066';
-                e.currentTarget.style.color = '#ffffff';
-              }}
-              onMouseLeave={(e) => {
-                e.currentTarget.style.backgroundColor = '#ffffff';
-                e.currentTarget.style.color = '#204066';
               }}
             >
               Schedule demo
@@ -801,6 +965,8 @@ const Navbar = () => {
           navbarHeight={getNavbarHeight()}
           contentType={getContentType()}
           navItem={openDropdown}
+          onMouseEnter={handleDropdownCancelClose}
+          onMouseLeave={() => handleDropdownClose(300)}
         />
       )}
     </header>
