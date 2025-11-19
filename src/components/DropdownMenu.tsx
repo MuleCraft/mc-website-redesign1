@@ -86,7 +86,7 @@ const DropdownMenu = ({
                   {isOtherProducts ? (
                     <>
                       {/* Upper row - Image with description */}
-                      <div style={{ marginLeft: "0.75rem", marginRight: "0.75rem", marginBottom: "1rem" }}>
+                      <div style={{ marginLeft: "0.75rem", marginRight: "0.75rem", marginBottom: "0.75rem" }}>
                         <a
                           href="#"
                           style={{
@@ -103,7 +103,7 @@ const DropdownMenu = ({
                               height: "auto",
                               borderRadius: "8px",
                               objectFit: "cover",
-                              marginBottom: "0.75rem",
+                              marginBottom: "0.5rem",
                             }}
                           />
                           <div
@@ -137,18 +137,17 @@ const DropdownMenu = ({
                           width: "calc(100% + 2.5rem)",
                           height: "1px",
                           backgroundColor: "#d1d5db",
-                          marginBottom: "1rem",
+                          marginBottom: "0.5rem",
                           marginLeft: "-1.25rem",
                           marginRight: "-1.25rem",
                         }}
                       />
                       
-                      {/* Bottom row - Links */}
-                      <div className="space-y-2.5 flex-1">
-                        {(columnItem.menuItems || []).map((menuItem, index) => (
+                      {/* Second row - Mule Migration Nexus */}
+                      {columnItem.menuItems && columnItem.menuItems.length > 0 && (
+                        <>
                           <a
-                            key={index}
-                            href={menuItem.href || "#"}
+                            href={columnItem.menuItems[0].href || "#"}
                             className="link-item block"
                             style={{
                               display: "block",
@@ -156,6 +155,7 @@ const DropdownMenu = ({
                               color: "#1f1f1f",
                               transition: "color .3s ease 0s",
                               textDecoration: "none",
+                              textAlign: "center",
                             }}
                             onMouseEnter={(e) => {
                               e.currentTarget.style.color = "#204066";
@@ -164,24 +164,67 @@ const DropdownMenu = ({
                               e.currentTarget.style.color = "#1f1f1f";
                             }}
                           >
-                            {/* Content */}
-                            <div className="item-content">
-                              <div
-                                className="item-title"
-                                style={{
-                                  fontFamily: '"Noto Sans", sans-serif',
-                                  fontSize: "15px",
-                                  lineHeight: "1.4",
-                                  fontWeight: 500,
-                                  color: "inherit",
-                                }}
-                              >
-                                {menuItem.title}
-                              </div>
+                            <div
+                              style={{
+                                fontFamily: '"Noto Sans", sans-serif',
+                                fontSize: "15px",
+                                lineHeight: "1.4",
+                                fontWeight: 500,
+                                color: "inherit",
+                              }}
+                            >
+                              {columnItem.menuItems[0].title}
                             </div>
                           </a>
-                        ))}
-                      </div>
+                          
+                          {/* Gray Separator Line - Full Width */}
+                          <div
+                            style={{
+                              width: "calc(100% + 2.5rem)",
+                              height: "1px",
+                              backgroundColor: "#d1d5db",
+                              marginTop: "0.5rem",
+                              marginBottom: "0.5rem",
+                              marginLeft: "-1.25rem",
+                              marginRight: "-1.25rem",
+                            }}
+                          />
+                        </>
+                      )}
+                      
+                      {/* Third row - DataWeave Task Generator */}
+                      {columnItem.menuItems && columnItem.menuItems.length > 1 && (
+                        <a
+                          href={columnItem.menuItems[1].href || "#"}
+                          className="link-item block"
+                          style={{
+                            display: "block",
+                            padding: "0.5rem 0.75rem",
+                            color: "#1f1f1f",
+                            transition: "color .3s ease 0s",
+                            textDecoration: "none",
+                            textAlign: "center",
+                          }}
+                          onMouseEnter={(e) => {
+                            e.currentTarget.style.color = "#204066";
+                          }}
+                          onMouseLeave={(e) => {
+                            e.currentTarget.style.color = "#1f1f1f";
+                          }}
+                        >
+                          <div
+                            style={{
+                              fontFamily: '"Noto Sans", sans-serif',
+                              fontSize: "15px",
+                              lineHeight: "1.4",
+                              fontWeight: 500,
+                              color: "inherit",
+                            }}
+                          >
+                            {columnItem.menuItems[1].title}
+                          </div>
+                        </a>
+                      )}
                     </>
                   ) : (
                     <>
