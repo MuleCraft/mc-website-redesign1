@@ -610,12 +610,12 @@ const Navbar = () => {
   return (
     <header
       ref={navbarRef}
-      className="w-full sticky top-0 z-50 border-b border-gray-200 overflow-visible"
-      style={{ backgroundColor: "#fff", position: "relative" }}
+      className="w-full fixed top-0 z-50 border-b border-gray-200 overflow-visible"
+      style={{ backgroundColor: "#fff" }}
     >
       <nav className="w-full max-w-7xl mx-auto pl-4 lg:pl-6 xl:pl-5 pr-4 lg:pr-6 xl:pr-8 py-2 flex items-center justify-between min-h-[80px] overflow-visible">
         {/* Logo - Left side - Always visible */}
-        <div className="flex items-center -ml-10 lg:-ml-12 xl:-ml-14">
+        <div className="flex items-center">
           <div
             className="flex items-center align-start overflow-hidden"
             style={{ maxWidth: "150px", maxHeight: "25px" }}
@@ -745,7 +745,7 @@ const Navbar = () => {
         </div>
 
         {/* Right side icons and button - Always in same place */}
-        <div className="flex items-center flex-shrink-0 overflow-visible -mr-10 lg:-mr-12 xl:-mr-14">
+        <div className="flex items-center flex-shrink-0 overflow-visible">
           {/* Utility Icons */}
           <div
             className="hidden md:flex items-center overflow-visible"

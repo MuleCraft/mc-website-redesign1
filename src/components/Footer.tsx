@@ -115,7 +115,7 @@ const Footer = () => {
         className="w-full text-white"
         style={{ backgroundColor: "rgb(7, 43, 85)" }}
       >
-        <div className="w-full max-w-[82rem] mx-auto pl-0 pr-4 lg:pr-6 xl:pr-8 pt-[5rem] pb-6">
+        <div className="w-full max-w-7xl mx-auto pl-4 lg:pl-6 xl:pl-5 pr-4 lg:pr-6 xl:pr-8 pt-[5rem] pb-6">
           {/* Top Section */}
           <div className="flex flex-col md:flex-row justify-between items-start mb-6 gap-8">
             {/* Logo and Tagline */}
@@ -153,7 +153,6 @@ const Footer = () => {
               paddingLeft: 0,
               listStyle: "none",
               width: "100%",
-              maxWidth: "82rem",
             }}
           >
             {footerSections.map((section) => (

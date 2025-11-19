@@ -7,7 +7,7 @@ function App() {
   return (
     <div className="min-h-[120vh] flex flex-col">
       <Navbar />
-      <main className="flex-grow">
+      <main className="flex-grow pt-[80px]">
         {/* <Hero /> */}
         {/* <Services /> */}
       </main>
