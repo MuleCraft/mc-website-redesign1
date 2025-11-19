@@ -1,5 +1,5 @@
 import { useState, useRef, useEffect } from "react";
-import { Search, Globe, ChevronDown, Monitor, Sun, Moon, Contrast } from "lucide-react";
+import { Search, Globe, ChevronDown } from "lucide-react";
 import { Button } from "./ui/button";
 import mulecraftLogo from "../assets/mulecraftlogo.png";
 import DropdownMenu from "./DropdownMenu";
@@ -10,12 +10,12 @@ const Navbar = () => {
   const [isLanguageOpen, setIsLanguageOpen] = useState(false);
   const [isThemeOpen, setIsThemeOpen] = useState(false);
   const [selectedLanguage, setSelectedLanguage] = useState("English");
-  const [selectedTheme, setSelectedTheme] = useState("System");
+  // const [selectedTheme, setSelectedTheme] = useState("System");
   const navItemRefs = useRef<{ [key: string]: HTMLAnchorElement | null }>({});
   const navbarRef = useRef<HTMLElement | null>(null);
   const searchInputRef = useRef<HTMLInputElement | null>(null);
   const languageButtonRef = useRef<HTMLButtonElement | null>(null);
-  const themeButtonRef = useRef<HTMLButtonElement | null>(null);
+  // const themeButtonRef = useRef<HTMLButtonElement | null>(null);
 
   const navItems = [
     { label: "Products", hasChevron: true, href: "#" },
@@ -39,9 +39,9 @@ const Navbar = () => {
       clearTimeout(dropdownTimeoutRef.current);
       dropdownTimeoutRef.current = null;
     }
-    
+
     setOpenDropdown(label);
-    
+
     // Close theme and language dropdowns when opening main dropdowns
     if (isThemeOpen) {
       setIsThemeOpen(false);
@@ -56,7 +56,7 @@ const Navbar = () => {
     if (dropdownTimeoutRef.current) {
       clearTimeout(dropdownTimeoutRef.current);
     }
-    
+
     // Set a timeout to close the dropdown after delay
     dropdownTimeoutRef.current = setTimeout(() => {
       setOpenDropdown(null);
@@ -70,7 +70,7 @@ const Navbar = () => {
       clearTimeout(dropdownTimeoutRef.current);
       dropdownTimeoutRef.current = null;
     }
-    
+
     // Close theme and language dropdowns when opening main dropdowns
     if (isThemeOpen) {
       setIsThemeOpen(false);
@@ -538,7 +538,8 @@ const Navbar = () => {
           menuItems: [
             {
               title: "Understanding the Basics of GraphQL",
-              description: "GraphQL is a modern, efficient query language for APIs that revolutionizes how we interact with data. Unlike traditional REST APIs, GraphQL enables clients to request only the data they need, minimizing unnecessary data transfer and improving performance.",
+              description:
+                "GraphQL is a modern, efficient query language for APIs that revolutionizes how we interact with data. Unlike traditional REST APIs, GraphQL enables clients to request only the data they need, minimizing unnecessary data transfer and improving performance.",
               href: "https://blogs.mulecraft.in/understanding-the-basics-of-graphql/",
             },
           ],
@@ -549,7 +550,8 @@ const Navbar = () => {
           menuItems: [
             {
               title: "Learn Today, Lead Tomorrow!",
-              description: "MuleCraft Academy offers comprehensive training programs to help you master integration technologies and advance your career.",
+              description:
+                "MuleCraft Academy offers comprehensive training programs to help you master integration technologies and advance your career.",
               href: "https://training.mulecraft.in/",
             },
           ],
@@ -588,22 +590,22 @@ const Navbar = () => {
     { code: "ja", name: "日本語", flag: "🇯🇵" },
   ];
 
-  const themes = [
-    { name: "Light", icon: Sun },
-    { name: "System", icon: Monitor },
-    { name: "Dark", icon: Moon },
-  ];
+  // const themes = [
+  //   { name: "Light", icon: Sun },
+  //   { name: "System", icon: Monitor },
+  //   { name: "Dark", icon: Moon },
+  // ];
 
   const handleLanguageSelect = (language: string) => {
     setSelectedLanguage(language);
     setIsLanguageOpen(false);
   };
 
-  const handleThemeSelect = (theme: string) => {
-    setSelectedTheme(theme);
-    setIsThemeOpen(false);
-    // TODO: Implement theme switching logic here
-  };
+  // const handleThemeSelect = (theme: string) => {
+  //   setSelectedTheme(theme);
+  //   setIsThemeOpen(false);
+  //   // TODO: Implement theme switching logic here
+  // };
 
   return (
     <header
@@ -613,26 +615,31 @@ const Navbar = () => {
     >
       <nav className="w-full max-w-7xl mx-auto pl-4 lg:pl-6 xl:pl-5 pr-4 lg:pr-6 xl:pr-8 py-2 flex items-center justify-between min-h-[80px] overflow-visible">
         {/* Logo - Left side - Always visible */}
-        <div className="flex items-center -ml-10 lg:-ml-12 xl:-ml-14" >
-          <div className="flex items-center align-start overflow-hidden" style={{ maxWidth: "150px", maxHeight: "25px" }} overflow-visible>
+        <div className="flex items-center -ml-10 lg:-ml-12 xl:-ml-14">
+          <div
+            className="flex items-center align-start overflow-hidden"
+            style={{ maxWidth: "150px", maxHeight: "25px" }}
+            overflow-visible
+          >
             <img
               src={mulecraftLogo}
               alt="Mulecraft Logo"
               className="h-[24px] w-[130px] "
-             
             />
           </div>
 
           {/* Navigation Links - Hidden when search is open */}
           {!isSearchOpen && (
-            <div 
+            <div
               className="hidden lg:flex items-center relative"
               style={{ padding: ".5rem 1rem" }}
             >
               {navItems.map((item) => (
-                <div 
-                  key={item.label} 
-                  className={`relative group ${openDropdown === item.label ? 'dropdown-active' : ''}`}
+                <div
+                  key={item.label}
+                  className={`relative group ${
+                    openDropdown === item.label ? "dropdown-active" : ""
+                  }`}
                   onMouseEnter={() => {
                     if (item.hasChevron) {
                       handleDropdownOpen(item.label);
@@ -651,7 +658,9 @@ const Navbar = () => {
                     href={item.href}
                     target={(item as any).openInNewTab ? "_blank" : undefined}
                     rel={
-                      (item as any).openInNewTab ? "noopener noreferrer" : undefined
+                      (item as any).openInNewTab
+                        ? "noopener noreferrer"
+                        : undefined
                     }
                     onClick={(e) => {
                       if (item.hasChevron) {
@@ -710,9 +719,9 @@ const Navbar = () => {
               <div className="relative flex items-center">
                 <Search
                   className="absolute left-3 w-5 h-5"
-                  style={{ 
+                  style={{
                     strokeWidth: 2.5,
-                    color: "#4b5563"
+                    color: "#4b5563",
                   }}
                 />
                 <input
@@ -738,7 +747,7 @@ const Navbar = () => {
         {/* Right side icons and button - Always in same place */}
         <div className="flex items-center flex-shrink-0 overflow-visible -mr-10 lg:-mr-12 xl:-mr-14">
           {/* Utility Icons */}
-          <div 
+          <div
             className="hidden md:flex items-center overflow-visible"
             style={{ gap: "0.5rem" }}
           >
@@ -756,13 +765,16 @@ const Navbar = () => {
                   />
                 </button>
                 {/* Tooltip */}
-                <div className="absolute bottom-full left-1/2 -translate-x-1/2 mb-0.5 opacity-0 group-hover:opacity-100 transition-opacity duration-200 pointer-events-none z-50" style={{ marginBottom: '2px' }}>
+                <div
+                  className="absolute bottom-full left-1/2 -translate-x-1/2 mb-0.5 opacity-0 group-hover:opacity-100 transition-opacity duration-200 pointer-events-none z-50"
+                  style={{ marginBottom: "2px" }}
+                >
                   <div
                     className="bg-black text-white px-1.5 py-0.5 rounded whitespace-nowrap relative"
                     style={{
                       fontFamily: '"Noto Sans", sans-serif',
-                      fontSize: '10px',
-                      lineHeight: '1.2',
+                      fontSize: "10px",
+                      lineHeight: "1.2",
                     }}
                   >
                     Search
@@ -772,9 +784,9 @@ const Navbar = () => {
                       style={{
                         width: 0,
                         height: 0,
-                        borderLeft: '3px solid transparent',
-                        borderRight: '3px solid transparent',
-                        borderTop: '3px solid #000000',
+                        borderLeft: "3px solid transparent",
+                        borderRight: "3px solid transparent",
+                        borderTop: "3px solid #000000",
                       }}
                     />
                   </div>
@@ -802,13 +814,16 @@ const Navbar = () => {
               </button>
               {/* Tooltip */}
               {!isLanguageOpen && (
-                <div className="absolute bottom-full left-1/2 -translate-x-1/2 mb-0.5 opacity-0 group-hover:opacity-100 transition-opacity duration-200 pointer-events-none z-50" style={{ marginBottom: '2px' }}>
+                <div
+                  className="absolute bottom-full left-1/2 -translate-x-1/2 mb-0.5 opacity-0 group-hover:opacity-100 transition-opacity duration-200 pointer-events-none z-50"
+                  style={{ marginBottom: "2px" }}
+                >
                   <div
                     className="bg-black text-white px-1.5 py-0.5 rounded whitespace-nowrap relative"
                     style={{
                       fontFamily: '"Noto Sans", sans-serif',
-                      fontSize: '10px',
-                      lineHeight: '1.2',
+                      fontSize: "10px",
+                      lineHeight: "1.2",
                     }}
                   >
                     Language
@@ -818,9 +833,9 @@ const Navbar = () => {
                       style={{
                         width: 0,
                         height: 0,
-                        borderLeft: '3px solid transparent',
-                        borderRight: '3px solid transparent',
-                        borderTop: '3px solid #000000',
+                        borderLeft: "3px solid transparent",
+                        borderRight: "3px solid transparent",
+                        borderTop: "3px solid #000000",
                       }}
                     />
                   </div>
@@ -841,7 +856,8 @@ const Navbar = () => {
                       }`}
                       style={{
                         marginTop: index > 0 ? "0.25rem" : "0",
-                        marginBottom: index < languages.length - 1 ? "0.25rem" : "0",
+                        marginBottom:
+                          index < languages.length - 1 ? "0.25rem" : "0",
                       }}
                     >
                       <span className="text-xl">{lang.flag}</span>
@@ -944,16 +960,16 @@ const Navbar = () => {
 
           {/* Action Button */}
           <div className="flex items-center" style={{ marginLeft: "1rem" }}>
-            <Button 
+            <Button
               variant="default"
               className="transition-colors duration-200"
               style={{
-                backgroundColor: 'rgb(7, 43, 85)',
-                color: '#ffffff',
-                border: 'none',
-                padding: '0.375rem 1rem',
-                fontSize: '0.875rem',
-                height: 'auto',
+                backgroundColor: "rgb(7, 43, 85)",
+                color: "#ffffff",
+                border: "none",
+                padding: "0.375rem 1rem",
+                fontSize: "0.875rem",
+                height: "auto",
               }}
             >
               Schedule demo
