@@ -1,5 +1,5 @@
 import { useState, useRef, useEffect } from "react";
-import { Search, Globe, ChevronDown } from "lucide-react";
+import { Search, Globe, ChevronDown, Monitor, Sun, Moon } from "lucide-react";
 import { Button } from "./ui/button";
 import mulecraftLogo from "../assets/mulecraftlogo.svg";
 import DropdownMenu from "./DropdownMenu";
@@ -8,11 +8,14 @@ const Navbar = () => {
   const [openDropdown, setOpenDropdown] = useState<string | null>(null);
   const [isSearchOpen, setIsSearchOpen] = useState(false);
   const [isLanguageOpen, setIsLanguageOpen] = useState(false);
+  const [isThemeOpen, setIsThemeOpen] = useState(false);
   const [selectedLanguage, setSelectedLanguage] = useState("English");
+  const [selectedTheme, setSelectedTheme] = useState("System");
   const navItemRefs = useRef<{ [key: string]: HTMLAnchorElement | null }>({});
   const navbarRef = useRef<HTMLElement | null>(null);
   const searchInputRef = useRef<HTMLInputElement | null>(null);
   const languageButtonRef = useRef<HTMLButtonElement | null>(null);
+  const themeButtonRef = useRef<HTMLButtonElement | null>(null);
 
   const navItems = [
     { label: "Solutions", hasChevron: true, href: "#" },
@@ -24,6 +27,7 @@ const Navbar = () => {
       openInNewTab: true,
     },
     { label: "About", hasChevron: false, href: "/about" },
+    { label: "Careers", hasChevron: false, href: "/careers" },
     { label: "Contact Sales", hasChevron: false, href: "/contact-sales" },
   ];
 
@@ -37,6 +41,14 @@ const Navbar = () => {
       setOpenDropdown(null);
     } else {
       setOpenDropdown(label);
+    }
+    
+    // Close theme and language dropdowns when opening main dropdowns
+    if (isThemeOpen) {
+      setIsThemeOpen(false);
+    }
+    if (isLanguageOpen) {
+      setIsLanguageOpen(false);
     }
   };
 
@@ -72,13 +84,14 @@ const Navbar = () => {
     };
   }, [openDropdown]);
 
-  // Focus search input when search opens and close language dropdown
+  // Focus search input when search opens and close language/theme dropdowns
   useEffect(() => {
     if (isSearchOpen) {
       if (searchInputRef.current) {
         searchInputRef.current.focus();
       }
       setIsLanguageOpen(false);
+      setIsThemeOpen(false);
     }
   }, [isSearchOpen]);
 
@@ -413,9 +426,21 @@ const Navbar = () => {
     { code: "ja", name: "日本語", flag: "🇯🇵" },
   ];
 
+  const themes = [
+    { name: "Light", icon: Sun },
+    { name: "System", icon: Monitor },
+    { name: "Dark", icon: Moon },
+  ];
+
   const handleLanguageSelect = (language: string) => {
     setSelectedLanguage(language);
     setIsLanguageOpen(false);
+  };
+
+  const handleThemeSelect = (theme: string) => {
+    setSelectedTheme(theme);
+    setIsThemeOpen(false);
+    // TODO: Implement theme switching logic here
   };
 
   return (
@@ -424,9 +449,9 @@ const Navbar = () => {
       className="w-full sticky top-0 z-50 border-b border-gray-200 overflow-visible"
       style={{ backgroundColor: "#fff" }}
     >
-      <nav className="w-full max-w-7xl mx-auto pl-0 pr-4 lg:pr-6 xl:pr-8 py-2 flex items-center justify-between min-h-[80px] overflow-visible">
+      <nav className="w-full max-w-7xl mx-auto pl-4 lg:pl-6 xl:pl-5 pr-4 lg:pr-6 xl:pr-8 py-2 flex items-center justify-between min-h-[80px] overflow-visible">
         {/* Logo - Left side - Always visible */}
-        <div className="flex items-center gap-8 lg:gap-10 xl:gap-12 flex-shrink-0 -ml-2 lg:-ml-4">
+        <div className="flex items-center gap-8 lg:gap-10 xl:gap-12 flex-shrink-0 -ml-10 lg:-ml-12 xl:-ml-14">
           <div className="flex items-center">
             <img
               src={mulecraftLogo}
@@ -445,7 +470,7 @@ const Navbar = () => {
 
           {/* Navigation Links - Hidden when search is open */}
           {!isSearchOpen && (
-            <div className="hidden lg:flex items-center gap-6 xl:gap-8 relative">
+            <div className="hidden lg:flex items-center gap-6 xl:gap-8 relative -ml-6 lg:-ml-8">
               {navItems.map((item) => (
                 <div key={item.label} className="relative">
                   <a
@@ -528,7 +553,7 @@ const Navbar = () => {
         </div>
 
         {/* Right side icons and button - Always in same place */}
-        <div className="flex items-center gap-4 lg:gap-6 flex-shrink-0 overflow-visible">
+        <div className="flex items-center gap-4 lg:gap-6 flex-shrink-0 overflow-visible -mr-10 lg:-mr-12 xl:-mr-14">
           {/* Utility Icons */}
           <div className="hidden md:flex items-center gap-4 lg:gap-5 overflow-visible">
             {!isSearchOpen && (
@@ -578,6 +603,9 @@ const Navbar = () => {
                   if (openDropdown) {
                     setOpenDropdown(null);
                   }
+                  if (isThemeOpen) {
+                    setIsThemeOpen(false);
+                  }
                 }}
                 className={`px-1.5 py-0.5 rounded-full transition-colors ${
                   isLanguageOpen ? "bg-gray-100" : "hover:bg-gray-100"
@@ -615,16 +643,20 @@ const Navbar = () => {
               {isLanguageOpen && (
                 <div
                   data-language-dropdown
-                  className="absolute right-0 mt-2 w-48 bg-white rounded-md shadow-lg border border-gray-200 py-1 z-50"
-                  style={{ top: "100%" }}
+                  className="absolute left-0 w-48 bg-white rounded-md shadow-lg border border-gray-200 py-1 z-50"
+                  style={{ top: "calc(100% + 43px)" }}
                 >
-                  {languages.map((lang) => (
+                  {languages.map((lang, index) => (
                     <button
                       key={lang.code}
                       onClick={() => handleLanguageSelect(lang.name)}
                       className={`w-full flex items-center gap-3 px-4 py-2 text-left hover:bg-gray-100 transition-colors ${
                         selectedLanguage === lang.name ? "bg-gray-100" : ""
                       }`}
+                      style={{
+                        marginTop: index > 0 ? "0.25rem" : "0",
+                        marginBottom: index < languages.length - 1 ? "0.25rem" : "0",
+                      }}
                     >
                       <span className="text-xl">{lang.flag}</span>
                       <span
@@ -638,6 +670,93 @@ const Navbar = () => {
                       </span>
                     </button>
                   ))}
+                </div>
+              )}
+            </div>
+            <div className="relative group">
+              <button
+                ref={themeButtonRef}
+                onClick={() => {
+                  setIsThemeOpen(!isThemeOpen);
+                  if (openDropdown) {
+                    setOpenDropdown(null);
+                  }
+                  if (isLanguageOpen) {
+                    setIsLanguageOpen(false);
+                  }
+                }}
+                className={`px-1.5 py-0.5 rounded-full transition-colors ${
+                  isThemeOpen ? "bg-gray-100" : "hover:bg-gray-100"
+                }`}
+                aria-label="Theme"
+              >
+                {selectedTheme === "Light" ? (
+                  <Sun className="w-5 h-5 text-gray-800" />
+                ) : selectedTheme === "Dark" ? (
+                  <Moon className="w-5 h-5 text-gray-800" />
+                ) : (
+                  <Monitor className="w-5 h-5 text-gray-800" />
+                )}
+              </button>
+              {/* Tooltip */}
+              {!isThemeOpen && (
+                <div className="absolute bottom-full left-1/2 -translate-x-1/2 mb-0.5 opacity-0 group-hover:opacity-100 transition-opacity duration-200 pointer-events-none z-50" style={{ marginBottom: '2px' }}>
+                  <div
+                    className="bg-black text-white px-1.5 py-0.5 rounded whitespace-nowrap relative"
+                    style={{
+                      fontFamily: '"Noto Sans", sans-serif',
+                      fontSize: '10px',
+                      lineHeight: '1.2',
+                    }}
+                  >
+                    Theme
+                    {/* Tooltip arrow */}
+                    <div
+                      className="absolute top-full left-1/2 -translate-x-1/2 -mt-px"
+                      style={{
+                        width: 0,
+                        height: 0,
+                        borderLeft: '3px solid transparent',
+                        borderRight: '3px solid transparent',
+                        borderTop: '3px solid #000000',
+                      }}
+                    />
+                  </div>
+                </div>
+              )}
+              {isThemeOpen && (
+                <div
+                  data-theme-dropdown
+                  className="absolute left-0 w-40 bg-white rounded-md shadow-lg border border-gray-200 py-1 z-50"
+                  style={{ top: "calc(100% + 43px)" }}
+                >
+                  {themes.map((theme, index) => {
+                    const IconComponent = theme.icon;
+                    return (
+                      <button
+                        key={theme.name}
+                        onClick={() => handleThemeSelect(theme.name)}
+                        className={`w-full flex items-center gap-3 px-4 py-2 text-left hover:bg-gray-100 transition-colors ${
+                          selectedTheme === theme.name ? "bg-gray-100" : ""
+                        }`}
+                        style={{
+                          marginTop: index > 0 ? "0.25rem" : "0",
+                          marginBottom: index < themes.length - 1 ? "0.25rem" : "0",
+                        }}
+                      >
+                        <IconComponent className="w-4 h-4 text-gray-800" />
+                        <span
+                          className="text-sm"
+                          style={{
+                            fontFamily: '"Noto Sans", sans-serif',
+                            color: "rgb(31, 31, 31)",
+                          }}
+                        >
+                          {theme.name}
+                        </span>
+                      </button>
+                    );
+                  })}
                 </div>
               )}
             </div>
