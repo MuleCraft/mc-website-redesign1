@@ -5,7 +5,7 @@ import {
   FaInstagram,
 } from "react-icons/fa";
 import whiteLogo from "@/assets/NewMulecraftWhiteLogo.png";
-import reviewImage from "@/assets/MuleSoft-partner.webp";
+import reviewImage from "@/assets/Mulesoft-partner.webp";
 
 const Footer = () => {
   const footerSections = [
@@ -132,7 +132,7 @@ const Footer = () => {
                   className="h-10 lg:h-15 w-auto"
                 />
               </div>
-              <p className="text-white font-size-[14.08px]">
+              <p className="text-white text-sm">
                 Experts in integration and automation solutions.
               </p>
             </div>
@@ -142,7 +142,7 @@ const Footer = () => {
               <img
                 src={reviewImage}
                 alt="G2 Reviews"
-                className="h-auto w-auto"
+                className="h-12 w-auto"
                 style={{ maxHeight: "60px" }}
               />
             </div>
@@ -191,9 +191,9 @@ const Footer = () => {
           <div className="border-t border-[#7C3AED] mt-12 mb-8"></div>
 
           {/* Bottom Section */}
-          <div className="flex flex-col md:flex-row justify-between items-center gap-[2rem] mb-6 pb-6 font-size-[14.08px]">
-            <div className="flex flex-wrap items-center gap-6 font-size-[14.08px] text-white px-[4px py-[12px]">
-              <span>© 2025 Copyright MuleCraft. All rights reserved.</span>
+          <div className="flex flex-col md:flex-row justify-between items-center gap-[2rem] mb-6 pb-6 text-sm ">
+            <div className="flex flex-wrap items-center gap-6 text-white px-[4px py-[12px]">
+              <span >© 2025 Copyright MuleCraft. All rights reserved.</span>
               <a href="#" className="hover:text-white transition-colors">
                 Privacy
               </a>
