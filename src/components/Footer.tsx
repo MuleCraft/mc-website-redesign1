@@ -142,7 +142,7 @@ const Footer = () => {
               <img
                 src={reviewImage}
                 alt="G2 Reviews"
-                className="h-12 w-auto"
+                className="h-12 w-auto mt-[20px]"
                 style={{ maxHeight: "60px" }}
               />
             </div>
@@ -188,7 +188,10 @@ const Footer = () => {
           </div>
 
           {/* Divider */}
-          <div className="border-t border-[#7C3AED] mt-12 mb-6"></div>
+          <div
+            className="mt-12 mb-6 h-[1px]"
+            style={{ background: "linear-gradient(45deg, #a03291, #4b4fe2)" }}
+          ></div>
 
           {/* Bottom Section */}
           <div className="flex flex-col md:flex-row justify-between items-center gap-[2rem] mb-6 pb-5 text-sm ">
