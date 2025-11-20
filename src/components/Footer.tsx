@@ -5,8 +5,7 @@ import {
   FaInstagram,
 } from "react-icons/fa";
 import whiteLogo from "@/assets/NewMulecraftWhiteLogo.png";
-// import reviewImage from "@/assets/mulesoft-partner.webp";
-import reviewImage from "@/assets/salesforce_badge.avif";
+import salesforceLogo from "@/assets/Salesforcelogo.png";
 
 const Footer = () => {
   const footerSections = [
@@ -147,14 +146,24 @@ const Footer = () => {
               </p>
             </div>
 
-            {/* Review Box */}
-            <div className="flex items-center">
+            {/* Salesforce Partner Badge */}
+            <div className="flex items-center gap-4 mt-[20px]">
               <img
-                src={reviewImage}
-                alt="G2 Reviews"
-                className="h-12 w-auto mt-[20px]"
-                style={{ maxHeight: "60px" }}
+                src={salesforceLogo}
+                alt="Salesforce"
+                style={{ height: "50px", width: "auto" }}
               />
+              <span
+                style={{
+                  fontFamily: '"Noto Sans", sans-serif',
+                  fontSize: "16px",
+                  fontWeight: 600,
+                  color: "white",
+                  
+                }}
+              >
+                PARTNER
+              </span>
             </div>
           </div>
 

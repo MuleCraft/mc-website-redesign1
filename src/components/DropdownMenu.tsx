@@ -5,15 +5,10 @@ import csi3Image from "@/assets/csi3.png";
 import csi4Image from "@/assets/csi4.png";
 import csi6Image from "@/assets/csi6.png";
 import csi7Image from "@/assets/csi7.png";
-import csi8Image from "@/assets/csi8.png";
 import csi9Image from "@/assets/csi9.png";
-import muImage from "@/assets/mu-image.webp";
-import mulesoftPartnerImage from "@/assets/mulesoft-partner.webp";
 import trainingImage from "@/assets/training.png";
-import blogImage from "@/assets/blog.jpg";
 import blog1Image from "@/assets/blog1.png";
 import blog2Image from "@/assets/blog2.png";
-import blog3Image from "@/assets/blog3.png";
 import si1Image from "@/assets/si1.png";
 import si2Image from "@/assets/si2.png";
 import si3Image from "@/assets/si3.png";
@@ -66,7 +61,10 @@ const DropdownMenu = ({
 
   // Initialize selected header for Solutions, Products, Case Studies, and Resources dropdown
   useEffect(() => {
-    if ((navItem === "Solutions" || navItem === "Products" || navItem === "Case Studies" || navItem === "Resources") && items.length > 0) {
+    if (navItem === "Products") {
+      // For Products dropdown, set SnapMapper as default
+      setSelectedHeader("SnapMapper");
+    } else if ((navItem === "Solutions" || navItem === "Case Studies" || navItem === "Resources") && items.length > 0) {
       const defaultSelected = items.find((item) => item.isSelected) || items[0];
       setSelectedHeader(defaultSelected.label);
     }
@@ -79,7 +77,7 @@ const DropdownMenu = ({
     const selectedItem =
       items.find((item) => item.label === selectedHeader) || items[0];
     const menuItems = selectedItem?.menuItems || [];
-
+    
     // Display all menuItems in the second column only (third column is image card only)
     const leftColumnItems = menuItems;
 
@@ -290,25 +288,25 @@ const DropdownMenu = ({
                       href={selectedImageCard.href || "#"}
                       target="_blank"
                       rel="noopener noreferrer"
-                      style={{
-                        display: "block",
-                        textDecoration: "none",
+                        style={{
+                          display: "block",
+                          textDecoration: "none",
                         color: "inherit",
                         borderRadius: "8px",
                         overflow: "hidden",
                         border: "1px solid #e5e7eb",
                         margin: "auto",
                         transition: "transform 0.2s ease, box-shadow 0.2s ease",
-                      }}
-                      onMouseEnter={(e) => {
+                        }}
+                        onMouseEnter={(e) => {
                         e.currentTarget.style.transform = "translateY(-2px)";
                         e.currentTarget.style.boxShadow = "0 8px 20px rgba(0, 0, 0, 0.08)";
                         const img = e.currentTarget.querySelector("img");
                         if (img) {
                           (img as HTMLElement).style.transform = "scale(1.1)";
                         }
-                      }}
-                      onMouseLeave={(e) => {
+                        }}
+                        onMouseLeave={(e) => {
                         e.currentTarget.style.transform = "translateY(0)";
                         e.currentTarget.style.boxShadow = "none";
                         const img = e.currentTarget.querySelector("img");
@@ -361,8 +359,8 @@ const DropdownMenu = ({
                         >
                           {selectedImageCard.description}
                         </div>
-                      </div>
-                    </a>
+                        </div>
+                      </a>
                   )}
                 </div>
               </div>
@@ -379,27 +377,15 @@ const DropdownMenu = ({
     const blogCards = [
       {
         image: blog1Image,
-        title: "Building a CI/CD Pipeline to Deploy Mule Applications",
-        description: "Learn how to automate deployment of Mule applications in CloudHub 2.0 with custom notifications and CI/CD best practices.",
-        href: "https://blogs.mulecraft.in/building-a-ci-cd-pipeline-to-deploy-mule-applications-in-cloudhub-2-0-with-custom-notifications/",
+        title: "Seamless MuleSoft Upgrade: Transitioning from Java 8 to Java 17 for REST APIs",
+        description: "Java 17, the latest Long-Term Support (LTS) release, introduces powerful advancements that can elevate your MuleSoft applications. From enhanced performance to modern language features and improved security measures.",
+        href: "https://blogs.mulecraft.in/seamless-mulesoft-upgrade-transitioning-from-java-8-to-java-17-for-rest-apis/",
       },
       {
         image: blog2Image,
         title: "Integrating Google BigQuery with MuleSoft",
         description: "Discover how to seamlessly integrate Google BigQuery with MuleSoft for powerful data analytics and business intelligence.",
         href: "https://blogs.mulecraft.in/integrating-google-bigquery-with-mulesoft-for-seamless-data-analytics/",
-      },
-      {
-        image: blog3Image,
-        title: "Power of APIs with Anypoint",
-        description: "Unlock the full potential of APIs using MuleSoft Anypoint Platform for modern integration solutions.",
-        href: "https://blogs.mulecraft.in/unlocking-the-power-of-apis-with-anypoint-platform/",
-      },
-      {
-        image: blogImage,
-        title: "Understanding GraphQL Basics",
-        description: "Explore GraphQL fundamentals and learn how this modern query language revolutionizes API development.",
-        href: "https://blogs.mulecraft.in/understanding-the-basics-of-graphql/",
       },
     ];
 
@@ -496,8 +482,10 @@ const DropdownMenu = ({
                     display: "flex",
                     padding: "1.25rem",
                     fontFamily: '"Noto Sans", sans-serif',
-                    alignItems: "stretch",
+                    alignItems: "flex-start",
                     gap: "1rem",
+                    height: "100%",
+                    overflow: "hidden",
                   }}
                 >
                   {blogCards.slice(0, 2).map((card, index) => (
@@ -509,7 +497,8 @@ const DropdownMenu = ({
                       style={{
                         display: "flex",
                         flexDirection: "column",
-                        width: "50%",
+                        flex: "1",
+                        minWidth: 0,
                         textDecoration: "none",
                         color: "inherit",
                         cursor: "pointer",
@@ -523,20 +512,29 @@ const DropdownMenu = ({
                       onMouseEnter={(e) => {
                         e.currentTarget.style.transform = "translateY(-4px)";
                         e.currentTarget.style.boxShadow = "0 8px 20px rgba(0, 0, 0, 0.15)";
+                        const img = e.currentTarget.querySelector("img");
+                        if (img) {
+                          (img as HTMLElement).style.transform = "scale(1.1)";
+                        }
                       }}
                       onMouseLeave={(e) => {
                         e.currentTarget.style.transform = "translateY(0)";
                         e.currentTarget.style.boxShadow = "0 2px 8px rgba(0, 0, 0, 0.1)";
+                        const img = e.currentTarget.querySelector("img");
+                        if (img) {
+                          (img as HTMLElement).style.transform = "scale(1)";
+                        }
                       }}
                     >
                       {/* Image Container */}
                       <div
                         style={{
                           width: "100%",
-                          height: "120px",
+                          height: "150px",
                           overflow: "hidden",
                           backgroundColor: "#ffffff",
                           position: "relative",
+                          flexShrink: 0,
                         }}
                       >
                         <img
@@ -545,21 +543,27 @@ const DropdownMenu = ({
                           style={{
                             width: "100%",
                             height: "100%",
-                            objectFit: "fill",
+                            objectFit: "cover",
+                            transition: "transform 0.3s ease",
                           }}
                         />
                       </div>
 
                       {/* Title and Description */}
-                      <div style={{ padding: "1rem" }}>
+                      <div style={{ padding: "1rem", flex: "1", display: "flex", flexDirection: "column" }}>
                         <div
                           style={{
                             fontFamily: '"Noto Sans", sans-serif',
-                            fontSize: "16px",
+                            fontSize: "15px",
                             fontWeight: 600,
                             color: "#1f1f1f",
                             marginBottom: "0.5rem",
                             lineHeight: "1.4",
+                            display: "-webkit-box",
+                            WebkitLineClamp: 2,
+                            WebkitBoxOrient: "vertical",
+                            overflow: "hidden",
+                            textOverflow: "ellipsis",
                           }}
                         >
                           {card.title}
@@ -570,6 +574,11 @@ const DropdownMenu = ({
                             fontSize: "13px",
                             color: "#6b7280",
                             lineHeight: "1.5",
+                            display: "-webkit-box",
+                            WebkitLineClamp: 3,
+                            WebkitBoxOrient: "vertical",
+                            overflow: "hidden",
+                            textOverflow: "ellipsis",
                           }}
                         >
                           {card.description}
@@ -628,7 +637,7 @@ const DropdownMenu = ({
                             style={{
                               fontFamily: '"Noto Sans", sans-serif',
                               fontSize: "14px",
-                              fontWeight: 600,
+                    fontWeight: 600,
                               marginBottom: "0.25rem",
                             }}
                           >
@@ -638,12 +647,12 @@ const DropdownMenu = ({
                             style={{
                               fontFamily: '"Noto Sans", sans-serif',
                               fontSize: "12px",
-                              color: "#6b7280",
+                    color: "#6b7280",
                               lineHeight: "1.5",
-                            }}
-                          >
+                  }}
+                >
                             Master MuleSoft integration platform with our comprehensive courses
-                          </div>
+                </div>
                         </div>
                       </a>
                       <a
@@ -759,14 +768,14 @@ const DropdownMenu = ({
                     >
                       <a
                         href={trainingMenuItem.href || "#"}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        style={{
-                          display: "block",
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    style={{
+                      display: "block",
                           width: "90%",
-                          textDecoration: "none",
-                          color: "inherit",
-                          cursor: "pointer",
+                      textDecoration: "none",
+                      color: "inherit",
+                      cursor: "pointer",
                           borderRadius: "8px",
                           border: "1px solid #d1d5db",
                           overflow: "hidden",
@@ -799,13 +808,13 @@ const DropdownMenu = ({
                             overflow: "hidden",
                             backgroundColor: "#ffffff",
                             position: "relative",
-                          }}
-                        >
-                          <img
+                    }}
+                  >
+                    <img
                             src={trainingImage}
                             alt={trainingMenuItem.title}
-                            style={{
-                              width: "100%",
+                      style={{
+                        width: "100%",
                               height: "100%",
                               objectFit: "fill",
                               transition: "transform 0.3s ease",
@@ -815,63 +824,93 @@ const DropdownMenu = ({
 
                         {/* Title and Description */}
                         <div style={{ padding: "1rem" }}>
-                          <div
-                            style={{
-                              fontFamily: '"Noto Sans", sans-serif',
-                              fontSize: "16px",
-                              fontWeight: 600,
+                    <div
+                      style={{
+                        fontFamily: '"Noto Sans", sans-serif',
+                        fontSize: "16px",
+                        fontWeight: 600,
                               color: "#1f1f1f",
-                              marginBottom: "0.5rem",
+                        marginBottom: "0.5rem",
                               lineHeight: "1.4",
-                            }}
-                          >
+                      }}
+                    >
                             {trainingMenuItem.title}
-                          </div>
-                          <div
-                            style={{
-                              fontFamily: '"Noto Sans", sans-serif',
-                              fontSize: "13px",
-                              color: "#6b7280",
+                    </div>
+                    <div
+                      style={{
+                        fontFamily: '"Noto Sans", sans-serif',
+                        fontSize: "13px",
+                        color: "#6b7280",
                               lineHeight: "1.5",
-                            }}
-                          >
+                      }}
+                    >
                             {trainingMenuItem.description}
                           </div>
-                        </div>
-                      </a>
+                    </div>
+                  </a>
                     </div>
                   </div>
                 )}
-            </div>
+              </div>
           </div>
         </div>
       </>
     );
   }
 
-  // Special layout for Products dropdown - modern grid without sidebar
+  // Special layout for Products dropdown - three column layout like Solutions
   if (navItem === "Products") {
-    const imageMap: { [key: string]: string } = {
-      "csi1.png": csi1Image,
-      "csi2.png": csi2Image,
-      "csi3.png": csi3Image,
-      "csi4.png": csi4Image,
-      "csi6.png": csi6Image,
-      "csi7.png": csi7Image,
-      "csi8.png": csi8Image,
-      "csi9.png": csi9Image,
-      "mu-image.webp": muImage,
-      "MuleSoft-partner.webp": mulesoftPartnerImage,
-      "training.png": trainingImage,
+    // Product images mapping for third column
+    const productImages: {
+      [key: string]: { image: string; title: string; description: string; href: string };
+    } = {
+      "SnapMapper": {
+        image: csi1Image,
+        title: "SnapMapper Playground",
+        description: "A safe three-panel interface for testing and validating SnapLogic integration scripts.",
+        href: "https://snaplogic.playground.mulecraft.in/",
+      },
+      "AnypointLP": {
+        image: csi6Image,
+        title: "AnypointLP Platform",
+        description: "AI-powered MuleSoft development platform with generators for flows, DataWeave, and RAML.",
+        href: "https://anypointlp-secondary.lovable.app/",
+      },
+      "CloudHub 2.0 Migration": {
+        image: csi7Image,
+        title: "Mule Migration Nexus",
+        description: "Automates MuleSoft on-prem to CloudHub 2.0 migration with dependency analysis.",
+        href: "https://mule-migration-nexus.lovable.app/",
+      },
+      "DataWeave Task Generator": {
+        image: csi9Image,
+        title: "MuleWeave Wizard",
+        description: "AI-powered learning tool generating custom DataWeave challenges with playground.",
+        href: "https://mule-weave-wizard.lovable.app/",
+      },
+      "RAMLify Flow Agent": {
+        image: csi2Image,
+        title: "RAML Assistant",
+        description: "AI-based assistant that converts natural language to RAML specifications.",
+        href: "https://ramlify-flow-agent.lovable.app/",
+      },
+      "MuleSoftLP": {
+        image: csi3Image,
+        title: "MuleSoft Learning Platform",
+        description: "Learning platform with AI-powered task generation and transformation playground.",
+        href: "https://mulesoft.dev/",
+      },
     };
 
-    // Collect all products from all categories
-    const allProducts: MenuGridItem[] = [];
-    items.forEach((category) => {
-      if (category.menuItems) {
-        allProducts.push(...category.menuItems);
-      }
-    });
+    // Product headers data
+    const productHeaders = [
+      "SnapMapper",
+      "AnypointLP",
+      "CloudHub 2.0 Migration",
+      "DataWeave Task Generator",
+      "RAMLify Flow Agent",
+      "MuleSoftLP",
+    ];
 
     return (
       <>
@@ -882,146 +921,827 @@ const DropdownMenu = ({
           style={{ top: `${navbarHeight}px` }}
         />
 
-        {/* Centered Dropdown Dialog */}
+        {/* Centered Dropdown Dialog - Same size as Solutions */}
         <div
           data-dropdown-menu
           className="fixed left-1/2 -translate-x-1/2 z-50 bg-white shadow-2xl rounded-lg"
           onMouseEnter={onMouseEnter}
           onMouseLeave={onMouseLeave}
-          style={{
+                style={{
             top: `${navbarHeight}px`,
-            width: "56%",
-            maxWidth: "720px",
+            width: "70%",
+            maxWidth: "900px",
             opacity: 1,
             transition: "opacity 0.2s ease-in-out, transform 0.2s ease-in-out",
             marginTop: "12px",
             overflow: "hidden",
           }}
         >
-          <div style={{ padding: "1.25rem 1.5rem" }}>
-            {/* Product Cards Grid - 3 columns */}
+          <div className="flex w-full" style={{ minHeight: "auto" }}>
+            {/* First Column - Product Headers */}
             <div
-              style={{
-                display: "grid",
-                gridTemplateColumns: "repeat(3, 1fr)",
-                gap: "0.875rem",
-                fontFamily: '"Noto Sans", sans-serif',
+              className="flex flex-col relative"
+              style={{ width: "25%", minWidth: "180px" }}
+            >
+              <div
+                className="flex-1 overflow-y-auto flex flex-col"
+                style={{
+                  padding: "1.25rem 1.25rem",
+                  fontFamily: '"Noto Sans", sans-serif',
+                }}
+              >
+                {productHeaders.map((header) => (
+                  <button
+                    key={header}
+                    onMouseEnter={() => setSelectedHeader(header)}
+                    style={{
+                      padding: "0.75rem 1rem",
+                      textAlign: "left",
+                      backgroundColor:
+                        selectedHeader === header
+                          ? "#e0f2f9"
+                          : "transparent",
+                      color:
+                        selectedHeader === header ? "#059bd1" : "#1f1f1f",
+                      border: "none",
+                      cursor: "pointer",
+                      fontFamily: '"Noto Sans", sans-serif',
+                      fontSize: "15px",
+                      fontWeight: selectedHeader === header ? 600 : 500,
+                      transition: "all 0.2s ease",
+                      borderRadius: "6px",
+                      marginBottom: "0.25rem",
+                    }}
+                  >
+                    {header}
+                  </button>
+                ))}
+              </div>
+              {/* Separator line */}
+              <div
+                style={{
+                  position: "absolute",
+                  right: 0,
+                  top: 0,
+                  bottom: 0,
+                  width: "1px",
+                  backgroundColor: "#d1d5db",
+                  zIndex: 10,
+                }}
+              />
+            </div>
+
+            {/* Second & Third Columns Container */}
+              <div
+              className="flex-1 flex"
+                style={{
+                position: "relative",
               }}
             >
-              {allProducts.map((product, index) => (
-                <a
-                  key={index}
-                  href={product.href || "#"}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  style={{
-                    display: "block",
-                    textDecoration: "none",
-                    borderRadius: "10px",
-                    overflow: "hidden",
-                    transition: "all 0.3s cubic-bezier(0.4, 0, 0.2, 1)",
-                    border: "1px solid #e5e7eb",
-                    backgroundColor: "#fff",
-                    position: "relative",
-                    height: "125px",
-                  }}
-                  onMouseEnter={(e) => {
-                    e.currentTarget.style.transform = "translateY(-4px)";
-                    e.currentTarget.style.boxShadow =
-                      "0 12px 24px rgba(0, 0, 0, 0.12)";
-                    e.currentTarget.style.borderColor = "#059bd1";
-                    const img = e.currentTarget.querySelector("img");
-                    if (img) {
-                      (img as HTMLElement).style.transform = "scale(1.15)";
-                    }
-                    const overlay = e.currentTarget.querySelector(".image-overlay");
-                    if (overlay) {
-                      (overlay as HTMLElement).style.opacity = "0.3";
-                    }
-                    const title = e.currentTarget.querySelector(`.card-title-${index}`);
-                    if (title) {
-                      (title as HTMLElement).style.opacity = "1";
-                    }
-                  }}
-                  onMouseLeave={(e) => {
-                    e.currentTarget.style.transform = "translateY(0)";
-                    e.currentTarget.style.boxShadow = "none";
-                    e.currentTarget.style.borderColor = "#e5e7eb";
-                    const img = e.currentTarget.querySelector("img");
-                    if (img) {
-                      (img as HTMLElement).style.transform = "scale(1)";
-                    }
-                    const overlay = e.currentTarget.querySelector(".image-overlay");
-                    if (overlay) {
-                      (overlay as HTMLElement).style.opacity = "0";
-                    }
-                    const title = e.currentTarget.querySelector(`.card-title-${index}`);
-                    if (title) {
-                      (title as HTMLElement).style.opacity = "0";
-                    }
-                  }}
-                >
-                  {/* Product Image - Full Card */}
-                  <div
+              {/* Second Column - Content Cards */}
+              <div
+                style={{
+                  width: "50%",
+                  padding: "1.25rem",
+                  fontFamily: '"Noto Sans", sans-serif',
+                  overflowY: "auto",
+                }}
+              >
+                {selectedHeader && (
+                  <div className="space-y-2.5">
+                    {selectedHeader === "SnapMapper" && (
+                      <>
+                        <a
+                          href="https://snaplogic.playground.mulecraft.in/"
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          style={{
+                            display: "block",
+                            padding: "0.5rem 0.75rem",
+                            color: "#1f1f1f",
+                            transition: "color .3s ease 0s",
+                            textDecoration: "none",
+                          }}
+                          onMouseEnter={(e) => {
+                            e.currentTarget.style.color = "#059bd1";
+                          }}
+                          onMouseLeave={(e) => {
+                            e.currentTarget.style.color = "#1f1f1f";
+                          }}
+                        >
+                          <div style={{ fontFamily: '"Noto Sans", sans-serif', fontSize: "14px", fontWeight: 600, marginBottom: "0.25rem" }}>
+                            Three-Panel Interface
+                          </div>
+                          <div style={{ fontFamily: '"Noto Sans", sans-serif', fontSize: "12px", color: "#6b7280", lineHeight: "1.5" }}>
+                            Safe testing environment for SnapLogic scripts
+                          </div>
+                        </a>
+                        <a
+                          href="https://snaplogic.playground.mulecraft.in/"
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          style={{
+                            display: "block",
+                            padding: "0.5rem 0.75rem",
+                            color: "#1f1f1f",
+                            transition: "color .3s ease 0s",
+                            textDecoration: "none",
+                          }}
+                          onMouseEnter={(e) => {
+                            e.currentTarget.style.color = "#059bd1";
+                          }}
+                          onMouseLeave={(e) => {
+                            e.currentTarget.style.color = "#1f1f1f";
+                          }}
+                        >
+                          <div style={{ fontFamily: '"Noto Sans", sans-serif', fontSize: "14px", fontWeight: 600, marginBottom: "0.25rem" }}>
+                            Import/Export Features
+                          </div>
+                          <div style={{ fontFamily: '"Noto Sans", sans-serif', fontSize: "12px", color: "#6b7280", lineHeight: "1.5" }}>
+                            Easily manage and share integration scripts
+                          </div>
+                        </a>
+                        <a
+                          href="https://snaplogic.playground.mulecraft.in/"
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          style={{
+                            display: "block",
+                            padding: "0.5rem 0.75rem",
+                            color: "#1f1f1f",
+                            transition: "color .3s ease 0s",
+                            textDecoration: "none",
+                          }}
+                          onMouseEnter={(e) => {
+                            e.currentTarget.style.color = "#059bd1";
+                          }}
+                          onMouseLeave={(e) => {
+                            e.currentTarget.style.color = "#1f1f1f";
+                          }}
+                        >
+                          <div style={{ fontFamily: '"Noto Sans", sans-serif', fontSize: "14px", fontWeight: 600, marginBottom: "0.25rem" }}>
+                            Real-time Error Handling
+                          </div>
+                          <div style={{ fontFamily: '"Noto Sans", sans-serif', fontSize: "12px", color: "#6b7280", lineHeight: "1.5" }}>
+                            Instant feedback with guided workflows
+                          </div>
+                        </a>
+                        <a
+                          href="https://snaplogic.playground.mulecraft.in/"
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          style={{
+                            display: "block",
+                            padding: "0.5rem 0.75rem",
+                            color: "#1f1f1f",
+                            transition: "color .3s ease 0s",
+                            textDecoration: "none",
+                          }}
+                          onMouseEnter={(e) => {
+                            e.currentTarget.style.color = "#059bd1";
+                          }}
+                          onMouseLeave={(e) => {
+                            e.currentTarget.style.color = "#1f1f1f";
+                          }}
+                        >
+                          <div style={{ fontFamily: '"Noto Sans", sans-serif', fontSize: "14px", fontWeight: 600, marginBottom: "0.25rem" }}>
+                            Guided Workflows
+                          </div>
+                          <div style={{ fontFamily: '"Noto Sans", sans-serif', fontSize: "12px", color: "#6b7280", lineHeight: "1.5" }}>
+                            Step-by-step integration development assistance
+                          </div>
+                        </a>
+                      </>
+                    )}
+                    {selectedHeader === "AnypointLP" && (
+                      <>
+                        <a
+                          href="https://anypointlp-secondary.lovable.app/"
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          style={{
+                            display: "block",
+                            padding: "0.5rem 0.75rem",
+                            color: "#1f1f1f",
+                            transition: "color .3s ease 0s",
+                            textDecoration: "none",
+                          }}
+                          onMouseEnter={(e) => {
+                            e.currentTarget.style.color = "#059bd1";
+                          }}
+                          onMouseLeave={(e) => {
+                            e.currentTarget.style.color = "#1f1f1f";
+                          }}
+                        >
+                          <div style={{ fontFamily: '"Noto Sans", sans-serif', fontSize: "14px", fontWeight: 600, marginBottom: "0.25rem" }}>
+                            Mule Flow Generator
+                          </div>
+                          <div style={{ fontFamily: '"Noto Sans", sans-serif', fontSize: "12px", color: "#6b7280", lineHeight: "1.5" }}>
+                            AI-powered MuleSoft flow generation
+                          </div>
+                        </a>
+                        <a
+                          href="https://anypointlp-secondary.lovable.app/"
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          style={{
+                            display: "block",
+                            padding: "0.5rem 0.75rem",
+                            color: "#1f1f1f",
+                            transition: "color .3s ease 0s",
+                            textDecoration: "none",
+                          }}
+                          onMouseEnter={(e) => {
+                            e.currentTarget.style.color = "#059bd1";
+                          }}
+                          onMouseLeave={(e) => {
+                            e.currentTarget.style.color = "#1f1f1f";
+                          }}
+                        >
+                          <div style={{ fontFamily: '"Noto Sans", sans-serif', fontSize: "14px", fontWeight: 600, marginBottom: "0.25rem" }}>
+                            DataWeave & RAML Tools
+                          </div>
+                          <div style={{ fontFamily: '"Noto Sans", sans-serif', fontSize: "12px", color: "#6b7280", lineHeight: "1.5" }}>
+                            Generate DataWeave transformations and RAML specs
+                          </div>
+                        </a>
+                        <a
+                          href="https://anypointlp-secondary.lovable.app/"
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          style={{
+                            display: "block",
+                            padding: "0.5rem 0.75rem",
+                            color: "#1f1f1f",
+                            transition: "color .3s ease 0s",
+                            textDecoration: "none",
+                          }}
+                          onMouseEnter={(e) => {
+                            e.currentTarget.style.color = "#059bd1";
+                          }}
+                          onMouseLeave={(e) => {
+                            e.currentTarget.style.color = "#1f1f1f";
+                          }}
+                        >
+                          <div style={{ fontFamily: '"Noto Sans", sans-serif', fontSize: "14px", fontWeight: 600, marginBottom: "0.25rem" }}>
+                            GitHub Integration
+                          </div>
+                          <div style={{ fontFamily: '"Noto Sans", sans-serif', fontSize: "12px", color: "#6b7280", lineHeight: "1.5" }}>
+                            Seamless collaboration and version control
+                          </div>
+                        </a>
+                        <a
+                          href="https://anypointlp-secondary.lovable.app/"
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          style={{
+                            display: "block",
+                            padding: "0.5rem 0.75rem",
+                            color: "#1f1f1f",
+                            transition: "color .3s ease 0s",
+                            textDecoration: "none",
+                          }}
+                          onMouseEnter={(e) => {
+                            e.currentTarget.style.color = "#059bd1";
+                          }}
+                          onMouseLeave={(e) => {
+                            e.currentTarget.style.color = "#1f1f1f";
+                          }}
+                        >
+                          <div style={{ fontFamily: '"Noto Sans", sans-serif', fontSize: "14px", fontWeight: 600, marginBottom: "0.25rem" }}>
+                            MUnit Test Generator
+                          </div>
+                          <div style={{ fontFamily: '"Noto Sans", sans-serif', fontSize: "12px", color: "#6b7280", lineHeight: "1.5" }}>
+                            Automated test case generation for Mule apps
+                          </div>
+                        </a>
+                      </>
+                    )}
+                    {selectedHeader === "CloudHub 2.0 Migration" && (
+                      <>
+                        <a
+                          href="https://mule-migration-nexus.lovable.app/"
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          style={{
+                            display: "block",
+                            padding: "0.5rem 0.75rem",
+                            color: "#1f1f1f",
+                            transition: "color .3s ease 0s",
+                            textDecoration: "none",
+                          }}
+                          onMouseEnter={(e) => {
+                            e.currentTarget.style.color = "#059bd1";
+                          }}
+                          onMouseLeave={(e) => {
+                            e.currentTarget.style.color = "#1f1f1f";
+                          }}
+                        >
+                          <div style={{ fontFamily: '"Noto Sans", sans-serif', fontSize: "14px", fontWeight: 600, marginBottom: "0.25rem" }}>
+                            Automated Migration
+                          </div>
+                          <div style={{ fontFamily: '"Noto Sans", sans-serif', fontSize: "12px", color: "#6b7280", lineHeight: "1.5" }}>
+                            On-prem to CloudHub 2.0 migration automation
+                          </div>
+                        </a>
+                        <a
+                          href="https://mule-migration-nexus.lovable.app/"
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          style={{
+                            display: "block",
+                            padding: "0.5rem 0.75rem",
+                            color: "#1f1f1f",
+                            transition: "color .3s ease 0s",
+                            textDecoration: "none",
+                          }}
+                          onMouseEnter={(e) => {
+                            e.currentTarget.style.color = "#059bd1";
+                          }}
+                          onMouseLeave={(e) => {
+                            e.currentTarget.style.color = "#1f1f1f";
+                          }}
+                        >
+                          <div style={{ fontFamily: '"Noto Sans", sans-serif', fontSize: "14px", fontWeight: 600, marginBottom: "0.25rem" }}>
+                            Dependency Analysis
+                          </div>
+                          <div style={{ fontFamily: '"Noto Sans", sans-serif', fontSize: "12px", color: "#6b7280", lineHeight: "1.5" }}>
+                            Track dependencies and technical debt
+                          </div>
+                        </a>
+                        <a
+                          href="https://mule-migration-nexus.lovable.app/"
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          style={{
+                            display: "block",
+                            padding: "0.5rem 0.75rem",
+                            color: "#1f1f1f",
+                            transition: "color .3s ease 0s",
+                            textDecoration: "none",
+                          }}
+                          onMouseEnter={(e) => {
+                            e.currentTarget.style.color = "#059bd1";
+                          }}
+                          onMouseLeave={(e) => {
+                            e.currentTarget.style.color = "#1f1f1f";
+                          }}
+                        >
+                          <div style={{ fontFamily: '"Noto Sans", sans-serif', fontSize: "14px", fontWeight: 600, marginBottom: "0.25rem" }}>
+                            Progress Tracking
+                          </div>
+                          <div style={{ fontFamily: '"Noto Sans", sans-serif', fontSize: "12px", color: "#6b7280", lineHeight: "1.5" }}>
+                            Monitor migration status in real-time
+                          </div>
+                        </a>
+                        <a
+                          href="https://mule-migration-nexus.lovable.app/"
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          style={{
+                            display: "block",
+                            padding: "0.5rem 0.75rem",
+                            color: "#1f1f1f",
+                            transition: "color .3s ease 0s",
+                            textDecoration: "none",
+                          }}
+                          onMouseEnter={(e) => {
+                            e.currentTarget.style.color = "#059bd1";
+                          }}
+                          onMouseLeave={(e) => {
+                            e.currentTarget.style.color = "#1f1f1f";
+                          }}
+                        >
+                          <div style={{ fontFamily: '"Noto Sans", sans-serif', fontSize: "14px", fontWeight: 600, marginBottom: "0.25rem" }}>
+                            Cloud Optimization
+                          </div>
+                          <div style={{ fontFamily: '"Noto Sans", sans-serif', fontSize: "12px", color: "#6b7280", lineHeight: "1.5" }}>
+                            Optimize applications for CloudHub 2.0 environment
+                          </div>
+                        </a>
+                      </>
+                    )}
+                    {selectedHeader === "DataWeave Task Generator" && (
+                      <>
+                        <a
+                          href="https://mule-weave-wizard.lovable.app/"
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          style={{
+                            display: "block",
+                            padding: "0.5rem 0.75rem",
+                            color: "#1f1f1f",
+                            transition: "color .3s ease 0s",
+                            textDecoration: "none",
+                          }}
+                          onMouseEnter={(e) => {
+                            e.currentTarget.style.color = "#059bd1";
+                          }}
+                          onMouseLeave={(e) => {
+                            e.currentTarget.style.color = "#1f1f1f";
+                          }}
+                        >
+                          <div style={{ fontFamily: '"Noto Sans", sans-serif', fontSize: "14px", fontWeight: 600, marginBottom: "0.25rem" }}>
+                            Custom Challenges
+                          </div>
+                          <div style={{ fontFamily: '"Noto Sans", sans-serif', fontSize: "12px", color: "#6b7280", lineHeight: "1.5" }}>
+                            AI-generated DataWeave practice tasks
+                          </div>
+                        </a>
+                        <a
+                          href="https://mule-weave-wizard.lovable.app/"
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          style={{
+                            display: "block",
+                            padding: "0.5rem 0.75rem",
+                            color: "#1f1f1f",
+                            transition: "color .3s ease 0s",
+                            textDecoration: "none",
+                          }}
+                          onMouseEnter={(e) => {
+                            e.currentTarget.style.color = "#059bd1";
+                          }}
+                          onMouseLeave={(e) => {
+                            e.currentTarget.style.color = "#1f1f1f";
+                          }}
+                        >
+                          <div style={{ fontFamily: '"Noto Sans", sans-serif', fontSize: "14px", fontWeight: 600, marginBottom: "0.25rem" }}>
+                            Inbuilt Playground
+                          </div>
+                          <div style={{ fontFamily: '"Noto Sans", sans-serif', fontSize: "12px", color: "#6b7280", lineHeight: "1.5" }}>
+                            Practice and test scripts in real-time
+                          </div>
+                        </a>
+                        <a
+                          href="https://mule-weave-wizard.lovable.app/"
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          style={{
+                            display: "block",
+                            padding: "0.5rem 0.75rem",
+                            color: "#1f1f1f",
+                            transition: "color .3s ease 0s",
+                            textDecoration: "none",
+                          }}
+                          onMouseEnter={(e) => {
+                            e.currentTarget.style.color = "#059bd1";
+                          }}
+                          onMouseLeave={(e) => {
+                            e.currentTarget.style.color = "#1f1f1f";
+                          }}
+                        >
+                          <div style={{ fontFamily: '"Noto Sans", sans-serif', fontSize: "14px", fontWeight: 600, marginBottom: "0.25rem" }}>
+                            Script Validation
+                          </div>
+                          <div style={{ fontFamily: '"Noto Sans", sans-serif', fontSize: "12px", color: "#6b7280", lineHeight: "1.5" }}>
+                            Validate and optimize your DataWeave code
+                          </div>
+                        </a>
+                        <a
+                          href="https://mule-weave-wizard.lovable.app/"
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          style={{
+                            display: "block",
+                            padding: "0.5rem 0.75rem",
+                            color: "#1f1f1f",
+                            transition: "color .3s ease 0s",
+                            textDecoration: "none",
+                          }}
+                          onMouseEnter={(e) => {
+                            e.currentTarget.style.color = "#059bd1";
+                          }}
+                          onMouseLeave={(e) => {
+                            e.currentTarget.style.color = "#1f1f1f";
+                          }}
+                        >
+                          <div style={{ fontFamily: '"Noto Sans", sans-serif', fontSize: "14px", fontWeight: 600, marginBottom: "0.25rem" }}>
+                            Learning Analytics
+                          </div>
+                          <div style={{ fontFamily: '"Noto Sans", sans-serif', fontSize: "12px", color: "#6b7280", lineHeight: "1.5" }}>
+                            Track your DataWeave learning progress
+                          </div>
+                        </a>
+                      </>
+                    )}
+                    {selectedHeader === "RAMLify Flow Agent" && (
+                      <>
+                        <a
+                          href="https://ramlify-flow-agent.lovable.app/"
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          style={{
+                            display: "block",
+                            padding: "0.5rem 0.75rem",
+                            color: "#1f1f1f",
+                            transition: "color .3s ease 0s",
+                            textDecoration: "none",
+                          }}
+                          onMouseEnter={(e) => {
+                            e.currentTarget.style.color = "#059bd1";
+                          }}
+                          onMouseLeave={(e) => {
+                            e.currentTarget.style.color = "#1f1f1f";
+                          }}
+                        >
+                          <div style={{ fontFamily: '"Noto Sans", sans-serif', fontSize: "14px", fontWeight: 600, marginBottom: "0.25rem" }}>
+                            Natural Language to RAML
+                          </div>
+                          <div style={{ fontFamily: '"Noto Sans", sans-serif', fontSize: "12px", color: "#6b7280", lineHeight: "1.5" }}>
+                            Convert descriptions to RAML specifications
+                          </div>
+                        </a>
+                        <a
+                          href="https://ramlify-flow-agent.lovable.app/"
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          style={{
+                            display: "block",
+                            padding: "0.5rem 0.75rem",
+                            color: "#1f1f1f",
+                            transition: "color .3s ease 0s",
+                            textDecoration: "none",
+                          }}
+                          onMouseEnter={(e) => {
+                            e.currentTarget.style.color = "#059bd1";
+                          }}
+                          onMouseLeave={(e) => {
+                            e.currentTarget.style.color = "#1f1f1f";
+                          }}
+                        >
+                          <div style={{ fontFamily: '"Noto Sans", sans-serif', fontSize: "14px", fontWeight: 600, marginBottom: "0.25rem" }}>
+                            API Design Optimization
+                          </div>
+                          <div style={{ fontFamily: '"Noto Sans", sans-serif', fontSize: "12px", color: "#6b7280", lineHeight: "1.5" }}>
+                            Faster API design with AI assistance
+                          </div>
+                        </a>
+                        <a
+                          href="https://ramlify-flow-agent.lovable.app/"
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          style={{
+                            display: "block",
+                            padding: "0.5rem 0.75rem",
+                            color: "#1f1f1f",
+                            transition: "color .3s ease 0s",
+                            textDecoration: "none",
+                          }}
+                          onMouseEnter={(e) => {
+                            e.currentTarget.style.color = "#059bd1";
+                          }}
+                          onMouseLeave={(e) => {
+                            e.currentTarget.style.color = "#1f1f1f";
+                          }}
+                        >
+                          <div style={{ fontFamily: '"Noto Sans", sans-serif', fontSize: "14px", fontWeight: 600, marginBottom: "0.25rem" }}>
+                            Anypoint Integration
+                          </div>
+                          <div style={{ fontFamily: '"Noto Sans", sans-serif', fontSize: "12px", color: "#6b7280", lineHeight: "1.5" }}>
+                            Seamless integration with Anypoint Platform
+                          </div>
+                        </a>
+                        <a
+                          href="https://ramlify-flow-agent.lovable.app/"
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          style={{
+                            display: "block",
+                            padding: "0.5rem 0.75rem",
+                            color: "#1f1f1f",
+                            transition: "color .3s ease 0s",
+                            textDecoration: "none",
+                          }}
+                          onMouseEnter={(e) => {
+                            e.currentTarget.style.color = "#059bd1";
+                          }}
+                          onMouseLeave={(e) => {
+                            e.currentTarget.style.color = "#1f1f1f";
+                          }}
+                        >
+                          <div style={{ fontFamily: '"Noto Sans", sans-serif', fontSize: "14px", fontWeight: 600, marginBottom: "0.25rem" }}>
+                            RAML Validation
+                          </div>
+                          <div style={{ fontFamily: '"Noto Sans", sans-serif', fontSize: "12px", color: "#6b7280", lineHeight: "1.5" }}>
+                            Real-time validation and syntax checking for RAML specs
+                          </div>
+                        </a>
+                      </>
+                    )}
+                    {selectedHeader === "MuleSoftLP" && (
+                      <>
+                        <a
+                          href="https://mulesoft.dev/"
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          style={{
+                            display: "block",
+                            padding: "0.5rem 0.75rem",
+                            color: "#1f1f1f",
+                            transition: "color .3s ease 0s",
+                            textDecoration: "none",
+                          }}
+                          onMouseEnter={(e) => {
+                            e.currentTarget.style.color = "#059bd1";
+                          }}
+                          onMouseLeave={(e) => {
+                            e.currentTarget.style.color = "#1f1f1f";
+                          }}
+                        >
+                          <div style={{ fontFamily: '"Noto Sans", sans-serif', fontSize: "14px", fontWeight: 600, marginBottom: "0.25rem" }}>
+                            AI Task Generation
+                          </div>
+                          <div style={{ fontFamily: '"Noto Sans", sans-serif', fontSize: "12px", color: "#6b7280", lineHeight: "1.5" }}>
+                            Automated learning tasks for skill development
+                          </div>
+                        </a>
+                        <a
+                          href="https://mulesoft.dev/"
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          style={{
+                            display: "block",
+                            padding: "0.5rem 0.75rem",
+                            color: "#1f1f1f",
+                            transition: "color .3s ease 0s",
+                            textDecoration: "none",
+                          }}
+                          onMouseEnter={(e) => {
+                            e.currentTarget.style.color = "#059bd1";
+                          }}
+                          onMouseLeave={(e) => {
+                            e.currentTarget.style.color = "#1f1f1f";
+                          }}
+                        >
+                          <div style={{ fontFamily: '"Noto Sans", sans-serif', fontSize: "14px", fontWeight: 600, marginBottom: "0.25rem" }}>
+                            Transformation Playground
+                          </div>
+                          <div style={{ fontFamily: '"Noto Sans", sans-serif', fontSize: "12px", color: "#6b7280", lineHeight: "1.5" }}>
+                            Interactive environment for DataWeave practice
+                          </div>
+                        </a>
+                        <a
+                          href="https://mulesoft.dev/"
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          style={{
+                            display: "block",
+                            padding: "0.5rem 0.75rem",
+                            color: "#1f1f1f",
+                            transition: "color .3s ease 0s",
+                            textDecoration: "none",
+                          }}
+                          onMouseEnter={(e) => {
+                            e.currentTarget.style.color = "#059bd1";
+                          }}
+                          onMouseLeave={(e) => {
+                            e.currentTarget.style.color = "#1f1f1f";
+                          }}
+                        >
+                          <div style={{ fontFamily: '"Noto Sans", sans-serif', fontSize: "14px", fontWeight: 600, marginBottom: "0.25rem" }}>
+                            Progress Tracking
+                          </div>
+                          <div style={{ fontFamily: '"Noto Sans", sans-serif', fontSize: "12px", color: "#6b7280", lineHeight: "1.5" }}>
+                            Monitor learning progress with detailed analytics
+                          </div>
+                        </a>
+                        <a
+                          href="https://mulesoft.dev/"
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          style={{
+                            display: "block",
+                            padding: "0.5rem 0.75rem",
+                            color: "#1f1f1f",
+                            transition: "color .3s ease 0s",
+                            textDecoration: "none",
+                          }}
+                          onMouseEnter={(e) => {
+                            e.currentTarget.style.color = "#059bd1";
+                          }}
+                          onMouseLeave={(e) => {
+                            e.currentTarget.style.color = "#1f1f1f";
+                          }}
+                        >
+                          <div style={{ fontFamily: '"Noto Sans", sans-serif', fontSize: "14px", fontWeight: 600, marginBottom: "0.25rem" }}>
+                            RAML Assistant
+                          </div>
+                          <div style={{ fontFamily: '"Noto Sans", sans-serif', fontSize: "12px", color: "#6b7280", lineHeight: "1.5" }}>
+                            AI-powered RAML specification helper
+                          </div>
+                        </a>
+                      </>
+                    )}
+                  </div>
+                )}
+              </div>
+
+              {/* Vertical Separator */}
+              <div
+                style={{
+                  position: "absolute",
+                  left: "50%",
+                  top: 0,
+                  bottom: 0,
+                  width: "1px",
+                  backgroundColor: "#d1d5db",
+                }}
+              />
+
+              {/* Third Column - Product Image Card */}
+              <div
+                style={{
+                  width: "50%",
+                  padding: "1.25rem",
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                }}
+              >
+                {selectedHeader && productImages[selectedHeader] && (
+                  <a
+                    href={productImages[selectedHeader].href}
+                    target="_blank"
+                    rel="noopener noreferrer"
                     style={{
-                      position: "relative",
+                      display: "block",
                       width: "100%",
-                      height: "100%",
+                      textDecoration: "none",
+                      color: "inherit",
+                      borderRadius: "8px",
                       overflow: "hidden",
-                      backgroundColor: "#f9fafb",
+                      backgroundColor: "#ffffff",
+                      boxShadow: "0 2px 8px rgba(0, 0, 0, 0.1)",
+                      transition: "all 0.3s ease",
+                      border: "1px solid #e5e7eb",
+                    }}
+                    onMouseEnter={(e) => {
+                      const img = e.currentTarget.querySelector("img") as HTMLImageElement;
+                      if (img) {
+                        img.style.transform = "scale(1.05)";
+                      }
+                      e.currentTarget.style.transform = "translateY(-4px)";
+                      e.currentTarget.style.boxShadow = "0 8px 20px rgba(0, 0, 0, 0.15)";
+                    }}
+                    onMouseLeave={(e) => {
+                      const img = e.currentTarget.querySelector("img") as HTMLImageElement;
+                      if (img) {
+                        img.style.transform = "scale(1)";
+                      }
+                      e.currentTarget.style.transform = "translateY(0)";
+                      e.currentTarget.style.boxShadow = "0 2px 8px rgba(0, 0, 0, 0.1)";
+                    }}
+                  >
+                    {/* Image */}
+                    <div
+                      style={{
+                        width: "100%",
+                        height: "200px",
+                        overflow: "hidden",
+                        backgroundColor: "#ffffff",
                     }}
                   >
                     <img
-                      src={imageMap[product.image || "csi1.png"] || csi1Image}
-                      alt={product.title}
+                        src={productImages[selectedHeader].image}
+                        alt={productImages[selectedHeader].title}
                       style={{
                         width: "100%",
-                        height: "100%",
-                        objectFit: "fill",
-                        transition: "transform 0.4s cubic-bezier(0.4, 0, 0.2, 1)",
-                      }}
-                    />
-                    {/* Hover overlay */}
+                          height: "100%",
+                          objectFit: "cover",
+                          transition: "transform 0.3s ease",
+                        }}
+                      />
+                    </div>
+
+                    {/* Title and Description */}
+                    <div style={{ padding: "1rem" }}>
                     <div
-                      className="image-overlay"
                       style={{
-                        position: "absolute",
-                        top: 0,
-                        left: 0,
-                        right: 0,
-                        bottom: 0,
-                        backgroundColor: "#000",
-                        opacity: 0,
-                        transition: "opacity 0.3s ease",
-                        pointerEvents: "none",
-                      }}
-                    />
-                    {/* Title overlay - appears on hover */}
-                    <div
-                      className={`card-title-${index}`}
-                      style={{
-                        position: "absolute",
-                        top: "50%",
-                        left: "50%",
-                        transform: "translate(-50%, -50%)",
-                        color: "#fff",
                         fontFamily: '"Noto Sans", sans-serif',
-                        fontSize: "14px",
-                        fontWeight: 500,
-                        textAlign: "center",
-                        opacity: 0,
-                        transition: "opacity 0.3s ease",
-                        pointerEvents: "none",
-                        zIndex: 10,
-                        padding: "0 0.75rem",
-                        lineHeight: "1.4",
+                        fontSize: "16px",
+                        fontWeight: 600,
+                          color: "#1f1f1f",
+                        marginBottom: "0.5rem",
+                          lineHeight: "1.4",
                       }}
                     >
-                      {product.title}
+                        {productImages[selectedHeader].title}
                     </div>
-                  </div>
-                </a>
-              ))}
+                    <div
+                      style={{
+                        fontFamily: '"Noto Sans", sans-serif',
+                        fontSize: "13px",
+                        color: "#6b7280",
+                          lineHeight: "1.5",
+                      }}
+                    >
+                        {productImages[selectedHeader].description}
+                      </div>
+                    </div>
+                  </a>
+                )}
+              </div>
             </div>
           </div>
         </div>
@@ -1296,7 +2016,7 @@ const DropdownMenu = ({
           {columns.map((columnItem, columnIndex) => {
             const isOtherProducts =
               navItem === "Products" && columnItem.label === "OTHER PRODUCTS";
-
+            
             return (
               <div
                 key={columnIndex}
@@ -1320,16 +2040,16 @@ const DropdownMenu = ({
                 {/* Column Content */}
                 <div
                   className="flex-1 flex flex-col"
-                  style={{
+                style={{
                     padding:
                       navItem === "Products"
                         ? "1.5rem 1.25rem"
                         : "1.25rem 1.25rem",
-                    fontFamily: '"Noto Sans", sans-serif',
+                  fontFamily: '"Noto Sans", sans-serif',
                     overflowY: "auto",
                     overflowX: "hidden",
-                  }}
-                >
+                }}
+              >
                   {/* Special layout for OTHER PRODUCTS in Products dropdown */}
                   {isOtherProducts ? (
                     <>
@@ -1385,7 +2105,7 @@ const DropdownMenu = ({
                           </div>
                         </a>
                       </div>
-
+                      
                       {/* Gray Separator Line - Full Width */}
                       <div
                         style={{
@@ -1397,62 +2117,13 @@ const DropdownMenu = ({
                           marginRight: "-1.25rem",
                         }}
                       />
-
+                      
                       {/* Second row - Mule Migration Nexus */}
                       {columnItem.menuItems &&
                         columnItem.menuItems.length > 0 && (
-                          <>
-                            <a
-                              href={columnItem.menuItems[0].href || "#"}
-                              className="link-item block"
-                              style={{
-                                display: "block",
-                                padding: "0.5rem 0.75rem",
-                                color: "#1f1f1f",
-                                transition: "color .3s ease 0s",
-                                textDecoration: "none",
-                                textAlign: "center",
-                              }}
-                              onMouseEnter={(e) => {
-                                e.currentTarget.style.color = "#059bd1";
-                              }}
-                              onMouseLeave={(e) => {
-                                e.currentTarget.style.color = "#1f1f1f";
-                              }}
-                            >
-                              <div
-                                style={{
-                                  fontFamily: '"Noto Sans", sans-serif',
-                                  fontSize: "14px",
-                                  lineHeight: "1.6",
-                                  fontWeight: 500,
-                                  color: "inherit",
-                                }}
-                              >
-                                {columnItem.menuItems[0].title}
-                              </div>
-                            </a>
-
-                            {/* Gray Separator Line - Full Width */}
-                            <div
-                              style={{
-                                width: "calc(100% + 2.5rem)",
-                                height: "1px",
-                                backgroundColor: "#d1d5db",
-                                marginTop: "0.5rem",
-                                marginBottom: "0.5rem",
-                                marginLeft: "-1.25rem",
-                                marginRight: "-1.25rem",
-                              }}
-                            />
-                          </>
-                        )}
-
-                      {/* Third row - DataWeave Task Generator */}
-                      {columnItem.menuItems &&
-                        columnItem.menuItems.length > 1 && (
+                        <>
                           <a
-                            href={columnItem.menuItems[1].href || "#"}
+                            href={columnItem.menuItems[0].href || "#"}
                             className="link-item block"
                             style={{
                               display: "block",
@@ -1463,7 +2134,7 @@ const DropdownMenu = ({
                               textAlign: "center",
                             }}
                             onMouseEnter={(e) => {
-                              e.currentTarget.style.color = "#059bd1";
+                                e.currentTarget.style.color = "#059bd1";
                             }}
                             onMouseLeave={(e) => {
                               e.currentTarget.style.color = "#1f1f1f";
@@ -1473,15 +2144,64 @@ const DropdownMenu = ({
                               style={{
                                 fontFamily: '"Noto Sans", sans-serif',
                                 fontSize: "14px",
-                                lineHeight: "1.6",
+                                  lineHeight: "1.6",
                                 fontWeight: 500,
                                 color: "inherit",
                               }}
                             >
-                              {columnItem.menuItems[1].title}
+                              {columnItem.menuItems[0].title}
                             </div>
                           </a>
-                        )}
+                          
+                          {/* Gray Separator Line - Full Width */}
+                          <div
+                            style={{
+                              width: "calc(100% + 2.5rem)",
+                              height: "1px",
+                              backgroundColor: "#d1d5db",
+                              marginTop: "0.5rem",
+                              marginBottom: "0.5rem",
+                              marginLeft: "-1.25rem",
+                              marginRight: "-1.25rem",
+                            }}
+                          />
+                        </>
+                      )}
+                      
+                      {/* Third row - DataWeave Task Generator */}
+                      {columnItem.menuItems &&
+                        columnItem.menuItems.length > 1 && (
+                        <a
+                          href={columnItem.menuItems[1].href || "#"}
+                          className="link-item block"
+                          style={{
+                            display: "block",
+                            padding: "0.5rem 0.75rem",
+                            color: "#1f1f1f",
+                            transition: "color .3s ease 0s",
+                            textDecoration: "none",
+                            textAlign: "center",
+                          }}
+                          onMouseEnter={(e) => {
+                              e.currentTarget.style.color = "#059bd1";
+                          }}
+                          onMouseLeave={(e) => {
+                            e.currentTarget.style.color = "#1f1f1f";
+                          }}
+                        >
+                          <div
+                            style={{
+                              fontFamily: '"Noto Sans", sans-serif',
+                              fontSize: "14px",
+                                lineHeight: "1.6",
+                              fontWeight: 500,
+                              color: "inherit",
+                            }}
+                          >
+                            {columnItem.menuItems[1].title}
+                          </div>
+                        </a>
+                      )}
                     </>
                   ) : (
                     <>
@@ -1517,20 +2237,20 @@ const DropdownMenu = ({
                         }}
                       >
                         {(columnItem.menuItems || []).map((menuItem, index) => (
-                          <a
-                            key={index}
-                            href={menuItem.href || "#"}
+                        <a
+                          key={index}
+                          href={menuItem.href || "#"}
                             className="link-item block"
-                            style={{
+                          style={{
                               display: "block",
                               padding:
                                 navItem === "Products"
                                   ? "0.5rem 0"
                                   : "0.5rem 0.75rem",
-                              color: "#1f1f1f",
+                            color: "#1f1f1f",
                               transition: "color .3s ease 0s",
-                              textDecoration: "none",
-                            }}
+                            textDecoration: "none",
+                          }}
                             onMouseEnter={(e) => {
                               e.currentTarget.style.color = "#059bd1";
                             }}
@@ -1538,12 +2258,12 @@ const DropdownMenu = ({
                               e.currentTarget.style.color = "#1f1f1f";
                             }}
                           >
-                            {/* Content */}
+                          {/* Content */}
                             <div className="item-content">
-                              <div
-                                className="item-title"
-                                style={{
-                                  fontFamily: '"Noto Sans", sans-serif',
+                            <div
+                              className="item-title"
+                              style={{
+                                fontFamily: '"Noto Sans", sans-serif',
                                   fontSize: "15px",
                                   lineHeight:
                                     navItem === "Products" ? "1.8" : "1.6",
@@ -1552,18 +2272,18 @@ const DropdownMenu = ({
                                   whiteSpace: "nowrap",
                                   overflow: "hidden",
                                   textOverflow: "ellipsis",
-                                }}
-                              >
-                                {menuItem.title}
+                              }}
+                            >
+                              {menuItem.title}
                               </div>
                             </div>
                           </a>
                         ))}
                       </div>
                     </>
-                  )}
+                )}
+            </div>
                 </div>
-              </div>
             );
           })}
         </div>
