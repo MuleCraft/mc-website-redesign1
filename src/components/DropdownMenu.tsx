@@ -1,5 +1,4 @@
 import { useState, useEffect } from "react";
-import { ArrowRight } from "lucide-react";
 import csi1Image from "@/assets/csi1.png";
 import csi2Image from "@/assets/csi2.png";
 import csi3Image from "@/assets/csi3.png";
@@ -12,12 +11,15 @@ import muImage from "@/assets/mu-image.webp";
 import mulesoftPartnerImage from "@/assets/mulesoft-partner.webp";
 import trainingImage from "@/assets/training.png";
 import blogImage from "@/assets/blog.jpg";
+import blog1Image from "@/assets/blog1.png";
+import blog2Image from "@/assets/blog2.png";
+import blog3Image from "@/assets/blog3.png";
 import si1Image from "@/assets/si1.png";
 import si2Image from "@/assets/si2.png";
 import si3Image from "@/assets/si3.png";
 import si4Image from "@/assets/si4.png";
 import si5Image from "@/assets/si5.png";
-import si6Image from "@/assets/si6.jpg";
+import si6Image from "@/assets/si6.png";
 import cs1Image from "@/assets/cs1.jpg";
 import cs2Image from "@/assets/cs2.jpg";
 import cs3Image from "@/assets/cs3.jpg";
@@ -61,7 +63,6 @@ const DropdownMenu = ({
   onMouseLeave,
 }: DropdownMenuProps) => {
   const [selectedHeader, setSelectedHeader] = useState<string | null>(null);
-  const [isImageHovered, setIsImageHovered] = useState(false);
 
   // Initialize selected header for Solutions, Products, Case Studies, and Resources dropdown
   useEffect(() => {
@@ -374,24 +375,37 @@ const DropdownMenu = ({
 
   // Special layout for Resources dropdown
   if (navItem === "Resources") {
-    const blogItem = items.find((item) => item.label === "Blog");
-    const trainingItem = items.find((item) => item.label === "Training");
-    const blogMenuItem = blogItem?.menuItems?.[0];
-    const trainingMenuItem = trainingItem?.menuItems?.[0];
-
-    // Image mapping for resources
-    const resourceImages: { [key: string]: { image: string; href?: string } } = {
-      "Blog": {
+    // Blog cards data
+    const blogCards = [
+      {
+        image: blog1Image,
+        title: "Building a CI/CD Pipeline to Deploy Mule Applications",
+        description: "Learn how to automate deployment of Mule applications in CloudHub 2.0 with custom notifications and CI/CD best practices.",
+        href: "https://blogs.mulecraft.in/building-a-ci-cd-pipeline-to-deploy-mule-applications-in-cloudhub-2-0-with-custom-notifications/",
+      },
+      {
+        image: blog2Image,
+        title: "Integrating Google BigQuery with MuleSoft",
+        description: "Discover how to seamlessly integrate Google BigQuery with MuleSoft for powerful data analytics and business intelligence.",
+        href: "https://blogs.mulecraft.in/integrating-google-bigquery-with-mulesoft-for-seamless-data-analytics/",
+      },
+      {
+        image: blog3Image,
+        title: "Power of APIs with Anypoint",
+        description: "Unlock the full potential of APIs using MuleSoft Anypoint Platform for modern integration solutions.",
+        href: "https://blogs.mulecraft.in/unlocking-the-power-of-apis-with-anypoint-platform/",
+      },
+      {
         image: blogImage,
-        href: blogMenuItem?.href || "#",
+        title: "Understanding GraphQL Basics",
+        description: "Explore GraphQL fundamentals and learn how this modern query language revolutionizes API development.",
+        href: "https://blogs.mulecraft.in/understanding-the-basics-of-graphql/",
       },
-      "Training": {
-        image: trainingImage,
-        href: trainingMenuItem?.href || "#",
-      },
-    };
+    ];
 
-    const selectedImageCard = resourceImages[selectedHeader || "Blog"];
+    // Training image
+    const trainingItem = items.find((item) => item.label === "Training");
+    const trainingMenuItem = trainingItem?.menuItems?.[0];
 
     return (
       <>
@@ -410,19 +424,20 @@ const DropdownMenu = ({
           onMouseLeave={onMouseLeave}
           style={{
             top: `${navbarHeight}px`,
-            width: "45%",
-            maxWidth: "500px",
+            width: "60%",
+            maxWidth: "750px",
+            height: "340px",
             opacity: 1,
             transition: "opacity 0.2s ease-in-out, transform 0.2s ease-in-out",
             marginTop: "12px",
             overflow: "hidden",
           }}
         >
-          <div className="flex w-full" style={{ minHeight: "auto" }}>
+          <div className="flex w-full" style={{ height: "100%" }}>
             {/* Left Column - Headers */}
             <div
               className="flex flex-col relative"
-              style={{ width: "35%", minWidth: "140px" }}
+              style={{ width: "25%", minWidth: "180px" }}
             >
               <div
                 className="flex-1 overflow-y-auto flex flex-col"
@@ -472,73 +487,361 @@ const DropdownMenu = ({
               />
             </div>
 
-            {/* Right Column - Image Only */}
-            <div className="flex-1 flex flex-col">
-              <div
-                className="flex-1 overflow-y-auto flex flex-col"
-                style={{
-                  padding: "1.25rem 1.25rem",
-                  fontFamily: '"Noto Sans", sans-serif',
-                }}
-              >
-                {/* Image Display */}
-                {selectedImageCard && (
-                  <div
-                    style={{
-                      position: "relative",
-                      display: "flex",
-                      alignItems: "center",
-                      justifyContent: "center",
-                      overflow: "hidden",
-                      backgroundColor: "#ffffff",
-                      height: "100%",
-                      cursor: "pointer",
-                    }}
-                    onMouseEnter={() => setIsImageHovered(true)}
-                    onMouseLeave={() => setIsImageHovered(false)}
-                    onClick={() => window.open(selectedImageCard.href || "#", "_blank")}
-                  >
-                    {/* Image with reduced blur effect on hover */}
-                    <img
-                      src={selectedImageCard.image}
-                      alt="Resource"
+            {/* Right Column - Content based on selected header */}
+            <div className="flex-1 flex flex-col" style={{ position: "relative" }}>
+              {/* Blog Cards - 2 Cards with Image and Description */}
+              {selectedHeader === "Blog" && (
+                <div
+                  style={{
+                    display: "flex",
+                    padding: "1.25rem",
+                    fontFamily: '"Noto Sans", sans-serif',
+                    alignItems: "stretch",
+                    gap: "1rem",
+                  }}
+                >
+                  {blogCards.slice(0, 2).map((card, index) => (
+                    <a
+                      key={index}
+                      href={card.href}
+                      target="_blank"
+                      rel="noopener noreferrer"
                       style={{
-                        width: "100%",
-                        height: "100%",
-                        objectFit: "fill",
-                        filter: isImageHovered ? "blur(2px)" : "none",
-                        transition: "filter 0.3s ease",
+                        display: "flex",
+                        flexDirection: "column",
+                        width: "50%",
+                        textDecoration: "none",
+                        color: "inherit",
+                        cursor: "pointer",
+                        borderRadius: "8px",
+                        border: "1px solid #d1d5db",
+                        overflow: "hidden",
+                        backgroundColor: "#ffffff",
+                        boxShadow: "0 2px 8px rgba(0, 0, 0, 0.1)",
+                        transition: "all 0.3s ease",
                       }}
-                    />
-                    
-                    {/* Right Arrow Icon - appears on hover */}
-                    {isImageHovered && (
+                      onMouseEnter={(e) => {
+                        e.currentTarget.style.transform = "translateY(-4px)";
+                        e.currentTarget.style.boxShadow = "0 8px 20px rgba(0, 0, 0, 0.15)";
+                      }}
+                      onMouseLeave={(e) => {
+                        e.currentTarget.style.transform = "translateY(0)";
+                        e.currentTarget.style.boxShadow = "0 2px 8px rgba(0, 0, 0, 0.1)";
+                      }}
+                    >
+                      {/* Image Container */}
                       <div
                         style={{
-                          position: "absolute",
-                          bottom: "1rem",
-                          left: "50%",
-                          transform: "translateX(-50%)",
-                          display: "flex",
-                          alignItems: "center",
-                          justifyContent: "center",
-                          transition: "all 0.3s ease",
-                          zIndex: 10,
+                          width: "100%",
+                          height: "120px",
+                          overflow: "hidden",
+                          backgroundColor: "#ffffff",
+                          position: "relative",
                         }}
                       >
-                        <ArrowRight
+                        <img
+                          src={card.image}
+                          alt={card.title}
                           style={{
-                            width: "24px",
-                            height: "24px",
-                            color: "#000000",
-                            strokeWidth: 1.5,
+                            width: "100%",
+                            height: "100%",
+                            objectFit: "fill",
                           }}
                         />
                       </div>
-                    )}
+
+                      {/* Title and Description */}
+                      <div style={{ padding: "1rem" }}>
+                        <div
+                          style={{
+                            fontFamily: '"Noto Sans", sans-serif',
+                            fontSize: "16px",
+                            fontWeight: 600,
+                            color: "#1f1f1f",
+                            marginBottom: "0.5rem",
+                            lineHeight: "1.4",
+                          }}
+                        >
+                          {card.title}
+                        </div>
+                        <div
+                          style={{
+                            fontFamily: '"Noto Sans", sans-serif',
+                            fontSize: "13px",
+                            color: "#6b7280",
+                            lineHeight: "1.5",
+                          }}
+                        >
+                          {card.description}
+                        </div>
+                      </div>
+                    </a>
+                  ))}
+                </div>
+              )}
+
+              {/* Training - Three Column Layout */}
+              {selectedHeader === "Training" && trainingMenuItem && (
+                <div
+                  style={{
+                    display: "flex",
+                    padding: "1.25rem",
+                    fontFamily: '"Noto Sans", sans-serif',
+                    alignItems: "flex-start",
+                    height: "100%",
+                    position: "relative",
+                  }}
+                >
+                    {/* Second Column - Content Items */}
+                    <div
+                      style={{
+                        width: "45%",
+                        paddingRight: "1rem",
+                        display: "flex",
+                        flexDirection: "column",
+                        gap: "0.75rem",
+                      }}
+                    >
+                      {/* Training Content Items - Only 3 items */}
+                      <a
+                        href="https://training.mulecraft.in/courses"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        style={{
+                          display: "flex",
+                          alignItems: "flex-start",
+                          textDecoration: "none",
+                          color: "inherit",
+                          padding: "0.75rem",
+                          borderRadius: "6px",
+                          transition: "background-color 0.2s ease",
+                        }}
+                        onMouseEnter={(e) => {
+                          e.currentTarget.style.color = "#059bd1";
+                        }}
+                        onMouseLeave={(e) => {
+                          e.currentTarget.style.color = "inherit";
+                        }}
+                      >
+                        <div style={{ flex: 1 }}>
+                          <div
+                            style={{
+                              fontFamily: '"Noto Sans", sans-serif',
+                              fontSize: "14px",
+                              fontWeight: 600,
+                              marginBottom: "0.25rem",
+                            }}
+                          >
+                            MuleSoft Training
+                          </div>
+                          <div
+                            style={{
+                              fontFamily: '"Noto Sans", sans-serif',
+                              fontSize: "12px",
+                              color: "#6b7280",
+                              lineHeight: "1.5",
+                            }}
+                          >
+                            Master MuleSoft integration platform with our comprehensive courses
+                          </div>
+                        </div>
+                      </a>
+                      <a
+                        href="https://training.mulecraft.in/certifications"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        style={{
+                          display: "flex",
+                          alignItems: "flex-start",
+                          textDecoration: "none",
+                          color: "inherit",
+                          padding: "0.75rem",
+                          borderRadius: "6px",
+                          transition: "background-color 0.2s ease",
+                        }}
+                        onMouseEnter={(e) => {
+                          e.currentTarget.style.color = "#059bd1";
+                        }}
+                        onMouseLeave={(e) => {
+                          e.currentTarget.style.color = "inherit";
+                        }}
+                      >
+                        <div style={{ flex: 1 }}>
+                          <div
+                            style={{
+                              fontFamily: '"Noto Sans", sans-serif',
+                              fontSize: "14px",
+                              fontWeight: 600,
+                              marginBottom: "0.25rem",
+                            }}
+                          >
+                            Certification Programs
+                          </div>
+                          <div
+                            style={{
+                              fontFamily: '"Noto Sans", sans-serif',
+                              fontSize: "12px",
+                              color: "#6b7280",
+                              lineHeight: "1.5",
+                            }}
+                          >
+                            Get certified and validate your integration expertise
+                          </div>
+                        </div>
+                      </a>
+                      <a
+                        href="https://training.mulecraft.in/workshops"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        style={{
+                          display: "flex",
+                          alignItems: "flex-start",
+                          textDecoration: "none",
+                          color: "inherit",
+                          padding: "0.75rem",
+                          borderRadius: "6px",
+                          transition: "background-color 0.2s ease",
+                        }}
+                        onMouseEnter={(e) => {
+                          e.currentTarget.style.color = "#059bd1";
+                        }}
+                        onMouseLeave={(e) => {
+                          e.currentTarget.style.color = "inherit";
+                        }}
+                      >
+                        <div style={{ flex: 1 }}>
+                          <div
+                            style={{
+                              fontFamily: '"Noto Sans", sans-serif',
+                              fontSize: "14px",
+                              fontWeight: 600,
+                              marginBottom: "0.25rem",
+                            }}
+                          >
+                            Hands-on Workshops
+                          </div>
+                          <div
+                            style={{
+                              fontFamily: '"Noto Sans", sans-serif',
+                              fontSize: "12px",
+                              color: "#6b7280",
+                              lineHeight: "1.5",
+                            }}
+                          >
+                            Practice with real-world scenarios in guided workshops
+                          </div>
+                        </div>
+                      </a>
+                    </div>
+
+                    {/* Vertical Separator */}
+                    <div
+                      style={{
+                        position: "absolute",
+                        left: "calc(45% + 0.25rem)",
+                        top: 0,
+                        bottom: 0,
+                        width: "1px",
+                        backgroundColor: "#d1d5db",
+                      }}
+                    />
+
+                    {/* Third Column - Training Image Card */}
+                    <div
+                      style={{
+                        width: "55%",
+                        paddingLeft: "1rem",
+                        display: "flex",
+                        flexDirection: "column",
+                        alignItems: "center",
+                        justifyContent: "center",
+                      }}
+                    >
+                      <a
+                        href={trainingMenuItem.href || "#"}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        style={{
+                          display: "block",
+                          width: "90%",
+                          textDecoration: "none",
+                          color: "inherit",
+                          cursor: "pointer",
+                          borderRadius: "8px",
+                          border: "1px solid #d1d5db",
+                          overflow: "hidden",
+                          backgroundColor: "#ffffff",
+                          boxShadow: "0 2px 8px rgba(0, 0, 0, 0.1)",
+                          transition: "all 0.3s ease",
+                        }}
+                        onMouseEnter={(e) => {
+                          const img = e.currentTarget.querySelector("img") as HTMLImageElement;
+                          if (img) {
+                            img.style.transform = "scale(1.1)";
+                          }
+                          e.currentTarget.style.transform = "translateY(-4px)";
+                          e.currentTarget.style.boxShadow = "0 8px 20px rgba(0, 0, 0, 0.15)";
+                        }}
+                        onMouseLeave={(e) => {
+                          const img = e.currentTarget.querySelector("img") as HTMLImageElement;
+                          if (img) {
+                            img.style.transform = "scale(1)";
+                          }
+                          e.currentTarget.style.transform = "translateY(0)";
+                          e.currentTarget.style.boxShadow = "0 2px 8px rgba(0, 0, 0, 0.1)";
+                        }}
+                      >
+                        {/* Image Container */}
+                        <div
+                          style={{
+                            width: "100%",
+                            height: "120px",
+                            overflow: "hidden",
+                            backgroundColor: "#ffffff",
+                            position: "relative",
+                          }}
+                        >
+                          <img
+                            src={trainingImage}
+                            alt={trainingMenuItem.title}
+                            style={{
+                              width: "100%",
+                              height: "100%",
+                              objectFit: "fill",
+                              transition: "transform 0.3s ease",
+                            }}
+                          />
+                        </div>
+
+                        {/* Title and Description */}
+                        <div style={{ padding: "1rem" }}>
+                          <div
+                            style={{
+                              fontFamily: '"Noto Sans", sans-serif',
+                              fontSize: "16px",
+                              fontWeight: 600,
+                              color: "#1f1f1f",
+                              marginBottom: "0.5rem",
+                              lineHeight: "1.4",
+                            }}
+                          >
+                            {trainingMenuItem.title}
+                          </div>
+                          <div
+                            style={{
+                              fontFamily: '"Noto Sans", sans-serif',
+                              fontSize: "13px",
+                              color: "#6b7280",
+                              lineHeight: "1.5",
+                            }}
+                          >
+                            {trainingMenuItem.description}
+                          </div>
+                        </div>
+                      </a>
+                    </div>
                   </div>
                 )}
-              </div>
             </div>
           </div>
         </div>
