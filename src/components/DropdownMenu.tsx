@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { ArrowRight } from "lucide-react";
 import csi1Image from "@/assets/csi1.png";
 import csi2Image from "@/assets/csi2.png";
 import csi3Image from "@/assets/csi3.png";
@@ -11,13 +12,16 @@ import muImage from "@/assets/mu-image.webp";
 import mulesoftPartnerImage from "@/assets/mulesoft-partner.webp";
 import trainingImage from "@/assets/training.png";
 import blogImage from "@/assets/blog.jpg";
-import si1Image from "@/assets/si1.jpg";
-import si2Image from "@/assets/si2.jpg";
+import si1Image from "@/assets/si1.png";
+import si2Image from "@/assets/si2.png";
 import si3Image from "@/assets/si3.png";
-import si4Image from "@/assets/si4.webp";
+import si4Image from "@/assets/si4.png";
 import si5Image from "@/assets/si5.png";
-import si6Image from "@/assets/si6.webp";
+import si6Image from "@/assets/si6.jpg";
 import cs1Image from "@/assets/cs1.jpg";
+import cs2Image from "@/assets/cs2.jpg";
+import cs3Image from "@/assets/cs3.jpg";
+import cs4Image from "@/assets/cs4.jpg";
 
 interface DropdownItem {
   label: string;
@@ -57,10 +61,11 @@ const DropdownMenu = ({
   onMouseLeave,
 }: DropdownMenuProps) => {
   const [selectedHeader, setSelectedHeader] = useState<string | null>(null);
+  const [isImageHovered, setIsImageHovered] = useState(false);
 
-  // Initialize selected header for Solutions, Products, and Case Studies dropdown
+  // Initialize selected header for Solutions, Products, Case Studies, and Resources dropdown
   useEffect(() => {
-    if ((navItem === "Solutions" || navItem === "Products" || navItem === "Case Studies") && items.length > 0) {
+    if ((navItem === "Solutions" || navItem === "Products" || navItem === "Case Studies" || navItem === "Resources") && items.length > 0) {
       const defaultSelected = items.find((item) => item.isSelected) || items[0];
       setSelectedHeader(defaultSelected.label);
     }
@@ -74,10 +79,8 @@ const DropdownMenu = ({
       items.find((item) => item.label === selectedHeader) || items[0];
     const menuItems = selectedItem?.menuItems || [];
 
-    // Split menuItems into two columns - favor left column (second column in UI)
-    const midPoint = Math.ceil(menuItems.length / 2) + 1;
-    const leftColumnItems = menuItems.slice(0, midPoint);
-    const rightColumnItems = menuItems.slice(midPoint);
+    // Display all menuItems in the second column only (third column is image card only)
+    const leftColumnItems = menuItems;
 
     // Image mapping for each solution header - using specific tech stack/flow diagram images
     const solutionImages: { [key: string]: { image: string; title: string; description: string; href?: string } } = {
@@ -168,10 +171,10 @@ const DropdownMenu = ({
                       textAlign: "left",
                       backgroundColor:
                         selectedHeader === item.label
-                          ? "#f3f4f6"
+                          ? "#e0f2f9"
                           : "transparent",
                       color:
-                        selectedHeader === item.label ? "#2563eb" : "#1f1f1f",
+                        selectedHeader === item.label ? "#059bd1" : "#1f1f1f",
                       border: "none",
                       cursor: "pointer",
                       fontFamily: '"Noto Sans", sans-serif',
@@ -237,7 +240,7 @@ const DropdownMenu = ({
                           textDecoration: "none",
                         }}
                         onMouseEnter={(e) => {
-                          e.currentTarget.style.color = "#2563eb";
+                          e.currentTarget.style.color = "#059bd1";
                         }}
                         onMouseLeave={(e) => {
                           e.currentTarget.style.color = "#1f1f1f";
@@ -271,7 +274,7 @@ const DropdownMenu = ({
                 </div>
               </div>
 
-              {/* Right Column */}
+              {/* Right Column - Image Card Only */}
               <div className="flex-1 flex flex-col">
                 <div
                   className="flex-1 overflow-y-auto flex flex-col"
@@ -280,59 +283,7 @@ const DropdownMenu = ({
                     fontFamily: '"Noto Sans", sans-serif',
                   }}
                 >
-                  {/* For n8n, show only image card. For others, show text items + image card */}
-                  {selectedHeader !== "n8n" && (
-                    <div className="space-y-2.5 mb-3">
-                      {rightColumnItems.map((menuItem, index) => (
-                        <a
-                          key={index}
-                          href={menuItem.href || "#"}
-                          className="link-item block"
-                          style={{
-                            display: "block",
-                            padding: "0.5rem 0.75rem",
-                            color: "#1f1f1f",
-                            transition: "color .3s ease 0s",
-                            textDecoration: "none",
-                          }}
-                          onMouseEnter={(e) => {
-                            e.currentTarget.style.color = "#2563eb";
-                          }}
-                          onMouseLeave={(e) => {
-                            e.currentTarget.style.color = "#1f1f1f";
-                          }}
-                        >
-                          <div
-                            style={{
-                              fontFamily: '"Noto Sans", sans-serif',
-                              fontSize: "15px",
-                              lineHeight: "1.6",
-                              fontWeight: 500,
-                              color: "inherit",
-                              marginBottom: "0.25rem",
-                              whiteSpace: "nowrap",
-                              overflow: "hidden",
-                              textOverflow: "ellipsis",
-                            }}
-                          >
-                            {menuItem.title}
-                          </div>
-                          <div
-                            style={{
-                              fontFamily: '"Noto Sans", sans-serif',
-                              fontSize: "13px",
-                              lineHeight: "1.5",
-                              color: "#6b7280",
-                            }}
-                          >
-                            {menuItem.description}
-                          </div>
-                        </a>
-                      ))}
-                    </div>
-                  )}
-                  
-                  {/* Image Card - For n8n: centered and larger, For others: at bottom */}
+                  {/* Image Card - Centered for all headers */}
                   {selectedImageCard && (
                     <a
                       href={selectedImageCard.href || "#"}
@@ -345,8 +296,7 @@ const DropdownMenu = ({
                         borderRadius: "8px",
                         overflow: "hidden",
                         border: "1px solid #e5e7eb",
-                        marginTop: selectedHeader === "n8n" ? "0" : "auto",
-                        margin: selectedHeader === "n8n" ? "auto" : undefined,
+                        margin: "auto",
                         transition: "transform 0.2s ease, box-shadow 0.2s ease",
                       }}
                       onMouseEnter={(e) => {
@@ -370,7 +320,7 @@ const DropdownMenu = ({
                       <div
                         style={{
                           width: "100%",
-                          height: selectedHeader === "n8n" ? "200px" : "120px",
+                          height: "200px",
                           overflow: "hidden",
                           backgroundColor: "#f3f4f6",
                         }}
@@ -381,20 +331,20 @@ const DropdownMenu = ({
                           style={{
                             width: "100%",
                             height: "100%",
-                            objectFit: "cover",
+                            objectFit: (selectedHeader === "n8n" || selectedHeader === "Digibee") ? "fill" : "cover",
                             transition: "transform 0.3s ease",
                           }}
                         />
                       </div>
                       {/* Card Content */}
-                      <div style={{ padding: selectedHeader === "n8n" ? "1rem" : "0.75rem" }}>
+                      <div style={{ padding: "1rem" }}>
                         <div
                           style={{
                             fontFamily: '"Noto Sans", sans-serif',
-                            fontSize: selectedHeader === "n8n" ? "16px" : "14px",
+                            fontSize: "16px",
                             fontWeight: 600,
                             color: "#1f1f1f",
-                            marginBottom: selectedHeader === "n8n" ? "0.5rem" : "0.25rem",
+                            marginBottom: "0.5rem",
                             lineHeight: "1.4",
                           }}
                         >
@@ -403,7 +353,7 @@ const DropdownMenu = ({
                         <div
                           style={{
                             fontFamily: '"Noto Sans", sans-serif',
-                            fontSize: selectedHeader === "n8n" ? "13px" : "12px",
+                            fontSize: "13px",
                             color: "#6b7280",
                             lineHeight: "1.5",
                           }}
@@ -429,6 +379,20 @@ const DropdownMenu = ({
     const blogMenuItem = blogItem?.menuItems?.[0];
     const trainingMenuItem = trainingItem?.menuItems?.[0];
 
+    // Image mapping for resources
+    const resourceImages: { [key: string]: { image: string; href?: string } } = {
+      "Blog": {
+        image: blogImage,
+        href: blogMenuItem?.href || "#",
+      },
+      "Training": {
+        image: trainingImage,
+        href: trainingMenuItem?.href || "#",
+      },
+    };
+
+    const selectedImageCard = resourceImages[selectedHeader || "Blog"];
+
     return (
       <>
         {/* Backdrop */}
@@ -446,8 +410,8 @@ const DropdownMenu = ({
           onMouseLeave={onMouseLeave}
           style={{
             top: `${navbarHeight}px`,
-            width: "70%",
-            maxWidth: "900px",
+            width: "45%",
+            maxWidth: "500px",
             opacity: 1,
             transition: "opacity 0.2s ease-in-out, transform 0.2s ease-in-out",
             marginTop: "12px",
@@ -455,9 +419,46 @@ const DropdownMenu = ({
           }}
         >
           <div className="flex w-full" style={{ minHeight: "auto" }}>
-            {/* Blog Column */}
-            <div className="flex-1 flex flex-col relative">
-              {/* Separator */}
+            {/* Left Column - Headers */}
+            <div
+              className="flex flex-col relative"
+              style={{ width: "35%", minWidth: "140px" }}
+            >
+              <div
+                className="flex-1 overflow-y-auto flex flex-col"
+                style={{
+                  padding: "1.25rem 1.25rem",
+                  fontFamily: '"Noto Sans", sans-serif',
+                }}
+              >
+                {items.map((item) => (
+                  <button
+                    key={item.label}
+                    onMouseEnter={() => setSelectedHeader(item.label)}
+                    style={{
+                      padding: "0.75rem 1rem",
+                      textAlign: "left",
+                      backgroundColor:
+                        selectedHeader === item.label
+                          ? "#e0f2f9"
+                          : "transparent",
+                      color:
+                        selectedHeader === item.label ? "#059bd1" : "#1f1f1f",
+                      border: "none",
+                      cursor: "pointer",
+                      fontFamily: '"Noto Sans", sans-serif',
+                      fontSize: "15px",
+                      fontWeight: selectedHeader === item.label ? 600 : 500,
+                      transition: "all 0.2s ease",
+                      borderRadius: "6px",
+                      marginBottom: "0.25rem",
+                    }}
+                  >
+                    {item.label}
+                  </button>
+                ))}
+              </div>
+              {/* Separator line */}
               <div
                 style={{
                   position: "absolute",
@@ -469,218 +470,73 @@ const DropdownMenu = ({
                   zIndex: 10,
                 }}
               />
-              <div
-                className="flex-1 overflow-y-auto flex flex-col"
-                style={{
-                  padding: "1.5rem 1.5rem",
-                  fontFamily: '"Noto Sans", sans-serif',
-                }}
-              >
-                {/* Column Header */}
-                <div
-                  className="mb-3"
-                  style={{
-                    fontFamily: '"Noto Sans", sans-serif',
-                    fontSize: "12px",
-                    fontWeight: 600,
-                    color: "#6b7280",
-                    textTransform: "uppercase",
-                    letterSpacing: "0.8px",
-                  }}
-                >
-                  BLOG
-                </div>
-                {blogMenuItem && (
-                  <a
-                    href={blogMenuItem.href || "#"}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    style={{
-                      display: "block",
-                      textDecoration: "none",
-                      color: "inherit",
-                      cursor: "pointer",
-                      borderRadius: "10px",
-                      overflow: "hidden",
-                      border: "1px solid #e5e7eb",
-                      transition: "transform 0.2s ease, box-shadow 0.2s ease",
-                    }}
-                    onMouseEnter={(e) => {
-                      e.currentTarget.style.transform = "translateY(-2px)";
-                      e.currentTarget.style.boxShadow = "0 8px 20px rgba(0, 0, 0, 0.08)";
-                      const img = e.currentTarget.querySelector("img");
-                      if (img) {
-                        (img as HTMLElement).style.transform = "scale(1.1)";
-                      }
-                    }}
-                    onMouseLeave={(e) => {
-                      e.currentTarget.style.transform = "translateY(0)";
-                      e.currentTarget.style.boxShadow = "none";
-                      const img = e.currentTarget.querySelector("img");
-                      if (img) {
-                        (img as HTMLElement).style.transform = "scale(1)";
-                      }
-                    }}
-                  >
-                    {/* Image Container */}
-                    <div
-                      style={{
-                        width: "100%",
-                        height: "160px",
-                        overflow: "hidden",
-                        backgroundColor: "#f3f4f6",
-                      }}
-                    >
-                      <img
-                        src={blogImage}
-                        alt={blogMenuItem.title}
-                        style={{
-                          width: "100%",
-                          height: "100%",
-                          objectFit: "cover",
-                          transition: "transform 0.3s ease",
-                        }}
-                      />
-                    </div>
-                    {/* Content */}
-                    <div style={{ padding: "1rem" }}>
-                      <div
-                        style={{
-                          fontFamily: '"Noto Sans", sans-serif',
-                          fontSize: "15px",
-                          lineHeight: "1.4",
-                          color: "#1f1f1f",
-                          fontWeight: 600,
-                          marginBottom: "0.5rem",
-                        }}
-                      >
-                        {blogMenuItem.title}
-                      </div>
-                      <div
-                        style={{
-                          fontFamily: '"Noto Sans", sans-serif',
-                          fontSize: "12px",
-                          lineHeight: "1.5",
-                          color: "#6b7280",
-                          display: "-webkit-box",
-                          WebkitLineClamp: 3,
-                          WebkitBoxOrient: "vertical",
-                          overflow: "hidden",
-                        }}
-                      >
-                        {blogMenuItem.description}
-                      </div>
-                    </div>
-                  </a>
-                )}
-              </div>
             </div>
 
-            {/* Training Column */}
-            <div className="flex-1 flex flex-col relative">
+            {/* Right Column - Image Only */}
+            <div className="flex-1 flex flex-col">
               <div
                 className="flex-1 overflow-y-auto flex flex-col"
                 style={{
-                  padding: "1.5rem 1.5rem",
+                  padding: "1.25rem 1.25rem",
                   fontFamily: '"Noto Sans", sans-serif',
                 }}
               >
-                {/* Column Header */}
-                <div
-                  className="mb-3"
-                  style={{
-                    fontFamily: '"Noto Sans", sans-serif',
-                    fontSize: "12px",
-                    fontWeight: 600,
-                    color: "#6b7280",
-                    textTransform: "uppercase",
-                    letterSpacing: "0.8px",
-                  }}
-                >
-                  TRAINING
-                </div>
-                {trainingMenuItem && (
-                  <a
-                    href={trainingMenuItem.href || "#"}
-                    target="_blank"
-                    rel="noopener noreferrer"
+                {/* Image Display */}
+                {selectedImageCard && (
+                  <div
                     style={{
-                      display: "block",
-                      textDecoration: "none",
-                      color: "inherit",
-                      cursor: "pointer",
-                      borderRadius: "10px",
+                      position: "relative",
+                      display: "flex",
+                      alignItems: "center",
+                      justifyContent: "center",
                       overflow: "hidden",
-                      border: "1px solid #e5e7eb",
-                      transition: "transform 0.2s ease, box-shadow 0.2s ease",
+                      backgroundColor: "#ffffff",
+                      height: "100%",
+                      cursor: "pointer",
                     }}
-                    onMouseEnter={(e) => {
-                      e.currentTarget.style.transform = "translateY(-2px)";
-                      e.currentTarget.style.boxShadow = "0 8px 20px rgba(0, 0, 0, 0.08)";
-                      const img = e.currentTarget.querySelector("img");
-                      if (img) {
-                        (img as HTMLElement).style.transform = "scale(1.1)";
-                      }
-                    }}
-                    onMouseLeave={(e) => {
-                      e.currentTarget.style.transform = "translateY(0)";
-                      e.currentTarget.style.boxShadow = "none";
-                      const img = e.currentTarget.querySelector("img");
-                      if (img) {
-                        (img as HTMLElement).style.transform = "scale(1)";
-                      }
-                    }}
+                    onMouseEnter={() => setIsImageHovered(true)}
+                    onMouseLeave={() => setIsImageHovered(false)}
+                    onClick={() => window.open(selectedImageCard.href || "#", "_blank")}
                   >
-                    {/* Image Container */}
-                    <div
+                    {/* Image with reduced blur effect on hover */}
+                    <img
+                      src={selectedImageCard.image}
+                      alt="Resource"
                       style={{
                         width: "100%",
-                        height: "160px",
-                        overflow: "hidden",
-                        backgroundColor: "#f3f4f6",
+                        height: "100%",
+                        objectFit: "fill",
+                        filter: isImageHovered ? "blur(2px)" : "none",
+                        transition: "filter 0.3s ease",
                       }}
-                    >
-                      <img
-                        src={trainingImage}
-                        alt={trainingMenuItem.title}
-                        style={{
-                          width: "100%",
-                          height: "100%",
-                          objectFit: "cover",
-                          transition: "transform 0.3s ease",
-                        }}
-                      />
-                    </div>
-                    {/* Content */}
-                    <div style={{ padding: "1rem" }}>
+                    />
+                    
+                    {/* Right Arrow Icon - appears on hover */}
+                    {isImageHovered && (
                       <div
                         style={{
-                          fontFamily: '"Noto Sans", sans-serif',
-                          fontSize: "15px",
-                          lineHeight: "1.4",
-                          color: "#1f1f1f",
-                          fontWeight: 600,
-                          marginBottom: "0.5rem",
+                          position: "absolute",
+                          bottom: "1rem",
+                          left: "50%",
+                          transform: "translateX(-50%)",
+                          display: "flex",
+                          alignItems: "center",
+                          justifyContent: "center",
+                          transition: "all 0.3s ease",
+                          zIndex: 10,
                         }}
                       >
-                        {trainingMenuItem.title}
+                        <ArrowRight
+                          style={{
+                            width: "24px",
+                            height: "24px",
+                            color: "#000000",
+                            strokeWidth: 1.5,
+                          }}
+                        />
                       </div>
-                      <div
-                        style={{
-                          fontFamily: '"Noto Sans", sans-serif',
-                          fontSize: "12px",
-                          lineHeight: "1.5",
-                          color: "#6b7280",
-                          display: "-webkit-box",
-                          WebkitLineClamp: 3,
-                          WebkitBoxOrient: "vertical",
-                          overflow: "hidden",
-                        }}
-                      >
-                        {trainingMenuItem.description}
-                      </div>
-                    </div>
-                  </a>
+                    )}
+                  </div>
                 )}
               </div>
             </div>
@@ -731,8 +587,8 @@ const DropdownMenu = ({
           onMouseLeave={onMouseLeave}
           style={{
             top: `${navbarHeight}px`,
-            width: "62%",
-            maxWidth: "800px",
+            width: "56%",
+            maxWidth: "720px",
             opacity: 1,
             transition: "opacity 0.2s ease-in-out, transform 0.2s ease-in-out",
             marginTop: "12px",
@@ -770,7 +626,7 @@ const DropdownMenu = ({
                     e.currentTarget.style.transform = "translateY(-4px)";
                     e.currentTarget.style.boxShadow =
                       "0 12px 24px rgba(0, 0, 0, 0.12)";
-                    e.currentTarget.style.borderColor = "#4B4FE2";
+                    e.currentTarget.style.borderColor = "#059bd1";
                     const img = e.currentTarget.querySelector("img");
                     if (img) {
                       (img as HTMLElement).style.transform = "scale(1.15)";
@@ -876,22 +732,22 @@ const DropdownMenu = ({
       items.find((item) => item.label === selectedHeader) || items[0];
     const menuItems = selectedItem?.menuItems || [];
 
-    // Image mapping for each case study category - using cs1.jpg for all categories
+    // Image mapping for each case study category
     const caseStudyImages: { [key: string]: { image: string; href?: string } } = {
       "HR Management": {
         image: cs1Image,
         href: "#",
       },
       "Healthcare Solutions": {
-        image: cs1Image,
+        image: cs2Image,
         href: "#",
       },
       "Digital Transformation": {
-        image: cs1Image,
+        image: cs3Image,
         href: "#",
       },
       "Automation & Platforms": {
-        image: cs1Image,
+        image: cs4Image,
         href: "#",
       },
     };
@@ -946,9 +802,9 @@ const DropdownMenu = ({
                       fontFamily: '"Noto Sans", sans-serif',
                       fontSize: "15px",
                       fontWeight: 500,
-                      color: selectedHeader === item.label ? "#2563eb" : "#1f1f1f",
+                      color: selectedHeader === item.label ? "#059bd1" : "#1f1f1f",
                       backgroundColor:
-                        selectedHeader === item.label ? "#eff6ff" : "transparent",
+                        selectedHeader === item.label ? "#e0f2f9" : "transparent",
                       border: "none",
                       borderRadius: "6px",
                       cursor: "pointer",
@@ -999,12 +855,10 @@ const DropdownMenu = ({
                       borderRadius: "6px",
                     }}
                     onMouseEnter={(e) => {
-                      e.currentTarget.style.color = "#2563eb";
-                      e.currentTarget.style.backgroundColor = "#f9fafb";
+                      e.currentTarget.style.color = "#059bd1";
                     }}
                     onMouseLeave={(e) => {
                       e.currentTarget.style.color = "#1f1f1f";
-                      e.currentTarget.style.backgroundColor = "transparent";
                     }}
                   >
                     {/* Content */}
@@ -1072,9 +926,7 @@ const DropdownMenu = ({
                     justifyContent: "center",
                     textDecoration: "none",
                     color: "inherit",
-                    borderRadius: "8px",
                     overflow: "hidden",
-                    border: "1px solid #e5e7eb",
                     backgroundColor: "#ffffff",
                     height: "100%",
                     padding: "1rem",
@@ -1259,7 +1111,7 @@ const DropdownMenu = ({
                                 textAlign: "center",
                               }}
                               onMouseEnter={(e) => {
-                                e.currentTarget.style.color = "#2563eb";
+                                e.currentTarget.style.color = "#059bd1";
                               }}
                               onMouseLeave={(e) => {
                                 e.currentTarget.style.color = "#1f1f1f";
@@ -1308,7 +1160,7 @@ const DropdownMenu = ({
                               textAlign: "center",
                             }}
                             onMouseEnter={(e) => {
-                              e.currentTarget.style.color = "#2563eb";
+                              e.currentTarget.style.color = "#059bd1";
                             }}
                             onMouseLeave={(e) => {
                               e.currentTarget.style.color = "#1f1f1f";
@@ -1377,7 +1229,7 @@ const DropdownMenu = ({
                               textDecoration: "none",
                             }}
                             onMouseEnter={(e) => {
-                              e.currentTarget.style.color = "#2563eb";
+                              e.currentTarget.style.color = "#059bd1";
                             }}
                             onMouseLeave={(e) => {
                               e.currentTarget.style.color = "#1f1f1f";
@@ -1418,3 +1270,4 @@ const DropdownMenu = ({
 };
 
 export default DropdownMenu;
+

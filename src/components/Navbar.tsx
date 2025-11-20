@@ -203,16 +203,6 @@ const Navbar = () => {
               description: "Bespoke connectors via Mule SDK",
               icon: "code",
             },
-            {
-              title: "Unified Operations Monitoring",
-              description: "Central Ops & maintenance dashboard",
-              icon: "monitor",
-            },
-            {
-              title: "DataWeave Transformation",
-              description: "Advanced data mapping and transformation",
-              icon: "shuffle",
-            },
           ],
         },
         {
@@ -238,16 +228,6 @@ const Navbar = () => {
               title: "AutoSync & Migration Tools",
               description: "Schema-based app/data migration",
               icon: "sync",
-            },
-            {
-              title: "Embedded Integration for SaaS",
-              description: "OEM white-label",
-              icon: "package",
-            },
-            {
-              title: "Real-time Data Streaming",
-              description: "Event-driven architecture integration",
-              icon: "zap",
             },
           ],
         },
@@ -275,16 +255,6 @@ const Navbar = () => {
               description: "Data analytics and reporting",
               icon: "chart",
             },
-            {
-              title: "Customer 360 Data Mapping",
-              description: "Unified customer data view",
-              icon: "users",
-            },
-            {
-              title: "Einstein AI Integration",
-              description: "AI-powered insights and predictions",
-              icon: "brain",
-            },
           ],
         },
         {
@@ -310,16 +280,6 @@ const Navbar = () => {
               title: "API Integration",
               description: "Connect any API with ease",
               icon: "link",
-            },
-            {
-              title: "Data Transformation",
-              description: "Transform and process data flows",
-              icon: "refresh-cw",
-            },
-            {
-              title: "Webhook Triggers",
-              description: "Event-based workflow execution",
-              icon: "webhook",
             },
           ],
         },
@@ -347,16 +307,6 @@ const Navbar = () => {
               description: "Auto-cleansing and enrichment",
               icon: "check-circle",
             },
-            {
-              title: "On-demand Integration Maintenance",
-              description: "Triggered syncs, error handling",
-              icon: "settings",
-            },
-            {
-              title: "Enterprise App Connectivity",
-              description: "Pre-built connectors for enterprise apps",
-              icon: "plug",
-            },
           ],
         },
         {
@@ -382,16 +332,6 @@ const Navbar = () => {
               title: "Cloud/Hybrid Integration",
               description: "Deploy to AWS, Azure, on-premises",
               icon: "cloud",
-            },
-            {
-              title: "Managed Integration Services",
-              description: "End-to-end implementation and support",
-              icon: "headphones",
-            },
-            {
-              title: "Low-Code Integration Platform",
-              description: "Build integrations with minimal coding",
-              icon: "code-2",
             },
           ],
         },
@@ -482,11 +422,11 @@ const Navbar = () => {
           isSelected: true,
           menuItems: [
             {
-              title: "Corvano Resource Mgmt",
+              title: "Resource Management",
               description: "Employee record and performance analysis platform",
             },
             {
-              title: "Zive HR Management",
+              title: "HR Management",
               description: "Automated HR workflows and employee engagement",
             },
             {
@@ -919,7 +859,7 @@ const Navbar = () => {
                   style={{
                     width: "40px",
                     height: "20px",
-                    backgroundColor: selectedTheme === "Dark" ? "#4B4FE2" : "#e5e7eb",
+                    backgroundColor: selectedTheme === "Dark" ? "#059bd1" : "#e5e7eb",
                     borderRadius: "10px",
                     position: "relative",
                     transition: "background-color 0.3s ease",
@@ -978,20 +918,20 @@ const Navbar = () => {
               className="transition-colors duration-200"
               style={{
                 backgroundColor: "#ffffff",
-                color: "#4B4FE2",
-                border: "1px solid #4B4FE2",
+                color: "#059bd1",
+                border: "1px solid #059bd1",
                 padding: "0.675rem 1rem",
                 fontSize: "0.875rem",
                 height: "auto",
                 transition: "all 0.2s ease",
               }}
               onMouseEnter={(e) => {
-                e.currentTarget.style.backgroundColor = "#4B4FE2";
+                e.currentTarget.style.backgroundColor = "#059bd1";
                 e.currentTarget.style.color = "#ffffff";
               }}
               onMouseLeave={(e) => {
                 e.currentTarget.style.backgroundColor = "#ffffff";
-                e.currentTarget.style.color = "#4B4FE2";
+                e.currentTarget.style.color = "#059bd1";
               }}
             >
               Community
@@ -1002,21 +942,21 @@ const Navbar = () => {
               variant="default"
               className="transition-colors duration-200"
               style={{
-                backgroundColor: "#4B4FE2",
+                backgroundColor: "#059bd1",
                 color: "#ffffff",
-                border: "1px solid #4B4FE2",
+                border: "1px solid #059bd1",
                 padding: "0.675rem 1rem",
                 fontSize: "0.875rem",
                 height: "auto",
                 transition: "all 0.2s ease",
               }}
               onMouseEnter={(e) => {
-                e.currentTarget.style.backgroundColor = "#3a3eb5";
-                e.currentTarget.style.borderColor = "#3a3eb5";
+                e.currentTarget.style.backgroundColor = "#047ba8";
+                e.currentTarget.style.borderColor = "#047ba8";
               }}
               onMouseLeave={(e) => {
-                e.currentTarget.style.backgroundColor = "#4B4FE2";
-                e.currentTarget.style.borderColor = "#4B4FE2";
+                e.currentTarget.style.backgroundColor = "#059bd1";
+                e.currentTarget.style.borderColor = "#059bd1";
               }}
             >
               Schedule demo
