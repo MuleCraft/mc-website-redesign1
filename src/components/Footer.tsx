@@ -120,7 +120,7 @@ const Footer = () => {
         className="w-full text-white"
         style={{ backgroundColor: "rgb(7, 43, 85)" }}
       >
-        <div className="w-full max-w-9xl mx-auto pl-6 lg:pl-12 xl:pl-12 pr-6 md:pr-12 lg:pr-12 xl:pr-12 pt-[5rem] pb-4">
+        <div className="w-full max-w-[1344px] mx-auto  pt-[5rem] pb-4 ">
           {/* Top Section */}
           <div className="flex flex-col md:flex-row justify-between items-start mb-6 gap-8">
             {/* Logo and Tagline */}

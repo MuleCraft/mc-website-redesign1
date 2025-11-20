@@ -615,7 +615,7 @@ const Navbar = () => {
       className="w-full fixed top-0 z-50 border-b border-gray-200 overflow-visible"
       style={{ backgroundColor: "#fff" }}
     >
-      <nav className="w-full max-w-9xl mx-auto pl-6 lg:pl-6 xl:pl-12 pr-6 lg:pr-6 xl:pr-12 py-2 flex items-center justify-between min-h-[80px] overflow-visible">
+      <nav className="w-full max-w-[1344px] mx-auto py-2 flex items-center justify-between min-h-[80px] overflow-visible">
         {/* Logo - Left side - Always visible */}
         <div className="flex items-center">
           <div
@@ -895,24 +895,27 @@ const Navbar = () => {
                 }`}
                 aria-label="Theme"
               >
-                <img 
-                  src={themingIcon} 
-                  alt="Theme" 
+                <img
+                  src={themingIcon}
+                  alt="Theme"
                   className="w-7 h-6"
-                  style={{ 
+                  style={{
                     objectFit: "contain",
-                    filter: "grayscale(100%) brightness(0.3)"
+                    filter: "grayscale(100%) brightness(0.3)",
                   }}
                 />
               </button>
               {!isThemeOpen && (
-                <div className="absolute bottom-full left-1/2 -translate-x-1/2 mb-0.5 opacity-0 group-hover:opacity-100 transition-opacity duration-200 pointer-events-none z-50" style={{ marginBottom: '2px' }}>
+                <div
+                  className="absolute bottom-full left-1/2 -translate-x-1/2 mb-0.5 opacity-0 group-hover:opacity-100 transition-opacity duration-200 pointer-events-none z-50"
+                  style={{ marginBottom: "2px" }}
+                >
                   <div
                     className="bg-black text-white px-1.5 py-0.5 rounded whitespace-nowrap relative"
                     style={{
                       fontFamily: '"Noto Sans", sans-serif',
-                      fontSize: '10px',
-                      lineHeight: '1.2',
+                      fontSize: "10px",
+                      lineHeight: "1.2",
                     }}
                   >
                     Theme
@@ -921,9 +924,9 @@ const Navbar = () => {
                       style={{
                         width: 0,
                         height: 0,
-                        borderLeft: '3px solid transparent',
-                        borderRight: '3px solid transparent',
-                        borderTop: '3px solid #000000',
+                        borderLeft: "3px solid transparent",
+                        borderRight: "3px solid transparent",
+                        borderTop: "3px solid #000000",
                       }}
                     />
                   </div>
@@ -946,7 +949,8 @@ const Navbar = () => {
                         }`}
                         style={{
                           marginTop: index > 0 ? "0.25rem" : "0",
-                          marginBottom: index < themes.length - 1 ? "0.25rem" : "0",
+                          marginBottom:
+                            index < themes.length - 1 ? "0.25rem" : "0",
                         }}
                       >
                         <IconComponent className="w-4 h-4 text-gray-800" />
