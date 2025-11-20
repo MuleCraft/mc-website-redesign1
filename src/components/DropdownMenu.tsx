@@ -4,9 +4,11 @@ import csi2Image from "@/assets/csi2.png";
 import csi3Image from "@/assets/csi3.png";
 import csi4Image from "@/assets/csi4.png";
 import csi6Image from "@/assets/csi6.png";
+import csi7Image from "@/assets/csi7.png";
 import csi8Image from "@/assets/csi8.png";
+import csi9Image from "@/assets/csi9.png";
 import muImage from "@/assets/mu-image.webp";
-import MuleSoftPartnerImage from "@/assets/mulesoft-partner.webp";
+import mulesoftPartnerImage from "@/assets/mulesoft-partner.webp";
 import trainingImage from "@/assets/training.png";
 import blogImage from "@/assets/blog.jpg";
 import si1Image from "@/assets/si1.jpg";
@@ -15,6 +17,7 @@ import si3Image from "@/assets/si3.png";
 import si4Image from "@/assets/si4.webp";
 import si5Image from "@/assets/si5.png";
 import si6Image from "@/assets/si6.webp";
+import cs1Image from "@/assets/cs1.jpg";
 
 interface DropdownItem {
   label: string;
@@ -71,8 +74,8 @@ const DropdownMenu = ({
       items.find((item) => item.label === selectedHeader) || items[0];
     const menuItems = selectedItem?.menuItems || [];
 
-    // Split menuItems into two columns
-    const midPoint = Math.ceil(menuItems.length / 2);
+    // Split menuItems into two columns - favor left column (second column in UI)
+    const midPoint = Math.ceil(menuItems.length / 2) + 1;
     const leftColumnItems = menuItems.slice(0, midPoint);
     const rightColumnItems = menuItems.slice(midPoint);
 
@@ -277,56 +280,59 @@ const DropdownMenu = ({
                     fontFamily: '"Noto Sans", sans-serif',
                   }}
                 >
-                  <div className="space-y-2.5 mb-3">
-                    {rightColumnItems.map((menuItem, index) => (
-                      <a
-                        key={index}
-                        href={menuItem.href || "#"}
-                        className="link-item block"
-                        style={{
-                          display: "block",
-                          padding: "0.5rem 0.75rem",
-                          color: "#1f1f1f",
-                          transition: "color .3s ease 0s",
-                          textDecoration: "none",
-                        }}
-                        onMouseEnter={(e) => {
-                          e.currentTarget.style.color = "#2563eb";
-                        }}
-                        onMouseLeave={(e) => {
-                          e.currentTarget.style.color = "#1f1f1f";
-                        }}
-                      >
-                        <div
+                  {/* For n8n, show only image card. For others, show text items + image card */}
+                  {selectedHeader !== "n8n" && (
+                    <div className="space-y-2.5 mb-3">
+                      {rightColumnItems.map((menuItem, index) => (
+                        <a
+                          key={index}
+                          href={menuItem.href || "#"}
+                          className="link-item block"
                           style={{
-                            fontFamily: '"Noto Sans", sans-serif',
-                            fontSize: "15px",
-                            lineHeight: "1.6",
-                            fontWeight: 500,
-                            color: "inherit",
-                            marginBottom: "0.25rem",
-                            whiteSpace: "nowrap",
-                            overflow: "hidden",
-                            textOverflow: "ellipsis",
+                            display: "block",
+                            padding: "0.5rem 0.75rem",
+                            color: "#1f1f1f",
+                            transition: "color .3s ease 0s",
+                            textDecoration: "none",
+                          }}
+                          onMouseEnter={(e) => {
+                            e.currentTarget.style.color = "#2563eb";
+                          }}
+                          onMouseLeave={(e) => {
+                            e.currentTarget.style.color = "#1f1f1f";
                           }}
                         >
-                          {menuItem.title}
-                        </div>
-                        <div
-                          style={{
-                            fontFamily: '"Noto Sans", sans-serif',
-                            fontSize: "13px",
-                            lineHeight: "1.5",
-                            color: "#6b7280",
-                          }}
-                        >
-                          {menuItem.description}
-                        </div>
-                      </a>
-                    ))}
-                  </div>
+                          <div
+                            style={{
+                              fontFamily: '"Noto Sans", sans-serif',
+                              fontSize: "15px",
+                              lineHeight: "1.6",
+                              fontWeight: 500,
+                              color: "inherit",
+                              marginBottom: "0.25rem",
+                              whiteSpace: "nowrap",
+                              overflow: "hidden",
+                              textOverflow: "ellipsis",
+                            }}
+                          >
+                            {menuItem.title}
+                          </div>
+                          <div
+                            style={{
+                              fontFamily: '"Noto Sans", sans-serif',
+                              fontSize: "13px",
+                              lineHeight: "1.5",
+                              color: "#6b7280",
+                            }}
+                          >
+                            {menuItem.description}
+                          </div>
+                        </a>
+                      ))}
+                    </div>
+                  )}
                   
-                  {/* Image Card at Bottom */}
+                  {/* Image Card - For n8n: centered and larger, For others: at bottom */}
                   {selectedImageCard && (
                     <a
                       href={selectedImageCard.href || "#"}
@@ -339,7 +345,8 @@ const DropdownMenu = ({
                         borderRadius: "8px",
                         overflow: "hidden",
                         border: "1px solid #e5e7eb",
-                        marginTop: "auto",
+                        marginTop: selectedHeader === "n8n" ? "0" : "auto",
+                        margin: selectedHeader === "n8n" ? "auto" : undefined,
                         transition: "transform 0.2s ease, box-shadow 0.2s ease",
                       }}
                       onMouseEnter={(e) => {
@@ -363,7 +370,7 @@ const DropdownMenu = ({
                       <div
                         style={{
                           width: "100%",
-                          height: "120px",
+                          height: selectedHeader === "n8n" ? "200px" : "120px",
                           overflow: "hidden",
                           backgroundColor: "#f3f4f6",
                         }}
@@ -380,15 +387,15 @@ const DropdownMenu = ({
                         />
                       </div>
                       {/* Card Content */}
-                      <div style={{ padding: "0.75rem" }}>
+                      <div style={{ padding: selectedHeader === "n8n" ? "1rem" : "0.75rem" }}>
                         <div
                           style={{
                             fontFamily: '"Noto Sans", sans-serif',
-                            fontSize: "14px",
+                            fontSize: selectedHeader === "n8n" ? "16px" : "14px",
                             fontWeight: 600,
                             color: "#1f1f1f",
-                            marginBottom: "0.25rem",
-                            lineHeight: "1.3",
+                            marginBottom: selectedHeader === "n8n" ? "0.5rem" : "0.25rem",
+                            lineHeight: "1.4",
                           }}
                         >
                           {selectedImageCard.title}
@@ -396,9 +403,9 @@ const DropdownMenu = ({
                         <div
                           style={{
                             fontFamily: '"Noto Sans", sans-serif',
-                            fontSize: "12px",
+                            fontSize: selectedHeader === "n8n" ? "13px" : "12px",
                             color: "#6b7280",
-                            lineHeight: "1.4",
+                            lineHeight: "1.5",
                           }}
                         >
                           {selectedImageCard.description}
@@ -683,7 +690,7 @@ const DropdownMenu = ({
     );
   }
 
-  // Special layout for Products dropdown with sidebar and card grid
+  // Special layout for Products dropdown - modern grid without sidebar
   if (navItem === "Products") {
     const imageMap: { [key: string]: string } = {
       "csi1.png": csi1Image,
@@ -691,15 +698,21 @@ const DropdownMenu = ({
       "csi3.png": csi3Image,
       "csi4.png": csi4Image,
       "csi6.png": csi6Image,
+      "csi7.png": csi7Image,
       "csi8.png": csi8Image,
+      "csi9.png": csi9Image,
       "mu-image.webp": muImage,
-      "MuleSoft-partner.webp": MuleSoftPartnerImage,
+      "MuleSoft-partner.webp": mulesoftPartnerImage,
       "training.png": trainingImage,
     };
 
-    const selectedItem =
-      items.find((item) => item.label === selectedHeader) || items[0];
-    const products = selectedItem?.menuItems || [];
+    // Collect all products from all categories
+    const allProducts: MenuGridItem[] = [];
+    items.forEach((category) => {
+      if (category.menuItems) {
+        allProducts.push(...category.menuItems);
+      }
+    });
 
     return (
       <>
@@ -718,171 +731,138 @@ const DropdownMenu = ({
           onMouseLeave={onMouseLeave}
           style={{
             top: `${navbarHeight}px`,
-            width: "70%",
-            maxWidth: "900px",
+            width: "62%",
+            maxWidth: "800px",
             opacity: 1,
             transition: "opacity 0.2s ease-in-out, transform 0.2s ease-in-out",
             marginTop: "12px",
             overflow: "hidden",
           }}
         >
-          <div className="flex w-full" style={{ minHeight: "auto" }}>
-            {/* First Column - All Category Headers */}
+          <div style={{ padding: "1.25rem 1.5rem" }}>
+            {/* Product Cards Grid - 3 columns */}
             <div
-              className="flex flex-col relative"
-              style={{ width: "33.33%", minWidth: "200px" }}
-            >
-              <div
-                className="flex-1 overflow-y-auto flex flex-col"
-                style={{
-                  padding: "1.25rem 1.25rem",
-                  fontFamily: '"Noto Sans", sans-serif',
-                }}
-              >
-                {items.map((item, index) => (
-                  <button
-                    key={index}
-                    onMouseEnter={() => setSelectedHeader(item.label)}
-                    style={{
-                      padding: "0.75rem 1rem",
-                      textAlign: "left",
-                      fontFamily: '"Noto Sans", sans-serif',
-                      fontSize: "15px",
-                      fontWeight: 500,
-                      color: selectedHeader === item.label ? "#2563eb" : "#1f1f1f",
-                      backgroundColor:
-                        selectedHeader === item.label ? "#eff6ff" : "transparent",
-                      border: "none",
-                      borderRadius: "6px",
-                      cursor: "pointer",
-                      transition: "all 0.2s ease",
-                      marginBottom: "0.5rem",
-                    }}
-                  >
-                    {item.label}
-                  </button>
-                ))}
-              </div>
-              {/* Separator line */}
-              <div
-                style={{
-                  position: "absolute",
-                  right: 0,
-                  top: 0,
-                  bottom: 0,
-                  width: "1px",
-                  backgroundColor: "#d1d5db",
-                  zIndex: 10,
-                }}
-              />
-            </div>
-
-            {/* Second and Third Columns - Product Cards in 2 columns */}
-            <div
-              className="flex-1 flex flex-col"
               style={{
-                padding: "1.5rem",
+                display: "grid",
+                gridTemplateColumns: "repeat(3, 1fr)",
+                gap: "0.875rem",
                 fontFamily: '"Noto Sans", sans-serif',
-                overflowY: "auto",
               }}
             >
-              {/* Product Images Grid - 2 columns */}
-              <div
-                style={{
-                  display: "grid",
-                  gridTemplateColumns: "repeat(2, 1fr)",
-                  gap: "1rem",
-                }}
-              >
-                {products.map((product, index) => {
-                  const cardId = `product-card-${index}`;
-                  return (
-                    <a
-                      key={index}
-                      id={cardId}
-                      href={product.href || "#"}
-                      target="_blank"
-                      rel="noopener noreferrer"
+              {allProducts.map((product, index) => (
+                <a
+                  key={index}
+                  href={product.href || "#"}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  style={{
+                    display: "block",
+                    textDecoration: "none",
+                    borderRadius: "10px",
+                    overflow: "hidden",
+                    transition: "all 0.3s cubic-bezier(0.4, 0, 0.2, 1)",
+                    border: "1px solid #e5e7eb",
+                    backgroundColor: "#fff",
+                    position: "relative",
+                    height: "125px",
+                  }}
+                  onMouseEnter={(e) => {
+                    e.currentTarget.style.transform = "translateY(-4px)";
+                    e.currentTarget.style.boxShadow =
+                      "0 12px 24px rgba(0, 0, 0, 0.12)";
+                    e.currentTarget.style.borderColor = "#4B4FE2";
+                    const img = e.currentTarget.querySelector("img");
+                    if (img) {
+                      (img as HTMLElement).style.transform = "scale(1.15)";
+                    }
+                    const overlay = e.currentTarget.querySelector(".image-overlay");
+                    if (overlay) {
+                      (overlay as HTMLElement).style.opacity = "0.3";
+                    }
+                    const title = e.currentTarget.querySelector(`.card-title-${index}`);
+                    if (title) {
+                      (title as HTMLElement).style.opacity = "1";
+                    }
+                  }}
+                  onMouseLeave={(e) => {
+                    e.currentTarget.style.transform = "translateY(0)";
+                    e.currentTarget.style.boxShadow = "none";
+                    e.currentTarget.style.borderColor = "#e5e7eb";
+                    const img = e.currentTarget.querySelector("img");
+                    if (img) {
+                      (img as HTMLElement).style.transform = "scale(1)";
+                    }
+                    const overlay = e.currentTarget.querySelector(".image-overlay");
+                    if (overlay) {
+                      (overlay as HTMLElement).style.opacity = "0";
+                    }
+                    const title = e.currentTarget.querySelector(`.card-title-${index}`);
+                    if (title) {
+                      (title as HTMLElement).style.opacity = "0";
+                    }
+                  }}
+                >
+                  {/* Product Image - Full Card */}
+                  <div
+                    style={{
+                      position: "relative",
+                      width: "100%",
+                      height: "100%",
+                      overflow: "hidden",
+                      backgroundColor: "#f9fafb",
+                    }}
+                  >
+                    <img
+                      src={imageMap[product.image || "csi1.png"] || csi1Image}
+                      alt={product.title}
                       style={{
-                        display: "flex",
-                        flexDirection: "column",
-                        textDecoration: "none",
-                        borderRadius: "8px",
-                        overflow: "hidden",
-                        transition: "transform 0.2s ease, box-shadow 0.2s ease",
-                        border: "1px solid #e5e7eb",
-                        backgroundColor: "#fff",
+                        width: "100%",
+                        height: "100%",
+                        objectFit: "fill",
+                        transition: "transform 0.4s cubic-bezier(0.4, 0, 0.2, 1)",
                       }}
-                      onMouseEnter={(e) => {
-                        e.currentTarget.style.transform = "translateY(-2px)";
-                        e.currentTarget.style.boxShadow =
-                          "0 4px 12px rgba(0, 0, 0, 0.1)";
-                        const img = e.currentTarget.querySelector("img");
-                        if (img) {
-                          (img as HTMLElement).style.transform = "scale(1.1)";
-                        }
+                    />
+                    {/* Hover overlay */}
+                    <div
+                      className="image-overlay"
+                      style={{
+                        position: "absolute",
+                        top: 0,
+                        left: 0,
+                        right: 0,
+                        bottom: 0,
+                        backgroundColor: "#000",
+                        opacity: 0,
+                        transition: "opacity 0.3s ease",
+                        pointerEvents: "none",
                       }}
-                      onMouseLeave={(e) => {
-                        e.currentTarget.style.transform = "translateY(0)";
-                        e.currentTarget.style.boxShadow = "none";
-                        const img = e.currentTarget.querySelector("img");
-                        if (img) {
-                          (img as HTMLElement).style.transform = "scale(1)";
-                        }
+                    />
+                    {/* Title overlay - appears on hover */}
+                    <div
+                      className={`card-title-${index}`}
+                      style={{
+                        position: "absolute",
+                        top: "50%",
+                        left: "50%",
+                        transform: "translate(-50%, -50%)",
+                        color: "#fff",
+                        fontFamily: '"Noto Sans", sans-serif',
+                        fontSize: "14px",
+                        fontWeight: 500,
+                        textAlign: "center",
+                        opacity: 0,
+                        transition: "opacity 0.3s ease",
+                        pointerEvents: "none",
+                        zIndex: 10,
+                        padding: "0 0.75rem",
+                        lineHeight: "1.4",
                       }}
                     >
-                      {/* Product Image */}
-                      <div
-                        style={{
-                          width: "100%",
-                          height: "120px",
-                          overflow: "hidden",
-                          backgroundColor: "#f3f4f6",
-                          display: "flex",
-                          alignItems: "center",
-                          justifyContent: "center",
-                        }}
-                      >
-                        <img
-                          src={imageMap[product.image || "csi1.png"] || csi1Image}
-                          alt={product.title}
-                          style={{
-                            width: "100%",
-                            height: "100%",
-                            objectFit: "cover",
-                            transition: "transform 0.3s ease",
-                          }}
-                        />
-                      </div>
-                      {/* Product Info */}
-                      <div style={{ padding: "0.75rem", flex: 1 }}>
-                        <div
-                          style={{
-                            fontFamily: '"Noto Sans", sans-serif',
-                            fontSize: "13px",
-                            fontWeight: 600,
-                            color: "#1f1f1f",
-                            marginBottom: "0.35rem",
-                            lineHeight: "1.3",
-                          }}
-                        >
-                          {product.title}
-                        </div>
-                        <div
-                          style={{
-                            fontFamily: '"Noto Sans", sans-serif',
-                            fontSize: "11px",
-                            color: "#6b7280",
-                            lineHeight: "1.4",
-                          }}
-                        >
-                          {product.description}
-                        </div>
-                      </div>
-                    </a>
-                  );
-                })}
-              </div>
+                      {product.title}
+                    </div>
+                  </div>
+                </a>
+              ))}
             </div>
           </div>
         </div>
@@ -895,6 +875,28 @@ const DropdownMenu = ({
     const selectedItem =
       items.find((item) => item.label === selectedHeader) || items[0];
     const menuItems = selectedItem?.menuItems || [];
+
+    // Image mapping for each case study category - using cs1.jpg for all categories
+    const caseStudyImages: { [key: string]: { image: string; href?: string } } = {
+      "HR Management": {
+        image: cs1Image,
+        href: "#",
+      },
+      "Healthcare Solutions": {
+        image: cs1Image,
+        href: "#",
+      },
+      "Digital Transformation": {
+        image: cs1Image,
+        href: "#",
+      },
+      "Automation & Platforms": {
+        image: cs1Image,
+        href: "#",
+      },
+    };
+
+    const selectedImageCard = caseStudyImages[selectedHeader || "HR Management"];
 
     return (
       <>
@@ -925,7 +927,7 @@ const DropdownMenu = ({
             {/* Left Sidebar - Category Headers */}
             <div
               className="flex flex-col relative"
-              style={{ width: "30%", minWidth: "200px" }}
+              style={{ width: "25%", minWidth: "180px" }}
             >
               <div
                 className="flex-1 overflow-y-auto flex flex-col"
@@ -972,10 +974,11 @@ const DropdownMenu = ({
               />
             </div>
 
-            {/* Right Content - Case Study Items */}
+            {/* Middle Column - Case Study Items */}
             <div
-              className="flex-1 flex flex-col"
+              className="flex flex-col relative"
               style={{
+                width: "40%",
                 padding: "1.25rem 1.25rem",
                 fontFamily: '"Noto Sans", sans-serif',
                 overflowY: "auto",
@@ -1034,6 +1037,61 @@ const DropdownMenu = ({
                   </a>
                 ))}
               </div>
+              {/* Separator line */}
+              <div
+                style={{
+                  position: "absolute",
+                  right: 0,
+                  top: 0,
+                  bottom: 0,
+                  width: "1px",
+                  backgroundColor: "#d1d5db",
+                  zIndex: 10,
+                }}
+              />
+            </div>
+
+            {/* Right Column - Image Card */}
+            <div
+              className="flex flex-col"
+              style={{
+                width: "35%",
+                padding: "1.25rem 1.25rem",
+                fontFamily: '"Noto Sans", sans-serif',
+                overflowY: "auto",
+              }}
+            >
+              {selectedImageCard && (
+                <a
+                  href={selectedImageCard.href || "#"}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  style={{
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "center",
+                    textDecoration: "none",
+                    color: "inherit",
+                    borderRadius: "8px",
+                    overflow: "hidden",
+                    border: "1px solid #e5e7eb",
+                    backgroundColor: "#ffffff",
+                    height: "100%",
+                    padding: "1rem",
+                  }}
+                >
+                  {/* Image Only - No Title/Description */}
+                  <img
+                    src={selectedImageCard.image}
+                    alt="Case Study"
+                    style={{
+                      width: "100%",
+                      height: "100%",
+                      objectFit: "contain",
+                    }}
+                  />
+                </a>
+              )}
             </div>
           </div>
         </div>

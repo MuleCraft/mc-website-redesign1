@@ -1,22 +1,19 @@
 import { useState, useRef, useEffect } from "react";
-import { Search, Globe, ChevronDown, Monitor, Sun, Moon } from "lucide-react";
+import { Search, Globe, ChevronDown } from "lucide-react";
 import { Button } from "./ui/button";
 import mulecraftLogo from "../assets/mulecraftlogo.png";
-import themingIcon from "../assets/theming.png";
 import DropdownMenu from "./DropdownMenu";
 
 const Navbar = () => {
   const [openDropdown, setOpenDropdown] = useState<string | null>(null);
   const [isSearchOpen, setIsSearchOpen] = useState(false);
   const [isLanguageOpen, setIsLanguageOpen] = useState(false);
-  const [isThemeOpen, setIsThemeOpen] = useState(false);
   const [selectedLanguage, setSelectedLanguage] = useState("English");
-  const [selectedTheme, setSelectedTheme] = useState("System");
+  const [selectedTheme, setSelectedTheme] = useState("Light");
   const navItemRefs = useRef<{ [key: string]: HTMLAnchorElement | null }>({});
   const navbarRef = useRef<HTMLElement | null>(null);
   const searchInputRef = useRef<HTMLInputElement | null>(null);
   const languageButtonRef = useRef<HTMLButtonElement | null>(null);
-  const themeButtonRef = useRef<HTMLButtonElement | null>(null);
 
   const navItems = [
     { label: "Products", hasChevron: true, href: "#" },
@@ -42,10 +39,7 @@ const Navbar = () => {
 
     setOpenDropdown(label);
 
-    // Close theme and language dropdowns when opening main dropdowns
-    if (isThemeOpen) {
-      setIsThemeOpen(false);
-    }
+    // Close language dropdown when opening main dropdowns
     if (isLanguageOpen) {
       setIsLanguageOpen(false);
     }
@@ -71,10 +65,7 @@ const Navbar = () => {
       dropdownTimeoutRef.current = null;
     }
 
-    // Close theme and language dropdowns when opening main dropdowns
-    if (isThemeOpen) {
-      setIsThemeOpen(false);
-    }
+    // Close language dropdown when opening main dropdowns
     if (isLanguageOpen) {
       setIsLanguageOpen(false);
     }
@@ -121,14 +112,13 @@ const Navbar = () => {
     };
   }, [openDropdown]);
 
-  // Focus search input when search opens and close language/theme dropdowns
+  // Focus search input when search opens and close language dropdown
   useEffect(() => {
     if (isSearchOpen) {
       if (searchInputRef.current) {
         searchInputRef.current.focus();
       }
       setIsLanguageOpen(false);
-      setIsThemeOpen(false);
     }
   }, [isSearchOpen]);
 
@@ -218,6 +208,11 @@ const Navbar = () => {
               description: "Central Ops & maintenance dashboard",
               icon: "monitor",
             },
+            {
+              title: "DataWeave Transformation",
+              description: "Advanced data mapping and transformation",
+              icon: "shuffle",
+            },
           ],
         },
         {
@@ -248,6 +243,11 @@ const Navbar = () => {
               title: "Embedded Integration for SaaS",
               description: "OEM white-label",
               icon: "package",
+            },
+            {
+              title: "Real-time Data Streaming",
+              description: "Event-driven architecture integration",
+              icon: "zap",
             },
           ],
         },
@@ -280,6 +280,11 @@ const Navbar = () => {
               description: "Unified customer data view",
               icon: "users",
             },
+            {
+              title: "Einstein AI Integration",
+              description: "AI-powered insights and predictions",
+              icon: "brain",
+            },
           ],
         },
         {
@@ -310,6 +315,11 @@ const Navbar = () => {
               title: "Data Transformation",
               description: "Transform and process data flows",
               icon: "refresh-cw",
+            },
+            {
+              title: "Webhook Triggers",
+              description: "Event-based workflow execution",
+              icon: "webhook",
             },
           ],
         },
@@ -342,6 +352,11 @@ const Navbar = () => {
               description: "Triggered syncs, error handling",
               icon: "settings",
             },
+            {
+              title: "Enterprise App Connectivity",
+              description: "Pre-built connectors for enterprise apps",
+              icon: "plug",
+            },
           ],
         },
         {
@@ -372,6 +387,11 @@ const Navbar = () => {
               title: "Managed Integration Services",
               description: "End-to-end implementation and support",
               icon: "headphones",
+            },
+            {
+              title: "Low-Code Integration Platform",
+              description: "Build integrations with minimal coding",
+              icon: "code-2",
             },
           ],
         },
@@ -426,6 +446,18 @@ const Navbar = () => {
           label: "Others",
           isSelected: false,
           menuItems: [
+            {
+              title: "CloudHub 2.0 Migration",
+              description: "Migrate to CloudHub 2.0 with Confidence",
+              image: "csi7.png",
+              href: "https://mule-migration-nexus.lovable.app/",
+            },
+            {
+              title: "DataWeave Task Generator",
+              description: "AI-powered DataWeave code generation",
+              image: "csi9.png",
+              href: "https://mule-weave-wizard.lovable.app/",
+            },
             {
               title: "Goose",
               description: "Deploy, Scale, Dominate",
@@ -592,12 +624,6 @@ const Navbar = () => {
     { code: "ja", name: "日本語", flag: "🇯🇵" },
   ];
 
-  const themes = [
-    { name: "Light", icon: Sun },
-    { name: "System", icon: Monitor },
-    { name: "Dark", icon: Moon },
-  ];
-
   const handleLanguageSelect = (language: string) => {
     setSelectedLanguage(language);
     setIsLanguageOpen(false);
@@ -605,7 +631,6 @@ const Navbar = () => {
 
   const handleThemeSelect = (theme: string) => {
     setSelectedTheme(theme);
-    setIsThemeOpen(false);
     // TODO: Implement theme switching logic here
   };
 
@@ -803,9 +828,6 @@ const Navbar = () => {
                   if (openDropdown) {
                     setOpenDropdown(null);
                   }
-                  if (isThemeOpen) {
-                    setIsThemeOpen(false);
-                  }
                 }}
                 className={`px-1.5 py-0.5 rounded-full transition-colors ${
                   isLanguageOpen ? "bg-gray-100" : "hover:bg-gray-100"
@@ -877,97 +899,75 @@ const Navbar = () => {
                 </div>
               )}
             </div>
-            {/* Theme icon */}
+            {/* Theme Toggle Button */}
             <div className="relative group">
               <button
-                ref={themeButtonRef}
                 onClick={() => {
-                  setIsThemeOpen(!isThemeOpen);
-                  if (openDropdown) {
-                    setOpenDropdown(null);
-                  }
-                  if (isLanguageOpen) {
-                    setIsLanguageOpen(false);
-                  }
+                  const newTheme = selectedTheme === "Light" ? "Dark" : "Light";
+                  handleThemeSelect(newTheme);
                 }}
-                className={`px-1.5 py-0.5 rounded-full transition-colors ${
-                  isThemeOpen ? "bg-gray-100" : "hover:bg-gray-100"
-                }`}
-                aria-label="Theme"
+                className="px-1.5 py-0.5 rounded-full transition-colors hover:bg-gray-100"
+                aria-label="Toggle Theme"
+                style={{
+                  position: "relative",
+                  display: "inline-flex",
+                  alignItems: "center",
+                }}
               >
-                <img
-                  src={themingIcon}
-                  alt="Theme"
-                  className="w-7 h-6"
+                {/* Toggle Switch */}
+                <div
                   style={{
-                    objectFit: "contain",
-                    filter: "grayscale(100%) brightness(0.3)",
+                    width: "40px",
+                    height: "20px",
+                    backgroundColor: selectedTheme === "Dark" ? "#4B4FE2" : "#e5e7eb",
+                    borderRadius: "10px",
+                    position: "relative",
+                    transition: "background-color 0.3s ease",
+                    cursor: "pointer",
                   }}
-                />
-              </button>
-              {!isThemeOpen && (
-                <div
-                  className="absolute bottom-full left-1/2 -translate-x-1/2 mb-0.5 opacity-0 group-hover:opacity-100 transition-opacity duration-200 pointer-events-none z-50"
-                  style={{ marginBottom: "2px" }}
                 >
+                  {/* Toggle Circle */}
                   <div
-                    className="bg-black text-white px-1.5 py-0.5 rounded whitespace-nowrap relative"
                     style={{
-                      fontFamily: '"Noto Sans", sans-serif',
-                      fontSize: "10px",
-                      lineHeight: "1.2",
+                      width: "16px",
+                      height: "16px",
+                      backgroundColor: "#fff",
+                      borderRadius: "50%",
+                      position: "absolute",
+                      top: "2px",
+                      left: selectedTheme === "Dark" ? "22px" : "2px",
+                      transition: "left 0.3s ease",
+                      boxShadow: "0 2px 4px rgba(0, 0, 0, 0.2)",
                     }}
-                  >
-                    Theme
-                    <div
-                      className="absolute top-full left-1/2 -translate-x-1/2 -mt-px"
-                      style={{
-                        width: 0,
-                        height: 0,
-                        borderLeft: "3px solid transparent",
-                        borderRight: "3px solid transparent",
-                        borderTop: "3px solid #000000",
-                      }}
-                    />
-                  </div>
+                  />
                 </div>
-              )}
-              {isThemeOpen && (
+              </button>
+              {/* Tooltip */}
+              <div
+                className="absolute bottom-full left-1/2 -translate-x-1/2 mb-0.5 opacity-0 group-hover:opacity-100 transition-opacity duration-200 pointer-events-none z-50"
+                style={{ marginBottom: '2px' }}
+              >
                 <div
-                  data-theme-dropdown
-                  className="absolute left-0 w-40 bg-white rounded-md shadow-lg border border-gray-200 py-1 z-50"
-                  style={{ top: "calc(100% + 43px)" }}
+                  className="bg-black text-white px-1.5 py-0.5 rounded whitespace-nowrap relative"
+                  style={{
+                    fontFamily: '"Noto Sans", sans-serif',
+                    fontSize: '10px',
+                    lineHeight: '1.2',
+                  }}
                 >
-                  {themes.map((theme, index) => {
-                    const IconComponent = theme.icon;
-                    return (
-                      <button
-                        key={theme.name}
-                        onClick={() => handleThemeSelect(theme.name)}
-                        className={`w-full flex items-center gap-3 px-4 py-2 text-left hover:bg-gray-100 transition-colors ${
-                          selectedTheme === theme.name ? "bg-gray-100" : ""
-                        }`}
-                        style={{
-                          marginTop: index > 0 ? "0.25rem" : "0",
-                          marginBottom:
-                            index < themes.length - 1 ? "0.25rem" : "0",
-                        }}
-                      >
-                        <IconComponent className="w-4 h-4 text-gray-800" />
-                        <span
-                          className="text-sm"
-                          style={{
-                            fontFamily: '"Noto Sans", sans-serif',
-                            color: "rgb(31, 31, 31)",
-                          }}
-                        >
-                          {theme.name}
-                        </span>
-                      </button>
-                    );
-                  })}
+                  {selectedTheme === "Dark" ? "Switch to Light" : "Switch to Dark"}
+                  <div
+                    className="absolute top-full left-1/2 -translate-x-1/2 -mt-px"
+                    style={{
+                      width: 0,
+                      height: 0,
+                      borderLeft: '3px solid transparent',
+                      borderRight: '3px solid transparent',
+                      borderTop: '3px solid #000000',
+                    }}
+                  />
                 </div>
-              )}
+              </div>
             </div>
           </div>
 
