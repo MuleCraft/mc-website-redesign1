@@ -8,58 +8,66 @@ import whiteLogo from "@/assets/NewMulecraftWhiteLogo.png";
 // import reviewImage from "@/assets/mulesoft-partner.webp";
 import reviewImage from "@/assets/salesforce_badge.avif";
 
-
 const Footer = () => {
   const footerSections = [
     {
       title: "Why Mulecraft?",
       links: [
-        "Mule 4 Migration",
-        "B2B Integration",
-        "API Connectivity",
-        "Connector Dev",
-        "Ops Monitoring",
-        "Platform Consulting",
+        "The Mulecraft Advantage",
+        "What is Integration Excellence?",
+        "Value Beyond Automation",
+        "Mulecraft vs. Traditional IT",
+        "Seamless Product Delivery",
+        "Trusted Integration Partner",
       ],
     },
     {
       title: "Capabilities",
       links: [
-        "AI Integrations",
-        "Pipeline Control",
-        "No-Code iPaaS",
-        "Sync & Migration",
-        "SaaS Integration",
+        "Integration Architecture",
+
+        "Workflow Automation",
+
+        "Digital Solutions",
+
+        "API Craftsmanship",
+
+        "Experience Design",
+
+        "Cloud Deployments",
       ],
     },
     {
       title: "Integrations",
       links: [
-        "Live CRM Sync",
-        "3rd-Party Connect",
-        "Flow Automation",
-        "Report Integration",
-        "360 Data Mapping",
+        "Platform Connectivity",
+        "System Sync",
+        "Data Flow Design",
+        "Connector Solutions",
+        "Seamless Interfacing",
+        "Unified Data Exchange",
       ],
     },
     {
       title: "AI",
       links: [
-        "Proxy Deployment",
-        "Traffic Control",
-        "Threat Defense",
-        "Dev Portal",
-        "Analytics Engine",
+        "Intelligent Automation",
+        "Predictive Insights",
+        "Process Optimization",
+        "Data-Driven Decisions",
+        "Smart Workflows",
+        "AI-Powered Development",
       ],
     },
     {
-      title: "WORKATO",
+      title: "PRODUCTS",
       links: [
-        "Recipe Automation",
-        "ChatOps Workbot",
-        "Multi-app Sync",
-        "Data Automation",
-        "Integration Support",
+        "SnapMapper",
+        "MuleSoftLP",
+        "Goose",
+        "Cloudhib 2.0 migration",
+        "Anypoint LP",
+        "RAMLify Flow Agent",
       ],
     },
     {
@@ -96,7 +104,7 @@ const Footer = () => {
         .footer-subtitle {
           font-size: 14px !important;
           line-height: 1.3 !important;
-          margin-bottom: 24px !important;
+          margin-bottom: 15px !important;
           margin-top: 0 !important;
           padding-bottom: 0 !important;
           color: #ccc !important;
@@ -135,7 +143,7 @@ const Footer = () => {
                 />
               </div>
               <p className="text-white text-sm">
-                Trusted experts in integration and workflow automation.
+                From Integration to Innovation. Instantly.
               </p>
             </div>
 
@@ -207,6 +215,9 @@ const Footer = () => {
               </a>
               <a href="#" className="hover:text-white transition-colors">
                 Terms
+              </a>
+              <a href="#" className="hover:text-white transition-colors">
+                GDPR
               </a>
             </div>
 
