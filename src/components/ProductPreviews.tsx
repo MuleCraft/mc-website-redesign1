@@ -1,12 +1,14 @@
-// RAMLify Flow Agent Preview - Blue gradient theme (same as SnapMapper)
+import logoDark from "@/assets/logo_dark.png";
+
+// RAMLify Flow Agent Preview - Purple/Indigo theme with diagonal line pattern
 export const RAMLifyPreview = () => {
   return (
     <div
       style={{
         width: "100%",
         height: "100%",
-        background: "linear-gradient(135deg, #1e3a8a 0%, #1e40af 25%, #0e7490 50%, #0891b2 75%, #06b6d4 100%)",
-        color: "#e2e8f0",
+        background: "linear-gradient(135deg, #2d2a5e 0%, #3d3a7a 30%, #4a4688 60%, #5a5696 100%)",
+        color: "#ffffff",
         fontFamily: '"Noto Sans", sans-serif',
         position: "relative",
         overflow: "hidden",
@@ -16,65 +18,112 @@ export const RAMLifyPreview = () => {
         borderTopRightRadius: "8px",
       }}
     >
-      {/* Grid Pattern Overlay */}
+      {/* Diagonal Line Pattern Background */}
       <div
         style={{
           position: "absolute",
           inset: 0,
           backgroundImage: `
-            linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
-            linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px)
+            repeating-linear-gradient(
+              45deg,
+              transparent,
+              transparent 20px,
+              rgba(139, 92, 246, 0.04) 20px,
+              rgba(139, 92, 246, 0.04) 40px
+            ),
+            repeating-linear-gradient(
+              -45deg,
+              transparent,
+              transparent 20px,
+              rgba(99, 102, 241, 0.03) 20px,
+              rgba(99, 102, 241, 0.03) 40px
+            )
           `,
-          backgroundSize: "40px 40px",
           pointerEvents: "none",
         }}
       />
       
-      {/* Sparkle Effects */}
+      {/* Circuit-like Lines */}
+      <svg
+        style={{
+          position: "absolute",
+          inset: 0,
+          width: "100%",
+          height: "100%",
+          opacity: 0.08,
+          pointerEvents: "none",
+        }}
+      >
+        <defs>
+          <pattern id="circuitLines" x="0" y="0" width="60" height="60" patternUnits="userSpaceOnUse">
+            <path
+              d="M 0 30 L 30 30 M 30 0 L 30 30 L 30 60 M 30 30 L 60 30"
+              stroke="rgba(167, 139, 250, 0.2)"
+              strokeWidth="1"
+              fill="none"
+            />
+          </pattern>
+        </defs>
+        <rect width="100%" height="100%" fill="url(#circuitLines)" />
+      </svg>
+      
+      {/* Glowing Accent Lines */}
       <div
         style={{
           position: "absolute",
-          top: "20%",
-          right: "15%",
-          width: "8px",
-          height: "8px",
-          background: "rgba(255, 255, 255, 0.6)",
-          clipPath: "polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%)",
+          top: "15%",
+          left: 0,
+          right: 0,
+          height: "2px",
+          background: "linear-gradient(90deg, transparent 0%, rgba(167, 139, 250, 0.25) 50%, transparent 100%)",
           pointerEvents: "none",
         }}
       />
       <div
         style={{
           position: "absolute",
-          bottom: "30%",
-          left: "10%",
-          width: "6px",
-          height: "6px",
-          background: "rgba(255, 255, 255, 0.5)",
-          clipPath: "polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%)",
+          bottom: "20%",
+          left: 0,
+          right: 0,
+          height: "1px",
+          background: "linear-gradient(90deg, transparent 0%, rgba(139, 92, 246, 0.2) 50%, transparent 100%)",
+          pointerEvents: "none",
+        }}
+      />
+      
+      {/* Glowing Orbs */}
+      <div
+        style={{
+          position: "absolute",
+          top: "-30px",
+          right: "-30px",
+          width: "120px",
+          height: "120px",
+          borderRadius: "50%",
+          background: "radial-gradient(circle, rgba(167, 139, 250, 0.12) 0%, transparent 70%)",
           pointerEvents: "none",
         }}
       />
       <div
         style={{
           position: "absolute",
-          top: "60%",
-          right: "25%",
-          width: "5px",
-          height: "5px",
-          background: "rgba(255, 255, 255, 0.4)",
-          clipPath: "polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%)",
+          bottom: "-25px",
+          left: "-25px",
+          width: "100px",
+          height: "100px",
+          borderRadius: "50%",
+          background: "radial-gradient(circle, rgba(99, 102, 241, 0.1) 0%, transparent 70%)",
           pointerEvents: "none",
         }}
       />
 
-      {/* Header */}
+      {/* Header - Left Aligned */}
       <div
         style={{
-          backgroundColor: "rgba(30, 58, 138, 0.6)",
-          backdropFilter: "blur(10px)",
-          borderBottom: "1px solid rgba(255, 255, 255, 0.1)",
-          padding: "0.5rem 1rem",
+          backgroundColor: "rgba(45, 42, 94, 0.3)",
+          backdropFilter: "blur(12px)",
+          borderBottom: "1px solid rgba(167, 139, 250, 0.15)",
+          padding: "0.6rem 1rem",
           flexShrink: 0,
           position: "relative",
           zIndex: 1,
@@ -83,8 +132,8 @@ export const RAMLifyPreview = () => {
         }}
       >
         <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between" }}>
-          <div style={{ display: "flex", alignItems: "center", gap: "0.5rem" }}>
-            <h1 style={{ fontSize: "14px", fontWeight: "bold", color: "#ffffff", margin: 0 }}>
+          <div style={{ display: "flex", alignItems: "center", gap: "0.75rem" }}>
+            <h1 style={{ fontSize: "15px", fontWeight: "700", color: "#ffffff", margin: 0, letterSpacing: "0.5px" }}>
               RAMLify
             </h1>
           </div>
@@ -92,10 +141,11 @@ export const RAMLifyPreview = () => {
             <a
               href="#"
               style={{
-                fontSize: "11px",
+                fontSize: "10px",
                 fontWeight: "500",
-                color: "#93c5fd",
+                color: "#c4b5fd",
                 textDecoration: "none",
+                padding: "0.2rem 0.4rem",
               }}
             >
               Log In
@@ -103,13 +153,14 @@ export const RAMLifyPreview = () => {
             <a
               href="#"
               style={{
-                padding: "0.25rem 0.5rem",
-                fontSize: "11px",
+                padding: "0.3rem 0.7rem",
+                fontSize: "10px",
                 fontWeight: "600",
-                color: "#2563EB",
-                backgroundColor: "#ffffff",
-                borderRadius: "4px",
+                color: "#1e1b4b",
+                background: "linear-gradient(135deg, #a78bfa 0%, #8b5cf6 100%)",
+                borderRadius: "6px",
                 textDecoration: "none",
+                boxShadow: "0 2px 6px rgba(167, 139, 250, 0.3)",
               }}
             >
               Try for Free
@@ -118,57 +169,73 @@ export const RAMLifyPreview = () => {
         </div>
       </div>
 
-      {/* Hero Section */}
+      {/* Content - Left Aligned Layout */}
       <div
         style={{
-          padding: "1rem 1rem",
-          textAlign: "center",
+          padding: "1.25rem 1rem",
           flex: 1,
           display: "flex",
           flexDirection: "column",
           justifyContent: "center",
+          textAlign: "left",
+          position: "relative",
+          zIndex: 1,
         }}
       >
-        <span
+        <div
           style={{
             display: "inline-flex",
             alignItems: "center",
-            padding: "0.15rem 0.5rem",
-            marginBottom: "0.5rem",
-            fontSize: "9px",
-            fontWeight: "500",
+            padding: "0.25rem 0.6rem",
+            marginBottom: "0.75rem",
+            fontSize: "8px",
+            fontWeight: "600",
             color: "#ffffff",
-            backgroundColor: "rgba(255, 255, 255, 0.1)",
-            borderRadius: "9999px",
-            alignSelf: "center",
+            background: "linear-gradient(135deg, rgba(167, 139, 250, 0.2) 0%, rgba(139, 92, 246, 0.2) 100%)",
+            border: "1px solid rgba(167, 139, 250, 0.3)",
+            borderRadius: "12px",
+            width: "fit-content",
           }}
         >
-          ✨ AI-Powered RAML Generator
-        </span>
+          <span style={{ marginRight: "0.3rem" }}>✨</span>
+          AI-Powered RAML Generator
+        </div>
 
         <h1
           style={{
-            fontSize: "21px",
+            fontSize: "22px",
             fontWeight: "800",
             color: "#ffffff",
-            lineHeight: "1.1",
-            letterSpacing: "-0.025em",
-            margin: "0 0 0.5rem 0",
+            lineHeight: "1.15",
+            letterSpacing: "-0.03em",
+            margin: "0 0 0.75rem 0",
+            textAlign: "left",
           }}
         >
-          Design APIs, Effortlessly.
+          Design APIs,
+          <br />
+          <span
+            style={{
+              background: "linear-gradient(135deg, #c4b5fd 0%, #a78bfa 50%, #8b5cf6 100%)",
+              WebkitBackgroundClip: "text",
+              WebkitTextFillColor: "transparent",
+            }}
+          >
+            Effortlessly.
+          </span>
         </h1>
 
         <p
           style={{
-            maxWidth: "100%",
-            margin: "0 auto",
-            fontSize: "11px",
-            color: "#93c5fd",
-            lineHeight: "1.4",
+            fontSize: "10px",
+            color: "#c4b5fd",
+            lineHeight: "1.6",
+            margin: 0,
+            maxWidth: "95%",
+            textAlign: "left",
           }}
         >
-          Transform natural language into RAML specifications with AI assistance.
+          Transform natural language into RAML specifications with AI assistance. Build better APIs faster.
         </p>
       </div>
     </div>
@@ -409,66 +476,134 @@ export const GoosePreview = () => {
         </div>
       </div>
 
-      {/* Content */}
+      {/* Content - Two Column Layout */}
       <div
         style={{
           padding: "1rem",
           flex: 1,
           display: "flex",
-          flexDirection: "column",
-          justifyContent: "center",
+          flexDirection: "row",
+          gap: "1rem",
+          alignItems: "center",
         }}
       >
-        <span
+        {/* Left Column - Text Content */}
+        <div
           style={{
-            fontSize: "9px",
-            padding: "0.15rem 0.4rem",
-            backgroundColor: "rgba(255, 255, 255, 0.1)",
-            color: "#a5f3fc",
-            borderRadius: "12px",
-            fontWeight: "600",
-            display: "inline-block",
-            marginBottom: "0.5rem",
-            width: "fit-content",
+            flex: 1,
+            display: "flex",
+            flexDirection: "column",
+            justifyContent: "center",
           }}
         >
-          ● GOOSED
-        </span>
-        <h1
+          <span
+            style={{
+              fontSize: "9px",
+              padding: "0.15rem 0.4rem",
+              backgroundColor: "rgba(255, 255, 255, 0.1)",
+              color: "#a5f3fc",
+              borderRadius: "12px",
+              fontWeight: "600",
+              display: "inline-block",
+              marginBottom: "0.5rem",
+              width: "fit-content",
+            }}
+          >
+            ● GOOSED
+          </span>
+          <h1
+            style={{
+              fontSize: "22px",
+              fontWeight: "800",
+              color: "#ffffff",
+              margin: "0 0 0.25rem 0",
+              lineHeight: "1.1",
+            }}
+          >
+            Deploy, Scale<br />
+            <span style={{ color: "#a5f3fc" }}>Dominate</span>
+          </h1>
+          <p
+            style={{
+              fontSize: "10px",
+              color: "#94a3b8",
+              lineHeight: "1.3",
+              margin: 0,
+            }}
+          >
+            The ultimate DevOps platform. Zero complexity, maximum impact.
+          </p>
+        </div>
+
+        {/* Right Column - Animated Bird */}
+        <div
           style={{
-            fontSize: "22px",
-            fontWeight: "800",
-            color: "#ffffff",
-            margin: "0 0 0.25rem 0",
-            lineHeight: "1.1",
+            flex: 1,
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+            position: "relative",
+            height: "100%",
           }}
         >
-          Deploy, Scale<br />
-          <span style={{ color: "#a5f3fc" }}>Dominate</span>
-        </h1>
-        <p
-          style={{
-            fontSize: "10px",
-            color: "#94a3b8",
-            lineHeight: "1.3",
-            margin: 0,
-          }}
-        >
-          The ultimate DevOps platform. Zero complexity, maximum impact.
-        </p>
+          {/* Glow Effect */}
+          <div
+            style={{
+              position: "absolute",
+              top: "50%",
+              left: "50%",
+              transform: "translate(-50%, -50%)",
+              width: "80px",
+              height: "80px",
+              background: "radial-gradient(circle, rgba(165, 243, 252, 0.2) 0%, transparent 70%)",
+              borderRadius: "50%",
+              pointerEvents: "none",
+            }}
+          />
+          
+          {/* Animated Bird Image */}
+          <div
+            style={{
+              position: "relative",
+              zIndex: 1,
+              animation: "gooseFloat 3s ease-in-out infinite",
+            }}
+          >
+            <style>{`
+              @keyframes gooseFloat {
+                0%, 100% { 
+                  transform: translateY(0px) translateX(0px) rotate(0deg); 
+                }
+                50% { 
+                  transform: translateY(-10px) translateX(3px) rotate(1deg); 
+                }
+              }
+            `}</style>
+            <img
+              src={logoDark}
+              alt="Goose Logo"
+              style={{
+                width: "70px",
+                height: "70px",
+                filter: "drop-shadow(0 0 8px rgba(165, 243, 252, 0.3))",
+                objectFit: "contain",
+              }}
+            />
+          </div>
+        </div>
       </div>
     </div>
   );
 };
 
-// AnypointLP Preview - Black theme with purple accents
+// AnypointLP Preview - Enhanced dark theme with purple accents
 export const AnypointLPPreview = () => {
   return (
     <div
       style={{
         width: "100%",
         height: "100%",
-        backgroundColor: "#000000",
+        background: "linear-gradient(135deg, #1a1a2e 0%, #16213e 30%, #0f172a 70%, #1e1b3d 100%)",
         color: "#ffffff",
         fontFamily: '"Noto Sans", sans-serif',
         position: "relative",
@@ -479,36 +614,111 @@ export const AnypointLPPreview = () => {
         borderTopRightRadius: "8px",
       }}
     >
+      {/* Grid Pattern Overlay */}
+      <div
+        style={{
+          position: "absolute",
+          inset: 0,
+          backgroundImage: `
+            linear-gradient(rgba(139, 92, 246, 0.06) 1px, transparent 1px),
+            linear-gradient(90deg, rgba(139, 92, 246, 0.06) 1px, transparent 1px)
+          `,
+          backgroundSize: "35px 35px",
+          pointerEvents: "none",
+        }}
+      />
+      
+      {/* Sparkle Effects */}
+      <div
+        style={{
+          position: "absolute",
+          top: "20%",
+          right: "15%",
+          width: "7px",
+          height: "7px",
+          background: "rgba(167, 139, 250, 0.8)",
+          clipPath: "polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%)",
+          pointerEvents: "none",
+        }}
+      />
+      <div
+        style={{
+          position: "absolute",
+          bottom: "30%",
+          left: "12%",
+          width: "6px",
+          height: "6px",
+          background: "rgba(139, 92, 246, 0.7)",
+          clipPath: "polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%)",
+          pointerEvents: "none",
+        }}
+      />
+      <div
+        style={{
+          position: "absolute",
+          top: "55%",
+          right: "25%",
+          width: "5px",
+          height: "5px",
+          background: "rgba(99, 102, 241, 0.6)",
+          clipPath: "polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%)",
+          pointerEvents: "none",
+        }}
+      />
+      
+      {/* Glowing Orbs */}
+      <div
+        style={{
+          position: "absolute",
+          top: "-50px",
+          right: "-50px",
+          width: "160px",
+          height: "160px",
+          borderRadius: "50%",
+          background: "radial-gradient(circle, rgba(139, 92, 246, 0.18) 0%, transparent 70%)",
+          pointerEvents: "none",
+        }}
+      />
+      <div
+        style={{
+          position: "absolute",
+          bottom: "-45px",
+          left: "-45px",
+          width: "130px",
+          height: "130px",
+          borderRadius: "50%",
+          background: "radial-gradient(circle, rgba(99, 102, 241, 0.15) 0%, transparent 70%)",
+          pointerEvents: "none",
+        }}
+      />
+      
       {/* Header */}
       <div
         style={{
+          backgroundColor: "rgba(30, 27, 61, 0.5)",
+          backdropFilter: "blur(10px)",
           padding: "0.5rem 1rem",
           flexShrink: 0,
-          borderBottom: "1px solid rgba(139, 92, 246, 0.2)",
+          borderBottom: "1px solid rgba(139, 92, 246, 0.25)",
           borderTopLeftRadius: "8px",
           borderTopRightRadius: "8px",
+          position: "relative",
+          zIndex: 1,
         }}
       >
         <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between" }}>
           <div style={{ display: "flex", alignItems: "center", gap: "0.5rem" }}>
-            {/* <div
-              style={{
-                width: "20px",
-                height: "20px",
-                background: "linear-gradient(135deg, #8b5cf6 0%, #6366f1 100%)",
-                borderRadius: "4px",
-              }}
-            /> */}
             <span style={{ fontSize: "12px", fontWeight: "600", color: "#a78bfa" }}>Anypoint LP</span>
           </div>
           <span
             style={{
               fontSize: "10px",
               padding: "0.25rem 0.6rem",
-              backgroundColor: "#ffffff",
-              color: "#000000",
+              background: "linear-gradient(135deg, #ffffff 0%, #f3f4f6 100%)",
+              color: "#1a1a2e",
               borderRadius: "4px",
               fontWeight: "700",
+              boxShadow: "0 2px 4px rgba(139, 92, 246, 0.2)",
             }}
           >
             Sign up for Free
@@ -525,59 +735,70 @@ export const AnypointLPPreview = () => {
           flexDirection: "column",
           justifyContent: "center",
           textAlign: "center",
+          position: "relative",
+          zIndex: 1,
         }}
       >
         <div
           style={{
             display: "inline-block",
-            padding: "0.15rem 0.5rem",
-            backgroundColor: "#7c3aed",
+            padding: "0.2rem 0.6rem",
+            background: "linear-gradient(135deg, #7c3aed 0%, #6366f1 100%)",
             color: "#ffffff",
             borderRadius: "12px",
             fontSize: "8px",
             fontWeight: "600",
-            marginBottom: "0.5rem",
+            marginBottom: "0.75rem",
             alignSelf: "center",
+            boxShadow: "0 2px 8px rgba(124, 58, 237, 0.4)",
           }}
         >
           ✨ New AI-Powered Features
         </div>
         <h1
           style={{
-            fontSize: "18px",
+            fontSize: "16px",
             fontWeight: "800",
             color: "#ffffff",
-            margin: "0 0 0.5rem 0",
-            lineHeight: "1.2",
+            margin: "0 0 0.75rem 0",
+            lineHeight: "1.3",
+            letterSpacing: "-0.02em",
           }}
         >
-          Transform Your MuleSoft Development with{" "}
-          <span style={{ color: "#a78bfa" }}>AI-Powered Intelligence</span>
+          Transform MuleSoft with{" "}
+          <span style={{ 
+            color: "#a78bfa",
+            background: "linear-gradient(135deg, #a78bfa 0%, #c084fc 100%)",
+            WebkitBackgroundClip: "text",
+            WebkitTextFillColor: "transparent",
+          }}>AI Intelligence</span>
         </h1>
         <p
           style={{
-            fontSize: "9px",
-            color: "#94a3b8",
-            lineHeight: "1.4",
+            fontSize: "10px",
+            color: "#cbd5e1",
+            lineHeight: "1.5",
             margin: 0,
+            maxWidth: "90%",
+            alignSelf: "center",
           }}
         >
-          Harness AI to streamline integration workflows .
+          Harness AI to streamline integration workflows and accelerate your development process.
         </p>
       </div>
     </div>
   );
 };
 
-// CloudHub Migration Preview - Light blue theme
+// CloudHub Migration Preview - Dark blue theme (matching footer)
 export const CloudHubMigrationPreview = () => {
   return (
     <div
       style={{
         width: "100%",
         height: "100%",
-        background: "linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%)",
-        color: "#0c4a6e",
+        background: "linear-gradient(135deg, rgb(7, 43, 85) 0%, rgb(9, 51, 102) 50%, rgb(7, 43, 85) 100%)",
+        color: "#ffffff",
         fontFamily: '"Noto Sans", sans-serif',
         position: "relative",
         overflow: "hidden",
@@ -593,10 +814,10 @@ export const CloudHubMigrationPreview = () => {
           position: "absolute",
           inset: 0,
           backgroundImage: `
-            linear-gradient(rgba(14, 165, 233, 0.08) 1px, transparent 1px),
-            linear-gradient(90deg, rgba(14, 165, 233, 0.08) 1px, transparent 1px)
+            linear-gradient(rgba(59, 130, 246, 0.08) 1px, transparent 1px),
+            linear-gradient(90deg, rgba(59, 130, 246, 0.08) 1px, transparent 1px)
           `,
-          backgroundSize: "30px 30px",
+          backgroundSize: "35px 35px",
           pointerEvents: "none",
         }}
       />
@@ -605,11 +826,23 @@ export const CloudHubMigrationPreview = () => {
       <div
         style={{
           position: "absolute",
-          top: "22%",
-          right: "18%",
+          top: "20%",
+          right: "15%",
+          width: "7px",
+          height: "7px",
+          background: "rgba(96, 165, 250, 0.8)",
+          clipPath: "polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%)",
+          pointerEvents: "none",
+        }}
+      />
+      <div
+        style={{
+          position: "absolute",
+          bottom: "30%",
+          left: "12%",
           width: "6px",
           height: "6px",
-          background: "rgba(37, 99, 235, 0.5)",
+          background: "rgba(59, 130, 246, 0.7)",
           clipPath: "polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%)",
           pointerEvents: "none",
         }}
@@ -617,23 +850,11 @@ export const CloudHubMigrationPreview = () => {
       <div
         style={{
           position: "absolute",
-          bottom: "32%",
-          left: "12%",
+          top: "55%",
+          right: "25%",
           width: "5px",
           height: "5px",
-          background: "rgba(14, 165, 233, 0.4)",
-          clipPath: "polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%)",
-          pointerEvents: "none",
-        }}
-      />
-      <div
-        style={{
-          position: "absolute",
-          top: "58%",
-          right: "28%",
-          width: "4px",
-          height: "4px",
-          background: "rgba(59, 130, 246, 0.35)",
+          background: "rgba(37, 99, 235, 0.6)",
           clipPath: "polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%)",
           pointerEvents: "none",
         }}
@@ -643,24 +864,24 @@ export const CloudHubMigrationPreview = () => {
       <div
         style={{
           position: "absolute",
-          top: "-40px",
-          right: "-40px",
-          width: "130px",
-          height: "130px",
+          top: "-50px",
+          right: "-50px",
+          width: "160px",
+          height: "160px",
           borderRadius: "50%",
-          background: "radial-gradient(circle, rgba(37, 99, 235, 0.12) 0%, transparent 70%)",
+          background: "radial-gradient(circle, rgba(59, 130, 246, 0.18) 0%, transparent 70%)",
           pointerEvents: "none",
         }}
       />
       <div
         style={{
           position: "absolute",
-          bottom: "-35px",
-          left: "-35px",
-          width: "110px",
-          height: "110px",
+          bottom: "-45px",
+          left: "-45px",
+          width: "130px",
+          height: "130px",
           borderRadius: "50%",
-          background: "radial-gradient(circle, rgba(14, 165, 233, 0.1) 0%, transparent 70%)",
+          background: "radial-gradient(circle, rgba(37, 99, 235, 0.15) 0%, transparent 70%)",
           pointerEvents: "none",
         }}
       />
@@ -668,41 +889,30 @@ export const CloudHubMigrationPreview = () => {
       {/* Header */}
       <div
         style={{
+          backgroundColor: "rgba(7, 43, 85, 0.6)",
+          backdropFilter: "blur(10px)",
           padding: "0.5rem 1rem",
           flexShrink: 0,
-          borderBottom: "1px solid rgba(14, 165, 233, 0.2)",
+          borderBottom: "1px solid rgba(59, 130, 246, 0.25)",
           borderTopLeftRadius: "8px",
           borderTopRightRadius: "8px",
+          position: "relative",
+          zIndex: 1,
         }}
       >
         <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between" }}>
           <div style={{ display: "flex", alignItems: "center", gap: "0.5rem" }}>
-            <div
-              style={{
-                width: "20px",
-                height: "20px",
-                backgroundColor: "#2563eb",
-                borderRadius: "4px",
-                display: "flex",
-                alignItems: "center",
-                justifyContent: "center",
-                fontSize: "10px",
-                color: "#ffffff",
-                fontWeight: "bold",
-              }}
-            >
-              📊
-            </div>
-            <span style={{ fontSize: "12px", fontWeight: "700", color: "#0c4a6e" }}>MuleMigration</span>
+            <span style={{ fontSize: "12px", fontWeight: "700", color: "#ffffff" }}>MuleMigration</span>
           </div>
           <span
             style={{
               fontSize: "10px",
               padding: "0.25rem 0.6rem",
-              backgroundColor: "#2563eb",
+              background: "linear-gradient(135deg, #3b82f6 0%, #2563eb 100%)",
               color: "#ffffff",
               borderRadius: "4px",
               fontWeight: "600",
+              boxShadow: "0 2px 4px rgba(37, 99, 235, 0.3)",
             }}
           >
             Get Started
@@ -719,27 +929,37 @@ export const CloudHubMigrationPreview = () => {
           flexDirection: "column",
           justifyContent: "center",
           textAlign: "center",
+          position: "relative",
+          zIndex: 1,
         }}
       >
         <h1
           style={{
             fontSize: "20px",
             fontWeight: "800",
-            color: "#0c4a6e",
-            margin: "0 0 0.5rem 0",
+            color: "#ffffff",
+            margin: "0 0 0.75rem 0",
             lineHeight: "1.2",
+            letterSpacing: "-0.02em",
           }}
         >
-          Migrate to <span style={{ color: "#2563eb" }}>CloudHub 2.0</span>
+          Migrate to <span style={{ 
+            color: "#60a5fa",
+            background: "linear-gradient(135deg, #60a5fa 0%, #3b82f6 100%)",
+            WebkitBackgroundClip: "text",
+            WebkitTextFillColor: "transparent",
+          }}>CloudHub 2.0</span>
           <br />
           with Confidence
         </h1>
         <p
           style={{
-            fontSize: "9px",
-            color: "#475569",
-            lineHeight: "1.4",
+            fontSize: "10px",
+            color: "#cbd5e1",
+            lineHeight: "1.5",
             margin: 0,
+            maxWidth: "90%",
+            alignSelf: "center",
           }}
         >
           Streamline your migration with comprehensive assessment tools. Get compatibility reports,

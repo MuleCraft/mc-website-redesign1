@@ -16,12 +16,13 @@ import csi7Image from "@/assets/csi7.png";
 import trainingImage from "@/assets/training.png";
 import blog1Image from "@/assets/blog1.png";
 import blog2Image from "@/assets/blog2.png";
+import muleMaxImage from "@/assets/mule max.png";
 import si1Image from "@/assets/si1.webp";
-import si2Image from "@/assets/si2.webp";
-import si3Image from "@/assets/si3.webp";
-import si4Image from "@/assets/si4.webp";
+import si2Image from "@/assets/si2.jpg";
+import si3Image from "@/assets/si3.png";
+import si4Image from "@/assets/si4.png";
 import si5Image from "@/assets/si5.webp";
-import si6Image from "@/assets/si6.webp";
+import si6Image from "@/assets/si6.png";
 import cs1Image from "@/assets/cs1.png";
 import cs2Image from "@/assets/cs2.png";
 import cs3Image from "@/assets/cs3.png";
@@ -92,7 +93,7 @@ const DropdownMenu = ({
     const solutionImages: { [key: string]: { image: string; title: string; description: string; href?: string } } = {
       "MuleSoft": {
         image: si1Image,
-        title: "MuleSoft Migration & Integration",
+        title: "MuleSoft Integration",
         description: "API-led connectivity & Mule 3 to Mule 4 migration",
         href: "https://docs.MuleSoft.com/mule-runtime/latest/migration-intro",
       },
@@ -328,7 +329,12 @@ const DropdownMenu = ({
                           width: "100%",
                           height: "200px",
                           overflow: "hidden",
-                          backgroundColor: "#f3f4f6",
+                          backgroundColor: selectedHeader === "Digibee" ? "#ffffff" : "#f3f4f6",
+                          background: selectedHeader === "SnapLogic" 
+                            ? "linear-gradient(to bottom, #00379D 0%, #00379D 50%, #ffffff 50%, #ffffff 100%)"
+                            : selectedHeader === "Digibee" 
+                            ? "#ffffff" 
+                            : "#f3f4f6",
                         }}
                       >
                         <img
@@ -337,13 +343,20 @@ const DropdownMenu = ({
                           style={{
                             width: "100%",
                             height: "100%",
-                            objectFit: (selectedHeader === "MuleSoft" || selectedHeader === "SnapLogic" || selectedHeader === "Salesforce" || selectedHeader === "n8n") ? "fill" : "cover",
+                            objectFit: 
+                              selectedHeader === "SnapLogic"
+                                ? "contain" 
+                                : selectedHeader === "MuleSoft"
+                                ? "fill" 
+                                : "cover",
                             transition: "transform 0.3s ease",
                           }}
                         />
                       </div>
                       {/* Card Content */}
-                      <div style={{ padding: "1rem" }}>
+                      <div style={{ 
+                        padding: selectedHeader === "SnapLogic" ? "0 1rem 1rem 1rem" : "1rem" 
+                      }}>
                         <div
                           style={{
                             fontFamily: '"Noto Sans", sans-serif',
@@ -390,9 +403,9 @@ const DropdownMenu = ({
       },
       {
         image: blog2Image,
-        title: "Integrating Google BigQuery",
-        description: "Discover how to seamlessly integrate Google BigQuery with MuleSoft ",
-        href: "https://blogs.mulecraft.in/integrating-google-bigquery-with-mulesoft-for-seamless-data-analytics/",
+        title: "Two-Way SSL In Mule 4",
+        description: "Two-Way SSL in Mule 4 enhances security by requiring both the client and server to authenticate each other.",
+        href: "https://blogs.mulecraft.in/two-way-ssl-in-mule-4/",
       },
     ];
 
@@ -433,10 +446,13 @@ const DropdownMenu = ({
               style={{ width: "25%", minWidth: "180px" }}
             >
               <div
-                className="flex-1 overflow-y-auto flex flex-col"
+                className="flex flex-col"
                 style={{
                   padding: "1.25rem 1.25rem",
                   fontFamily: '"Noto Sans", sans-serif',
+                  justifyContent: "flex-start",
+                  alignItems: "stretch",
+                  height: "100%",
                 }}
               >
                 {items.map((item) => (
@@ -465,6 +481,28 @@ const DropdownMenu = ({
                     {item.label}
                   </button>
                 ))}
+                {/* Mule Max Image - Fills remaining space */}
+                <div
+                  style={{
+                    flex: 1,
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "center",
+                    paddingTop: "1rem",
+                    minHeight: 0,
+                  }}
+                >
+                  <img
+                    src={muleMaxImage}
+                    alt="Mule Max"
+                    style={{
+                      width: "100%",
+                      height: "auto",
+                      maxHeight: "100%",
+                      objectFit: "contain",
+                    }}
+                  />
+                </div>
               </div>
               {/* Separator line */}
               <div

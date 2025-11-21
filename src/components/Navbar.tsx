@@ -499,6 +499,11 @@ const Navbar = () => {
               title: "HeyDrive Driving School",
               description: "Automated scheduling and billing system",
             },
+            {
+              title: "Workflow Automation",
+              description: "End-to-end business process automation platform",
+            },
+          
           ],
         },
       ];
