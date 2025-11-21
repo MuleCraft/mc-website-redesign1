@@ -34,7 +34,7 @@
   body {
     @apply text-foreground;
     font-family: 'Noto Sans', sans-serif;
-    background: linear-gradient(135deg, #e0f2fe 0%, #bae6fd 25%, #ffffff 50%, #e0f2fe 75%, #bae6fd 100%) fixed;
+    background: #ffffff;
     overscroll-behavior: none;
   }
 }
