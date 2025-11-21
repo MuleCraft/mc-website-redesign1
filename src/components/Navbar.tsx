@@ -944,20 +944,20 @@ const Navbar = () => {
               className="transition-colors duration-200"
               style={{
                 backgroundColor: "#ffffff",
-                color: "#059bd1",
-                border: "1px solid #059bd1",
+                color: "#20A99B",
+                border: "1px solid #20A99B",
                 padding: "0.675rem 1rem",
                 fontSize: "0.875rem",
                 height: "auto",
                 transition: "all 0.2s ease",
               }}
               onMouseEnter={(e) => {
-                e.currentTarget.style.backgroundColor = "#059bd1";
+                e.currentTarget.style.backgroundColor = "#20A99B";
                 e.currentTarget.style.color = "#ffffff";
               }}
               onMouseLeave={(e) => {
                 e.currentTarget.style.backgroundColor = "#ffffff";
-                e.currentTarget.style.color = "#059bd1";
+                e.currentTarget.style.color = "#20A99B";
               }}
             >
               Community
@@ -968,21 +968,21 @@ const Navbar = () => {
               variant="default"
               className="transition-colors duration-200"
               style={{
-                backgroundColor: "#059bd1",
+                backgroundColor: "#008EC0",
                 color: "#ffffff",
-                border: "1px solid #059bd1",
+                border: "1px solid #008EC0",
                 padding: "0.675rem 1rem",
                 fontSize: "0.875rem",
                 height: "auto",
                 transition: "all 0.2s ease",
               }}
               onMouseEnter={(e) => {
-                e.currentTarget.style.backgroundColor = "#047ba8";
-                e.currentTarget.style.borderColor = "#047ba8";
+                e.currentTarget.style.backgroundColor = "#0078A3";
+                e.currentTarget.style.borderColor = "#0078A3";
               }}
               onMouseLeave={(e) => {
-                e.currentTarget.style.backgroundColor = "#059bd1";
-                e.currentTarget.style.borderColor = "#059bd1";
+                e.currentTarget.style.backgroundColor = "#008EC0";
+                e.currentTarget.style.borderColor = "#008EC0";
               }}
             >
               Schedule demo

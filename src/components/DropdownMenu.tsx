@@ -9,16 +9,16 @@ import csi9Image from "@/assets/csi9.png";
 import trainingImage from "@/assets/training.png";
 import blog1Image from "@/assets/blog1.png";
 import blog2Image from "@/assets/blog2.png";
-import si1Image from "@/assets/si1.png";
-import si2Image from "@/assets/si2.png";
-import si3Image from "@/assets/si3.png";
-import si4Image from "@/assets/si4.png";
-import si5Image from "@/assets/si5.png";
-import si6Image from "@/assets/si6.png";
-import cs1Image from "@/assets/cs1.jpg";
-import cs2Image from "@/assets/cs2.jpg";
-import cs3Image from "@/assets/cs3.jpg";
-import cs4Image from "@/assets/cs4.jpg";
+import si1Image from "@/assets/si1.webp";
+import si2Image from "@/assets/si2.webp";
+import si3Image from "@/assets/si3.webp";
+import si4Image from "@/assets/si4.webp";
+import si5Image from "@/assets/si5.webp";
+import si6Image from "@/assets/si6.webp";
+import cs1Image from "@/assets/cs1.webp";
+import cs2Image from "@/assets/cs2.png";
+import cs3Image from "@/assets/cs3.png";
+import cs4Image from "@/assets/cs4.webp";
 
 interface DropdownItem {
   label: string;
@@ -330,7 +330,7 @@ const DropdownMenu = ({
                           style={{
                             width: "100%",
                             height: "100%",
-                            objectFit: (selectedHeader === "n8n" || selectedHeader === "Digibee") ? "fill" : "cover",
+                            objectFit: (selectedHeader === "MuleSoft" || selectedHeader === "SnapLogic" || selectedHeader === "Salesforce" || selectedHeader === "n8n" || selectedHeader === "Digibee") ? "fill" : "cover",
                             transition: "transform 0.3s ease",
                           }}
                         />
@@ -1952,7 +1952,7 @@ const DropdownMenu = ({
                     overflow: "hidden",
                     backgroundColor: "#ffffff",
                     height: "100%",
-                    padding: "1rem",
+                    padding: "0px",
                   }}
                 >
                   {/* Image Only - No Title/Description */}
@@ -1961,8 +1961,8 @@ const DropdownMenu = ({
                     alt="Case Study"
                     style={{
                       width: "100%",
-                      height: "100%",
-                      objectFit: "contain",
+                      height: "90%",
+                      objectFit: selectedHeader === "HR Management" ? "cover" : "contain",
                     }}
                   />
                 </a>
