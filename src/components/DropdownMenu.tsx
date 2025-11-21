@@ -1,11 +1,18 @@
 import { useState, useEffect } from "react";
+import SnapMapperPreview from "./SnapMapperPreview";
+import {
+  RAMLifyPreview,
+  MuleSoftLPPreview,
+  AnypointLPPreview,
+  CloudHubMigrationPreview,
+  GoosePreview,
+} from "./ProductPreviews";
 import csi1Image from "@/assets/csi1.png";
 import csi2Image from "@/assets/csi2.png";
 import csi3Image from "@/assets/csi3.png";
 import csi4Image from "@/assets/csi4.png";
 import csi6Image from "@/assets/csi6.png";
 import csi7Image from "@/assets/csi7.png";
-import csi9Image from "@/assets/csi9.png";
 import trainingImage from "@/assets/training.png";
 import blog1Image from "@/assets/blog1.png";
 import blog2Image from "@/assets/blog2.png";
@@ -15,10 +22,10 @@ import si3Image from "@/assets/si3.webp";
 import si4Image from "@/assets/si4.webp";
 import si5Image from "@/assets/si5.webp";
 import si6Image from "@/assets/si6.webp";
-import cs1Image from "@/assets/cs1.webp";
+import cs1Image from "@/assets/cs1.png";
 import cs2Image from "@/assets/cs2.png";
 import cs3Image from "@/assets/cs3.png";
-import cs4Image from "@/assets/cs4.webp";
+import cs4Image from "@/assets/cs4.png";
 
 interface DropdownItem {
   label: string;
@@ -284,7 +291,7 @@ const DropdownMenu = ({
                 >
                   {/* Image Card - Centered for all headers */}
                   {selectedImageCard && (
-                    <a
+                      <a
                       href={selectedImageCard.href || "#"}
                       target="_blank"
                       rel="noopener noreferrer"
@@ -330,7 +337,7 @@ const DropdownMenu = ({
                           style={{
                             width: "100%",
                             height: "100%",
-                            objectFit: (selectedHeader === "MuleSoft" || selectedHeader === "SnapLogic" || selectedHeader === "Salesforce" || selectedHeader === "n8n" || selectedHeader === "Digibee") ? "fill" : "cover",
+                            objectFit: (selectedHeader === "MuleSoft" || selectedHeader === "SnapLogic" || selectedHeader === "Salesforce" || selectedHeader === "n8n") ? "fill" : "cover",
                             transition: "transform 0.3s ease",
                           }}
                         />
@@ -377,14 +384,14 @@ const DropdownMenu = ({
     const blogCards = [
       {
         image: blog1Image,
-        title: "Seamless MuleSoft Upgrade: Transitioning from Java 8 to Java 17 for REST APIs",
-        description: "Java 17, the latest Long-Term Support (LTS) release, introduces powerful advancements that can elevate your MuleSoft applications. From enhanced performance to modern language features and improved security measures.",
+        title: "Seamless MuleSoft Upgrade",
+        description: "Java 17, the latest Long-Term Support (LTS) release, introduces powerful advancements that can elevate your MuleSoft applications.",
         href: "https://blogs.mulecraft.in/seamless-mulesoft-upgrade-transitioning-from-java-8-to-java-17-for-rest-apis/",
       },
       {
         image: blog2Image,
-        title: "Integrating Google BigQuery with MuleSoft",
-        description: "Discover how to seamlessly integrate Google BigQuery with MuleSoft for powerful data analytics and business intelligence.",
+        title: "Integrating Google BigQuery",
+        description: "Discover how to seamlessly integrate Google BigQuery with MuleSoft ",
         href: "https://blogs.mulecraft.in/integrating-google-bigquery-with-mulesoft-for-seamless-data-analytics/",
       },
     ];
@@ -410,9 +417,9 @@ const DropdownMenu = ({
           onMouseLeave={onMouseLeave}
           style={{
             top: `${navbarHeight}px`,
-            width: "60%",
-            maxWidth: "750px",
-            height: "340px",
+            width: "70%",
+            maxWidth: "900px",
+            height: "360px",
             opacity: 1,
             transition: "opacity 0.2s ease-in-out, transform 0.2s ease-in-out",
             marginTop: "12px",
@@ -482,7 +489,7 @@ const DropdownMenu = ({
                     display: "flex",
                     padding: "1.25rem",
                     fontFamily: '"Noto Sans", sans-serif',
-                    alignItems: "flex-start",
+                    alignItems: "stretch",
                     gap: "1rem",
                     height: "100%",
                     overflow: "hidden",
@@ -495,23 +502,19 @@ const DropdownMenu = ({
                       target="_blank"
                       rel="noopener noreferrer"
                       style={{
-                        display: "flex",
-                        flexDirection: "column",
+                        display: "block",
                         flex: "1",
                         minWidth: 0,
                         textDecoration: "none",
                         color: "inherit",
-                        cursor: "pointer",
                         borderRadius: "8px",
-                        border: "1px solid #d1d5db",
+                        border: "1px solid #e5e7eb",
                         overflow: "hidden",
-                        backgroundColor: "#ffffff",
-                        boxShadow: "0 2px 8px rgba(0, 0, 0, 0.1)",
-                        transition: "all 0.3s ease",
+                        transition: "transform 0.2s ease, box-shadow 0.2s ease",
                       }}
                       onMouseEnter={(e) => {
-                        e.currentTarget.style.transform = "translateY(-4px)";
-                        e.currentTarget.style.boxShadow = "0 8px 20px rgba(0, 0, 0, 0.15)";
+                        e.currentTarget.style.transform = "translateY(-2px)";
+                        e.currentTarget.style.boxShadow = "0 8px 20px rgba(0, 0, 0, 0.08)";
                         const img = e.currentTarget.querySelector("img");
                         if (img) {
                           (img as HTMLElement).style.transform = "scale(1.1)";
@@ -519,7 +522,7 @@ const DropdownMenu = ({
                       }}
                       onMouseLeave={(e) => {
                         e.currentTarget.style.transform = "translateY(0)";
-                        e.currentTarget.style.boxShadow = "0 2px 8px rgba(0, 0, 0, 0.1)";
+                        e.currentTarget.style.boxShadow = "none";
                         const img = e.currentTarget.querySelector("img");
                         if (img) {
                           (img as HTMLElement).style.transform = "scale(1)";
@@ -530,9 +533,9 @@ const DropdownMenu = ({
                       <div
                         style={{
                           width: "100%",
-                          height: "150px",
+                          height: "200px",
                           overflow: "hidden",
-                          backgroundColor: "#ffffff",
+                          backgroundColor: "#f3f4f6",
                           position: "relative",
                           flexShrink: 0,
                         }}
@@ -543,27 +546,22 @@ const DropdownMenu = ({
                           style={{
                             width: "100%",
                             height: "100%",
-                            objectFit: "cover",
+                            objectFit: "fill",
                             transition: "transform 0.3s ease",
                           }}
                         />
                       </div>
 
-                      {/* Title and Description */}
-                      <div style={{ padding: "1rem", flex: "1", display: "flex", flexDirection: "column" }}>
+                      {/* Card Content */}
+                      <div style={{ padding: "1rem" }}>
                         <div
-                          style={{
-                            fontFamily: '"Noto Sans", sans-serif',
-                            fontSize: "15px",
-                            fontWeight: 600,
+                  style={{
+                    fontFamily: '"Noto Sans", sans-serif',
+                    fontSize: "13px",
+                    fontWeight: 600,
                             color: "#1f1f1f",
                             marginBottom: "0.5rem",
                             lineHeight: "1.4",
-                            display: "-webkit-box",
-                            WebkitLineClamp: 2,
-                            WebkitBoxOrient: "vertical",
-                            overflow: "hidden",
-                            textOverflow: "ellipsis",
                           }}
                         >
                           {card.title}
@@ -572,17 +570,12 @@ const DropdownMenu = ({
                           style={{
                             fontFamily: '"Noto Sans", sans-serif',
                             fontSize: "13px",
-                            color: "#6b7280",
+                    color: "#6b7280",
                             lineHeight: "1.5",
-                            display: "-webkit-box",
-                            WebkitLineClamp: 3,
-                            WebkitBoxOrient: "vertical",
-                            overflow: "hidden",
-                            textOverflow: "ellipsis",
-                          }}
-                        >
+                  }}
+                >
                           {card.description}
-                        </div>
+                </div>
                       </div>
                     </a>
                   ))}
@@ -594,7 +587,7 @@ const DropdownMenu = ({
                 <div
                   style={{
                     display: "flex",
-                    padding: "1.25rem",
+                    padding: "0.75rem",
                     fontFamily: '"Noto Sans", sans-serif',
                     alignItems: "flex-start",
                     height: "100%",
@@ -605,13 +598,13 @@ const DropdownMenu = ({
                     <div
                       style={{
                         width: "45%",
-                        paddingRight: "1rem",
+                        paddingRight: "0.75rem",
                         display: "flex",
                         flexDirection: "column",
-                        gap: "0.75rem",
+                        gap: "0.5rem",
                       }}
                     >
-                      {/* Training Content Items - Only 3 items */}
+                      {/* Training Content Items - 4 items */}
                       <a
                         href="https://training.mulecraft.in/courses"
                         target="_blank"
@@ -621,7 +614,7 @@ const DropdownMenu = ({
                           alignItems: "flex-start",
                           textDecoration: "none",
                           color: "inherit",
-                          padding: "0.75rem",
+                          padding: "0.5rem",
                           borderRadius: "6px",
                           transition: "background-color 0.2s ease",
                         }}
@@ -664,7 +657,7 @@ const DropdownMenu = ({
                           alignItems: "flex-start",
                           textDecoration: "none",
                           color: "inherit",
-                          padding: "0.75rem",
+                          padding: "0.5rem",
                           borderRadius: "6px",
                           transition: "background-color 0.2s ease",
                         }}
@@ -707,7 +700,7 @@ const DropdownMenu = ({
                           alignItems: "flex-start",
                           textDecoration: "none",
                           color: "inherit",
-                          padding: "0.75rem",
+                          padding: "0.5rem",
                           borderRadius: "6px",
                           transition: "background-color 0.2s ease",
                         }}
@@ -738,6 +731,49 @@ const DropdownMenu = ({
                             }}
                           >
                             Practice with real-world scenarios in guided workshops
+                          </div>
+                        </div>
+                      </a>
+                      <a
+                        href="https://training.mulecraft.in/learning-paths"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        style={{
+                          display: "flex",
+                          alignItems: "flex-start",
+                          textDecoration: "none",
+                          color: "inherit",
+                          padding: "0.5rem",
+                          borderRadius: "6px",
+                          transition: "background-color 0.2s ease",
+                        }}
+                        onMouseEnter={(e) => {
+                          e.currentTarget.style.color = "#059bd1";
+                        }}
+                        onMouseLeave={(e) => {
+                          e.currentTarget.style.color = "inherit";
+                        }}
+                      >
+                        <div style={{ flex: 1 }}>
+                          <div
+                            style={{
+                              fontFamily: '"Noto Sans", sans-serif',
+                              fontSize: "14px",
+                              fontWeight: 600,
+                              marginBottom: "0.25rem",
+                            }}
+                          >
+                            Learning Paths
+                          </div>
+                          <div
+                            style={{
+                              fontFamily: '"Noto Sans", sans-serif',
+                              fontSize: "12px",
+                              color: "#6b7280",
+                              lineHeight: "1.5",
+                            }}
+                          >
+                            Follow structured paths to build your integration skills
                           </div>
                         </div>
                       </a>
@@ -775,39 +811,37 @@ const DropdownMenu = ({
                           width: "90%",
                       textDecoration: "none",
                       color: "inherit",
-                      cursor: "pointer",
                           borderRadius: "8px",
-                          border: "1px solid #d1d5db",
+                          border: "1px solid #e5e7eb",
                           overflow: "hidden",
-                          backgroundColor: "#ffffff",
-                          boxShadow: "0 2px 8px rgba(0, 0, 0, 0.1)",
-                          transition: "all 0.3s ease",
+                          transition: "transform 0.2s ease, box-shadow 0.2s ease",
                         }}
                         onMouseEnter={(e) => {
-                          const img = e.currentTarget.querySelector("img") as HTMLImageElement;
+                          e.currentTarget.style.transform = "translateY(-2px)";
+                          e.currentTarget.style.boxShadow = "0 8px 20px rgba(0, 0, 0, 0.08)";
+                          const img = e.currentTarget.querySelector("img");
                           if (img) {
-                            img.style.transform = "scale(1.1)";
+                            (img as HTMLElement).style.transform = "scale(1.1)";
                           }
-                          e.currentTarget.style.transform = "translateY(-4px)";
-                          e.currentTarget.style.boxShadow = "0 8px 20px rgba(0, 0, 0, 0.15)";
                         }}
                         onMouseLeave={(e) => {
-                          const img = e.currentTarget.querySelector("img") as HTMLImageElement;
-                          if (img) {
-                            img.style.transform = "scale(1)";
-                          }
                           e.currentTarget.style.transform = "translateY(0)";
-                          e.currentTarget.style.boxShadow = "0 2px 8px rgba(0, 0, 0, 0.1)";
+                          e.currentTarget.style.boxShadow = "none";
+                          const img = e.currentTarget.querySelector("img");
+                          if (img) {
+                            (img as HTMLElement).style.transform = "scale(1)";
+                          }
                         }}
                       >
                         {/* Image Container */}
                         <div
                           style={{
                             width: "100%",
-                            height: "120px",
+                            height: "200px",
                             overflow: "hidden",
-                            backgroundColor: "#ffffff",
+                            backgroundColor: "#f3f4f6",
                             position: "relative",
+                            flexShrink: 0,
                     }}
                   >
                     <img
@@ -818,16 +852,16 @@ const DropdownMenu = ({
                               height: "100%",
                               objectFit: "fill",
                               transition: "transform 0.3s ease",
-                            }}
-                          />
+                      }}
+                    />
                         </div>
 
-                        {/* Title and Description */}
+                        {/* Card Content */}
                         <div style={{ padding: "1rem" }}>
                     <div
                       style={{
                         fontFamily: '"Noto Sans", sans-serif',
-                        fontSize: "16px",
+                              fontSize: "13px",
                         fontWeight: 600,
                               color: "#1f1f1f",
                         marginBottom: "0.5rem",
@@ -882,13 +916,13 @@ const DropdownMenu = ({
         description: "Automates MuleSoft on-prem to CloudHub 2.0 migration with dependency analysis.",
         href: "https://mule-migration-nexus.lovable.app/",
       },
-      "DataWeave Task Generator": {
-        image: csi9Image,
-        title: "MuleWeave Wizard",
-        description: "AI-powered learning tool generating custom DataWeave challenges with playground.",
-        href: "https://mule-weave-wizard.lovable.app/",
+      "Goose": {
+        image: csi4Image,
+        title: "Goose - Deploy, Scale, Dominate",
+        description: "The ultimate DevOps platform that transforms how you build, deploy, and scale applications.",
+        href: "https://goosed.in/",
       },
-      "RAMLify Flow Agent": {
+      "RAMLify": {
         image: csi2Image,
         title: "RAML Assistant",
         description: "AI-based assistant that converts natural language to RAML specifications.",
@@ -907,8 +941,8 @@ const DropdownMenu = ({
       "SnapMapper",
       "AnypointLP",
       "CloudHub 2.0 Migration",
-      "DataWeave Task Generator",
-      "RAMLify Flow Agent",
+      "Goose",
+      "RAMLify",
       "MuleSoftLP",
     ];
 
@@ -1321,10 +1355,10 @@ const DropdownMenu = ({
                         </a>
                       </>
                     )}
-                    {selectedHeader === "DataWeave Task Generator" && (
+                    {selectedHeader === "Goose" && (
                       <>
                         <a
-                          href="https://mule-weave-wizard.lovable.app/"
+                          href="https://goosed.in/"
                           target="_blank"
                           rel="noopener noreferrer"
                           style={{
@@ -1342,14 +1376,14 @@ const DropdownMenu = ({
                           }}
                         >
                           <div style={{ fontFamily: '"Noto Sans", sans-serif', fontSize: "14px", fontWeight: 600, marginBottom: "0.25rem" }}>
-                            Custom Challenges
+                            One-Click Deploy
                           </div>
                           <div style={{ fontFamily: '"Noto Sans", sans-serif', fontSize: "12px", color: "#6b7280", lineHeight: "1.5" }}>
-                            AI-generated DataWeave practice tasks
+                            Deploy applications instantly with zero configuration
                           </div>
                         </a>
                         <a
-                          href="https://mule-weave-wizard.lovable.app/"
+                          href="https://goosed.in/"
                           target="_blank"
                           rel="noopener noreferrer"
                           style={{
@@ -1367,14 +1401,14 @@ const DropdownMenu = ({
                           }}
                         >
                           <div style={{ fontFamily: '"Noto Sans", sans-serif', fontSize: "14px", fontWeight: 600, marginBottom: "0.25rem" }}>
-                            Inbuilt Playground
+                            Auto-Scale
                           </div>
                           <div style={{ fontFamily: '"Noto Sans", sans-serif', fontSize: "12px", color: "#6b7280", lineHeight: "1.5" }}>
-                            Practice and test scripts in real-time
+                            Automatic scaling based on demand and traffic
                           </div>
                         </a>
                         <a
-                          href="https://mule-weave-wizard.lovable.app/"
+                          href="https://goosed.in/"
                           target="_blank"
                           rel="noopener noreferrer"
                           style={{
@@ -1392,14 +1426,14 @@ const DropdownMenu = ({
                           }}
                         >
                           <div style={{ fontFamily: '"Noto Sans", sans-serif', fontSize: "14px", fontWeight: 600, marginBottom: "0.25rem" }}>
-                            Script Validation
+                            Enterprise Security
                           </div>
                           <div style={{ fontFamily: '"Noto Sans", sans-serif', fontSize: "12px", color: "#6b7280", lineHeight: "1.5" }}>
-                            Validate and optimize your DataWeave code
+                            Built-in security features for production applications
                           </div>
                         </a>
                         <a
-                          href="https://mule-weave-wizard.lovable.app/"
+                          href="https://goosed.in/"
                           target="_blank"
                           rel="noopener noreferrer"
                           style={{
@@ -1417,15 +1451,15 @@ const DropdownMenu = ({
                           }}
                         >
                           <div style={{ fontFamily: '"Noto Sans", sans-serif', fontSize: "14px", fontWeight: 600, marginBottom: "0.25rem" }}>
-                            Learning Analytics
+                            Real-time Monitoring
                           </div>
                           <div style={{ fontFamily: '"Noto Sans", sans-serif', fontSize: "12px", color: "#6b7280", lineHeight: "1.5" }}>
-                            Track your DataWeave learning progress
+                            Monitor performance and optimize deployments
                           </div>
                         </a>
                       </>
                     )}
-                    {selectedHeader === "RAMLify Flow Agent" && (
+                    {selectedHeader === "RAMLify" && (
                       <>
                         <a
                           href="https://ramlify-flow-agent.lovable.app/"
@@ -1702,17 +1736,13 @@ const DropdownMenu = ({
                         backgroundColor: "#ffffff",
                     }}
                   >
-                    <img
-                        src={productImages[selectedHeader].image}
-                        alt={productImages[selectedHeader].title}
-                      style={{
-                        width: "100%",
-                          height: "100%",
-                          objectFit: "cover",
-                          transition: "transform 0.3s ease",
-                        }}
-                      />
-                    </div>
+                      {selectedHeader === "SnapMapper" && <SnapMapperPreview />}
+                      {selectedHeader === "AnypointLP" && <AnypointLPPreview />}
+                      {selectedHeader === "CloudHub 2.0 Migration" && <CloudHubMigrationPreview />}
+                      {selectedHeader === "Goose" && <GoosePreview />}
+                      {selectedHeader === "RAMLify" && <RAMLifyPreview />}
+                      {selectedHeader === "MuleSoftLP" && <MuleSoftLPPreview />}
+            </div>
 
                     {/* Title and Description */}
                     <div style={{ padding: "1rem" }}>
@@ -1756,21 +1786,29 @@ const DropdownMenu = ({
     const menuItems = selectedItem?.menuItems || [];
 
     // Image mapping for each case study category
-    const caseStudyImages: { [key: string]: { image: string; href?: string } } = {
+    const caseStudyImages: { [key: string]: { image: string; title: string; description: string; href?: string } } = {
       "HR Management": {
         image: cs1Image,
+        title: "HR Management Transformation",
+        description: "Streamlined HR processes and improved employee experience with integrated automation.",
         href: "#",
       },
       "Healthcare Solutions": {
         image: cs2Image,
+        title: "Healthcare Digital Innovation",
+        description: "Enhanced patient care through seamless data integration and workflow automation.",
         href: "#",
       },
       "Digital Transformation": {
         image: cs3Image,
+        title: "Enterprise Digital Transformation",
+        description: "Modernized legacy systems and accelerated digital initiatives across the organization.",
         href: "#",
       },
       "Automation & Platforms": {
         image: cs4Image,
+        title: "Platform Automation Excellence",
+        description: "Achieved operational efficiency through intelligent automation and platform integration.",
         href: "#",
       },
     };
@@ -1886,7 +1924,7 @@ const DropdownMenu = ({
                   >
                     {/* Content */}
                     <div className="item-content">
-                      <div
+                <div
                         className="item-title"
                         style={{
                           fontFamily: '"Noto Sans", sans-serif',
@@ -1901,15 +1939,15 @@ const DropdownMenu = ({
                       </div>
                       <div
                         className="item-description"
-                        style={{
-                          fontFamily: '"Noto Sans", sans-serif',
-                          fontSize: "13px",
+                  style={{
+                    fontFamily: '"Noto Sans", sans-serif',
+                    fontSize: "13px",
                           lineHeight: "1.5",
-                          color: "#6b7280",
-                        }}
-                      >
+                    color: "#6b7280",
+                  }}
+                >
                         {menuItem.description}
-                      </div>
+                </div>
                     </div>
                   </a>
                 ))}
@@ -1939,34 +1977,89 @@ const DropdownMenu = ({
               }}
             >
               {selectedImageCard && (
-                <a
+                  <a
                   href={selectedImageCard.href || "#"}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  style={{
-                    display: "flex",
-                    alignItems: "center",
-                    justifyContent: "center",
-                    textDecoration: "none",
-                    color: "inherit",
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    style={{
+                      display: "block",
+                      textDecoration: "none",
+                      color: "inherit",
+                    borderRadius: "8px",
                     overflow: "hidden",
-                    backgroundColor: "#ffffff",
-                    height: "100%",
-                    padding: "0px",
+                    border: "1px solid #e5e7eb",
+                    margin: "auto",
+                    transition: "transform 0.2s ease, box-shadow 0.2s ease",
+                  }}
+                  onMouseEnter={(e) => {
+                    e.currentTarget.style.transform = "translateY(-2px)";
+                    e.currentTarget.style.boxShadow = "0 8px 20px rgba(0, 0, 0, 0.08)";
+                    const img = e.currentTarget.querySelector("img");
+                    if (img) {
+                      (img as HTMLElement).style.transform = "scale(1.1)";
+                    }
+                  }}
+                  onMouseLeave={(e) => {
+                    e.currentTarget.style.transform = "translateY(0)";
+                    e.currentTarget.style.boxShadow = "none";
+                    const img = e.currentTarget.querySelector("img");
+                    if (img) {
+                      (img as HTMLElement).style.transform = "scale(1)";
+                    }
                   }}
                 >
-                  {/* Image Only - No Title/Description */}
-                  <img
-                    src={selectedImageCard.image}
-                    alt="Case Study"
+                  {/* Image */}
+                  <div
                     style={{
                       width: "100%",
-                      height: "90%",
-                      objectFit: selectedHeader === "HR Management" ? "cover" : "contain",
+                      height: "200px",
+                      overflow: "hidden",
+                      backgroundColor: "#f3f4f6",
                     }}
-                  />
-                </a>
-              )}
+                  >
+                    <img
+                      src={selectedImageCard.image}
+                      alt={selectedImageCard.title}
+                      style={{
+                        width: "100%",
+                        height: "100%",
+                        objectFit: 
+                          selectedHeader === "Digital Transformation" 
+                            ? "fill" 
+                            : selectedHeader === "HR Management" || selectedHeader === "Automation & Platforms" 
+                            ? "cover" 
+                            : "contain",
+                        transition: "transform 0.3s ease",
+                      }}
+                    />
+                  </div>
+                  {/* Card Content */}
+                  <div style={{ padding: "1rem" }}>
+                    <div
+                      style={{
+                        fontFamily: '"Noto Sans", sans-serif',
+                        fontSize: "16px",
+                        fontWeight: 600,
+                        color: "#1f1f1f",
+                        marginBottom: "0.5rem",
+                        lineHeight: "1.4",
+                      }}
+                    >
+                      {selectedImageCard.title}
+                    </div>
+                    <div
+                      style={{
+                        fontFamily: '"Noto Sans", sans-serif',
+                        fontSize: "13px",
+                        color: "#6b7280",
+                        lineHeight: "1.5",
+                      }}
+                    >
+                      {selectedImageCard.description}
+                    </div>
+                    </div>
+                  </a>
+                )}
             </div>
           </div>
         </div>

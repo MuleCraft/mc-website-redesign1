@@ -525,7 +525,7 @@ const Navbar = () => {
             {
               title: "Learn Today, Lead Tomorrow!",
               description:
-                "MuleCraft Academy offers comprehensive training programs to help you master integration technologies and advance your career.",
+                "MuleCraft Academy offers comprehensive training programs to help you master integration technologies ",
               href: "https://training.mulecraft.in/",
             },
           ],
