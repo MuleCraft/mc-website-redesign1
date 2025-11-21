@@ -2026,7 +2026,7 @@ const DropdownMenu = ({
                         objectFit: 
                           selectedHeader === "Digital Transformation" 
                             ? "fill" 
-                            : selectedHeader === "HR Management" || selectedHeader === "Automation & Platforms" 
+                            : selectedHeader === "HR Management" || selectedHeader === "Healthcare Solutions" || selectedHeader === "Automation & Platforms" 
                             ? "cover" 
                             : "contain",
                         transition: "transform 0.3s ease",
