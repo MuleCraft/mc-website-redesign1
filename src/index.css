@@ -85,4 +85,117 @@
   .dropdown-active .nav-link svg {
     color: rgb(7, 43, 85) !important;
   }
+
+  /* Hero Section Grid Layout */
+  .grid_main {
+    display: grid;
+    width: 100%;
+  }
+
+  .grid--sixteenbynine {
+    grid-template-columns: 1fr;
+  }
+
+  @media (min-width: 1024px) {
+    .grid--sixteenbynine {
+      grid-template-columns: 1fr 1fr;
+      gap: 2.5rem;
+    }
+  }
+
+  /* Image Wrapper */
+  .image__wrapper {
+    width: 100%;
+    overflow: hidden;
+  }
+
+  .image__asset {
+    width: 100%;
+    height: auto;
+    display: block;
+    aspect-ratio: 16 / 9;
+    object-fit: cover;
+  }
+
+  /* Content Wrapper */
+  .content__wrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  /* Eyebrow */
+  .eyebrow-display-1 {
+    margin-bottom: 1rem;
+  }
+
+  .eyebrow__label {
+    font-size: 0.875rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+
+  /* Headline */
+  .marquee__headline--standard {
+    font-weight: 700;
+    line-height: 1.1;
+    margin-bottom: 1.5rem;
+  }
+
+  /* Blade Description */
+  .blade__description {
+    margin-bottom: 2rem;
+  }
+
+  .blade__description p {
+    line-height: 1.6;
+  }
+
+  /* CTA Container */
+  .cta_container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+
+  .cta_button {
+    text-decoration: none;
+    display: inline-block;
+  }
+
+  /* Featured Logos Section */
+  .featured-logos {
+    text-align: center;
+    z-index: 99;
+  }
+
+  .featured-logos-wrap {
+    position: relative;
+    background-color: #fff;
+    border-radius: 0.63rem;
+    padding: 1rem;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+  }
+
+  .fl-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  .fl-item {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .h5 {
+    margin: 0;
+    padding: 0;
+    font-size: inherit;
+    font-weight: inherit;
+    line-height: inherit;
+  }
 }
