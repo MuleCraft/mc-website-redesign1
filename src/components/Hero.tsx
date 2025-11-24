@@ -16,8 +16,8 @@ interface HeroProps {
 
 const Hero = ({
   eyebrow = "",
-  headline = "Empowering Your Digital Connectivity",
-  description = "Transform your business with seamless integrations, intelligent automation, and cutting-edge solutions. From integration to innovation, instantly.",
+  headline = "Build Smarter Integrations, Deliver Faster Results",
+  description = "Connect your systems, automate workflows, and unlock new possibilities. We turn complex integrations into simple, powerful solutions that drive your business forward.",
   ctaText = "Book Demo",
   ctaUrl = "#",
 }: HeroProps) => {
@@ -35,9 +35,16 @@ const Hero = ({
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ delay: 0.2, duration: 0.6 }}
-                    className="eyebrow eyebrow-display-1 mb-4"
+                    className="eyebrow eyebrow-display-1 mb-5 md:mb-6"
                   >
-                    <div className="eyebrow__label text-sm md:text-base font-semibold text-gray-700 uppercase tracking-wide">
+                    <div 
+                      className="eyebrow__label text-sm md:text-base font-semibold text-gray-600 uppercase tracking-wider letter-spacing-1"
+                      style={{
+                        fontFamily: "'Space Grotesk', sans-serif",
+                        fontWeight: 600,
+                        letterSpacing: "0.1em",
+                      }}
+                    >
                       {eyebrow}
                     </div>
                   </motion.div>
@@ -49,15 +56,24 @@ const Hero = ({
                     initial={{ opacity: 0, y: 30 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ delay: 0.4, duration: 0.8, ease: "easeOut" }}
-                    className="headline marquee__headline--standard text-3xl md:text-4xl lg:text-5xl xl:text-5xl font-bold leading-tight mb-4 md:mb-6"
+                    className="headline marquee__headline--standard text-4xl md:text-5xl lg:text-6xl xl:text-6xl font-bold leading-[1.1] md:leading-[1.05] tracking-tight mb-6 md:mb-8"
                     style={{
-                      background: "linear-gradient(45deg, #a03291, #4b4fe2)",
-                      WebkitBackgroundClip: "text",
-                      WebkitTextFillColor: "transparent",
-                      backgroundClip: "text",
+                      fontFamily: "'Space Grotesk', sans-serif",
+                      fontWeight: 700,
+                      letterSpacing: "-0.02em",
                     }}
                   >
-                    {headline}
+                    <span className="text-black">Build Smarter Integrations, Deliver Faster </span>
+                    <span
+                      style={{
+                        background: "linear-gradient(45deg, #a03291, #4b4fe2)",
+                        WebkitBackgroundClip: "text",
+                        WebkitTextFillColor: "transparent",
+                        backgroundClip: "text",
+                      }}
+                    >
+                      Results
+                    </span>
                   </motion.h1>
                 )}
 
@@ -67,9 +83,9 @@ const Hero = ({
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ delay: 0.6, duration: 0.8 }}
-                    className="blade__description mb-6 md:mb-8"
+                    className="blade__description mb-8 md:mb-10"
                   >
-                    <p className="text-base md:text-lg lg:text-xl text-gray-700 leading-relaxed max-w-3xl mx-auto">
+                    <p className="text-lg md:text-xl lg:text-1xl xl-text-1xl text-gray-600 leading-relaxed max-w-3xl mx-auto font-normal">
                       {description}
                     </p>
                   </motion.div>
@@ -85,7 +101,18 @@ const Hero = ({
               >
                 <a
                   href={ctaUrl}
-                  className="cta_button btn bg-[#204066] text-white hover:bg-[#1a3355] hover:border-[#1a3355] w-full sm:w-auto px-8 py-3 text-base font-semibold text-center rounded-full transition-all duration-300"
+                  className="cta_button btn text-white w-full sm:w-auto px-6 py-2.5 md:px-7 md:py-3 text-sm md:text-base font-semibold text-center rounded-full transition-all duration-300 tracking-wide border-0"
+                  style={{
+                    background: "linear-gradient(45deg, #a03291, #4b4fe2)",
+                  }}
+                  onMouseEnter={(e) => {
+                    e.currentTarget.style.background = "linear-gradient(45deg, #8a2a7f, #3d3fd1)";
+                    e.currentTarget.style.transform = "scale(1.02)";
+                  }}
+                  onMouseLeave={(e) => {
+                    e.currentTarget.style.background = "linear-gradient(45deg, #a03291, #4b4fe2)";
+                    e.currentTarget.style.transform = "scale(1)";
+                  }}
                   aria-label={`${ctaText}: ${headline}`}
                 >
                   {ctaText}

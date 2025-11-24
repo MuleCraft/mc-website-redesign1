@@ -944,50 +944,65 @@ const Navbar = () => {
 
           {/* Action Button */}
           <div className="flex items-center" style={{ marginLeft: "1rem" }}>
-            <Button
-              variant="default"
-              className="transition-colors duration-200"
+            <div
+              className="rounded-full p-[2px] transition-all duration-200"
               style={{
-                backgroundColor: "#ffffff",
-                color: "#20A99B",
-                border: "1px solid #20A99B",
-                padding: "0.675rem 1rem",
-                fontSize: "0.875rem",
-                height: "auto",
-                transition: "all 0.2s ease",
+                background: "linear-gradient(45deg, #a03291, #4b4fe2)",
               }}
               onMouseEnter={(e) => {
-                e.currentTarget.style.backgroundColor = "#20A99B";
-                e.currentTarget.style.color = "#ffffff";
+                const button = e.currentTarget.querySelector('button') as HTMLButtonElement;
+                if (button) {
+                  button.style.background = "linear-gradient(45deg, #a03291, #4b4fe2)";
+                  button.style.color = "#ffffff";
+                }
               }}
               onMouseLeave={(e) => {
-                e.currentTarget.style.backgroundColor = "#ffffff";
-                e.currentTarget.style.color = "#20A99B";
+                const button = e.currentTarget.querySelector('button') as HTMLButtonElement;
+                if (button) {
+                  button.style.background = "#ffffff";
+                  button.style.color = "#4b4fe2";
+                }
               }}
             >
-              Community
-            </Button>
+              <Button
+                variant="default"
+                className="transition-all duration-200 w-full h-full"
+                style={{
+                  background: "#ffffff",
+                  color: "#4b4fe2",
+                  border: "none",
+                  padding: "0.675rem 1rem",
+                  fontSize: "0.875rem",
+                  height: "auto",
+                  transition: "all 0.2s ease",
+                  borderRadius: "9999px",
+                  fontWeight: "500",
+                }}
+              >
+                Community
+              </Button>
+            </div>
           </div>
           <div className="flex items-center" style={{ marginLeft: "1rem" }}>
             <Button
               variant="default"
-              className="transition-colors duration-200"
+              className="transition-all duration-200"
               style={{
-                backgroundColor: "#008EC0",
+                background: "linear-gradient(45deg, #a03291, #4b4fe2)",
                 color: "#ffffff",
-                border: "1px solid #008EC0",
+                border: "none",
                 padding: "0.675rem 1rem",
                 fontSize: "0.875rem",
                 height: "auto",
                 transition: "all 0.2s ease",
               }}
               onMouseEnter={(e) => {
-                e.currentTarget.style.backgroundColor = "#0078A3";
-                e.currentTarget.style.borderColor = "#0078A3";
+                e.currentTarget.style.background = "linear-gradient(45deg, #8a2a7f, #3d3fd1)";
+                e.currentTarget.style.transform = "scale(1.02)";
               }}
               onMouseLeave={(e) => {
-                e.currentTarget.style.backgroundColor = "#008EC0";
-                e.currentTarget.style.borderColor = "#008EC0";
+                e.currentTarget.style.background = "linear-gradient(45deg, #a03291, #4b4fe2)";
+                e.currentTarget.style.transform = "scale(1)";
               }}
             >
               Schedule demo
