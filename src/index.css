@@ -1,0 +1,88 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 222.2 84% 4.9%;
+    --card: 0 0% 100%;
+    --card-foreground: 222.2 84% 4.9%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 222.2 84% 4.9%;
+    --primary: 262.1 83.3% 57.8%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 210 40% 96.1%;
+    --secondary-foreground: 222.2 47.4% 11.2%;
+    --muted: 210 40% 96.1%;
+    --muted-foreground: 215.4 16.3% 46.9%;
+    --accent: 210 40% 96.1%;
+    --accent-foreground: 222.2 47.4% 11.2%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
+    --border: 214.3 31.8% 91.4%;
+    --input: 214.3 31.8% 91.4%;
+    --ring: 262.1 83.3% 57.8%;
+    --radius: 0.5rem;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply text-foreground;
+    font-family: 'Noto Sans', sans-serif;
+    background: #ffffff;
+    overscroll-behavior: none;
+  }
+}
+
+@layer components {
+  .btn {
+    position: relative;
+    display: inline-block;
+    vertical-align: top;
+    padding: 0.5rem 0.75rem;
+    color: #fff;
+    font-size: 0.75rem;
+    font-weight: 600;
+    line-height: 1.5;
+    text-align: center;
+    text-decoration: none;
+    border: 1px solid #204066;
+    border-radius: 100vh;
+    background-color: #204066;
+    transition: background-color 0.3s ease 0s, color 0.3s ease 0s, border-color 0.3s ease 0s;
+    user-select: none;
+    -webkit-user-select: none;
+  }
+
+  @media (min-width: 1200px) {
+    .btn {
+      padding: 0.75rem 1.5rem;
+      font-size: 0.88rem;
+    }
+  }
+
+  /* Nav item hover underline effect */
+  .group:hover .nav-underline,
+  .dropdown-active .nav-underline {
+    width: auto !important;
+    left: 0.5rem !important;
+    right: 0.5rem !important;
+  }
+
+  /* Nav item hover text color change */
+  .nav-link:hover,
+  .dropdown-active .nav-link {
+    color: rgb(7, 43, 85) !important;
+  }
+
+  /* Change chevron color on hover */
+  .nav-link:hover svg,
+  .dropdown-active .nav-link svg {
+    color: rgb(7, 43, 85) !important;
+  }
+}
