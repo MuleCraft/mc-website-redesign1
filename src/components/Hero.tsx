@@ -1,6 +1,5 @@
 "use client";
 
-import { BackgroundLines } from "./ui/background-lines";
 import Clients from "./Clients";
 import { motion } from "motion/react";
 
@@ -23,7 +22,7 @@ const Hero = ({
 }: HeroProps) => {
   return (
     <div className="w-full relative bg-white">
-      <BackgroundLines className="min-h-screen flex items-start justify-center w-full flex-col px-4 relative pt-0 pb-24 md:pb-32">
+      <div className="min-h-screen flex items-start justify-center w-full flex-col px-4 relative pt-0 pb-24 md:pb-32">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 pt-0 pb-12 md:pb-16 lg:pb-20 max-w-[1280px] relative z-10">
           <article className="flex flex-col items-center justify-center text-center w-full -mt-4 md:-mt-25">
             {/* Content Wrapper - Centered */}
@@ -137,7 +136,7 @@ const Hero = ({
             <Clients />
           </div>
         </motion.div>
-      </BackgroundLines>
+      </div>
     </div>
   );
 };
