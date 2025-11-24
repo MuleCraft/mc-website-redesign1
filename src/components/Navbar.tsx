@@ -964,24 +964,24 @@ const Navbar = () => {
                 }
               }}
             >
-              <Button
-                variant="default"
+            <Button
+              variant="default"
                 className="transition-all duration-200 w-full h-full"
-                style={{
+              style={{
                   background: "#ffffff",
                   color: "#6c5ce7",
                   border: "none",
-                  padding: "0.675rem 1rem",
-                  fontSize: "0.875rem",
-                  height: "auto",
-                  transition: "all 0.2s ease",
+                padding: "0.675rem 1rem",
+                fontSize: "0.875rem",
+                height: "auto",
+                transition: "all 0.2s ease",
                   borderRadius: "9999px",
                   fontWeight: "500",
-                }}
-              >
-                Community
-              </Button>
-            </div>
+              }}
+            >
+              Community
+            </Button>
+          </div>
           </div>
           {/* Action Button - Schedule demo */}
           <div className="flex items-center" style={{ marginLeft: "1rem" }}>
