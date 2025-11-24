@@ -107,7 +107,7 @@ const Hero = () => {
       {/* Client Logos Section - At the bottom of hero, half in hero and half in next component */}
       <div className="w-[600px] bg-white border-t-2 border-white/20 py-4 md:py-5 absolute bottom-0 left-1/2 -translate-x-1/2 translate-y-1/2 z-20 rounded-lg">
         <div className="px-4 sm:px-6 lg:px-8">
-          <div className="flex items-center justify-center gap-4 md:gap-5 lg:gap-6 flex-wrap">
+          <div className="flex items-center justify-center gap-4 md:gap-6 lg:gap-8 flex-wrap">
             {clients.map((client, index) => (
               <motion.div
                 key={index}
