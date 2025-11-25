@@ -26,7 +26,7 @@ import si6Image from "@/assets/Digibee1.png";
 import cs1Image from "@/assets/blog-images05-1200x747.webp";
 import cs2Image from "@/assets/healthcareimg4.jpg";
 import cs3Image from "@/assets/digitaltransformation.jpg";
-import cs4Image from "@/assets/automationplatform.png";
+import cs4Image from "@/assets/Automationplatform.png";
 
 interface DropdownItem {
   label: string;
