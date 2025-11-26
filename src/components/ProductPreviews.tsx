@@ -2,7 +2,6 @@ import { useEffect, useRef } from "react";
 import logoDark from "@/assets/logo_dark.png";
 import dtImage from "@/assets/dt.png";
 import csi2Image from "@/assets/csi2.png";
-import csi3Image from "@/assets/csi3.png";
 import mulesoftlpImage from "@/assets/mulesoftlp-image.png";
 import newLogo from "@/assets/newlogo.png";
 
@@ -344,8 +343,8 @@ export const MuleSoftLPPreview = () => {
               src={newLogo}
               alt="Logo"
               style={{
-                width: "24px",
-                height: "24px",
+                width: "32px",
+                height: "32px",
                 objectFit: "contain",
               }}
             />
