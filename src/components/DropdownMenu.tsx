@@ -1,11 +1,11 @@
 import { useState, useEffect } from "react";
-import SnapMapperPreview from "./SnapMapperPreview";
 import {
   RAMLifyPreview,
   MuleSoftLPPreview,
   AnypointLPPreview,
   CloudHubMigrationPreview,
   GoosePreview,
+  SnapMapperPreview,
 } from "./ProductPreviews";
 import csi1Image from "@/assets/csi1.png";
 import csi2Image from "@/assets/csi2.png";
