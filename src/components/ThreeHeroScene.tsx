@@ -22,6 +22,12 @@ const ThreeHeroScene = ({ heroContainerRef }: ThreeHeroSceneProps) => {
   const basePositionRef = useRef({ x: 3.2, y: 0.4, z: 0 });
   const scaleRef = useRef(1);
   const targetScaleRef = useRef(1);
+  const scaleXRef = useRef(1);
+  const scaleYRef = useRef(1);
+  const scaleZRef = useRef(1);
+  const targetScaleXRef = useRef(1);
+  const targetScaleYRef = useRef(1);
+  const targetScaleZRef = useRef(1);
   const zPositionRef = useRef(0);
   const targetZPositionRef = useRef(0);
 
@@ -182,9 +188,25 @@ const ThreeHeroScene = ({ heroContainerRef }: ThreeHeroSceneProps) => {
         // Scale increases from 1 to 1.5, z moves from 0 to -2 (towards camera)
         targetScaleRef.current = 1.5;
         targetZPositionRef.current = -2;
+        
+        // Directional scaling based on hover direction
+        // X direction: right = expand X width, left = contract X width
+        // Y direction: up = expand Y height, down = contract Y height
+        // Z direction: forward = expand Z depth
+        const directionalScaleAmount = 0.5; // How much to scale in hover direction
+        // X: positive (right) expands, negative (left) contracts
+        targetScaleXRef.current = 1 + (targetMouseRef.current.x * directionalScaleAmount);
+        // Y: positive (up) expands, negative (down) contracts (invert Y since it's normalized)
+        targetScaleYRef.current = 1 + (-targetMouseRef.current.y * directionalScaleAmount);
+        // Z: always slightly forward when hovering
+        targetScaleZRef.current = 1.2;
       } else {
         targetScaleRef.current = 1;
         targetZPositionRef.current = 0;
+        // Reset directional scales
+        targetScaleXRef.current = 1;
+        targetScaleYRef.current = 1;
+        targetScaleZRef.current = 1;
       }
     };
 
@@ -195,6 +217,10 @@ const ThreeHeroScene = ({ heroContainerRef }: ThreeHeroSceneProps) => {
       targetMouseRef.current.y = 0;
       targetScaleRef.current = 1; // Reset scale
       targetZPositionRef.current = 0; // Reset z position
+      // Reset directional scales
+      targetScaleXRef.current = 1;
+      targetScaleYRef.current = 1;
+      targetScaleZRef.current = 1;
     };
 
     // Animation
@@ -211,24 +237,48 @@ const ThreeHeroScene = ({ heroContainerRef }: ThreeHeroSceneProps) => {
         // Smooth scale interpolation - structure grows when hovering
         scaleRef.current += (targetScaleRef.current - scaleRef.current) * 0.1;
 
+        // Smooth directional scale interpolation - expands/contracts based on hover direction
+        scaleXRef.current += (targetScaleXRef.current - scaleXRef.current) * 0.12;
+        scaleYRef.current += (targetScaleYRef.current - scaleYRef.current) * 0.12;
+        scaleZRef.current += (targetScaleZRef.current - scaleZRef.current) * 0.12;
+
         // Smooth z-position interpolation - structure moves forward when hovering
         zPositionRef.current += (targetZPositionRef.current - zPositionRef.current) * 0.1;
         
         const elapsed = (performance.now() - startTimeRef.current) * 0.001;
         const t = elapsed * 0.25;
 
-        // Whole structure pulsing - entire structure increases and decreases in size
-        // Very slow pulse: takes much longer to expand and contract
-        const pulseSpeed = Math.PI * 0.2; // Very slow pulse speed (much slower than once per second)
-        const pulseAmount = 0.5; // Pulse amount (50% size variation: 0.5x to 1.5x)
-        const basePulseScale = 1.0;
-        
-        // Calculate pulsing scale for entire structure (loops between 0.5 and 1.5, very slowly)
-        const pulseScale = basePulseScale + Math.sin(elapsed * pulseSpeed) * pulseAmount;
-        
-        // Apply uniform scale to entire structure (combines with hover scale)
-        const finalScale = scaleRef.current * pulseScale;
-        pointsRef.current.scale.set(finalScale, finalScale, finalScale);
+        // Overall structure size control - hover takes priority, timing when not hovering
+        if (isHoveringRef.current) {
+          // When hovering: Overall structure size ONLY controlled by hover direction
+          // No automatic pulse - hover direction is the only factor
+          
+          // Base scale from hover (1.0 to 1.5 based on general hover)
+          const hoverBaseScale = scaleRef.current;
+          
+          // Apply directional scaling to overall structure based on hover direction
+          // X: expands right, contracts left
+          // Y: expands up, contracts down  
+          // Z: slight forward expansion
+          const finalScaleX = hoverBaseScale * scaleXRef.current;
+          const finalScaleY = hoverBaseScale * scaleYRef.current;
+          const finalScaleZ = hoverBaseScale * scaleZRef.current;
+          
+          // Set overall structure scale - no pulse influence
+          pointsRef.current.scale.set(finalScaleX, finalScaleY, finalScaleZ);
+        } else {
+          // When not hovering: Overall structure size ONLY controlled by automatic timing pulse
+          // Very slow pulse: takes much longer to expand and contract
+          const pulseSpeed = Math.PI * 0.2; // Very slow pulse speed
+          const pulseAmount = 0.5; // Pulse amount (50% size variation: 0.5x to 1.5x)
+          const basePulseScale = 1.0;
+          
+          // Calculate pulsing scale for entire structure (loops between 0.5 and 1.5, very slowly)
+          const pulseScale = basePulseScale + Math.sin(elapsed * pulseSpeed) * pulseAmount;
+          
+          // Apply uniform pulse scale to overall structure - no hover influence
+          pointsRef.current.scale.set(pulseScale, pulseScale, pulseScale);
+        }
         
         // Update particle positions with enhanced noise and flow to break circular shape
         const noiseStrength = 0.6; // Increased noise strength to break circular shape
