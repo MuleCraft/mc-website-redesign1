@@ -1,10 +1,10 @@
 # Stage 1: Build
-FROM node:18-alpine AS builder
+FROM node:20-alpine AS builder
 WORKDIR /app
 
 # Copy package files and install dependencies
 COPY package.json package-lock.json ./
-RUN npm ci
+RUN npm install
 
 # ✅ Copy .env so Vite can read it during build
 COPY .env ./
@@ -16,7 +16,7 @@ COPY . .
 RUN npm run build
 
 # Stage 2: Runtime
-FROM node:18-alpine
+FROM node:20-alpine
 WORKDIR /app
 
 # Install only the production dependencies we need
