@@ -582,7 +582,7 @@ const Navbar = () => {
   return (
     <header
       ref={navbarRef}
-      className="w-full fixed top-0 z-50 border-b border-gray-200 overflow-visible"
+      className="w-full fixed top-0 z-50 overflow-visible"
       style={{ backgroundColor: "#fff" }}
     >
       <nav className="w-full max-w-[1344px] mx-auto py-2 flex items-center justify-between min-h-[80px] overflow-visible">
@@ -946,23 +946,27 @@ const Navbar = () => {
           <div className="flex items-center" style={{ marginLeft: "1rem" }}>
             <Button
               variant="default"
-              className="transition-colors duration-200"
+              className="transition-all duration-300 rounded-full"
               style={{
-                backgroundColor: "#ffffff",
-                color: "#20A99B",
-                border: "1px solid #20A99B",
+                background: "transparent",
+                color: "#a03291",
+                border: "1px solid #a03291",
                 padding: "0.675rem 1rem",
                 fontSize: "0.875rem",
                 height: "auto",
-                transition: "all 0.2s ease",
+                transition: "all 0.3s ease",
               }}
               onMouseEnter={(e) => {
-                e.currentTarget.style.backgroundColor = "#20A99B";
+                e.currentTarget.style.background = "linear-gradient(45deg, #8a2a7f, #3d3fd1)";
                 e.currentTarget.style.color = "#ffffff";
+                e.currentTarget.style.borderColor = "transparent";
+                e.currentTarget.style.transform = "scale(1.02)";
               }}
               onMouseLeave={(e) => {
-                e.currentTarget.style.backgroundColor = "#ffffff";
-                e.currentTarget.style.color = "#20A99B";
+                e.currentTarget.style.background = "transparent";
+                e.currentTarget.style.color = "#a03291";
+                e.currentTarget.style.borderColor = "#a03291";
+                e.currentTarget.style.transform = "scale(1)";
               }}
             >
               Community
@@ -971,23 +975,23 @@ const Navbar = () => {
           <div className="flex items-center" style={{ marginLeft: "1rem" }}>
             <Button
               variant="default"
-              className="transition-colors duration-200"
+              className="transition-all duration-300 rounded-full"
               style={{
-                backgroundColor: "#008EC0",
+                background: "linear-gradient(45deg, #a03291, #4b4fe2)",
                 color: "#ffffff",
-                border: "1px solid #008EC0",
+                border: "none",
                 padding: "0.675rem 1rem",
                 fontSize: "0.875rem",
                 height: "auto",
-                transition: "all 0.2s ease",
+                transition: "all 0.3s ease",
               }}
               onMouseEnter={(e) => {
-                e.currentTarget.style.backgroundColor = "#0078A3";
-                e.currentTarget.style.borderColor = "#0078A3";
+                e.currentTarget.style.background = "linear-gradient(45deg, #8a2a7f, #3d3fd1)";
+                e.currentTarget.style.transform = "scale(1.02)";
               }}
               onMouseLeave={(e) => {
-                e.currentTarget.style.backgroundColor = "#008EC0";
-                e.currentTarget.style.borderColor = "#008EC0";
+                e.currentTarget.style.background = "linear-gradient(45deg, #a03291, #4b4fe2)";
+                e.currentTarget.style.transform = "scale(1)";
               }}
             >
               Schedule demo
