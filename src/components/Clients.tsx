@@ -31,7 +31,7 @@ const Clients = () => {
           }
         }
         .fl-scroll {
-          animation: scroll 25s linear infinite;
+          animation: scroll 15s linear infinite;
           will-change: transform;
         }
         .fl-scroll:hover {

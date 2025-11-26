@@ -14,6 +14,7 @@ const ThreeHeroScene = ({ heroContainerRef }: ThreeHeroSceneProps) => {
   const positionsRef = useRef<Float32Array | null>(null);
   const originalPositionsRef = useRef<Float32Array | null>(null);
   const colorsRef = useRef<Float32Array | null>(null);
+  const particleBaseColorsRef = useRef<Array<{ r: number; g: number; b: number }> | null>(null);
   const animationFrameRef = useRef<number | null>(null);
   const startTimeRef = useRef(0);
   const mouseRef = useRef({ x: 0, y: 0 });
@@ -86,13 +87,22 @@ const ThreeHeroScene = ({ heroContainerRef }: ThreeHeroSceneProps) => {
     const positions = new Float32Array(particleCount * 3);
     const originalPositions = new Float32Array(particleCount * 3);
     const colors = new Float32Array(particleCount * 3);
+    const particleBaseColors: Array<{ r: number; g: number; b: number }> = [];
     
     // Base color (blue-violet): RGB values normalized (0-1)
     const baseColor = { r: 0.42, g: 0.50, b: 0.85 }; // #6b7fd9
     const whiteColor = { r: 1.0, g: 1.0, b: 1.0 }; // White
     
+    // Book Demo button gradient colors (lighter versions for particles)
+    // Purple from gradient: #a03291 = rgb(160, 50, 145) normalized, made lighter
+    const gradientPurple = { r: 0.63, g: 0.20, b: 0.57 }; // Lighter version of #a03291
+    // Blue from gradient: #4b4fe2 = rgb(75, 79, 226) normalized, made lighter
+    const gradientBlue = { r: 0.29, g: 0.31, b: 0.89 }; // Lighter version of #4b4fe2
+    
     // Distribute particles in a spherical/circular pattern
     const baseRadius = 1.8;
+    const gradientParticleRatio = 0.35; // 35% of particles use gradient colors (lightly distributed)
+    
     for (let i = 0; i < particleCount; i++) {
       const i3 = i * 3;
       
@@ -115,15 +125,31 @@ const ThreeHeroScene = ({ heroContainerRef }: ThreeHeroSceneProps) => {
       originalPositions[i3 + 1] = y;
       originalPositions[i3 + 2] = z;
       
-      // Initialize colors with base color
-      colors[i3] = baseColor.r;
-      colors[i3 + 1] = baseColor.g;
-      colors[i3 + 2] = baseColor.b;
+      // Initialize colors - mix of base blue and gradient colors (purple/blue)
+      const useGradient = Math.random() < gradientParticleRatio;
+      let particleColor;
+      
+      if (useGradient) {
+        // Use gradient colors (purple or blue from Book Demo button)
+        const usePurple = Math.random() < 0.5;
+        particleColor = usePurple ? gradientPurple : gradientBlue;
+      } else {
+        // Use base blue color
+        particleColor = baseColor;
+      }
+      
+      // Store base color for this particle
+      particleBaseColors.push({ ...particleColor });
+      
+      colors[i3] = particleColor.r;
+      colors[i3 + 1] = particleColor.g;
+      colors[i3 + 2] = particleColor.b;
     }
     
     positionsRef.current = positions;
     originalPositionsRef.current = originalPositions;
     colorsRef.current = colors;
+    particleBaseColorsRef.current = particleBaseColors;
     
     // Create geometry and update positions and colors
     const geometry = new THREE.BufferGeometry();
@@ -287,8 +313,10 @@ const ThreeHeroScene = ({ heroContainerRef }: ThreeHeroSceneProps) => {
         const originalPositions = originalPositionsRef.current;
         const colors = colorsRef.current;
         
-        // Base color and white color for interpolation
-        const baseColor = { r: 0.42, g: 0.50, b: 0.85 }; // #6b7fd9
+        // Color definitions for animation
+        const baseColor = { r: 0.42, g: 0.50, b: 0.85 }; // #6b7fd9 (blue)
+        const gradientPurple = { r: 0.63, g: 0.20, b: 0.57 }; // Purple from gradient
+        const gradientBlue = { r: 0.29, g: 0.31, b: 0.89 }; // Blue from gradient
         const whiteColor = { r: 1.0, g: 1.0, b: 1.0 }; // White
         
         // Color animation speed (very slow for smooth, gradual transition)
@@ -334,10 +362,13 @@ const ThreeHeroScene = ({ heroContainerRef }: ThreeHeroSceneProps) => {
           // Use sine wave: -1 to 1, then normalize to 0-1 for smooth fade
           const colorLerp = (Math.sin(colorPhase) + 1) * 0.5; // 0 to 1
           
-          // Interpolate between base color and white
-          colors[i3] = baseColor.r + (whiteColor.r - baseColor.r) * colorLerp;
-          colors[i3 + 1] = baseColor.g + (whiteColor.g - baseColor.g) * colorLerp;
-          colors[i3 + 2] = baseColor.b + (whiteColor.b - baseColor.b) * colorLerp;
+          // Get particle's base color from stored array
+          const particleBaseColor = particleBaseColorsRef.current?.[i] || baseColor;
+          
+          // Interpolate between particle's base color and white
+          colors[i3] = particleBaseColor.r + (whiteColor.r - particleBaseColor.r) * colorLerp;
+          colors[i3 + 1] = particleBaseColor.g + (whiteColor.g - particleBaseColor.g) * colorLerp;
+          colors[i3 + 2] = particleBaseColor.b + (whiteColor.b - particleBaseColor.b) * colorLerp;
         }
         
         // Update geometry

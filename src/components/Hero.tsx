@@ -90,6 +90,7 @@ const Hero = ({
                         fontSize: '3.5rem',
                         color: '#45474D', // var(--theme-surface-on-surface-variant) which is #45474D
                         letterSpacing: '-2.62px',
+                        marginBottom: '1.5rem', // Add margin bottom after "Deliver Faster Results"
                       }}
                     >
                       Deliver Faster Results
