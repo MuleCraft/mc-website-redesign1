@@ -1,17 +1,19 @@
 import { useEffect, useRef } from 'react';
 
-interface Particle {
+interface ParticleInstance {
   x: number;
   y: number;
   vx: number;
   vy: number;
   size: number;
+  update(mouseX: number, mouseY: number): void;
+  draw(): void;
 }
 
 const AntigravityCanvas = () => {
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const animationFrameRef = useRef<number | null>(null);
-  const particlesRef = useRef<Particle[]>([]);
+  const particlesRef = useRef<ParticleInstance[]>([]);
   const widthRef = useRef(0);
   const heightRef = useRef(0);
   const mouseRef = useRef({ x: 0, y: 0 });

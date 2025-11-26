@@ -171,7 +171,7 @@ const Hero = ({
             Trusted by companies
           </div>
           <div 
-            className="w-full max-w-[10000px] mx-auto px-4 sm:px-6 lg:px-8 py-4 sm:py-5 rounded-lg bg-white/60 backdrop-blur-sm"
+            className="w-full max-w-[10000px] mx-auto px-4 sm:px-6 lg:px-8 py-4 sm:py-5"
           >
             <Clients />
           </div>

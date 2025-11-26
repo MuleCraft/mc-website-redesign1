@@ -91,7 +91,6 @@ const ThreeHeroScene = ({ heroContainerRef }: ThreeHeroSceneProps) => {
     
     // Base color (blue-violet): RGB values normalized (0-1)
     const baseColor = { r: 0.42, g: 0.50, b: 0.85 }; // #6b7fd9
-    const whiteColor = { r: 1.0, g: 1.0, b: 1.0 }; // White
     
     // Book Demo button gradient colors (lighter versions for particles)
     // Purple from gradient: #a03291 = rgb(160, 50, 145) normalized, made lighter
@@ -315,8 +314,6 @@ const ThreeHeroScene = ({ heroContainerRef }: ThreeHeroSceneProps) => {
         
         // Color definitions for animation
         const baseColor = { r: 0.42, g: 0.50, b: 0.85 }; // #6b7fd9 (blue)
-        const gradientPurple = { r: 0.63, g: 0.20, b: 0.57 }; // Purple from gradient
-        const gradientBlue = { r: 0.29, g: 0.31, b: 0.89 }; // Blue from gradient
         const whiteColor = { r: 1.0, g: 1.0, b: 1.0 }; // White
         
         // Color animation speed (very slow for smooth, gradual transition)
@@ -366,9 +363,11 @@ const ThreeHeroScene = ({ heroContainerRef }: ThreeHeroSceneProps) => {
           const particleBaseColor = particleBaseColorsRef.current?.[i] || baseColor;
           
           // Interpolate between particle's base color and white
-          colors[i3] = particleBaseColor.r + (whiteColor.r - particleBaseColor.r) * colorLerp;
-          colors[i3 + 1] = particleBaseColor.g + (whiteColor.g - particleBaseColor.g) * colorLerp;
-          colors[i3 + 2] = particleBaseColor.b + (whiteColor.b - particleBaseColor.b) * colorLerp;
+          if (colors) {
+            colors[i3] = particleBaseColor.r + (whiteColor.r - particleBaseColor.r) * colorLerp;
+            colors[i3 + 1] = particleBaseColor.g + (whiteColor.g - particleBaseColor.g) * colorLerp;
+            colors[i3 + 2] = particleBaseColor.b + (whiteColor.b - particleBaseColor.b) * colorLerp;
+          }
         }
         
         // Update geometry
