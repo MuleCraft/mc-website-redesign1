@@ -1,15 +1,19 @@
 import { useEffect, useRef } from "react";
 import logoDark from "@/assets/logo_dark.png";
 import dtImage from "@/assets/dt.png";
+import csi2Image from "@/assets/csi2.png";
+import csi3Image from "@/assets/csi3.png";
+import mulesoftlpImage from "@/assets/mulesoftlp-image.png";
+import newLogo from "@/assets/newlogo.png";
 
-// RAMLify Flow Agent Preview - Purple/Indigo theme with diagonal line pattern
+// RAMLify Preview - Dark theme with purple/blue/cyan gradients matching reference design
 export const RAMLifyPreview = () => {
   return (
     <div
       style={{
         width: "100%",
         height: "100%",
-        background: "linear-gradient(135deg, #2d2a5e 0%, #3d3a7a 30%, #4a4688 60%, #5a5696 100%)",
+        background: "linear-gradient(to bottom right, #111827 0%, #000000 50%, #111827 100%)",
         color: "#ffffff",
         fontFamily: '"Noto Sans", sans-serif',
         position: "relative",
@@ -20,122 +24,137 @@ export const RAMLifyPreview = () => {
         borderTopRightRadius: "8px",
       }}
     >
-      {/* Diagonal Line Pattern Background */}
+      <style>{`
+        @keyframes pulse {
+          0%, 100% { opacity: 0.3; }
+          50% { opacity: 0.6; }
+        }
+        @keyframes float {
+          0%, 100% { transform: translateY(0px); }
+          50% { transform: translateY(-10px); }
+        }
+      `}</style>
+
+      {/* Animated background elements */}
+      <div style={{ position: "absolute", inset: 0, overflow: "hidden", pointerEvents: "none" }}>
+        <div
+          style={{
+            position: "absolute",
+            top: "-40px",
+            right: "-40px",
+            width: "96px",
+            height: "96px",
+            background: "radial-gradient(circle, rgba(147, 51, 234, 0.2) 0%, transparent 70%)",
+            borderRadius: "50%",
+            animation: "pulse 3s ease-in-out infinite",
+          }}
+        />
+        <div
+          style={{
+            position: "absolute",
+            bottom: "-40px",
+            left: "-40px",
+            width: "96px",
+            height: "96px",
+            background: "radial-gradient(circle, rgba(14, 165, 233, 0.2) 0%, transparent 70%)",
+            borderRadius: "50%",
+            animation: "pulse 3s ease-in-out infinite 1.5s",
+          }}
+        />
+        <div
+          style={{
+            position: "absolute",
+            top: "50%",
+            left: "50%",
+            transform: "translate(-50%, -50%)",
+            width: "80px",
+            height: "80px",
+            background: "radial-gradient(circle, rgba(99, 102, 241, 0.1) 0%, transparent 70%)",
+            borderRadius: "50%",
+            animation: "pulse 4s ease-in-out infinite 1s",
+          }}
+        />
+      </div>
+
+      {/* Floating particles */}
+      <div style={{ position: "absolute", inset: 0, overflow: "hidden", pointerEvents: "none" }}>
+        {[...Array(10)].map((_, i) => (
+          <div
+            key={i}
+            style={{
+              position: "absolute",
+              width: "2px",
+              height: "2px",
+              background: "linear-gradient(135deg, rgba(147, 51, 234, 0.4) 0%, rgba(14, 165, 233, 0.4) 100%)",
+              borderRadius: "50%",
+              opacity: 0.2,
+              left: `${Math.random() * 100}%`,
+              top: `${Math.random() * 100}%`,
+              animation: `float ${3 + Math.random() * 4}s ease-in-out infinite`,
+              animationDelay: `${Math.random() * 5}s`,
+            }}
+          />
+        ))}
+      </div>
+
+      {/* Grid pattern overlay */}
       <div
         style={{
           position: "absolute",
           inset: 0,
           backgroundImage: `
-            repeating-linear-gradient(
-              45deg,
-              transparent,
-              transparent 20px,
-              rgba(139, 92, 246, 0.04) 20px,
-              rgba(139, 92, 246, 0.04) 40px
-            ),
-            repeating-linear-gradient(
-              -45deg,
-              transparent,
-              transparent 20px,
-              rgba(99, 102, 241, 0.03) 20px,
-              rgba(99, 102, 241, 0.03) 40px
-            )
+            linear-gradient(rgba(255, 255, 255, 0.02) 1px, transparent 1px),
+            linear-gradient(90deg, rgba(255, 255, 255, 0.02) 1px, transparent 1px)
           `,
-          pointerEvents: "none",
-        }}
-      />
-      
-      {/* Circuit-like Lines */}
-      <svg
-        style={{
-          position: "absolute",
-          inset: 0,
-          width: "100%",
-          height: "100%",
-          opacity: 0.08,
-          pointerEvents: "none",
-        }}
-      >
-        <defs>
-          <pattern id="circuitLines" x="0" y="0" width="60" height="60" patternUnits="userSpaceOnUse">
-            <path
-              d="M 0 30 L 30 30 M 30 0 L 30 30 L 30 60 M 30 30 L 60 30"
-              stroke="rgba(167, 139, 250, 0.2)"
-              strokeWidth="1"
-              fill="none"
-            />
-          </pattern>
-        </defs>
-        <rect width="100%" height="100%" fill="url(#circuitLines)" />
-      </svg>
-      
-      {/* Glowing Accent Lines */}
-      <div
-        style={{
-          position: "absolute",
-          top: "15%",
-          left: 0,
-          right: 0,
-          height: "2px",
-          background: "linear-gradient(90deg, transparent 0%, rgba(167, 139, 250, 0.25) 50%, transparent 100%)",
-          pointerEvents: "none",
-        }}
-      />
-      <div
-        style={{
-          position: "absolute",
-          bottom: "20%",
-          left: 0,
-          right: 0,
-          height: "1px",
-          background: "linear-gradient(90deg, transparent 0%, rgba(139, 92, 246, 0.2) 50%, transparent 100%)",
-          pointerEvents: "none",
-        }}
-      />
-      
-      {/* Glowing Orbs */}
-      <div
-        style={{
-          position: "absolute",
-          top: "-30px",
-          right: "-30px",
-          width: "120px",
-          height: "120px",
-          borderRadius: "50%",
-          background: "radial-gradient(circle, rgba(167, 139, 250, 0.12) 0%, transparent 70%)",
-          pointerEvents: "none",
-        }}
-      />
-      <div
-        style={{
-          position: "absolute",
-          bottom: "-25px",
-          left: "-25px",
-          width: "100px",
-          height: "100px",
-          borderRadius: "50%",
-          background: "radial-gradient(circle, rgba(99, 102, 241, 0.1) 0%, transparent 70%)",
+          backgroundSize: "50px 50px",
+          maskImage: "radial-gradient(ellipse 80% 50% at 50% 0%, #000 70%, transparent 110%)",
           pointerEvents: "none",
         }}
       />
 
-      {/* Header - Left Aligned */}
+      {/* Header */}
       <div
         style={{
-          backgroundColor: "rgba(45, 42, 94, 0.3)",
-          backdropFilter: "blur(12px)",
-          borderBottom: "1px solid rgba(167, 139, 250, 0.15)",
-          padding: "0.6rem 1rem",
+          backgroundColor: "rgba(17, 24, 39, 0.6)",
+          backdropFilter: "blur(10px)",
+          padding: "0.5rem 1rem",
           flexShrink: 0,
           position: "relative",
-          zIndex: 1,
+          zIndex: 10,
           borderTopLeftRadius: "8px",
           borderTopRightRadius: "8px",
+          borderBottom: "1px solid rgba(255, 255, 255, 0.1)",
         }}
       >
         <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between" }}>
-          <div style={{ display: "flex", alignItems: "center", gap: "0.75rem" }}>
-            <h1 style={{ fontSize: "15px", fontWeight: "700", color: "#ffffff", margin: 0, letterSpacing: "0.5px" }}>
+          <div style={{ display: "flex", alignItems: "center", gap: "0.5rem" }}>
+            <div
+              style={{
+                width: "24px",
+                height: "24px",
+                background: "linear-gradient(135deg, #9333ea 0%, #3b82f6 50%, #06b6d4 100%)",
+                borderRadius: "8px",
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+                boxShadow: "0 4px 12px rgba(147, 51, 234, 0.25)",
+              }}
+            >
+              <svg
+                width="14"
+                height="14"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="white"
+                strokeWidth="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              >
+                <polyline points="16 18 22 12 16 6" />
+                <polyline points="8 6 2 12 8 18" />
+              </svg>
+            </div>
+            <h1 style={{ fontSize: "14px", fontWeight: "bold", color: "#ffffff", margin: 0 }}>
               RAMLify
             </h1>
           </div>
@@ -143,116 +162,108 @@ export const RAMLifyPreview = () => {
             <a
               href="#"
               style={{
-                fontSize: "10px",
-                fontWeight: "500",
-                color: "#c4b5fd",
-                textDecoration: "none",
-                padding: "0.2rem 0.4rem",
-              }}
-            >
-              Log In
-            </a>
-            <a
-              href="#"
-              style={{
-                padding: "0.3rem 0.7rem",
-                fontSize: "10px",
+                padding: "0.25rem 0.5rem",
+                fontSize: "9px",
                 fontWeight: "600",
-                color: "#1e1b4b",
-                background: "linear-gradient(135deg, #a78bfa 0%, #8b5cf6 100%)",
-                borderRadius: "6px",
+                color: "#ffffff",
+                background: "linear-gradient(135deg, #9333ea 0%, #3b82f6 50%, #06b6d4 100%)",
+                borderRadius: "4px",
                 textDecoration: "none",
-                boxShadow: "0 2px 6px rgba(167, 139, 250, 0.3)",
+                boxShadow: "0 2px 8px rgba(147, 51, 234, 0.25)",
               }}
             >
-              Try for Free
+              Get Started
             </a>
           </div>
         </div>
       </div>
 
-      {/* Content - Left Aligned Layout */}
+      {/* Hero Section */}
       <div
         style={{
-          padding: "1.25rem 1rem",
+          padding: "1rem",
           flex: 1,
           display: "flex",
           flexDirection: "column",
           justifyContent: "center",
-          textAlign: "left",
           position: "relative",
           zIndex: 1,
         }}
       >
-        <div
+        <h2
           style={{
-            display: "inline-flex",
-            alignItems: "center",
-            padding: "0.25rem 0.6rem",
-            marginBottom: "0.75rem",
-            fontSize: "8px",
-            fontWeight: "600",
+            fontSize: "20px",
+            fontWeight: "bold",
+            margin: "0 0 0.5rem 0",
+            lineHeight: "1.1",
+            textAlign: "center",
             color: "#ffffff",
-            background: "linear-gradient(135deg, rgba(167, 139, 250, 0.2) 0%, rgba(139, 92, 246, 0.2) 100%)",
-            border: "1px solid rgba(167, 139, 250, 0.3)",
-            borderRadius: "12px",
-            width: "fit-content",
           }}
         >
-          <span style={{ marginRight: "0.3rem" }}>✨</span>
-          AI-Powered RAML Generator
-        </div>
-
-        <h1
-          style={{
-            fontSize: "22px",
-            fontWeight: "800",
-            color: "#ffffff",
-            lineHeight: "1.15",
-            letterSpacing: "-0.03em",
-            margin: "0 0 0.75rem 0",
-            textAlign: "left",
-          }}
-        >
-          Design APIs,
-          <br />
+          Build APIs{" "}
           <span
             style={{
-              background: "linear-gradient(135deg, #c4b5fd 0%, #a78bfa 50%, #8b5cf6 100%)",
+              background: "linear-gradient(135deg, #a78bfa 0%, #60a5fa 50%, #06b6d4 100%)",
               WebkitBackgroundClip: "text",
               WebkitTextFillColor: "transparent",
+              backgroundClip: "text",
             }}
           >
-            Effortlessly.
+            10x Faster
           </span>
-        </h1>
+          <br />
+          with AI Magic
+        </h2>
 
         <p
           style={{
-            fontSize: "10px",
-            color: "#c4b5fd",
-            lineHeight: "1.6",
-            margin: 0,
-            maxWidth: "95%",
-            textAlign: "left",
+            fontSize: "9px",
+            color: "#9ca3af",
+            margin: "0 0 0.75rem 0",
+            lineHeight: "1.4",
+            textAlign: "center",
+            maxWidth: "90%",
+            alignSelf: "center",
           }}
         >
-          Transform natural language into RAML specifications with AI assistance. Build better APIs faster.
+          Transform natural language into RAML specifications with AI-powered automation and seamless MuleSoft integration.
         </p>
+
+        {/* Image Preview */}
+        <div
+          style={{
+            marginTop: "0.5rem",
+            borderRadius: "8px",
+            overflow: "hidden",
+            border: "1px solid rgba(255, 255, 255, 0.1)",
+            background: "rgba(0, 0, 0, 0.3)",
+          }}
+        >
+          <img
+            src={csi2Image}
+            alt="RAMLify Preview"
+            style={{
+              width: "100%",
+              height: "auto",
+              display: "block",
+              objectFit: "contain",
+            }}
+          />
+        </div>
       </div>
     </div>
   );
 };
 
-// MuleSoftLP Preview - Dark theme with purple accents
+// MuleSoftLP Preview - Dark theme matching reference design exactly
 export const MuleSoftLPPreview = () => {
   return (
     <div
       style={{
         width: "100%",
         height: "100%",
-        background: "linear-gradient(135deg, #0f0f23 0%, #1e1e3f 50%, #2d1b3d 100%)",
-        color: "#e2e8f0",
+        background: "#000000",
+        color: "#ffffff",
         fontFamily: '"Noto Sans", sans-serif',
         position: "relative",
         overflow: "hidden",
@@ -262,129 +273,107 @@ export const MuleSoftLPPreview = () => {
         borderTopRightRadius: "8px",
       }}
     >
-      {/* Grid Pattern Overlay */}
-      <div
-        style={{
-          position: "absolute",
-          inset: 0,
-          backgroundImage: `
-            linear-gradient(rgba(139, 92, 246, 0.05) 1px, transparent 1px),
-            linear-gradient(90deg, rgba(139, 92, 246, 0.05) 1px, transparent 1px)
-          `,
-          backgroundSize: "30px 30px",
-          pointerEvents: "none",
-        }}
-      />
-      
-      {/* Sparkle Effects */}
-      <div
-        style={{
-          position: "absolute",
-          top: "25%",
-          right: "20%",
-          width: "6px",
-          height: "6px",
-          background: "rgba(167, 139, 250, 0.7)",
-          clipPath: "polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%)",
-          pointerEvents: "none",
-        }}
-      />
-      <div
-        style={{
-          position: "absolute",
-          bottom: "35%",
-          left: "15%",
-          width: "5px",
-          height: "5px",
-          background: "rgba(139, 92, 246, 0.6)",
-          clipPath: "polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%)",
-          pointerEvents: "none",
-        }}
-      />
-      <div
-        style={{
-          position: "absolute",
-          top: "55%",
-          right: "30%",
-          width: "4px",
-          height: "4px",
-          background: "rgba(99, 102, 241, 0.5)",
-          clipPath: "polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%)",
-          pointerEvents: "none",
-        }}
-      />
-      
-      {/* Glowing Orbs */}
-      <div
-        style={{
-          position: "absolute",
-          top: "-50px",
-          right: "-50px",
-          width: "150px",
-          height: "150px",
-          borderRadius: "50%",
-          background: "radial-gradient(circle, rgba(139, 92, 246, 0.15) 0%, transparent 70%)",
-          pointerEvents: "none",
-        }}
-      />
-      <div
-        style={{
-          position: "absolute",
-          bottom: "-40px",
-          left: "-40px",
-          width: "120px",
-          height: "120px",
-          borderRadius: "50%",
-          background: "radial-gradient(circle, rgba(99, 102, 241, 0.12) 0%, transparent 70%)",
-          pointerEvents: "none",
-        }}
-      />
-      
+      <style>{`
+        @keyframes pulse {
+          0%, 100% { opacity: 0.1; }
+          50% { opacity: 0.2; }
+        }
+      `}</style>
+
+      {/* Animated Background Elements */}
+      <div style={{ position: "absolute", inset: 0, overflow: "hidden", pointerEvents: "none" }}>
+        <div
+          style={{
+            position: "absolute",
+            top: "-40px",
+            right: "-40px",
+            width: "80px",
+            height: "80px",
+            background: "rgba(59, 130, 246, 0.1)",
+            borderRadius: "50%",
+            filter: "blur(40px)",
+            animation: "pulse 3s ease-in-out infinite",
+          }}
+        />
+        <div
+          style={{
+            position: "absolute",
+            top: "50%",
+            left: "-40px",
+            width: "80px",
+            height: "80px",
+            background: "rgba(147, 51, 234, 0.1)",
+            borderRadius: "50%",
+            filter: "blur(40px)",
+            animation: "pulse 3s ease-in-out infinite 1.5s",
+          }}
+        />
+        <div
+          style={{
+            position: "absolute",
+            bottom: "-40px",
+            right: "1/3",
+            width: "80px",
+            height: "80px",
+            background: "rgba(236, 72, 153, 0.1)",
+            borderRadius: "50%",
+            filter: "blur(40px)",
+            animation: "pulse 3s ease-in-out infinite 2s",
+          }}
+        />
+      </div>
+
       {/* Header */}
       <div
         style={{
+          backgroundColor: "rgba(0, 0, 0, 0.8)",
+          backdropFilter: "blur(12px)",
+          borderBottom: "none",
           padding: "0.5rem 1rem",
           flexShrink: 0,
-          borderBottom: "1px solid rgba(139, 92, 246, 0.2)",
+          position: "relative",
+          zIndex: 10,
           borderTopLeftRadius: "8px",
           borderTopRightRadius: "8px",
+          boxShadow: "0 4px 12px rgba(0, 0, 0, 0.5)",
         }}
       >
         <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between" }}>
           <div style={{ display: "flex", alignItems: "center", gap: "0.5rem" }}>
-            {/* <div
+            <img
+              src={newLogo}
+              alt="Logo"
               style={{
-                width: "20px",
-                height: "20px",
-                background: "linear-gradient(135deg, #8b5cf6 0%, #6366f1 100%)",
+                width: "24px",
+                height: "24px",
+                objectFit: "contain",
+              }}
+            />
+            <h1 style={{ fontSize: "14px", fontWeight: "bold", color: "#ffffff", margin: 0, letterSpacing: "-0.02em" }}>
+              MuleSoftLP
+            </h1>
+          </div>
+          <div style={{ display: "flex", alignItems: "center", gap: "0.5rem" }}>
+            <a
+              href="#"
+              style={{
+                padding: "0.25rem 0.5rem",
+                fontSize: "9px",
+                fontWeight: "600",
+                color: "#ffffff",
+                background: "linear-gradient(135deg, #2563eb 0%, #8b5cf6 100%)",
                 borderRadius: "4px",
-                display: "flex",
-                alignItems: "center",
-                justifyContent: "center",
-                fontSize: "10px",
-                fontWeight: "bold",
+                textDecoration: "none",
+                boxShadow: "0 2px 8px rgba(37, 99, 235, 0.25)",
               }}
             >
-              M
-            </div> */}
-            <span style={{ fontSize: "12px", fontWeight: "600", color: "#ffffff" }}>MuleSoftLP</span>
+              Get Started
+            </a>
           </div>
-          <span
-            style={{
-              fontSize: "10px",
-              padding: "0.2rem 0.5rem",
-              backgroundColor: "#6366f1",
-              color: "#ffffff",
-              borderRadius: "4px",
-              fontWeight: "600",
-            }}
-          >
-            Get Started
-          </span>
         </div>
       </div>
 
-      {/* Content */}
+      {/* Hero Section */}
       <div
         style={{
           padding: "1rem",
@@ -392,31 +381,63 @@ export const MuleSoftLPPreview = () => {
           display: "flex",
           flexDirection: "column",
           justifyContent: "center",
+          position: "relative",
+          zIndex: 1,
           textAlign: "center",
         }}
       >
-        <h1
+        {/* Large MulesoftLP Text */}
+        <h4
           style={{
-            fontSize: "28px",
-            fontWeight: "800",
+            fontSize: "clamp(20px, 6vw, 40px)",
+            fontWeight: "600",
+            letterSpacing: "-0.02em",
             color: "#ffffff",
             margin: "0 0 0.5rem 0",
-            lineHeight: "1",
+            lineHeight: "0.9",
+            userSelect: "none",
+            display: "block",
           }}
         >
-          Mulesoft<span style={{ color: "#a78bfa" }}>LP</span>
-        </h1>
+          MulesoftLP
+        </h4>
+
         <p
           style={{
-            fontSize: "10px",
-            color: "#c7d2fe",
+            fontSize: "9px",
+            color: "#d1d5db",
+            margin: "0 0 0.75rem 0",
             lineHeight: "1.4",
-            marginBottom: "0.75rem",
+            maxWidth: "90%",
+            alignSelf: "center",
           }}
         >
-          Transform your MuleSoft journey with AI-powered learning. Generate personalized challenges
-          and master DataWeave faster than ever before.
+          Master MuleSoft technologies with AI-powered learning. Generate personalized challenges and practice DataWeave in real-time.
         </p>
+
+        {/* Image Preview */}
+        <div
+          style={{
+            marginTop: "0.5rem",
+            borderRadius: "12px",
+            overflow: "hidden",
+            border: "1px solid rgba(255, 255, 255, 0.1)",
+            background: "rgba(17, 24, 39, 0.5)",
+            boxShadow: "0 4px 12px rgba(0, 0, 0, 0.3)",
+            backdropFilter: "blur(4px)",
+          }}
+        >
+          <img
+            src={mulesoftlpImage}
+            alt="MuleSoftLP Preview"
+            style={{
+              width: "100%",
+              height: "auto",
+              display: "block",
+              objectFit: "contain",
+            }}
+          />
+        </div>
       </div>
     </div>
   );
