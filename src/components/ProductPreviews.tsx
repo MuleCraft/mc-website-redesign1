@@ -225,7 +225,7 @@ export const RAMLifyPreview = () => {
             alignSelf: "center",
           }}
         >
-          Transform natural language into RAML specifications with AI-powered automation and seamless MuleSoft integration.
+          Convert natural language to RAML with AI automation and seamless MuleSoft integration.
         </p>
 
         {/* Image Preview */}
@@ -411,7 +411,7 @@ export const MuleSoftLPPreview = () => {
             alignSelf: "center",
           }}
         >
-          Master MuleSoft technologies with AI-powered learning. Generate personalized challenges and practice DataWeave in real-time.
+          Master MuleSoft with AI-powered learning. Generate personalized challenges and practice DataWeave.
         </p>
 
         {/* Image Preview */}
@@ -1077,7 +1077,8 @@ export const AnypointLPPreview = () => {
             display: "flex",
             flexDirection: "column",
             justifyContent: "flex-start",
-            textAlign: "left",
+            textAlign: "center",
+            paddingTop: "1rem",
           }}
         >
           {/* Headline */}
@@ -1089,16 +1090,16 @@ export const AnypointLPPreview = () => {
               margin: "0 0 0.6rem 0",
               lineHeight: "1.2",
               letterSpacing: "-0.01em",
-              textAlign: "left",
+              textAlign: "center",
             }}
           >
-            Transform Your MuleSoft<br />
-            Development with AI-<br />
-            <span style={{ color: "#a78bfa" }}>Powered Intelligence</span>
+            AI-optimized acceleration<br />
+            for MuleSoft<br />
+            <span style={{ color: "#a78bfa" }}>development</span>
           </h1>
           
           {/* CTA Button */}
-          <div style={{ display: "flex", gap: "0.4rem", justifyContent: "flex-start", marginBottom: "0.5rem", flexWrap: "wrap" }}>
+          <div style={{ display: "flex", gap: "0.4rem", justifyContent: "center", marginBottom: "0.5rem", flexWrap: "wrap" }}>
             <a
               href="#"
               style={{
@@ -1111,7 +1112,7 @@ export const AnypointLPPreview = () => {
                 textDecoration: "none",
               }}
             >
-              Start Building for Free →
+              Start Building →
             </a>
           </div>
         </div>
@@ -1130,7 +1131,7 @@ export const CloudHubMigrationPreview = () => {
       style={{
         width: "100%",
         height: "100%",
-        background: "linear-gradient(to bottom right, #eff6ff 0%, #ffffff 50%, #e0e7ff 100%)",
+        background: "linear-gradient(to bottom right, #dbeafe 0%, #bfdbfe 50%, #93c5fd 100%)",
         color: "#1f2937",
         fontFamily: '"Noto Sans", sans-serif',
         position: "relative",
@@ -1236,8 +1237,7 @@ export const CloudHubMigrationPreview = () => {
             alignSelf: "center",
           }}
         >
-          Streamline your migration from CloudHub 1.0 to CloudHub 2.0 with our comprehensive
-          assessment and planning tools. Get compatibility reports, migration roadmaps, and expert guidance.
+          Streamline your CloudHub 1.0 to 2.0 migration with assessment tools, compatibility reports, and expert guidance.
         </p>
       </div>
     </div>
@@ -1251,7 +1251,7 @@ export const SnapMapperPreview = () => {
       style={{
         width: "100%",
         height: "100%",
-        background: "linear-gradient(135deg, #1e3a8a 0%, #3b82f6 30%, #60a5fa 60%, #93c5fd 100%)",
+        background: "#1C4E8D",
         color: "#ffffff",
         fontFamily: '"Noto Sans", sans-serif',
         position: "relative",

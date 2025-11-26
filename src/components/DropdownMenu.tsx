@@ -20,7 +20,7 @@ import muleMaxImage from "@/assets/mule max.png";
 import si1Image from "@/assets/mulesoftfinal.png";
 import si2Image from "@/assets/snaplogic3.jpg";
 import si3Image from "@/assets/salesforce-360.webp";
-import si4Image from "@/assets/N8nimage1.png";
+import si4Image from "@/assets/n8n-i.png";
 import si5Image from "@/assets/si5.webp";
 import si6Image from "@/assets/Digibee1.png";
 import cs1Image from "@/assets/blog-images05-1200x747.webp";
@@ -978,10 +978,10 @@ const DropdownMenu = ({
     // Product headers data
     const productHeaders = [
       "SnapMapper",
-      "AnypointLP",
-      "CloudHub 2.0 Migration",
       "Goose",
+      "AnypointLP",
       "RAMLify",
+      "CloudHub 2.0 Migration",
       "MuleSoftLP",
     ];
 
