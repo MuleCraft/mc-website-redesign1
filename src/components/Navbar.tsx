@@ -1,7 +1,7 @@
 import { useState, useRef, useEffect } from "react";
 import { Search, Globe, ChevronDown } from "lucide-react";
 import { Button } from "./ui/button";
-import mulecraftLogo from "../assets/mulecraftlogo.png";
+import mulecraftLogo from "../assets/logo-mule.png";
 import DropdownMenu from "./DropdownMenu";
 
 const Navbar = () => {
@@ -596,7 +596,7 @@ const Navbar = () => {
             <img
               src={mulecraftLogo}
               alt="Mulecraft Logo"
-              className="h-[24px] w-[130px] "
+              className="h-[18px] w-[135px] "
             />
           </div>
 
@@ -949,23 +949,23 @@ const Navbar = () => {
               className="transition-all duration-300 rounded-full"
               style={{
                 background: "transparent",
-                color: "#a03291",
-                border: "1px solid #a03291",
+                color: "#c855b8",
+                border: "1px solid #c855b8",
                 padding: "0.675rem 1rem",
                 fontSize: "0.875rem",
                 height: "auto",
                 transition: "all 0.3s ease",
               }}
               onMouseEnter={(e) => {
-                e.currentTarget.style.background = "linear-gradient(45deg, #8a2a7f, #3d3fd1)";
+                e.currentTarget.style.background = "linear-gradient(45deg, #b845a8, #5b6fd8)";
                 e.currentTarget.style.color = "#ffffff";
                 e.currentTarget.style.borderColor = "transparent";
                 e.currentTarget.style.transform = "scale(1.02)";
               }}
               onMouseLeave={(e) => {
                 e.currentTarget.style.background = "transparent";
-                e.currentTarget.style.color = "#a03291";
-                e.currentTarget.style.borderColor = "#a03291";
+                e.currentTarget.style.color = "#c855b8";
+                e.currentTarget.style.borderColor = "#c855b8";
                 e.currentTarget.style.transform = "scale(1)";
               }}
             >
@@ -977,7 +977,7 @@ const Navbar = () => {
               variant="default"
               className="transition-all duration-300 rounded-full"
               style={{
-                background: "linear-gradient(45deg, #a03291, #4b4fe2)",
+                background: "linear-gradient(45deg, #c855b8, #6b7fe8)",
                 color: "#ffffff",
                 border: "none",
                 padding: "0.675rem 1rem",
@@ -986,11 +986,11 @@ const Navbar = () => {
                 transition: "all 0.3s ease",
               }}
               onMouseEnter={(e) => {
-                e.currentTarget.style.background = "linear-gradient(45deg, #8a2a7f, #3d3fd1)";
+                e.currentTarget.style.background = "linear-gradient(45deg, #b845a8, #5b6fd8)";
                 e.currentTarget.style.transform = "scale(1.02)";
               }}
               onMouseLeave={(e) => {
-                e.currentTarget.style.background = "linear-gradient(45deg, #a03291, #4b4fe2)";
+                e.currentTarget.style.background = "linear-gradient(45deg, #c855b8, #6b7fe8)";
                 e.currentTarget.style.transform = "scale(1)";
               }}
             >

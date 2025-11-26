@@ -19,7 +19,7 @@ const Hero = ({
   eyebrow = "",
   headline = "Build Smarter Integrations, Deliver Faster Results",
   description = "Connect your systems, automate workflows, and unlock new possibilities. We turn complex integrations into simple, powerful solutions that drive your business forward.",
-  ctaText = "Book Demo",
+  ctaText = "Schedule demo",
   ctaUrl = "#",
 }: HeroProps) => {
   const heroContainerRef = useRef<HTMLDivElement>(null);
@@ -128,24 +128,24 @@ const Hero = ({
                 transition={{ delay: 0.8, duration: 0.8 }}
                 className="cta_container flex flex-col sm:flex-row sm:justify-center gap-4 mb-10 md:mb-12"
               >
-                <a
-                  href={ctaUrl}
-                  className="cta_button btn text-white w-full sm:w-auto px-6 py-2.5 md:px-7 md:py-3 text-sm md:text-base font-semibold text-center rounded-full transition-all duration-300 tracking-wide border-0"
-                  style={{
-                    background: "linear-gradient(45deg, #a03291, #4b4fe2)",
-                  }}
-                  onMouseEnter={(e) => {
-                    e.currentTarget.style.background = "linear-gradient(45deg, #8a2a7f, #3d3fd1)";
-                    e.currentTarget.style.transform = "scale(1.02)";
-                  }}
-                  onMouseLeave={(e) => {
-                    e.currentTarget.style.background = "linear-gradient(45deg, #a03291, #4b4fe2)";
-                    e.currentTarget.style.transform = "scale(1)";
-                  }}
-                  aria-label={`${ctaText}: ${headline}`}
-                >
-                  {ctaText}
-                </a>
+                       <a
+                         href={ctaUrl}
+                         className="cta_button btn text-white w-full sm:w-auto px-6 py-2.5 md:px-7 md:py-3 text-sm md:text-base font-semibold text-center rounded-full transition-all duration-300 tracking-wide border-0"
+                         style={{
+                           background: "linear-gradient(45deg, #c855b8, #6b7fe8)",
+                         }}
+                         onMouseEnter={(e) => {
+                           e.currentTarget.style.background = "linear-gradient(45deg, #b845a8, #5b6fd8)";
+                           e.currentTarget.style.transform = "scale(1.02)";
+                         }}
+                         onMouseLeave={(e) => {
+                           e.currentTarget.style.background = "linear-gradient(45deg, #c855b8, #6b7fe8)";
+                           e.currentTarget.style.transform = "scale(1)";
+                         }}
+                         aria-label={`${ctaText}: ${headline}`}
+                       >
+                         {ctaText}
+                       </a>
               </motion.div>
             </div>
           </article>
