@@ -17,16 +17,16 @@ import trainingImage from "@/assets/training.png";
 import blog1Image from "@/assets/blog1.png";
 import blog2Image from "@/assets/blog2.png";
 import muleMaxImage from "@/assets/mule max.png";
-import si1Image from "@/assets/si1.webp";
-import si2Image from "@/assets/si2.jpg";
-import si3Image from "@/assets/si3.png";
-import si4Image from "@/assets/si4.png";
+import si1Image from "@/assets/mulesoftfinal.png";
+import si2Image from "@/assets/snaplogic3.jpg";
+import si3Image from "@/assets/salesforce-360.webp";
+import si4Image from "@/assets/N8nimage1.png";
 import si5Image from "@/assets/si5.webp";
-import si6Image from "@/assets/si6.png";
-import cs1Image from "@/assets/cs1.png";
-import cs2Image from "@/assets/cs2.png";
-import cs3Image from "@/assets/cs3.png";
-import cs4Image from "@/assets/cs4.png";
+import si6Image from "@/assets/Digibee1.png";
+import cs1Image from "@/assets/blog-images05-1200x747.webp";
+import cs2Image from "@/assets/healthcaresolutionfinal5.png";
+import cs3Image from "@/assets/digitaltransformationfinal.webp";
+import cs4Image from "@/assets/automationsplatformfinal2.png";
 
 interface DropdownItem {
   label: string;
@@ -337,17 +337,18 @@ const DropdownMenu = ({
                             : "#f3f4f6",
                         }}
                       >
-                        <img
+                       <img
                           src={selectedImageCard.image}
                           alt={selectedImageCard.title}
                           style={{
                             width: "100%",
-                            height: "100%",
-                            objectFit: 
+                            height:
+                              selectedHeader === "SnapLogic" ? "90%" : "100%",
+                            objectFit:
                               selectedHeader === "SnapLogic"
-                                ? "contain" 
+                                ? "fill"
                                 : selectedHeader === "MuleSoft"
-                                ? "fill" 
+                                ? "cover"
                                 : "cover",
                             transition: "transform 0.3s ease",
                           }}
@@ -2055,18 +2056,20 @@ const DropdownMenu = ({
                       backgroundColor: "#f3f4f6",
                     }}
                   >
-                    <img
+                   <img
                       src={selectedImageCard.image}
                       alt={selectedImageCard.title}
                       style={{
                         width: "100%",
                         height: "100%",
-                        objectFit: 
-                          selectedHeader === "Digital Transformation" 
-                            ? "fill" 
-                            : selectedHeader === "HR Management" || selectedHeader === "Healthcare Solutions" || selectedHeader === "Automation & Platforms" 
-                            ? "cover" 
-                            : "contain",
+                        objectFit:
+                          selectedHeader === "Digital Transformation"
+                            ? "fill"
+                            : selectedHeader === "HR Management" ||
+                              selectedHeader === "Healthcare Solutions" ||
+                              selectedHeader === "Automation & Platforms"
+                            ? "fill"
+                            : "scale-down",
                         transition: "transform 0.3s ease",
                       }}
                     />
