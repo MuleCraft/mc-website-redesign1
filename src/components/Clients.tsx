@@ -43,16 +43,24 @@ const Clients = () => {
       `}</style>
       <div className="fl-wrapper flex items-center">
         <div className="fl-scroll flex items-center gap-6 md:gap-8 lg:gap-12">
-          {duplicatedLogos.map((logo, index) => (
-            <div key={index} className="fl-item flex-shrink-0 flex items-center justify-center">
-              <img
-                className={`${logo.className} w-auto object-contain opacity-70 grayscale hover:opacity-100 hover:grayscale-0 transition-all duration-300`}
-                src={logo.src}
-                alt={logo.alt}
-                loading="lazy"
-              />
-            </div>
-          ))}
+          {duplicatedLogos.map((logo, index) => {
+            // Increase size for NVIDIA logo only
+            const isNvidia = logo.alt === "nvidiaLogo";
+            const sizeClass = isNvidia 
+              ? "h-8 md:h-10 lg:h-12" // Larger size for NVIDIA
+              : logo.className;
+            
+            return (
+              <div key={index} className="fl-item flex-shrink-0 flex items-center justify-center">
+                <img
+                  className={`${sizeClass} w-auto object-contain opacity-70 grayscale hover:opacity-100 hover:grayscale-0 transition-all duration-300`}
+                  src={logo.src}
+                  alt={logo.alt}
+                  loading="lazy"
+                />
+              </div>
+            );
+          })}
         </div>
       </div>
     </div>

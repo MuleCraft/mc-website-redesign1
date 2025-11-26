@@ -65,23 +65,34 @@ const Hero = ({
                     initial={{ opacity: 0, y: 30 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ delay: 0.4, duration: 0.8, ease: "easeOut" }}
-                    className="headline marquee__headline--standard text-4xl md:text-5xl lg:text-6xl xl:text-6xl font-bold leading-[1.1] md:leading-[1.05] tracking-tight mb-6 md:mb-8"
+                    className="landing-main-header mb-6 md:mb-8"
                     style={{
-                      fontFamily: "'Space Grotesk', sans-serif",
-                      fontWeight: 700,
-                      letterSpacing: "-0.02em",
+                      fontFamily: "'Google Sans', sans-serif",
+                      fontSize: 'clamp(2.5rem, 8vw, 5rem)',
+                      fontWeight: 450,
+                      lineHeight: 1.1,
+                      margin: 0,
+                      textAlign: 'center',
                     }}
                   >
-                    <span className="text-black">Build Smarter Integrations, Deliver Faster </span>
-                    <span
+                    <span 
                       style={{
-                        background: "linear-gradient(45deg, #a03291, #4b4fe2)",
-                        WebkitBackgroundClip: "text",
-                        WebkitTextFillColor: "transparent",
-                        backgroundClip: "text",
+                        display: 'block',
+                        color: '#000000',
+                        letterSpacing: '-2.62px',
                       }}
                     >
-                      Results
+                      Build Smarter Integrations,
+                    </span>
+                    <span
+                      style={{
+                        display: 'block',
+                        fontSize: '3.5rem',
+                        color: '#45474D', // var(--theme-surface-on-surface-variant) which is #45474D
+                        letterSpacing: '-2.62px',
+                      }}
+                    >
+                      Deliver Faster Results
                     </span>
                   </motion.h1>
                 )}
@@ -94,7 +105,15 @@ const Hero = ({
                     transition={{ delay: 0.6, duration: 0.8 }}
                     className="blade__description mb-8 md:mb-10"
                   >
-                    <p className="text-lg md:text-xl lg:text-1xl xl-text-1xl text-gray-600 leading-relaxed max-w-3xl mx-auto font-normal">
+                    <p 
+                      className="leading-relaxed max-w-3xl mx-auto font-normal"
+                      style={{
+                        fontFamily: "'Google Sans', sans-serif",
+                        fontSize: '1rem',
+                        color: '#9CA3AF', // Lighter grey color
+                        lineHeight: '1.5',
+                      }}
+                    >
                       {description}
                     </p>
                   </motion.div>
