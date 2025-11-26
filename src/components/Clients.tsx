@@ -5,14 +5,14 @@ import tekisticLogo from "@/assets/tekistic.webp";
 
 const Clients = () => {
   const logos = [
-    { src: nvidiaLogo, alt: "nvidiaLogo", className: "h-6 md:h-7 lg:h-8" },
-    { src: tekisticLogo, alt: "tekisticLogo", className: "h-4 md:h-5 lg:h-6" },
-    { src: accionLogo, alt: "accionLabsLogo", className: "h-4 md:h-5 lg:h-6" },
-    { src: zensarkLogo, alt: "zensarkLogo", className: "h-6 md:h-7 lg:h-8" },
+    { src: nvidiaLogo, alt: "nvidiaLogo", className: "h-8 md:h-10 lg:h-12" },
+    { src: tekisticLogo, alt: "tekisticLogo", className: "h-6 md:h-8 lg:h-10" },
+    { src: accionLogo, alt: "accionLabsLogo", className: "h-6 md:h-8 lg:h-10" },
+    { src: zensarkLogo, alt: "zensarkLogo", className: "h-8 md:h-10 lg:h-12" },
     {
       src: "https://gitlab.mulecraft.in/mc-public-group/mc-website-image-data/-/raw/feature/images/Common%20Images/aequalis-logo.webp",
       alt: "aequalIsLogo",
-      className: "h-7 md:h-8 lg:h-9",
+      className: "h-9 md:h-10 lg:h-12",
     },
   ];
 
@@ -44,11 +44,8 @@ const Clients = () => {
       <div className="fl-wrapper flex items-center">
         <div className="fl-scroll flex items-center gap-6 md:gap-8 lg:gap-12">
           {duplicatedLogos.map((logo, index) => {
-            // Increase size for NVIDIA logo only
-            const isNvidia = logo.alt === "nvidiaLogo";
-            const sizeClass = isNvidia 
-              ? "h-8 md:h-10 lg:h-12" // Larger size for NVIDIA
-              : logo.className;
+            // Use the logo's defined size class
+            const sizeClass = logo.className;
             
             return (
               <div key={index} className="fl-item flex-shrink-0 flex items-center justify-center">

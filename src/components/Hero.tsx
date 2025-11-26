@@ -155,13 +155,23 @@ const Hero = ({
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 1, duration: 0.8 }}
-          className="featured-logos absolute bottom-20 md:bottom-24 lg:bottom-28 left-0 w-full flex justify-center z-20"
+          className="featured-logos absolute bottom-20 md:bottom-24 lg:bottom-28 left-0 w-full flex flex-col items-center justify-center z-20"
         >
+          {/* Trusted by text */}
           <div 
-            className="w-full max-w-[650px] mx-auto px-4 sm:px-6 lg:px-8 py-4 sm:py-5 rounded-lg bg-white/60 backdrop-blur-sm border border-blue-100/50"
+            className="mb-4 md:mb-5"
             style={{
-              boxShadow: "0 0 30px 10px rgba(147, 197, 253, 0.4), 0 0 15px 5px rgba(147, 197, 253, 0.2)"
+              fontFamily: "'Google Sans', sans-serif",
+              fontSize: '1rem',
+              fontWeight: 700,
+              color: '#2F3034',
+              letterSpacing: '-0.02em',
             }}
+          >
+            Trusted by companies
+          </div>
+          <div 
+            className="w-full max-w-[900px] mx-auto px-4 sm:px-6 lg:px-8 py-4 sm:py-5 rounded-lg bg-white/60 backdrop-blur-sm"
           >
             <Clients />
           </div>
