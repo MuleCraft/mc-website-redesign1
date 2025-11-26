@@ -18,7 +18,7 @@ import blog1Image from "@/assets/blog1.png";
 import blog2Image from "@/assets/blog2.png";
 import muleMaxImage from "@/assets/mule max.png";
 import si1Image from "@/assets/mulesoftfinal.png";
-import si2Image from "@/assets/snaplogic3.jpg";
+import si2Image from "@/assets/snap-i.webp";
 import si3Image from "@/assets/salesforce-360.webp";
 import si4Image from "@/assets/n8n-i.png";
 import si5Image from "@/assets/si5.webp";
@@ -100,7 +100,7 @@ const DropdownMenu = ({
       "SnapLogic": {
         image: si2Image,
         title: "SnapLogic Data Orchestration",
-        description: "Data integration and automation platform",
+        description: "Data integration and automation platform with intelligent pipeline design",
         href: "https://www.snaplogic.com/glossary/orchestration",
       },
       "Salesforce": {
@@ -303,7 +303,9 @@ const DropdownMenu = ({
                         borderRadius: "8px",
                         overflow: "hidden",
                         border: "1px solid #e5e7eb",
-                        margin: "auto",
+                        margin: "0",
+                        width: "100%",
+                        minHeight: "200px",
                         transition: "transform 0.2s ease, box-shadow 0.2s ease",
                         }}
                         onMouseEnter={(e) => {
@@ -323,40 +325,63 @@ const DropdownMenu = ({
                         }
                       }}
                     >
-                      {/* Image */}
+                      {/* Image or Video */}
                       <div
                         style={{
                           width: "100%",
                           height: "200px",
                           overflow: "hidden",
-                          backgroundColor: selectedHeader === "Digibee" ? "#ffffff" : "#f3f4f6",
+                          backgroundColor: selectedHeader === "SnapLogic" 
+                            ? "#0E1831"
+                            : selectedHeader === "Digibee" 
+                            ? "#ffffff" 
+                            : "#f3f4f6",
                           background: selectedHeader === "SnapLogic" 
-                            ? "linear-gradient(to bottom, #00379D 0%, #00379D 50%, #ffffff 50%, #ffffff 100%)"
+                            ? "#0E1831"
                             : selectedHeader === "Digibee" 
                             ? "#ffffff" 
                             : "#f3f4f6",
                         }}
                       >
-                       <img
-                          src={selectedImageCard.image}
-                          alt={selectedImageCard.title}
-                          style={{
-                            width: "100%",
-                            height:
-                              selectedHeader === "SnapLogic" ? "90%" : "100%",
-                            objectFit:
-                              selectedHeader === "SnapLogic"
-                                ? "fill"
-                                : selectedHeader === "MuleSoft"
-                                ? "cover"
-                                : "cover",
-                            transition: "transform 0.3s ease",
-                          }}
-                        />
+                        {selectedHeader === "MuleSoft" ? (
+                          <video
+                            autoPlay
+                            playsInline
+                            muted
+                            loop
+                            poster="https://wp.sfdcdigital.com/mulesoft/en-us/wp-content/uploads/sites/40/2024/11/blade-1-marquee-hero-desktop-v1.webp?w=1024"
+                            style={{
+                              width: "100%",
+                              height: "100%",
+                              objectFit: "cover",
+                              transition: "transform 0.3s ease",
+                            }}
+                          >
+                            <source
+                              src="https://www.mulesoft.com/misc/pbc/assets/media/motion-hero-alpha-1860x1240.webm"
+                              type="video/webm"
+                            />
+                            <source
+                              src="https://www.mulesoft.com/misc/pbc/assets/media/Hero Motion_RESIZE _1860x1240_Original Export.mov"
+                              type="video/quicktime"
+                            />
+                          </video>
+                        ) : (
+                          <img
+                            src={selectedImageCard.image}
+                            alt={selectedImageCard.title}
+                            style={{
+                              width: "100%",
+                              height: "100%",
+                              objectFit: selectedHeader === "SnapLogic" ? "fill" : "cover",
+                              transition: "transform 0.3s ease",
+                            }}
+                          />
+                        )}
                       </div>
                       {/* Card Content */}
                       <div style={{ 
-                        padding: selectedHeader === "SnapLogic" ? "0 1rem 1rem 1rem" : "1rem" 
+                        padding: "1rem" 
                       }}>
                         <div
                           style={{
