@@ -11,7 +11,6 @@ const ThreeHeroScene = ({ heroContainerRef }: ThreeHeroSceneProps) => {
   const rendererRef = useRef<THREE.WebGLRenderer | null>(null);
   const cameraRef = useRef<THREE.PerspectiveCamera | null>(null);
   const pointsRef = useRef<THREE.Points | null>(null);
-  const linesRef = useRef<THREE.LineSegments | null>(null);
   const animationFrameRef = useRef<number | null>(null);
   const startTimeRef = useRef(0);
   const mouseRef = useRef({ x: 0, y: 0 });
@@ -70,22 +69,6 @@ const ThreeHeroScene = ({ heroContainerRef }: ThreeHeroSceneProps) => {
     scene.add(points);
     pointsRef.current = points;
 
-    // Create edges geometry to get all edges/lines of the structure
-    const edgesGeometry = new THREE.EdgesGeometry(geometry);
-    
-    // Create line material - small, thin blue lines
-    const lineMaterial = new THREE.LineBasicMaterial({
-      color: 0x4b7fd9, // Blue color for lines
-      transparent: true,
-      opacity: 0.6,
-      linewidth: 1, // Thin lines (note: linewidth may not work on all systems)
-    });
-
-    // Create line segments from edges
-    const lines = new THREE.LineSegments(edgesGeometry, lineMaterial);
-    scene.add(lines);
-    linesRef.current = lines;
-
     // Lights
     const ambientLight = new THREE.AmbientLight(0xffffff, 0.55);
     scene.add(ambientLight);
@@ -100,7 +83,6 @@ const ThreeHeroScene = ({ heroContainerRef }: ThreeHeroSceneProps) => {
 
     // Position hero object behind text, slightly to side
     points.position.set(3.2, 0.4, 0);
-    lines.position.copy(points.position);
 
     // Mouse move handler - track position relative to hero container
     const handleMouseMove = (event: MouseEvent) => {
@@ -150,7 +132,7 @@ const ThreeHeroScene = ({ heroContainerRef }: ThreeHeroSceneProps) => {
     const animate = () => {
       animationFrameRef.current = requestAnimationFrame(animate);
 
-      if (pointsRef.current && linesRef.current) {
+      if (pointsRef.current) {
         // Smooth mouse interpolation - faster when hovering
         const lerpSpeed = isHoveringRef.current ? 0.08 : 0.03;
         mouseRef.current.x += (targetMouseRef.current.x - mouseRef.current.x) * lerpSpeed;
@@ -159,7 +141,6 @@ const ThreeHeroScene = ({ heroContainerRef }: ThreeHeroSceneProps) => {
         // Smooth scale interpolation - structure grows when hovering
         scaleRef.current += (targetScaleRef.current - scaleRef.current) * 0.1;
         pointsRef.current.scale.set(scaleRef.current, scaleRef.current, scaleRef.current);
-        linesRef.current.scale.copy(pointsRef.current.scale);
 
         // Smooth z-position interpolation - structure moves forward when hovering
         zPositionRef.current += (targetZPositionRef.current - zPositionRef.current) * 0.1;
@@ -169,7 +150,6 @@ const ThreeHeroScene = ({ heroContainerRef }: ThreeHeroSceneProps) => {
         // Base rotation (always active)
         pointsRef.current.rotation.x += 0.003;
         pointsRef.current.rotation.y += 0.004;
-        linesRef.current.rotation.copy(pointsRef.current.rotation);
 
         // Cursor-based rotation and position (more pronounced when hovering)
         if (isHoveringRef.current) {
@@ -179,7 +159,6 @@ const ThreeHeroScene = ({ heroContainerRef }: ThreeHeroSceneProps) => {
           
           pointsRef.current.rotation.x += tiltX * 0.02;
           pointsRef.current.rotation.y += tiltY * 0.02;
-          linesRef.current.rotation.copy(pointsRef.current.rotation);
 
           // Position movement - follows cursor across full hero background
           // Map cursor position to wider 3D space range for full travel
@@ -197,14 +176,12 @@ const ThreeHeroScene = ({ heroContainerRef }: ThreeHeroSceneProps) => {
           pointsRef.current.position.y = basePositionRef.current.y + floatY + cursorY;
           pointsRef.current.position.x = basePositionRef.current.x + cursorX;
           pointsRef.current.position.z = basePositionRef.current.z + zPositionRef.current;
-          linesRef.current.position.copy(pointsRef.current.position);
         } else {
           // Return to base position when not hovering
           const floatY = Math.sin(t * 3) * 0.3;
           pointsRef.current.position.y = basePositionRef.current.y + floatY;
           pointsRef.current.position.x += (basePositionRef.current.x - pointsRef.current.position.x) * 0.05;
           pointsRef.current.position.z = basePositionRef.current.z + zPositionRef.current;
-          linesRef.current.position.copy(pointsRef.current.position);
         }
       }
 
@@ -264,13 +241,6 @@ const ThreeHeroScene = ({ heroContainerRef }: ThreeHeroSceneProps) => {
         pointsRef.current.geometry.dispose();
         if (pointsRef.current.material instanceof THREE.Material) {
           pointsRef.current.material.dispose();
-        }
-      }
-
-      if (linesRef.current) {
-        linesRef.current.geometry.dispose();
-        if (linesRef.current.material instanceof THREE.Material) {
-          linesRef.current.material.dispose();
         }
       }
     };
