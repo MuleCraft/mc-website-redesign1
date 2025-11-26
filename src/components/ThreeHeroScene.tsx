@@ -133,7 +133,7 @@ const ThreeHeroScene = ({ heroContainerRef }: ThreeHeroSceneProps) => {
     // Create points material for dotted structure - blue/violet tones
     const pointsMaterial = new THREE.PointsMaterial({
       color: 0x6b7fd9, // Light blue-violet color (fallback)
-      size: 0.1, // Slightly larger for better visibility
+      size: 0.05, // Smaller width for each particle
       transparent: true,
       opacity: 0.85,
       sizeAttenuation: true,
@@ -371,7 +371,7 @@ const ThreeHeroScene = ({ heroContainerRef }: ThreeHeroSceneProps) => {
           pointsRef.current.position.z = basePositionRef.current.z + zPositionRef.current;
         } else {
           // Return to base position when not hovering
-          const floatY = Math.sin(t * 3) * 0.3;
+        const floatY = Math.sin(t * 3) * 0.3;
           pointsRef.current.position.y = basePositionRef.current.y + floatY;
           pointsRef.current.position.x += (basePositionRef.current.x - pointsRef.current.position.x) * 0.05;
           pointsRef.current.position.z = basePositionRef.current.z + zPositionRef.current;
