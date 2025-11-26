@@ -17,16 +17,16 @@ import trainingImage from "@/assets/training.png";
 import blog1Image from "@/assets/blog1.png";
 import blog2Image from "@/assets/blog2.png";
 import muleMaxImage from "@/assets/mule max.png";
-import si1Image from "@/assets/si1.png";
-import si2Image from "@/assets/Enterprise-Automation-page-social-preview-img-1200x628-1.png";
+import si1Image from "@/assets/mulesoftfinal.png";
+import si2Image from "@/assets/snaplogic3.jpg";
 import si3Image from "@/assets/salesforce-360.webp";
 import si4Image from "@/assets/N8nimage1.png";
 import si5Image from "@/assets/si5.webp";
 import si6Image from "@/assets/Digibee1.png";
 import cs1Image from "@/assets/blog-images05-1200x747.webp";
-import cs2Image from "@/assets/healthcareimg4.jpg";
-import cs3Image from "@/assets/digitaltransformation.jpg";
-import cs4Image from "@/assets/Automationplatform.png";
+import cs2Image from "@/assets/healthcaresolutionfinal5.png";
+import cs3Image from "@/assets/digitaltransformationfinal.webp";
+import cs4Image from "@/assets/automationsplatformfinal2.png";
 
 interface DropdownItem {
   label: string;
@@ -365,7 +365,7 @@ const DropdownMenu = ({
                               selectedHeader === "SnapLogic"
                                 ? "fill"
                                 : selectedHeader === "MuleSoft"
-                                ? "fill"
+                                ? "cover"
                                 : "cover",
                             transition: "transform 0.3s ease",
                           }}
@@ -2470,7 +2470,7 @@ const DropdownMenu = ({
                             : selectedHeader === "HR Management" ||
                               selectedHeader === "Healthcare Solutions" ||
                               selectedHeader === "Automation & Platforms"
-                            ? "cover"
+                            ? "fill"
                             : "scale-down",
                         transition: "transform 0.3s ease",
                       }}
