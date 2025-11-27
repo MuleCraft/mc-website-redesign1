@@ -89,7 +89,7 @@ const Hero = ({
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.4, duration: 0.6 }}
-                className="flex flex-col sm:flex-row sm:justify-center gap-4 mb-16 md:mb-20"
+                className="flex flex-col sm:flex-row sm:justify-center gap-4 mb-10 md:mb-12"
               >
                 <a
                   href={ctaUrl}
@@ -97,12 +97,7 @@ const Hero = ({
                 >
                   {ctaText}
                 </a>
-                <a
-                  href="#"
-                  className="inline-flex items-center justify-center px-8 py-3.5 text-base font-semibold text-gray-900 bg-white border border-gray-200 rounded-full hover:bg-gray-50 hover:border-gray-300 transition-all duration-300 z-20 relative"
-                >
-                  View Documentation
-                </a>
+
               </motion.div>
             </div>
           </article>
@@ -112,7 +107,7 @@ const Hero = ({
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 0.6, duration: 0.8 }}
-            className="w-full flex flex-col items-center justify-center border-t border-gray-100 pt-12 relative z-20"
+            className="w-full flex flex-col items-center justify-center border-t border-gray-100 pt-4 relative z-20"
           >
             <div className="text-sm font-semibold text-gray-500 uppercase tracking-wider mb-8">
               Trusted by industry leaders

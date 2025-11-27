@@ -503,7 +503,7 @@ const Navbar = () => {
               title: "Workflow Automation",
               description: "End-to-end business process automation platform",
             },
-          
+
           ],
         },
       ];
@@ -609,9 +609,8 @@ const Navbar = () => {
               {navItems.map((item) => (
                 <div
                   key={item.label}
-                  className={`relative group ${
-                    openDropdown === item.label ? "dropdown-active" : ""
-                  }`}
+                  className={`relative group ${openDropdown === item.label ? "dropdown-active" : ""
+                    }`}
                   onMouseEnter={() => {
                     if (item.hasChevron) {
                       handleDropdownOpen(item.label);
@@ -774,9 +773,8 @@ const Navbar = () => {
                     setOpenDropdown(null);
                   }
                 }}
-                className={`px-1.5 py-0.5 rounded-full transition-colors ${
-                  isLanguageOpen ? "bg-gray-100" : "hover:bg-gray-100"
-                }`}
+                className={`px-1.5 py-0.5 rounded-full transition-colors ${isLanguageOpen ? "bg-gray-100" : "hover:bg-gray-100"
+                  }`}
                 aria-label="Language"
               >
                 <Globe className="w-5 h-5 text-gray-800" />
@@ -820,9 +818,8 @@ const Navbar = () => {
                     <button
                       key={lang.code}
                       onClick={() => handleLanguageSelect(lang.name)}
-                      className={`w-full flex items-center gap-3 px-4 py-2 text-left hover:bg-gray-100 transition-colors ${
-                        selectedLanguage === lang.name ? "bg-gray-100" : ""
-                      }`}
+                      className={`w-full flex items-center gap-3 px-4 py-2 text-left hover:bg-gray-100 transition-colors ${selectedLanguage === lang.name ? "bg-gray-100" : ""
+                        }`}
                       style={{
                         marginTop: index > 0 ? "0.25rem" : "0",
                         marginBottom:
@@ -946,27 +943,11 @@ const Navbar = () => {
           <div className="flex items-center" style={{ marginLeft: "1rem" }}>
             <Button
               variant="default"
-              className="transition-all duration-300 rounded-full"
+              className="transition-all duration-300 rounded-full bg-white text-primary border border-primary hover:bg-primary hover:text-white"
               style={{
-                background: "transparent",
-                color: "#a03291",
-                border: "1px solid #a03291",
                 padding: "0.675rem 1rem",
                 fontSize: "0.875rem",
                 height: "auto",
-                transition: "all 0.3s ease",
-              }}
-              onMouseEnter={(e) => {
-                e.currentTarget.style.background = "linear-gradient(45deg, #8a2a7f, #3d3fd1)";
-                e.currentTarget.style.color = "#ffffff";
-                e.currentTarget.style.borderColor = "transparent";
-                e.currentTarget.style.transform = "scale(1.02)";
-              }}
-              onMouseLeave={(e) => {
-                e.currentTarget.style.background = "transparent";
-                e.currentTarget.style.color = "#a03291";
-                e.currentTarget.style.borderColor = "#a03291";
-                e.currentTarget.style.transform = "scale(1)";
               }}
             >
               Community
@@ -975,23 +956,12 @@ const Navbar = () => {
           <div className="flex items-center" style={{ marginLeft: "1rem" }}>
             <Button
               variant="default"
-              className="transition-all duration-300 rounded-full"
+              className="transition-all duration-300 rounded-full bg-primary text-white hover:bg-primary/90 shadow-md hover:shadow-lg"
               style={{
-                background: "linear-gradient(45deg, #a03291, #4b4fe2)",
-                color: "#ffffff",
-                border: "none",
                 padding: "0.675rem 1rem",
                 fontSize: "0.875rem",
                 height: "auto",
-                transition: "all 0.3s ease",
-              }}
-              onMouseEnter={(e) => {
-                e.currentTarget.style.background = "linear-gradient(45deg, #8a2a7f, #3d3fd1)";
-                e.currentTarget.style.transform = "scale(1.02)";
-              }}
-              onMouseLeave={(e) => {
-                e.currentTarget.style.background = "linear-gradient(45deg, #a03291, #4b4fe2)";
-                e.currentTarget.style.transform = "scale(1)";
+                border: "none",
               }}
             >
               Schedule demo

@@ -18,22 +18,17 @@ const Clients = () => {
 
   return (
     <div className="featured-logos-wrap w-full">
-      <div className="flex items-center justify-center gap-6 md:gap-8 lg:gap-12 flex-wrap">
-        {logos.map((logo, index) => {
-          // Use the logo's defined size class
-          const sizeClass = logo.className;
-          
-          return (
-            <div key={index} className="fl-item flex-shrink-0 flex items-center justify-center">
-              <img
-                className={`${sizeClass} w-auto object-contain opacity-70 grayscale hover:opacity-100 hover:grayscale-0 transition-all duration-300`}
-                src={logo.src}
-                alt={logo.alt}
-                loading="lazy"
-              />
-            </div>
-          );
-        })}
+      <div className="flex items-center justify-center gap-8 md:gap-12 lg:gap-16 flex-wrap">
+        {logos.map((logo, index) => (
+          <div key={index} className="flex-shrink-0">
+            <img
+              className={`${logo.className} w-auto object-contain opacity-60 grayscale hover:opacity-100 hover:grayscale-0 transition-all duration-300`}
+              src={logo.src}
+              alt={logo.alt}
+              loading="lazy"
+            />
+          </div>
+        ))}
       </div>
     </div>
   );
