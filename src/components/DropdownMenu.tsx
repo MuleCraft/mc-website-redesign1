@@ -14,11 +14,10 @@ import csi4Image from "@/assets/csi4.png";
 import csi6Image from "@/assets/csi6.png";
 import csi7Image from "@/assets/csi7.png";
 import trainingImage from "@/assets/training.png";
-import blog1Image from "@/assets/blog1.png";
+import blog1Image from "@/assets/blog-i.png";
 import blog2Image from "@/assets/blog2.webp";
-import muleMaxImage from "@/assets/mu-i.png";
 import si1Image from "@/assets/mulesoftfinal.png";
-import si2Image from "@/assets/snap-i.webp";
+import si2Image from "@/assets/snaplogicimg.svg";
 import si3Image from "@/assets/salesforce-360.webp";
 import si4Image from "@/assets/n8n-i.png";
 import si5Image from "@/assets/si5.webp";
@@ -70,8 +69,8 @@ const DropdownMenu = ({
   // Initialize selected header for Solutions, Products, Case Studies, and Resources dropdown
   useEffect(() => {
     if (navItem === "Products") {
-      // For Products dropdown, set SnapMapper as default
-      setSelectedHeader("SnapMapper");
+      // For Products dropdown, set Goose as default
+      setSelectedHeader("Goose");
     } else if ((navItem === "Solutions" || navItem === "Case Studies" || navItem === "Resources") && items.length > 0) {
       const defaultSelected = items.find((item) => item.isSelected) || items[0];
       setSelectedHeader(defaultSelected.label);
@@ -307,10 +306,13 @@ const DropdownMenu = ({
                         width: "100%",
                         minHeight: "200px",
                         transition: "transform 0.2s ease, box-shadow 0.2s ease",
+                        boxShadow: "none",
                       }}
                       onMouseEnter={(e) => {
                         e.currentTarget.style.transform = "translateY(-2px)";
-                        e.currentTarget.style.boxShadow = "0 8px 20px rgba(0, 0, 0, 0.08)";
+                        if (selectedHeader !== "SnapLogic") {
+                          e.currentTarget.style.boxShadow = "0 8px 20px rgba(0, 0, 0, 0.08)";
+                        }
                         const img = e.currentTarget.querySelector("img");
                         if (img) {
                           (img as HTMLElement).style.transform = "scale(1.1)";
@@ -331,18 +333,41 @@ const DropdownMenu = ({
                           width: "100%",
                           height: "200px",
                           overflow: "hidden",
-                          backgroundColor: selectedHeader === "SnapLogic"
-                            ? "#0E1831"
-                            : selectedHeader === "Digibee"
-                              ? "#ffffff"
-                              : "#f3f4f6",
-                          background: selectedHeader === "SnapLogic"
-                            ? "#0E1831"
-                            : selectedHeader === "Digibee"
-                              ? "#ffffff"
-                              : "#f3f4f6",
+                          position: "relative",
+                          backgroundColor: selectedHeader === "MuleSoft"
+                            ? "#032D60"
+                            : selectedHeader === "SnapLogic"
+                              ? "#023292"
+                              : selectedHeader === "Digibee"
+                                ? "#ffffff"
+                                : "#f3f4f6",
+                          background: selectedHeader === "MuleSoft"
+                            ? "#032D60"
+                            : selectedHeader === "SnapLogic"
+                              ? "#023292"
+                              : selectedHeader === "Digibee"
+                                ? "#E7F5FF"
+                                : "#f3f4f6",
                         }}
                       >
+                        {/* White shadow effect for SnapLogic */}
+                        {selectedHeader === "SnapLogic" && (
+                          <div
+                            style={{
+                              position: "absolute",
+                              top: "50%",
+                              left: "50%",
+                              transform: "translate(-50%, -50%)",
+                              width: "80%",
+                              height: "80%",
+                              borderRadius: "50%",
+                              background: "radial-gradient(circle, rgba(255, 255, 255, 0.4) 0%, rgba(255, 255, 255, 0.2) 40%, transparent 70%)",
+                              boxShadow: "0 0 60px 30px rgba(255, 255, 255, 0.3)",
+                              zIndex: 1,
+                              pointerEvents: "none",
+                            }}
+                          />
+                        )}
                         {selectedHeader === "MuleSoft" ? (
                           <video
                             autoPlay
@@ -355,6 +380,8 @@ const DropdownMenu = ({
                               height: "100%",
                               objectFit: "cover",
                               transition: "transform 0.3s ease",
+                              position: "relative",
+                              zIndex: 2,
                             }}
                           >
                             <source
@@ -375,6 +402,8 @@ const DropdownMenu = ({
                               height: "100%",
                               objectFit: selectedHeader === "SnapLogic" ? "fill" : "cover",
                               transition: "transform 0.3s ease",
+                              position: "relative",
+                              zIndex: 2,
                             }}
                           />
                         )}
@@ -507,28 +536,6 @@ const DropdownMenu = ({
                     {item.label}
                   </button>
                 ))}
-                {/* Mule Max Image - Fills remaining space */}
-                <div
-                  style={{
-                    flex: 1,
-                    display: "flex",
-                    alignItems: "center",
-                    justifyContent: "center",
-                    paddingTop: "1rem",
-                    minHeight: 0,
-                  }}
-                >
-                  <img
-                    src={muleMaxImage}
-                    alt="Mule Max"
-                    style={{
-                      width: "100%",
-                      height: "auto",
-                      maxHeight: "100%",
-                      objectFit: "contain",
-                    }}
-                  />
-                </div>
               </div>
               {/* Separator line */}
               <div
@@ -610,7 +617,7 @@ const DropdownMenu = ({
                           style={{
                             width: "100%",
                             height: "100%",
-                            objectFit: index === 0 ? "fill" : "cover",
+                            objectFit: "cover",
                             transition: "transform 0.3s ease",
                           }}
                         />
@@ -1002,8 +1009,8 @@ const DropdownMenu = ({
 
     // Product headers data
     const productHeaders = [
-      "SnapMapper",
       "Goose",
+      "SnapMapper",
       "AnypointLP",
       "RAMLify",
       "CloudHub 2.0 Migration",
@@ -2081,7 +2088,7 @@ const DropdownMenu = ({
                       backgroundColor: "#f3f4f6",
                     }}
                   >
-                   <img
+                    <img
                       src={selectedImageCard.image}
                       alt={selectedImageCard.title}
                       style={{
@@ -2091,12 +2098,12 @@ const DropdownMenu = ({
                           selectedHeader === "Digital Transformation"
                             ? "fill"
                             : selectedHeader === "Healthcare Solutions"
-                            ? "cover"
-                            : selectedHeader === "Automation & Platforms"
-                            ? "cover"
-                            : selectedHeader === "HR Management"
-                            ? "fill"
-                            : "scale-down",
+                              ? "cover"
+                              : selectedHeader === "Automation & Platforms"
+                                ? "cover"
+                                : selectedHeader === "HR Management"
+                                  ? "fill"
+                                  : "scale-down",
                         transition: "transform 0.3s ease",
                       }}
                     />

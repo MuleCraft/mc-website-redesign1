@@ -5,6 +5,7 @@ import csi2Image from "@/assets/csi2.png";
 import mulesoftlpImage from "@/assets/mulesoftlp-image.png";
 import newLogo from "@/assets/newlogo.png";
 import cmImage from "@/assets/cm.png";
+import csi1Image from "@/assets/csi1.png";
 
 // RAMLify Preview - Dark theme with purple/blue/cyan gradients matching reference design
 export const RAMLifyPreview = () => {
@@ -1281,15 +1282,15 @@ export const CloudHubMigrationPreview = () => {
   );
 };
 
-// SnapMapper Preview - Modern light blue theme with integration animation
+// SnapMapper Preview - Light purple theme matching MuleSoftLP style
 export const SnapMapperPreview = () => {
   return (
     <div
       style={{
         width: "100%",
         height: "100%",
-        background: "#0E1831",
-        color: "#ffffff",
+        background: "linear-gradient(to bottom right, #f3e8ff 0%, #e9d5ff 50%, #ddd6fe 100%)",
+        color: "#1f2937",
         fontFamily: '"Noto Sans", sans-serif',
         position: "relative",
         overflow: "hidden",
@@ -1300,157 +1301,97 @@ export const SnapMapperPreview = () => {
       }}
     >
       <style>{`
-        @keyframes snapMapperFloat {
-          0%, 100% { 
-            transform: translateY(0px) scale(1); 
-            opacity: 1;
-          }
-          50% { 
-            transform: translateY(-8px) scale(1.02); 
-            opacity: 0.95;
-          }
-        }
-        @keyframes snapMapperPulse {
-          0%, 100% { 
-            opacity: 0.6;
-          }
-          50% { 
-            opacity: 1;
-          }
-        }
-        @keyframes dataFlow {
-          0% {
-            transform: translateX(0);
-            opacity: 0.4;
-          }
-          50% {
-            opacity: 1;
-          }
-          100% {
-            transform: translateX(100%);
-            opacity: 0.4;
-          }
-        }
-        @keyframes transformPulse {
-          0%, 100% {
-            transform: scale(1);
-            opacity: 0.8;
-          }
-          50% {
-            transform: scale(1.1);
-            opacity: 1;
-          }
-        }
-        @keyframes formatGlow {
-          0%, 100% {
-            opacity: 0.6;
-            filter: brightness(1);
-          }
-          50% {
-            opacity: 1;
-            filter: brightness(1.3);
-          }
+        @keyframes pulse {
+          0%, 100% { opacity: 0.1; }
+          50% { opacity: 0.2; }
         }
       `}</style>
-      
-      {/* Subtle Grid Pattern */}
-      <div
-        style={{
-          position: "absolute",
-          inset: 0,
-          backgroundImage: `
-            linear-gradient(rgba(147, 197, 253, 0.06) 1px, transparent 1px),
-            linear-gradient(90deg, rgba(147, 197, 253, 0.06) 1px, transparent 1px)
-          `,
-          backgroundSize: "40px 40px",
-          pointerEvents: "none",
-        }}
-      />
-      
-      {/* Glowing Accent Lines */}
-      <div
-        style={{
-          position: "absolute",
-          top: "20%",
-          left: 0,
-          right: 0,
-          height: "1px",
-          background: "linear-gradient(90deg, transparent 0%, rgba(147, 197, 253, 0.4) 50%, transparent 100%)",
-          pointerEvents: "none",
-          animation: "snapMapperPulse 3s ease-in-out infinite",
-        }}
-      />
-      <div
-        style={{
-          position: "absolute",
-          bottom: "25%",
-          left: 0,
-          right: 0,
-          height: "1px",
-          background: "linear-gradient(90deg, transparent 0%, rgba(96, 165, 250, 0.35) 50%, transparent 100%)",
-          pointerEvents: "none",
-          animation: "snapMapperPulse 3s ease-in-out infinite 1.5s",
-        }}
-      />
-      
-      {/* Glowing Orbs */}
-      <div
-        style={{
-          position: "absolute",
-          top: "-40px",
-          right: "-40px",
-          width: "140px",
-          height: "140px",
-          borderRadius: "50%",
-          background: "radial-gradient(circle, rgba(147, 197, 253, 0.2) 0%, transparent 70%)",
-          pointerEvents: "none",
-        }}
-      />
-      <div
-        style={{
-          position: "absolute",
-          bottom: "-35px",
-          left: "-35px",
-          width: "120px",
-          height: "120px",
-          borderRadius: "50%",
-          background: "radial-gradient(circle, rgba(96, 165, 250, 0.18) 0%, transparent 70%)",
-          pointerEvents: "none",
-        }}
-      />
 
-      {/* Background Animation Elements */}
-      <svg
-        style={{
-          position: "absolute",
-          inset: 0,
-          width: "100%",
-          height: "100%",
-          opacity: 0.3,
-          pointerEvents: "none",
-          zIndex: 0,
-        }}
-      >
-        {/* Subtle background patterns */}
-      </svg>
+      {/* Animated Background Elements */}
+      <div style={{ position: "absolute", inset: 0, overflow: "hidden", pointerEvents: "none" }}>
+        <div
+          style={{
+            position: "absolute",
+            top: "-40px",
+            right: "-40px",
+            width: "80px",
+            height: "80px",
+            background: "rgba(168, 85, 247, 0.1)",
+            borderRadius: "50%",
+            filter: "blur(40px)",
+            animation: "pulse 3s ease-in-out infinite",
+          }}
+        />
+        <div
+          style={{
+            position: "absolute",
+            top: "50%",
+            left: "-40px",
+            width: "80px",
+            height: "80px",
+            background: "rgba(147, 51, 234, 0.1)",
+            borderRadius: "50%",
+            filter: "blur(40px)",
+            animation: "pulse 3s ease-in-out infinite 1.5s",
+          }}
+        />
+        <div
+          style={{
+            position: "absolute",
+            bottom: "-40px",
+            right: "1/3",
+            width: "80px",
+            height: "80px",
+            background: "rgba(192, 132, 252, 0.1)",
+            borderRadius: "50%",
+            filter: "blur(40px)",
+            animation: "pulse 3s ease-in-out infinite 2s",
+          }}
+        />
+      </div>
 
       {/* Header */}
       <div
         style={{
-          backgroundColor: "#0E1831",
+          backgroundColor: "rgba(255, 255, 255, 0.8)",
           backdropFilter: "blur(12px)",
-          borderBottom: "1px solid rgba(147, 197, 253, 0.3)",
-          padding: "0.6rem 1rem",
+          borderBottom: "none",
+          padding: "0.5rem 1rem",
           flexShrink: 0,
           position: "relative",
-          zIndex: 1,
+          zIndex: 10,
           borderTopLeftRadius: "8px",
           borderTopRightRadius: "8px",
+          boxShadow: "0 4px 12px rgba(0, 0, 0, 0.1)",
         }}
       >
         <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between" }}>
-          <div style={{ display: "flex", alignItems: "center", gap: "0.75rem" }}>
-            <h1 style={{ fontSize: "15px", fontWeight: "700", color: "#ffffff", margin: 0, letterSpacing: "0.5px" }}>
+          <div style={{ display: "flex", alignItems: "center", gap: "0.5rem" }}>
+            {/* SnapMapper Logo - Data transformation icon */}
+            <svg
+              width="20"
+              height="20"
+              viewBox="0 0 24 24"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M12 2L2 7L12 12L22 7L12 2Z"
+                fill="#9333ea"
+              />
+              <path
+                d="M2 17L12 22L22 17V12L12 17L2 12V17Z"
+                fill="#a855f7"
+              />
+              <path
+                d="M2 12L12 17L22 12"
+                stroke="#c084fc"
+                strokeWidth="1.5"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              />
+            </svg>
+            <h1 style={{ fontSize: "14px", fontWeight: "bold", color: "#1f2937", margin: 0, letterSpacing: "-0.02em" }}>
               SnapMapper
             </h1>
           </div>
@@ -1458,13 +1399,14 @@ export const SnapMapperPreview = () => {
             <a
               href="#"
               style={{
-                padding: "0.3rem 0.7rem",
-                fontSize: "10px",
+                padding: "0.25rem 0.5rem",
+                fontSize: "9px",
                 fontWeight: "600",
                 color: "#ffffff",
                 backgroundColor: "#E60077",
-                borderRadius: "6px",
+                borderRadius: "4px",
                 textDecoration: "none",
+                boxShadow: "0 2px 8px rgba(230, 0, 119, 0.25)",
               }}
             >
               Try for Free
@@ -1473,69 +1415,68 @@ export const SnapMapperPreview = () => {
         </div>
       </div>
 
-      {/* Content - Two Column Layout */}
+      {/* Hero Section */}
       <div
         style={{
-          padding: "1.5rem 1rem",
+          padding: "1rem",
           flex: 1,
           display: "flex",
-          flexDirection: "row",
-          gap: "1.5rem",
+          flexDirection: "column",
+          justifyContent: "center",
           position: "relative",
           zIndex: 1,
+          textAlign: "center",
         }}
       >
-        {/* Left Side - Description */}
-        <div
+        {/* Large SnapMapper Text */}
+        <h4
           style={{
-            flex: 0.6,
-            display: "flex",
-            flexDirection: "column",
-            justifyContent: "center",
-            paddingRight: "0.5rem",
+            fontSize: "clamp(20px, 6vw, 40px)",
+            fontWeight: "600",
+            letterSpacing: "-0.02em",
+            color: "#1f2937",
+            margin: "0 0 0.5rem 0",
+            lineHeight: "0.9",
+            userSelect: "none",
+            display: "block",
           }}
         >
-          <h2
-            style={{
-              fontSize: "18px",
-              fontWeight: "800",
-              lineHeight: "1.2",
-              margin: 0,
-              textAlign: "left",
-              background: "linear-gradient(135deg, #ffffff 0%, #dbeafe 50%, #93c5fd 100%)",
-              WebkitBackgroundClip: "text",
-              WebkitTextFillColor: "transparent",
-              backgroundClip: "text",
-            }}
-          >
-            Transform Data Formats Effortlessly
-          </h2>
-        </div>
+          SnapMapper
+        </h4>
 
-        {/* Right Side - Image Preview (Full Width) */}
+        <p
+          style={{
+            fontSize: "9px",
+            color: "#6b7280",
+            margin: "0 0 0.75rem 0",
+            lineHeight: "1.4",
+            maxWidth: "90%",
+            alignSelf: "center",
+          }}
+        >
+          Transform data formats effortlessly with an intuitive, web-based tool for data mapping and transformation.
+        </p>
+
+        {/* Image Preview */}
         <div
           style={{
-            flex: 6,
-            display: "flex",
-            alignItems: "stretch",
-            justifyContent: "stretch",
-            position: "relative",
+            marginTop: "0.5rem",
+            borderRadius: "12px",
             overflow: "hidden",
-            backgroundColor: "transparent",
-            borderRadius: "8px",
-            maxHeight: "100px",
-            height: "100px",
+            border: "1px solid rgba(0, 0, 0, 0.1)",
+            background: "rgba(255, 255, 255, 0.5)",
+            boxShadow: "0 4px 12px rgba(0, 0, 0, 0.1)",
+            backdropFilter: "blur(4px)",
           }}
         >
           <img
-            src={dtImage}
+            src={csi1Image}
             alt="SnapMapper Preview"
             style={{
               width: "100%",
-              height: "100%",
-              objectFit: "contain",
+              height: "auto",
               display: "block",
-              borderRadius: "8px",
+              objectFit: "contain",
             }}
           />
         </div>
