@@ -24,9 +24,9 @@ import si4Image from "@/assets/n8n-i.png";
 import si5Image from "@/assets/si5.webp";
 import si6Image from "@/assets/Digibee1.png";
 import cs1Image from "@/assets/blog-images05-1200x747.webp";
-import cs2Image from "@/assets/healthcaresolutionfinal5.png";
+import cs2Image from "@/assets/healthcaretest3.png";
 import cs3Image from "@/assets/digitaltransformationfinal.webp";
-import cs4Image from "@/assets/automationsplatformfinal2.png";
+import cs4Image from "@/assets/automationsandplatformfinal3.png";
 
 interface DropdownItem {
   label: string;
@@ -72,7 +72,12 @@ const DropdownMenu = ({
     if (navItem === "Products") {
       // For Products dropdown, set SnapMapper as default
       setSelectedHeader("SnapMapper");
-    } else if ((navItem === "Solutions" || navItem === "Case Studies" || navItem === "Resources") && items.length > 0) {
+    } else if (
+      (navItem === "Solutions" ||
+        navItem === "Case Studies" ||
+        navItem === "Resources") &&
+      items.length > 0
+    ) {
       const defaultSelected = items.find((item) => item.isSelected) || items[0];
       setSelectedHeader(defaultSelected.label);
     }
@@ -85,43 +90,51 @@ const DropdownMenu = ({
     const selectedItem =
       items.find((item) => item.label === selectedHeader) || items[0];
     const menuItems = selectedItem?.menuItems || [];
-    
+
     // Display all menuItems in the second column only (third column is image card only)
     const leftColumnItems = menuItems;
 
     // Image mapping for each solution header - using specific tech stack/flow diagram images
-    const solutionImages: { [key: string]: { image: string; title: string; description: string; href?: string } } = {
-      "MuleSoft": {
+    const solutionImages: {
+      [key: string]: {
+        image: string;
+        title: string;
+        description: string;
+        href?: string;
+      };
+    } = {
+      MuleSoft: {
         image: si1Image,
         title: "MuleSoft Integration",
         description: "API-led connectivity & Mule 3 to Mule 4 migration",
         href: "https://docs.MuleSoft.com/mule-runtime/latest/migration-intro",
       },
-      "n8n": {
-        image: si4Image,
-        title: "n8n Workflow Automation",
-        description: "Fair-code automation platform for technical teams",
-        href: "https://n8n.io/?ps_partner_key=YzQ1MWQxYjZjNDgx&ps_xid=EfWcuhfPTQdyZC&gsxid=EfWcuhfPTQdyZC&gspk=YzQ1MWQxYjZjNDgx&gad_source=1&gad_campaignid=23207748368&gbraid=0AAAABB6E8Q-exN_bvdLbThczUc4o90juR&gclid=CjwKCAiA8vXIBhAtEiwAf3B-g7Xw_SA94G7Y6eRaMUci_FnneMb7ZpWLrpEwldb1WTlubi8nf5ha9xoC5_EQAvD_BwE",
-      },
-      "SnapLogic": {
+      SnapLogic: {
         image: si2Image,
         title: "SnapLogic Data Orchestration",
-        description: "Data integration and automation platform with intelligent pipeline design",
+        description:
+          "Data integration and automation platform with intelligent pipeline design",
         href: "https://www.snaplogic.com/glossary/orchestration",
       },
-      "Workato": {
-        image: si5Image,
-        title: "Workato Chatbot Automation",
-        description: "Enterprise automation with intelligent chatbots",
-        href: "https://www.workato.com/the-connector/chatbot-automation/",
-      },
-      "Salesforce": {
+      Salesforce: {
         image: si3Image,
         title: "Salesforce Integration Hub",
         description: "CRM integration with custom workflows & data sync",
         href: "https://www.salesforce.com/crm/",
       },
-      "Digibee": {
+      n8n: {
+        image: si4Image,
+        title: "n8n Workflow Automation",
+        description: "Fair-code automation platform for technical teams",
+        href: "https://n8n.io/?ps_partner_key=YzQ1MWQxYjZjNDgx&ps_xid=EfWcuhfPTQdyZC&gsxid=EfWcuhfPTQdyZC&gspk=YzQ1MWQxYjZjNDgx&gad_source=1&gad_campaignid=23207748368&gbraid=0AAAABB6E8Q-exN_bvdLbThczUc4o90juR&gclid=CjwKCAiA8vXIBhAtEiwAf3B-g7Xw_SA94G7Y6eRaMUci_FnneMb7ZpWLrpEwldb1WTlubi8nf5ha9xoC5_EQAvD_BwE",
+      },
+      Workato: {
+        image: si5Image,
+        title: "Workato Chatbot Automation",
+        description: "Enterprise automation with intelligent chatbots",
+        href: "https://www.workato.com/the-connector/chatbot-automation/",
+      },
+      Digibee: {
         image: si6Image,
         title: "Digibee Microservices Architecture",
         description: "Circuit breaker pattern & microservices orchestration",
@@ -292,13 +305,13 @@ const DropdownMenu = ({
                 >
                   {/* Image Card - Centered for all headers */}
                   {selectedImageCard && (
-                      <a
+                    <a
                       href={selectedImageCard.href || "#"}
                       target="_blank"
                       rel="noopener noreferrer"
-                        style={{
-                          display: "block",
-                          textDecoration: "none",
+                      style={{
+                        display: "block",
+                        textDecoration: "none",
                         color: "inherit",
                         borderRadius: "8px",
                         overflow: "hidden",
@@ -307,16 +320,17 @@ const DropdownMenu = ({
                         width: "100%",
                         minHeight: "200px",
                         transition: "transform 0.2s ease, box-shadow 0.2s ease",
-                        }}
-                        onMouseEnter={(e) => {
+                      }}
+                      onMouseEnter={(e) => {
                         e.currentTarget.style.transform = "translateY(-2px)";
-                        e.currentTarget.style.boxShadow = "0 8px 20px rgba(0, 0, 0, 0.08)";
+                        e.currentTarget.style.boxShadow =
+                          "0 8px 20px rgba(0, 0, 0, 0.08)";
                         const img = e.currentTarget.querySelector("img");
                         if (img) {
                           (img as HTMLElement).style.transform = "scale(1.1)";
                         }
-                        }}
-                        onMouseLeave={(e) => {
+                      }}
+                      onMouseLeave={(e) => {
                         e.currentTarget.style.transform = "translateY(0)";
                         e.currentTarget.style.boxShadow = "none";
                         const img = e.currentTarget.querySelector("img");
@@ -331,16 +345,18 @@ const DropdownMenu = ({
                           width: "100%",
                           height: "200px",
                           overflow: "hidden",
-                          backgroundColor: selectedHeader === "SnapLogic" 
-                            ? "#0E1831"
-                            : selectedHeader === "Digibee" 
-                            ? "#ffffff" 
-                            : "#f3f4f6",
-                          background: selectedHeader === "SnapLogic" 
-                            ? "#0E1831"
-                            : selectedHeader === "Digibee" 
-                            ? "#ffffff" 
-                            : "#f3f4f6",
+                          backgroundColor:
+                            selectedHeader === "SnapLogic"
+                              ? "#0E1831"
+                              : selectedHeader === "Digibee"
+                              ? "#ffffff"
+                              : "#f3f4f6",
+                          background:
+                            selectedHeader === "SnapLogic"
+                              ? "#0E1831"
+                              : selectedHeader === "Digibee"
+                              ? "#ffffff"
+                              : "#f3f4f6",
                         }}
                       >
                         {selectedHeader === "MuleSoft" ? (
@@ -373,16 +389,21 @@ const DropdownMenu = ({
                             style={{
                               width: "100%",
                               height: "100%",
-                              objectFit: selectedHeader === "SnapLogic" ? "fill" : "cover",
+                              objectFit:
+                                selectedHeader === "SnapLogic"
+                                  ? "fill"
+                                  : "cover",
                               transition: "transform 0.3s ease",
                             }}
                           />
                         )}
                       </div>
                       {/* Card Content */}
-                      <div style={{ 
-                        padding: "1rem" 
-                      }}>
+                      <div
+                        style={{
+                          padding: "1rem",
+                        }}
+                      >
                         <div
                           style={{
                             fontFamily: '"Noto Sans", sans-serif',
@@ -405,8 +426,8 @@ const DropdownMenu = ({
                         >
                           {selectedImageCard.description}
                         </div>
-                        </div>
-                      </a>
+                      </div>
+                    </a>
                   )}
                 </div>
               </div>
@@ -424,13 +445,15 @@ const DropdownMenu = ({
       {
         image: blog1Image,
         title: "Seamless MuleSoft Upgrade",
-        description: "Java 17, the latest Long-Term Support (LTS) release, introduces powerful advancements that can elevate your MuleSoft applications.",
+        description:
+          "Java 17, the latest Long-Term Support (LTS) release, introduces powerful advancements that can elevate your MuleSoft applications.",
         href: "https://blogs.mulecraft.in/seamless-mulesoft-upgrade-transitioning-from-java-8-to-java-17-for-rest-apis/",
       },
       {
         image: blog2Image,
         title: "Two-Way SSL In Mule 4",
-        description: "Two-Way SSL in Mule 4 enhances security by requiring both the client and server to authenticate each other.",
+        description:
+          "Two-Way SSL in Mule 4 enhances security by requiring both the client and server to authenticate each other.",
         href: "https://blogs.mulecraft.in/two-way-ssl-in-mule-4/",
       },
     ];
@@ -545,7 +568,10 @@ const DropdownMenu = ({
             </div>
 
             {/* Right Column - Content based on selected header */}
-            <div className="flex-1 flex flex-col" style={{ position: "relative" }}>
+            <div
+              className="flex-1 flex flex-col"
+              style={{ position: "relative" }}
+            >
               {/* Blog Cards - 2 Cards with Image and Description */}
               {selectedHeader === "Blog" && (
                 <div
@@ -578,7 +604,8 @@ const DropdownMenu = ({
                       }}
                       onMouseEnter={(e) => {
                         e.currentTarget.style.transform = "translateY(-2px)";
-                        e.currentTarget.style.boxShadow = "0 8px 20px rgba(0, 0, 0, 0.08)";
+                        e.currentTarget.style.boxShadow =
+                          "0 8px 20px rgba(0, 0, 0, 0.08)";
                         const img = e.currentTarget.querySelector("img");
                         if (img) {
                           (img as HTMLElement).style.transform = "scale(1.1)";
@@ -619,10 +646,10 @@ const DropdownMenu = ({
                       {/* Card Content */}
                       <div style={{ padding: "1rem" }}>
                         <div
-                  style={{
-                    fontFamily: '"Noto Sans", sans-serif',
-                    fontSize: "13px",
-                    fontWeight: 600,
+                          style={{
+                            fontFamily: '"Noto Sans", sans-serif',
+                            fontSize: "13px",
+                            fontWeight: 600,
                             color: "#1f1f1f",
                             marginBottom: "0.5rem",
                             lineHeight: "1.4",
@@ -634,12 +661,12 @@ const DropdownMenu = ({
                           style={{
                             fontFamily: '"Noto Sans", sans-serif',
                             fontSize: "13px",
-                    color: "#6b7280",
+                            color: "#6b7280",
                             lineHeight: "1.5",
-                  }}
-                >
+                          }}
+                        >
                           {card.description}
-                </div>
+                        </div>
                       </div>
                     </a>
                   ))}
@@ -658,298 +685,301 @@ const DropdownMenu = ({
                     position: "relative",
                   }}
                 >
-                    {/* Second Column - Content Items */}
-                    <div
-                      style={{
-                        width: "45%",
-                        paddingRight: "0.75rem",
-                        display: "flex",
-                        flexDirection: "column",
-                        gap: "0.5rem",
-                      }}
-                    >
-                      {/* Training Content Items - 4 items */}
-                      <a
-                        href="https://training.mulecraft.in/courses"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        style={{
-                          display: "flex",
-                          alignItems: "flex-start",
-                          textDecoration: "none",
-                          color: "inherit",
-                          padding: "0.5rem",
-                          borderRadius: "6px",
-                          transition: "background-color 0.2s ease",
-                        }}
-                        onMouseEnter={(e) => {
-                          e.currentTarget.style.color = "#059bd1";
-                        }}
-                        onMouseLeave={(e) => {
-                          e.currentTarget.style.color = "inherit";
-                        }}
-                      >
-                        <div style={{ flex: 1 }}>
-                          <div
-                            style={{
-                              fontFamily: '"Noto Sans", sans-serif',
-                              fontSize: "14px",
-                    fontWeight: 600,
-                              marginBottom: "0.25rem",
-                            }}
-                          >
-                            MuleSoft Training
-                          </div>
-                          <div
-                            style={{
-                              fontFamily: '"Noto Sans", sans-serif',
-                              fontSize: "12px",
-                    color: "#6b7280",
-                              lineHeight: "1.5",
-                  }}
-                >
-                            Master MuleSoft integration platform with our comprehensive courses
-                </div>
-                        </div>
-                      </a>
-                      <a
-                        href="https://training.mulecraft.in/certifications"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        style={{
-                          display: "flex",
-                          alignItems: "flex-start",
-                          textDecoration: "none",
-                          color: "inherit",
-                          padding: "0.5rem",
-                          borderRadius: "6px",
-                          transition: "background-color 0.2s ease",
-                        }}
-                        onMouseEnter={(e) => {
-                          e.currentTarget.style.color = "#059bd1";
-                        }}
-                        onMouseLeave={(e) => {
-                          e.currentTarget.style.color = "inherit";
-                        }}
-                      >
-                        <div style={{ flex: 1 }}>
-                          <div
-                            style={{
-                              fontFamily: '"Noto Sans", sans-serif',
-                              fontSize: "14px",
-                              fontWeight: 600,
-                              marginBottom: "0.25rem",
-                            }}
-                          >
-                            Certification Programs
-                          </div>
-                          <div
-                            style={{
-                              fontFamily: '"Noto Sans", sans-serif',
-                              fontSize: "12px",
-                              color: "#6b7280",
-                              lineHeight: "1.5",
-                            }}
-                          >
-                            Get certified and validate your integration expertise
-                          </div>
-                        </div>
-                      </a>
-                      <a
-                        href="https://training.mulecraft.in/workshops"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        style={{
-                          display: "flex",
-                          alignItems: "flex-start",
-                          textDecoration: "none",
-                          color: "inherit",
-                          padding: "0.5rem",
-                          borderRadius: "6px",
-                          transition: "background-color 0.2s ease",
-                        }}
-                        onMouseEnter={(e) => {
-                          e.currentTarget.style.color = "#059bd1";
-                        }}
-                        onMouseLeave={(e) => {
-                          e.currentTarget.style.color = "inherit";
-                        }}
-                      >
-                        <div style={{ flex: 1 }}>
-                          <div
-                            style={{
-                              fontFamily: '"Noto Sans", sans-serif',
-                              fontSize: "14px",
-                              fontWeight: 600,
-                              marginBottom: "0.25rem",
-                            }}
-                          >
-                            Hands-on Workshops
-                          </div>
-                          <div
-                            style={{
-                              fontFamily: '"Noto Sans", sans-serif',
-                              fontSize: "12px",
-                              color: "#6b7280",
-                              lineHeight: "1.5",
-                            }}
-                          >
-                            Practice with real-world scenarios in guided workshops
-                          </div>
-                        </div>
-                      </a>
-                      <a
-                        href="https://training.mulecraft.in/learning-paths"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        style={{
-                          display: "flex",
-                          alignItems: "flex-start",
-                          textDecoration: "none",
-                          color: "inherit",
-                          padding: "0.5rem",
-                          borderRadius: "6px",
-                          transition: "background-color 0.2s ease",
-                        }}
-                        onMouseEnter={(e) => {
-                          e.currentTarget.style.color = "#059bd1";
-                        }}
-                        onMouseLeave={(e) => {
-                          e.currentTarget.style.color = "inherit";
-                        }}
-                      >
-                        <div style={{ flex: 1 }}>
-                          <div
-                            style={{
-                              fontFamily: '"Noto Sans", sans-serif',
-                              fontSize: "14px",
-                              fontWeight: 600,
-                              marginBottom: "0.25rem",
-                            }}
-                          >
-                            Learning Paths
-                          </div>
-                          <div
-                            style={{
-                              fontFamily: '"Noto Sans", sans-serif',
-                              fontSize: "12px",
-                              color: "#6b7280",
-                              lineHeight: "1.5",
-                            }}
-                          >
-                            Follow structured paths to build your integration skills
-                          </div>
-                        </div>
-                      </a>
-                    </div>
-
-                    {/* Vertical Separator */}
-                    <div
-                      style={{
-                        position: "absolute",
-                        left: "calc(45% + 0.25rem)",
-                        top: 0,
-                        bottom: 0,
-                        width: "1px",
-                        backgroundColor: "#d1d5db",
-                      }}
-                    />
-
-                    {/* Third Column - Training Image Card */}
-                    <div
-                      style={{
-                        width: "55%",
-                        paddingLeft: "1rem",
-                        display: "flex",
-                        flexDirection: "column",
-                        alignItems: "center",
-                        justifyContent: "center",
-                      }}
-                    >
-                      <a
-                        href={trainingMenuItem.href || "#"}
-                    target="_blank"
-                    rel="noopener noreferrer"
+                  {/* Second Column - Content Items */}
+                  <div
                     style={{
-                      display: "block",
-                          width: "90%",
-                      textDecoration: "none",
-                      color: "inherit",
-                          borderRadius: "8px",
-                          border: "1px solid #e5e7eb",
-                          overflow: "hidden",
-                          transition: "transform 0.2s ease, box-shadow 0.2s ease",
-                        }}
-                        onMouseEnter={(e) => {
-                          e.currentTarget.style.transform = "translateY(-2px)";
-                          e.currentTarget.style.boxShadow = "0 8px 20px rgba(0, 0, 0, 0.08)";
-                          const img = e.currentTarget.querySelector("img");
-                          if (img) {
-                            (img as HTMLElement).style.transform = "scale(1.1)";
-                          }
-                        }}
-                        onMouseLeave={(e) => {
-                          e.currentTarget.style.transform = "translateY(0)";
-                          e.currentTarget.style.boxShadow = "none";
-                          const img = e.currentTarget.querySelector("img");
-                          if (img) {
-                            (img as HTMLElement).style.transform = "scale(1)";
-                          }
-                        }}
-                      >
-                        {/* Image Container */}
-                        <div
-                          style={{
-                            width: "100%",
-                            height: "200px",
-                            overflow: "hidden",
-                            backgroundColor: "#f3f4f6",
-                            position: "relative",
-                            flexShrink: 0,
+                      width: "45%",
+                      paddingRight: "0.75rem",
+                      display: "flex",
+                      flexDirection: "column",
+                      gap: "0.5rem",
                     }}
                   >
-                    <img
-                            src={trainingImage}
-                            alt={trainingMenuItem.title}
+                    {/* Training Content Items - 4 items */}
+                    <a
+                      href="https://training.mulecraft.in/courses"
+                      target="_blank"
+                      rel="noopener noreferrer"
                       style={{
-                        width: "100%",
-                              height: "100%",
-                              objectFit: "fill",
-                              transition: "transform 0.3s ease",
+                        display: "flex",
+                        alignItems: "flex-start",
+                        textDecoration: "none",
+                        color: "inherit",
+                        padding: "0.5rem",
+                        borderRadius: "6px",
+                        transition: "background-color 0.2s ease",
                       }}
-                    />
+                      onMouseEnter={(e) => {
+                        e.currentTarget.style.color = "#059bd1";
+                      }}
+                      onMouseLeave={(e) => {
+                        e.currentTarget.style.color = "inherit";
+                      }}
+                    >
+                      <div style={{ flex: 1 }}>
+                        <div
+                          style={{
+                            fontFamily: '"Noto Sans", sans-serif',
+                            fontSize: "14px",
+                            fontWeight: 600,
+                            marginBottom: "0.25rem",
+                          }}
+                        >
+                          MuleSoft Training
                         </div>
-
-                        {/* Card Content */}
-                        <div style={{ padding: "1rem" }}>
-                    <div
+                        <div
+                          style={{
+                            fontFamily: '"Noto Sans", sans-serif',
+                            fontSize: "12px",
+                            color: "#6b7280",
+                            lineHeight: "1.5",
+                          }}
+                        >
+                          Master MuleSoft integration platform with our
+                          comprehensive courses
+                        </div>
+                      </div>
+                    </a>
+                    <a
+                      href="https://training.mulecraft.in/certifications"
+                      target="_blank"
+                      rel="noopener noreferrer"
                       style={{
-                        fontFamily: '"Noto Sans", sans-serif',
-                              fontSize: "13px",
-                        fontWeight: 600,
-                              color: "#1f1f1f",
-                        marginBottom: "0.5rem",
-                              lineHeight: "1.4",
+                        display: "flex",
+                        alignItems: "flex-start",
+                        textDecoration: "none",
+                        color: "inherit",
+                        padding: "0.5rem",
+                        borderRadius: "6px",
+                        transition: "background-color 0.2s ease",
+                      }}
+                      onMouseEnter={(e) => {
+                        e.currentTarget.style.color = "#059bd1";
+                      }}
+                      onMouseLeave={(e) => {
+                        e.currentTarget.style.color = "inherit";
                       }}
                     >
-                            {trainingMenuItem.title}
-                    </div>
-                    <div
+                      <div style={{ flex: 1 }}>
+                        <div
+                          style={{
+                            fontFamily: '"Noto Sans", sans-serif',
+                            fontSize: "14px",
+                            fontWeight: 600,
+                            marginBottom: "0.25rem",
+                          }}
+                        >
+                          Certification Programs
+                        </div>
+                        <div
+                          style={{
+                            fontFamily: '"Noto Sans", sans-serif',
+                            fontSize: "12px",
+                            color: "#6b7280",
+                            lineHeight: "1.5",
+                          }}
+                        >
+                          Get certified and validate your integration expertise
+                        </div>
+                      </div>
+                    </a>
+                    <a
+                      href="https://training.mulecraft.in/workshops"
+                      target="_blank"
+                      rel="noopener noreferrer"
                       style={{
-                        fontFamily: '"Noto Sans", sans-serif',
-                        fontSize: "13px",
-                        color: "#6b7280",
-                              lineHeight: "1.5",
+                        display: "flex",
+                        alignItems: "flex-start",
+                        textDecoration: "none",
+                        color: "inherit",
+                        padding: "0.5rem",
+                        borderRadius: "6px",
+                        transition: "background-color 0.2s ease",
+                      }}
+                      onMouseEnter={(e) => {
+                        e.currentTarget.style.color = "#059bd1";
+                      }}
+                      onMouseLeave={(e) => {
+                        e.currentTarget.style.color = "inherit";
                       }}
                     >
-                            {trainingMenuItem.description}
-                          </div>
-                    </div>
-                  </a>
-                    </div>
+                      <div style={{ flex: 1 }}>
+                        <div
+                          style={{
+                            fontFamily: '"Noto Sans", sans-serif',
+                            fontSize: "14px",
+                            fontWeight: 600,
+                            marginBottom: "0.25rem",
+                          }}
+                        >
+                          Hands-on Workshops
+                        </div>
+                        <div
+                          style={{
+                            fontFamily: '"Noto Sans", sans-serif',
+                            fontSize: "12px",
+                            color: "#6b7280",
+                            lineHeight: "1.5",
+                          }}
+                        >
+                          Practice with real-world scenarios in guided workshops
+                        </div>
+                      </div>
+                    </a>
+                    <a
+                      href="https://training.mulecraft.in/learning-paths"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      style={{
+                        display: "flex",
+                        alignItems: "flex-start",
+                        textDecoration: "none",
+                        color: "inherit",
+                        padding: "0.5rem",
+                        borderRadius: "6px",
+                        transition: "background-color 0.2s ease",
+                      }}
+                      onMouseEnter={(e) => {
+                        e.currentTarget.style.color = "#059bd1";
+                      }}
+                      onMouseLeave={(e) => {
+                        e.currentTarget.style.color = "inherit";
+                      }}
+                    >
+                      <div style={{ flex: 1 }}>
+                        <div
+                          style={{
+                            fontFamily: '"Noto Sans", sans-serif',
+                            fontSize: "14px",
+                            fontWeight: 600,
+                            marginBottom: "0.25rem",
+                          }}
+                        >
+                          Learning Paths
+                        </div>
+                        <div
+                          style={{
+                            fontFamily: '"Noto Sans", sans-serif',
+                            fontSize: "12px",
+                            color: "#6b7280",
+                            lineHeight: "1.5",
+                          }}
+                        >
+                          Follow structured paths to build your integration
+                          skills
+                        </div>
+                      </div>
+                    </a>
                   </div>
-                )}
-              </div>
+
+                  {/* Vertical Separator */}
+                  <div
+                    style={{
+                      position: "absolute",
+                      left: "calc(45% + 0.25rem)",
+                      top: 0,
+                      bottom: 0,
+                      width: "1px",
+                      backgroundColor: "#d1d5db",
+                    }}
+                  />
+
+                  {/* Third Column - Training Image Card */}
+                  <div
+                    style={{
+                      width: "55%",
+                      paddingLeft: "1rem",
+                      display: "flex",
+                      flexDirection: "column",
+                      alignItems: "center",
+                      justifyContent: "center",
+                    }}
+                  >
+                    <a
+                      href={trainingMenuItem.href || "#"}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      style={{
+                        display: "block",
+                        width: "90%",
+                        textDecoration: "none",
+                        color: "inherit",
+                        borderRadius: "8px",
+                        border: "1px solid #e5e7eb",
+                        overflow: "hidden",
+                        transition: "transform 0.2s ease, box-shadow 0.2s ease",
+                      }}
+                      onMouseEnter={(e) => {
+                        e.currentTarget.style.transform = "translateY(-2px)";
+                        e.currentTarget.style.boxShadow =
+                          "0 8px 20px rgba(0, 0, 0, 0.08)";
+                        const img = e.currentTarget.querySelector("img");
+                        if (img) {
+                          (img as HTMLElement).style.transform = "scale(1.1)";
+                        }
+                      }}
+                      onMouseLeave={(e) => {
+                        e.currentTarget.style.transform = "translateY(0)";
+                        e.currentTarget.style.boxShadow = "none";
+                        const img = e.currentTarget.querySelector("img");
+                        if (img) {
+                          (img as HTMLElement).style.transform = "scale(1)";
+                        }
+                      }}
+                    >
+                      {/* Image Container */}
+                      <div
+                        style={{
+                          width: "100%",
+                          height: "200px",
+                          overflow: "hidden",
+                          backgroundColor: "#f3f4f6",
+                          position: "relative",
+                          flexShrink: 0,
+                        }}
+                      >
+                        <img
+                          src={trainingImage}
+                          alt={trainingMenuItem.title}
+                          style={{
+                            width: "100%",
+                            height: "100%",
+                            objectFit: "fill",
+                            transition: "transform 0.3s ease",
+                          }}
+                        />
+                      </div>
+
+                      {/* Card Content */}
+                      <div style={{ padding: "1rem" }}>
+                        <div
+                          style={{
+                            fontFamily: '"Noto Sans", sans-serif',
+                            fontSize: "13px",
+                            fontWeight: 600,
+                            color: "#1f1f1f",
+                            marginBottom: "0.5rem",
+                            lineHeight: "1.4",
+                          }}
+                        >
+                          {trainingMenuItem.title}
+                        </div>
+                        <div
+                          style={{
+                            fontFamily: '"Noto Sans", sans-serif',
+                            fontSize: "13px",
+                            color: "#6b7280",
+                            lineHeight: "1.5",
+                          }}
+                        >
+                          {trainingMenuItem.description}
+                        </div>
+                      </div>
+                    </a>
+                  </div>
+                </div>
+              )}
+            </div>
           </div>
         </div>
       </>
@@ -960,42 +990,53 @@ const DropdownMenu = ({
   if (navItem === "Products") {
     // Product images mapping for third column
     const productImages: {
-      [key: string]: { image: string; title: string; description: string; href: string };
+      [key: string]: {
+        image: string;
+        title: string;
+        description: string;
+        href: string;
+      };
     } = {
-      "SnapMapper": {
+      SnapMapper: {
         image: csi1Image,
         title: "SnapMapper Playground",
-        description: "A safe three-panel interface for testing and validating SnapLogic integration scripts.",
+        description:
+          "A safe three-panel interface for testing and validating SnapLogic integration scripts.",
         href: "https://snaplogic.playground.mulecraft.in/",
       },
-      "AnypointLP": {
+      AnypointLP: {
         image: csi6Image,
         title: "AnypointLP Platform",
-        description: "AI-powered MuleSoft development platform with generators for flows, DataWeave, and RAML.",
+        description:
+          "AI-powered MuleSoft development platform with generators for flows, DataWeave, and RAML.",
         href: "https://anypointlp-secondary.lovable.app/",
       },
       "CloudHub 2.0 Migration": {
         image: csi7Image,
         title: "Mule Migration Nexus",
-        description: "Automates MuleSoft on-prem to CloudHub 2.0 migration with dependency analysis.",
+        description:
+          "Automates MuleSoft on-prem to CloudHub 2.0 migration with dependency analysis.",
         href: "https://mule-migration-nexus.lovable.app/",
       },
-      "Goose": {
+      Goose: {
         image: csi4Image,
         title: "Goose - Deploy, Scale, Dominate",
-        description: "The ultimate DevOps platform that transforms how you build, deploy, and scale applications.",
+        description:
+          "The ultimate DevOps platform that transforms how you build, deploy, and scale applications.",
         href: "https://goosed.in/",
       },
-      "RAMLify": {
+      RAMLify: {
         image: csi2Image,
         title: "RAML Assistant",
-        description: "AI-based assistant that converts natural language to RAML specifications.",
+        description:
+          "AI-based assistant that converts natural language to RAML specifications.",
         href: "https://ramlify-flow-agent.lovable.app/",
       },
-      "MuleSoftLP": {
+      MuleSoftLP: {
         image: csi3Image,
         title: "MuleSoft Learning Platform",
-        description: "Learning platform with AI-powered task generation and transformation playground.",
+        description:
+          "Learning platform with AI-powered task generation and transformation playground.",
         href: "https://mulesoft.dev/",
       },
     };
@@ -1025,7 +1066,7 @@ const DropdownMenu = ({
           className="fixed left-1/2 -translate-x-1/2 z-50 bg-white shadow-2xl rounded-lg"
           onMouseEnter={onMouseEnter}
           onMouseLeave={onMouseLeave}
-                style={{
+          style={{
             top: `${navbarHeight}px`,
             width: "70%",
             maxWidth: "900px",
@@ -1056,11 +1097,8 @@ const DropdownMenu = ({
                       padding: "0.75rem 1rem",
                       textAlign: "left",
                       backgroundColor:
-                        selectedHeader === header
-                          ? "#e0f2f9"
-                          : "transparent",
-                      color:
-                        selectedHeader === header ? "#059bd1" : "#1f1f1f",
+                        selectedHeader === header ? "#e0f2f9" : "transparent",
+                      color: selectedHeader === header ? "#059bd1" : "#1f1f1f",
                       border: "none",
                       cursor: "pointer",
                       fontFamily: '"Noto Sans", sans-serif',
@@ -1090,9 +1128,9 @@ const DropdownMenu = ({
             </div>
 
             {/* Second & Third Columns Container */}
-              <div
+            <div
               className="flex-1 flex"
-                style={{
+              style={{
                 position: "relative",
               }}
             >
@@ -1127,10 +1165,24 @@ const DropdownMenu = ({
                             e.currentTarget.style.color = "#1f1f1f";
                           }}
                         >
-                          <div style={{ fontFamily: '"Noto Sans", sans-serif', fontSize: "14px", fontWeight: 600, marginBottom: "0.25rem" }}>
+                          <div
+                            style={{
+                              fontFamily: '"Noto Sans", sans-serif',
+                              fontSize: "14px",
+                              fontWeight: 600,
+                              marginBottom: "0.25rem",
+                            }}
+                          >
                             Three-Panel Interface
                           </div>
-                          <div style={{ fontFamily: '"Noto Sans", sans-serif', fontSize: "12px", color: "#6b7280", lineHeight: "1.5" }}>
+                          <div
+                            style={{
+                              fontFamily: '"Noto Sans", sans-serif',
+                              fontSize: "12px",
+                              color: "#6b7280",
+                              lineHeight: "1.5",
+                            }}
+                          >
                             Safe testing environment for SnapLogic scripts
                           </div>
                         </a>
@@ -1152,10 +1204,24 @@ const DropdownMenu = ({
                             e.currentTarget.style.color = "#1f1f1f";
                           }}
                         >
-                          <div style={{ fontFamily: '"Noto Sans", sans-serif', fontSize: "14px", fontWeight: 600, marginBottom: "0.25rem" }}>
+                          <div
+                            style={{
+                              fontFamily: '"Noto Sans", sans-serif',
+                              fontSize: "14px",
+                              fontWeight: 600,
+                              marginBottom: "0.25rem",
+                            }}
+                          >
                             Import/Export Features
                           </div>
-                          <div style={{ fontFamily: '"Noto Sans", sans-serif', fontSize: "12px", color: "#6b7280", lineHeight: "1.5" }}>
+                          <div
+                            style={{
+                              fontFamily: '"Noto Sans", sans-serif',
+                              fontSize: "12px",
+                              color: "#6b7280",
+                              lineHeight: "1.5",
+                            }}
+                          >
                             Easily manage and share integration scripts
                           </div>
                         </a>
@@ -1177,10 +1243,24 @@ const DropdownMenu = ({
                             e.currentTarget.style.color = "#1f1f1f";
                           }}
                         >
-                          <div style={{ fontFamily: '"Noto Sans", sans-serif', fontSize: "14px", fontWeight: 600, marginBottom: "0.25rem" }}>
+                          <div
+                            style={{
+                              fontFamily: '"Noto Sans", sans-serif',
+                              fontSize: "14px",
+                              fontWeight: 600,
+                              marginBottom: "0.25rem",
+                            }}
+                          >
                             Real-time Error Handling
                           </div>
-                          <div style={{ fontFamily: '"Noto Sans", sans-serif', fontSize: "12px", color: "#6b7280", lineHeight: "1.5" }}>
+                          <div
+                            style={{
+                              fontFamily: '"Noto Sans", sans-serif',
+                              fontSize: "12px",
+                              color: "#6b7280",
+                              lineHeight: "1.5",
+                            }}
+                          >
                             Instant feedback with guided workflows
                           </div>
                         </a>
@@ -1202,10 +1282,24 @@ const DropdownMenu = ({
                             e.currentTarget.style.color = "#1f1f1f";
                           }}
                         >
-                          <div style={{ fontFamily: '"Noto Sans", sans-serif', fontSize: "14px", fontWeight: 600, marginBottom: "0.25rem" }}>
+                          <div
+                            style={{
+                              fontFamily: '"Noto Sans", sans-serif',
+                              fontSize: "14px",
+                              fontWeight: 600,
+                              marginBottom: "0.25rem",
+                            }}
+                          >
                             Guided Workflows
                           </div>
-                          <div style={{ fontFamily: '"Noto Sans", sans-serif', fontSize: "12px", color: "#6b7280", lineHeight: "1.5" }}>
+                          <div
+                            style={{
+                              fontFamily: '"Noto Sans", sans-serif',
+                              fontSize: "12px",
+                              color: "#6b7280",
+                              lineHeight: "1.5",
+                            }}
+                          >
                             Step-by-step integration development assistance
                           </div>
                         </a>
@@ -1231,10 +1325,24 @@ const DropdownMenu = ({
                             e.currentTarget.style.color = "#1f1f1f";
                           }}
                         >
-                          <div style={{ fontFamily: '"Noto Sans", sans-serif', fontSize: "14px", fontWeight: 600, marginBottom: "0.25rem" }}>
+                          <div
+                            style={{
+                              fontFamily: '"Noto Sans", sans-serif',
+                              fontSize: "14px",
+                              fontWeight: 600,
+                              marginBottom: "0.25rem",
+                            }}
+                          >
                             Mule Flow Generator
                           </div>
-                          <div style={{ fontFamily: '"Noto Sans", sans-serif', fontSize: "12px", color: "#6b7280", lineHeight: "1.5" }}>
+                          <div
+                            style={{
+                              fontFamily: '"Noto Sans", sans-serif',
+                              fontSize: "12px",
+                              color: "#6b7280",
+                              lineHeight: "1.5",
+                            }}
+                          >
                             AI-powered MuleSoft flow generation
                           </div>
                         </a>
@@ -1256,10 +1364,24 @@ const DropdownMenu = ({
                             e.currentTarget.style.color = "#1f1f1f";
                           }}
                         >
-                          <div style={{ fontFamily: '"Noto Sans", sans-serif', fontSize: "14px", fontWeight: 600, marginBottom: "0.25rem" }}>
+                          <div
+                            style={{
+                              fontFamily: '"Noto Sans", sans-serif',
+                              fontSize: "14px",
+                              fontWeight: 600,
+                              marginBottom: "0.25rem",
+                            }}
+                          >
                             DataWeave & RAML Tools
                           </div>
-                          <div style={{ fontFamily: '"Noto Sans", sans-serif', fontSize: "12px", color: "#6b7280", lineHeight: "1.5" }}>
+                          <div
+                            style={{
+                              fontFamily: '"Noto Sans", sans-serif',
+                              fontSize: "12px",
+                              color: "#6b7280",
+                              lineHeight: "1.5",
+                            }}
+                          >
                             Generate DataWeave transformations and RAML specs
                           </div>
                         </a>
@@ -1281,10 +1403,24 @@ const DropdownMenu = ({
                             e.currentTarget.style.color = "#1f1f1f";
                           }}
                         >
-                          <div style={{ fontFamily: '"Noto Sans", sans-serif', fontSize: "14px", fontWeight: 600, marginBottom: "0.25rem" }}>
+                          <div
+                            style={{
+                              fontFamily: '"Noto Sans", sans-serif',
+                              fontSize: "14px",
+                              fontWeight: 600,
+                              marginBottom: "0.25rem",
+                            }}
+                          >
                             GitHub Integration
                           </div>
-                          <div style={{ fontFamily: '"Noto Sans", sans-serif', fontSize: "12px", color: "#6b7280", lineHeight: "1.5" }}>
+                          <div
+                            style={{
+                              fontFamily: '"Noto Sans", sans-serif',
+                              fontSize: "12px",
+                              color: "#6b7280",
+                              lineHeight: "1.5",
+                            }}
+                          >
                             Seamless collaboration and version control
                           </div>
                         </a>
@@ -1306,10 +1442,24 @@ const DropdownMenu = ({
                             e.currentTarget.style.color = "#1f1f1f";
                           }}
                         >
-                          <div style={{ fontFamily: '"Noto Sans", sans-serif', fontSize: "14px", fontWeight: 600, marginBottom: "0.25rem" }}>
+                          <div
+                            style={{
+                              fontFamily: '"Noto Sans", sans-serif',
+                              fontSize: "14px",
+                              fontWeight: 600,
+                              marginBottom: "0.25rem",
+                            }}
+                          >
                             MUnit Test Generator
                           </div>
-                          <div style={{ fontFamily: '"Noto Sans", sans-serif', fontSize: "12px", color: "#6b7280", lineHeight: "1.5" }}>
+                          <div
+                            style={{
+                              fontFamily: '"Noto Sans", sans-serif',
+                              fontSize: "12px",
+                              color: "#6b7280",
+                              lineHeight: "1.5",
+                            }}
+                          >
                             Automated test case generation for Mule apps
                           </div>
                         </a>
@@ -1335,10 +1485,24 @@ const DropdownMenu = ({
                             e.currentTarget.style.color = "#1f1f1f";
                           }}
                         >
-                          <div style={{ fontFamily: '"Noto Sans", sans-serif', fontSize: "14px", fontWeight: 600, marginBottom: "0.25rem" }}>
+                          <div
+                            style={{
+                              fontFamily: '"Noto Sans", sans-serif',
+                              fontSize: "14px",
+                              fontWeight: 600,
+                              marginBottom: "0.25rem",
+                            }}
+                          >
                             Automated Migration
                           </div>
-                          <div style={{ fontFamily: '"Noto Sans", sans-serif', fontSize: "12px", color: "#6b7280", lineHeight: "1.5" }}>
+                          <div
+                            style={{
+                              fontFamily: '"Noto Sans", sans-serif',
+                              fontSize: "12px",
+                              color: "#6b7280",
+                              lineHeight: "1.5",
+                            }}
+                          >
                             On-prem to CloudHub 2.0 migration automation
                           </div>
                         </a>
@@ -1360,10 +1524,24 @@ const DropdownMenu = ({
                             e.currentTarget.style.color = "#1f1f1f";
                           }}
                         >
-                          <div style={{ fontFamily: '"Noto Sans", sans-serif', fontSize: "14px", fontWeight: 600, marginBottom: "0.25rem" }}>
+                          <div
+                            style={{
+                              fontFamily: '"Noto Sans", sans-serif',
+                              fontSize: "14px",
+                              fontWeight: 600,
+                              marginBottom: "0.25rem",
+                            }}
+                          >
                             Dependency Analysis
                           </div>
-                          <div style={{ fontFamily: '"Noto Sans", sans-serif', fontSize: "12px", color: "#6b7280", lineHeight: "1.5" }}>
+                          <div
+                            style={{
+                              fontFamily: '"Noto Sans", sans-serif',
+                              fontSize: "12px",
+                              color: "#6b7280",
+                              lineHeight: "1.5",
+                            }}
+                          >
                             Track dependencies and technical debt
                           </div>
                         </a>
@@ -1385,10 +1563,24 @@ const DropdownMenu = ({
                             e.currentTarget.style.color = "#1f1f1f";
                           }}
                         >
-                          <div style={{ fontFamily: '"Noto Sans", sans-serif', fontSize: "14px", fontWeight: 600, marginBottom: "0.25rem" }}>
+                          <div
+                            style={{
+                              fontFamily: '"Noto Sans", sans-serif',
+                              fontSize: "14px",
+                              fontWeight: 600,
+                              marginBottom: "0.25rem",
+                            }}
+                          >
                             Progress Tracking
                           </div>
-                          <div style={{ fontFamily: '"Noto Sans", sans-serif', fontSize: "12px", color: "#6b7280", lineHeight: "1.5" }}>
+                          <div
+                            style={{
+                              fontFamily: '"Noto Sans", sans-serif',
+                              fontSize: "12px",
+                              color: "#6b7280",
+                              lineHeight: "1.5",
+                            }}
+                          >
                             Monitor migration status in real-time
                           </div>
                         </a>
@@ -1410,10 +1602,24 @@ const DropdownMenu = ({
                             e.currentTarget.style.color = "#1f1f1f";
                           }}
                         >
-                          <div style={{ fontFamily: '"Noto Sans", sans-serif', fontSize: "14px", fontWeight: 600, marginBottom: "0.25rem" }}>
+                          <div
+                            style={{
+                              fontFamily: '"Noto Sans", sans-serif',
+                              fontSize: "14px",
+                              fontWeight: 600,
+                              marginBottom: "0.25rem",
+                            }}
+                          >
                             Cloud Optimization
                           </div>
-                          <div style={{ fontFamily: '"Noto Sans", sans-serif', fontSize: "12px", color: "#6b7280", lineHeight: "1.5" }}>
+                          <div
+                            style={{
+                              fontFamily: '"Noto Sans", sans-serif',
+                              fontSize: "12px",
+                              color: "#6b7280",
+                              lineHeight: "1.5",
+                            }}
+                          >
                             Optimize applications for CloudHub 2.0 environment
                           </div>
                         </a>
@@ -1439,11 +1645,26 @@ const DropdownMenu = ({
                             e.currentTarget.style.color = "#1f1f1f";
                           }}
                         >
-                          <div style={{ fontFamily: '"Noto Sans", sans-serif', fontSize: "14px", fontWeight: 600, marginBottom: "0.25rem" }}>
+                          <div
+                            style={{
+                              fontFamily: '"Noto Sans", sans-serif',
+                              fontSize: "14px",
+                              fontWeight: 600,
+                              marginBottom: "0.25rem",
+                            }}
+                          >
                             One-Click Deploy
                           </div>
-                          <div style={{ fontFamily: '"Noto Sans", sans-serif', fontSize: "12px", color: "#6b7280", lineHeight: "1.5" }}>
-                            Deploy applications instantly with zero configuration
+                          <div
+                            style={{
+                              fontFamily: '"Noto Sans", sans-serif',
+                              fontSize: "12px",
+                              color: "#6b7280",
+                              lineHeight: "1.5",
+                            }}
+                          >
+                            Deploy applications instantly with zero
+                            configuration
                           </div>
                         </a>
                         <a
@@ -1464,10 +1685,24 @@ const DropdownMenu = ({
                             e.currentTarget.style.color = "#1f1f1f";
                           }}
                         >
-                          <div style={{ fontFamily: '"Noto Sans", sans-serif', fontSize: "14px", fontWeight: 600, marginBottom: "0.25rem" }}>
+                          <div
+                            style={{
+                              fontFamily: '"Noto Sans", sans-serif',
+                              fontSize: "14px",
+                              fontWeight: 600,
+                              marginBottom: "0.25rem",
+                            }}
+                          >
                             Auto-Scale
                           </div>
-                          <div style={{ fontFamily: '"Noto Sans", sans-serif', fontSize: "12px", color: "#6b7280", lineHeight: "1.5" }}>
+                          <div
+                            style={{
+                              fontFamily: '"Noto Sans", sans-serif',
+                              fontSize: "12px",
+                              color: "#6b7280",
+                              lineHeight: "1.5",
+                            }}
+                          >
                             Automatic scaling based on demand and traffic
                           </div>
                         </a>
@@ -1489,11 +1724,26 @@ const DropdownMenu = ({
                             e.currentTarget.style.color = "#1f1f1f";
                           }}
                         >
-                          <div style={{ fontFamily: '"Noto Sans", sans-serif', fontSize: "14px", fontWeight: 600, marginBottom: "0.25rem" }}>
+                          <div
+                            style={{
+                              fontFamily: '"Noto Sans", sans-serif',
+                              fontSize: "14px",
+                              fontWeight: 600,
+                              marginBottom: "0.25rem",
+                            }}
+                          >
                             Enterprise Security
                           </div>
-                          <div style={{ fontFamily: '"Noto Sans", sans-serif', fontSize: "12px", color: "#6b7280", lineHeight: "1.5" }}>
-                            Built-in security features for production applications
+                          <div
+                            style={{
+                              fontFamily: '"Noto Sans", sans-serif',
+                              fontSize: "12px",
+                              color: "#6b7280",
+                              lineHeight: "1.5",
+                            }}
+                          >
+                            Built-in security features for production
+                            applications
                           </div>
                         </a>
                         <a
@@ -1514,10 +1764,24 @@ const DropdownMenu = ({
                             e.currentTarget.style.color = "#1f1f1f";
                           }}
                         >
-                          <div style={{ fontFamily: '"Noto Sans", sans-serif', fontSize: "14px", fontWeight: 600, marginBottom: "0.25rem" }}>
+                          <div
+                            style={{
+                              fontFamily: '"Noto Sans", sans-serif',
+                              fontSize: "14px",
+                              fontWeight: 600,
+                              marginBottom: "0.25rem",
+                            }}
+                          >
                             Real-time Monitoring
                           </div>
-                          <div style={{ fontFamily: '"Noto Sans", sans-serif', fontSize: "12px", color: "#6b7280", lineHeight: "1.5" }}>
+                          <div
+                            style={{
+                              fontFamily: '"Noto Sans", sans-serif',
+                              fontSize: "12px",
+                              color: "#6b7280",
+                              lineHeight: "1.5",
+                            }}
+                          >
                             Monitor performance and optimize deployments
                           </div>
                         </a>
@@ -1543,10 +1807,24 @@ const DropdownMenu = ({
                             e.currentTarget.style.color = "#1f1f1f";
                           }}
                         >
-                          <div style={{ fontFamily: '"Noto Sans", sans-serif', fontSize: "14px", fontWeight: 600, marginBottom: "0.25rem" }}>
+                          <div
+                            style={{
+                              fontFamily: '"Noto Sans", sans-serif',
+                              fontSize: "14px",
+                              fontWeight: 600,
+                              marginBottom: "0.25rem",
+                            }}
+                          >
                             Natural Language to RAML
                           </div>
-                          <div style={{ fontFamily: '"Noto Sans", sans-serif', fontSize: "12px", color: "#6b7280", lineHeight: "1.5" }}>
+                          <div
+                            style={{
+                              fontFamily: '"Noto Sans", sans-serif',
+                              fontSize: "12px",
+                              color: "#6b7280",
+                              lineHeight: "1.5",
+                            }}
+                          >
                             Convert descriptions to RAML specifications
                           </div>
                         </a>
@@ -1568,10 +1846,24 @@ const DropdownMenu = ({
                             e.currentTarget.style.color = "#1f1f1f";
                           }}
                         >
-                          <div style={{ fontFamily: '"Noto Sans", sans-serif', fontSize: "14px", fontWeight: 600, marginBottom: "0.25rem" }}>
+                          <div
+                            style={{
+                              fontFamily: '"Noto Sans", sans-serif',
+                              fontSize: "14px",
+                              fontWeight: 600,
+                              marginBottom: "0.25rem",
+                            }}
+                          >
                             API Design Optimization
                           </div>
-                          <div style={{ fontFamily: '"Noto Sans", sans-serif', fontSize: "12px", color: "#6b7280", lineHeight: "1.5" }}>
+                          <div
+                            style={{
+                              fontFamily: '"Noto Sans", sans-serif',
+                              fontSize: "12px",
+                              color: "#6b7280",
+                              lineHeight: "1.5",
+                            }}
+                          >
                             Faster API design with AI assistance
                           </div>
                         </a>
@@ -1593,10 +1885,24 @@ const DropdownMenu = ({
                             e.currentTarget.style.color = "#1f1f1f";
                           }}
                         >
-                          <div style={{ fontFamily: '"Noto Sans", sans-serif', fontSize: "14px", fontWeight: 600, marginBottom: "0.25rem" }}>
+                          <div
+                            style={{
+                              fontFamily: '"Noto Sans", sans-serif',
+                              fontSize: "14px",
+                              fontWeight: 600,
+                              marginBottom: "0.25rem",
+                            }}
+                          >
                             Anypoint Integration
                           </div>
-                          <div style={{ fontFamily: '"Noto Sans", sans-serif', fontSize: "12px", color: "#6b7280", lineHeight: "1.5" }}>
+                          <div
+                            style={{
+                              fontFamily: '"Noto Sans", sans-serif',
+                              fontSize: "12px",
+                              color: "#6b7280",
+                              lineHeight: "1.5",
+                            }}
+                          >
                             Seamless integration with Anypoint Platform
                           </div>
                         </a>
@@ -1618,11 +1924,26 @@ const DropdownMenu = ({
                             e.currentTarget.style.color = "#1f1f1f";
                           }}
                         >
-                          <div style={{ fontFamily: '"Noto Sans", sans-serif', fontSize: "14px", fontWeight: 600, marginBottom: "0.25rem" }}>
+                          <div
+                            style={{
+                              fontFamily: '"Noto Sans", sans-serif',
+                              fontSize: "14px",
+                              fontWeight: 600,
+                              marginBottom: "0.25rem",
+                            }}
+                          >
                             RAML Validation
                           </div>
-                          <div style={{ fontFamily: '"Noto Sans", sans-serif', fontSize: "12px", color: "#6b7280", lineHeight: "1.5" }}>
-                            Real-time validation and syntax checking for RAML specs
+                          <div
+                            style={{
+                              fontFamily: '"Noto Sans", sans-serif',
+                              fontSize: "12px",
+                              color: "#6b7280",
+                              lineHeight: "1.5",
+                            }}
+                          >
+                            Real-time validation and syntax checking for RAML
+                            specs
                           </div>
                         </a>
                       </>
@@ -1647,10 +1968,24 @@ const DropdownMenu = ({
                             e.currentTarget.style.color = "#1f1f1f";
                           }}
                         >
-                          <div style={{ fontFamily: '"Noto Sans", sans-serif', fontSize: "14px", fontWeight: 600, marginBottom: "0.25rem" }}>
+                          <div
+                            style={{
+                              fontFamily: '"Noto Sans", sans-serif',
+                              fontSize: "14px",
+                              fontWeight: 600,
+                              marginBottom: "0.25rem",
+                            }}
+                          >
                             AI Task Generation
                           </div>
-                          <div style={{ fontFamily: '"Noto Sans", sans-serif', fontSize: "12px", color: "#6b7280", lineHeight: "1.5" }}>
+                          <div
+                            style={{
+                              fontFamily: '"Noto Sans", sans-serif',
+                              fontSize: "12px",
+                              color: "#6b7280",
+                              lineHeight: "1.5",
+                            }}
+                          >
                             Automated learning tasks for skill development
                           </div>
                         </a>
@@ -1672,10 +2007,24 @@ const DropdownMenu = ({
                             e.currentTarget.style.color = "#1f1f1f";
                           }}
                         >
-                          <div style={{ fontFamily: '"Noto Sans", sans-serif', fontSize: "14px", fontWeight: 600, marginBottom: "0.25rem" }}>
+                          <div
+                            style={{
+                              fontFamily: '"Noto Sans", sans-serif',
+                              fontSize: "14px",
+                              fontWeight: 600,
+                              marginBottom: "0.25rem",
+                            }}
+                          >
                             Transformation Playground
                           </div>
-                          <div style={{ fontFamily: '"Noto Sans", sans-serif', fontSize: "12px", color: "#6b7280", lineHeight: "1.5" }}>
+                          <div
+                            style={{
+                              fontFamily: '"Noto Sans", sans-serif',
+                              fontSize: "12px",
+                              color: "#6b7280",
+                              lineHeight: "1.5",
+                            }}
+                          >
                             Interactive environment for DataWeave practice
                           </div>
                         </a>
@@ -1697,10 +2046,24 @@ const DropdownMenu = ({
                             e.currentTarget.style.color = "#1f1f1f";
                           }}
                         >
-                          <div style={{ fontFamily: '"Noto Sans", sans-serif', fontSize: "14px", fontWeight: 600, marginBottom: "0.25rem" }}>
+                          <div
+                            style={{
+                              fontFamily: '"Noto Sans", sans-serif',
+                              fontSize: "14px",
+                              fontWeight: 600,
+                              marginBottom: "0.25rem",
+                            }}
+                          >
                             Progress Tracking
                           </div>
-                          <div style={{ fontFamily: '"Noto Sans", sans-serif', fontSize: "12px", color: "#6b7280", lineHeight: "1.5" }}>
+                          <div
+                            style={{
+                              fontFamily: '"Noto Sans", sans-serif',
+                              fontSize: "12px",
+                              color: "#6b7280",
+                              lineHeight: "1.5",
+                            }}
+                          >
                             Monitor learning progress with detailed analytics
                           </div>
                         </a>
@@ -1722,10 +2085,24 @@ const DropdownMenu = ({
                             e.currentTarget.style.color = "#1f1f1f";
                           }}
                         >
-                          <div style={{ fontFamily: '"Noto Sans", sans-serif', fontSize: "14px", fontWeight: 600, marginBottom: "0.25rem" }}>
+                          <div
+                            style={{
+                              fontFamily: '"Noto Sans", sans-serif',
+                              fontSize: "14px",
+                              fontWeight: 600,
+                              marginBottom: "0.25rem",
+                            }}
+                          >
                             RAML Assistant
                           </div>
-                          <div style={{ fontFamily: '"Noto Sans", sans-serif', fontSize: "12px", color: "#6b7280", lineHeight: "1.5" }}>
+                          <div
+                            style={{
+                              fontFamily: '"Noto Sans", sans-serif',
+                              fontSize: "12px",
+                              color: "#6b7280",
+                              lineHeight: "1.5",
+                            }}
+                          >
                             AI-powered RAML specification helper
                           </div>
                         </a>
@@ -1775,20 +2152,26 @@ const DropdownMenu = ({
                       border: "1px solid #e5e7eb",
                     }}
                     onMouseEnter={(e) => {
-                      const img = e.currentTarget.querySelector("img") as HTMLImageElement;
+                      const img = e.currentTarget.querySelector(
+                        "img"
+                      ) as HTMLImageElement;
                       if (img) {
                         img.style.transform = "scale(1.05)";
                       }
                       e.currentTarget.style.transform = "translateY(-4px)";
-                      e.currentTarget.style.boxShadow = "0 8px 20px rgba(0, 0, 0, 0.15)";
+                      e.currentTarget.style.boxShadow =
+                        "0 8px 20px rgba(0, 0, 0, 0.15)";
                     }}
                     onMouseLeave={(e) => {
-                      const img = e.currentTarget.querySelector("img") as HTMLImageElement;
+                      const img = e.currentTarget.querySelector(
+                        "img"
+                      ) as HTMLImageElement;
                       if (img) {
                         img.style.transform = "scale(1)";
                       }
                       e.currentTarget.style.transform = "translateY(0)";
-                      e.currentTarget.style.boxShadow = "0 2px 8px rgba(0, 0, 0, 0.1)";
+                      e.currentTarget.style.boxShadow =
+                        "0 2px 8px rgba(0, 0, 0, 0.1)";
                     }}
                   >
                     {/* Image */}
@@ -1798,38 +2181,40 @@ const DropdownMenu = ({
                         height: "200px",
                         overflow: "hidden",
                         backgroundColor: "#ffffff",
-                    }}
-                  >
+                      }}
+                    >
                       {selectedHeader === "SnapMapper" && <SnapMapperPreview />}
                       {selectedHeader === "AnypointLP" && <AnypointLPPreview />}
-                      {selectedHeader === "CloudHub 2.0 Migration" && <CloudHubMigrationPreview />}
+                      {selectedHeader === "CloudHub 2.0 Migration" && (
+                        <CloudHubMigrationPreview />
+                      )}
                       {selectedHeader === "Goose" && <GoosePreview />}
                       {selectedHeader === "RAMLify" && <RAMLifyPreview />}
                       {selectedHeader === "MuleSoftLP" && <MuleSoftLPPreview />}
-            </div>
+                    </div>
 
                     {/* Title and Description */}
                     <div style={{ padding: "1rem" }}>
-                    <div
-                      style={{
-                        fontFamily: '"Noto Sans", sans-serif',
-                        fontSize: "16px",
-                        fontWeight: 600,
+                      <div
+                        style={{
+                          fontFamily: '"Noto Sans", sans-serif',
+                          fontSize: "16px",
+                          fontWeight: 600,
                           color: "#1f1f1f",
-                        marginBottom: "0.5rem",
+                          marginBottom: "0.5rem",
                           lineHeight: "1.4",
-                      }}
-                    >
+                        }}
+                      >
                         {productImages[selectedHeader].title}
-                    </div>
-                    <div
-                      style={{
-                        fontFamily: '"Noto Sans", sans-serif',
-                        fontSize: "13px",
-                        color: "#6b7280",
+                      </div>
+                      <div
+                        style={{
+                          fontFamily: '"Noto Sans", sans-serif',
+                          fontSize: "13px",
+                          color: "#6b7280",
                           lineHeight: "1.5",
-                      }}
-                    >
+                        }}
+                      >
                         {productImages[selectedHeader].description}
                       </div>
                     </div>
@@ -1850,34 +2235,46 @@ const DropdownMenu = ({
     const menuItems = selectedItem?.menuItems || [];
 
     // Image mapping for each case study category
-    const caseStudyImages: { [key: string]: { image: string; title: string; description: string; href?: string } } = {
+    const caseStudyImages: {
+      [key: string]: {
+        image: string;
+        title: string;
+        description: string;
+        href?: string;
+      };
+    } = {
       "HR Management": {
         image: cs1Image,
         title: "HR Management Transformation",
-        description: "Streamlined HR processes and improved employee experience with integrated automation.",
+        description:
+          "Streamlined HR processes and improved employee experience with integrated automation.",
         href: "#",
       },
       "Healthcare Solutions": {
         image: cs2Image,
         title: "Healthcare Digital Innovation",
-        description: "Enhanced patient care through seamless data integration and workflow automation.",
+        description:
+          "Enhanced patient care through seamless data integration and workflow automation.",
         href: "#",
       },
       "Digital Transformation": {
         image: cs3Image,
         title: "Enterprise Digital Transformation",
-        description: "Modernized legacy systems and accelerated digital initiatives across the organization.",
+        description:
+          "Modernized legacy systems and accelerated digital initiatives across the organization.",
         href: "#",
       },
       "Automation & Platforms": {
         image: cs4Image,
         title: "Platform Automation Excellence",
-        description: "Achieved operational efficiency through intelligent automation and platform integration.",
+        description:
+          "Achieved operational efficiency through intelligent automation and platform integration.",
         href: "#",
       },
     };
 
-    const selectedImageCard = caseStudyImages[selectedHeader || "HR Management"];
+    const selectedImageCard =
+      caseStudyImages[selectedHeader || "HR Management"];
 
     return (
       <>
@@ -1927,9 +2324,12 @@ const DropdownMenu = ({
                       fontFamily: '"Noto Sans", sans-serif',
                       fontSize: "15px",
                       fontWeight: 500,
-                      color: selectedHeader === item.label ? "#059bd1" : "#1f1f1f",
+                      color:
+                        selectedHeader === item.label ? "#059bd1" : "#1f1f1f",
                       backgroundColor:
-                        selectedHeader === item.label ? "#e0f2f9" : "transparent",
+                        selectedHeader === item.label
+                          ? "#e0f2f9"
+                          : "transparent",
                       border: "none",
                       borderRadius: "6px",
                       cursor: "pointer",
@@ -1988,7 +2388,7 @@ const DropdownMenu = ({
                   >
                     {/* Content */}
                     <div className="item-content">
-                <div
+                      <div
                         className="item-title"
                         style={{
                           fontFamily: '"Noto Sans", sans-serif',
@@ -2003,15 +2403,15 @@ const DropdownMenu = ({
                       </div>
                       <div
                         className="item-description"
-                  style={{
-                    fontFamily: '"Noto Sans", sans-serif',
-                    fontSize: "13px",
+                        style={{
+                          fontFamily: '"Noto Sans", sans-serif',
+                          fontSize: "13px",
                           lineHeight: "1.5",
-                    color: "#6b7280",
-                  }}
-                >
+                          color: "#6b7280",
+                        }}
+                      >
                         {menuItem.description}
-                </div>
+                      </div>
                     </div>
                   </a>
                 ))}
@@ -2041,14 +2441,14 @@ const DropdownMenu = ({
               }}
             >
               {selectedImageCard && (
-                  <a
+                <a
                   href={selectedImageCard.href || "#"}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    style={{
-                      display: "block",
-                      textDecoration: "none",
-                      color: "inherit",
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  style={{
+                    display: "block",
+                    textDecoration: "none",
+                    color: "inherit",
                     borderRadius: "8px",
                     overflow: "hidden",
                     border: "1px solid #e5e7eb",
@@ -2057,7 +2457,8 @@ const DropdownMenu = ({
                   }}
                   onMouseEnter={(e) => {
                     e.currentTarget.style.transform = "translateY(-2px)";
-                    e.currentTarget.style.boxShadow = "0 8px 20px rgba(0, 0, 0, 0.08)";
+                    e.currentTarget.style.boxShadow =
+                      "0 8px 20px rgba(0, 0, 0, 0.08)";
                     const img = e.currentTarget.querySelector("img");
                     if (img) {
                       (img as HTMLElement).style.transform = "scale(1.1)";
@@ -2081,7 +2482,7 @@ const DropdownMenu = ({
                       backgroundColor: "#f3f4f6",
                     }}
                   >
-                   <img
+                    <img
                       src={selectedImageCard.image}
                       alt={selectedImageCard.title}
                       style={{
@@ -2090,9 +2491,11 @@ const DropdownMenu = ({
                         objectFit:
                           selectedHeader === "Digital Transformation"
                             ? "fill"
-                            : selectedHeader === "HR Management" ||
-                              selectedHeader === "Healthcare Solutions" ||
-                              selectedHeader === "Automation & Platforms"
+                            : selectedHeader === "Healthcare Solutions"
+                            ? "contain"
+                            : selectedHeader === "Automation & Platforms"
+                            ? "cover"
+                            : selectedHeader === "HR Management"
                             ? "fill"
                             : "scale-down",
                         transition: "transform 0.3s ease",
@@ -2123,9 +2526,9 @@ const DropdownMenu = ({
                     >
                       {selectedImageCard.description}
                     </div>
-                    </div>
-                  </a>
-                )}
+                  </div>
+                </a>
+              )}
             </div>
           </div>
         </div>
@@ -2175,7 +2578,7 @@ const DropdownMenu = ({
           {columns.map((columnItem, columnIndex) => {
             const isOtherProducts =
               navItem === "Products" && columnItem.label === "OTHER PRODUCTS";
-            
+
             return (
               <div
                 key={columnIndex}
@@ -2199,16 +2602,16 @@ const DropdownMenu = ({
                 {/* Column Content */}
                 <div
                   className="flex-1 flex flex-col"
-                style={{
+                  style={{
                     padding:
                       navItem === "Products"
                         ? "1.5rem 1.25rem"
                         : "1.25rem 1.25rem",
-                  fontFamily: '"Noto Sans", sans-serif',
+                    fontFamily: '"Noto Sans", sans-serif',
                     overflowY: "auto",
                     overflowX: "hidden",
-                }}
-              >
+                  }}
+                >
                   {/* Special layout for OTHER PRODUCTS in Products dropdown */}
                   {isOtherProducts ? (
                     <>
@@ -2264,7 +2667,7 @@ const DropdownMenu = ({
                           </div>
                         </a>
                       </div>
-                      
+
                       {/* Gray Separator Line - Full Width */}
                       <div
                         style={{
@@ -2276,13 +2679,62 @@ const DropdownMenu = ({
                           marginRight: "-1.25rem",
                         }}
                       />
-                      
+
                       {/* Second row - Mule Migration Nexus */}
                       {columnItem.menuItems &&
                         columnItem.menuItems.length > 0 && (
-                        <>
+                          <>
+                            <a
+                              href={columnItem.menuItems[0].href || "#"}
+                              className="link-item block"
+                              style={{
+                                display: "block",
+                                padding: "0.5rem 0.75rem",
+                                color: "#1f1f1f",
+                                transition: "color .3s ease 0s",
+                                textDecoration: "none",
+                                textAlign: "center",
+                              }}
+                              onMouseEnter={(e) => {
+                                e.currentTarget.style.color = "#059bd1";
+                              }}
+                              onMouseLeave={(e) => {
+                                e.currentTarget.style.color = "#1f1f1f";
+                              }}
+                            >
+                              <div
+                                style={{
+                                  fontFamily: '"Noto Sans", sans-serif',
+                                  fontSize: "14px",
+                                  lineHeight: "1.6",
+                                  fontWeight: 500,
+                                  color: "inherit",
+                                }}
+                              >
+                                {columnItem.menuItems[0].title}
+                              </div>
+                            </a>
+
+                            {/* Gray Separator Line - Full Width */}
+                            <div
+                              style={{
+                                width: "calc(100% + 2.5rem)",
+                                height: "1px",
+                                backgroundColor: "#d1d5db",
+                                marginTop: "0.5rem",
+                                marginBottom: "0.5rem",
+                                marginLeft: "-1.25rem",
+                                marginRight: "-1.25rem",
+                              }}
+                            />
+                          </>
+                        )}
+
+                      {/* Third row - DataWeave Task Generator */}
+                      {columnItem.menuItems &&
+                        columnItem.menuItems.length > 1 && (
                           <a
-                            href={columnItem.menuItems[0].href || "#"}
+                            href={columnItem.menuItems[1].href || "#"}
                             className="link-item block"
                             style={{
                               display: "block",
@@ -2293,7 +2745,7 @@ const DropdownMenu = ({
                               textAlign: "center",
                             }}
                             onMouseEnter={(e) => {
-                                e.currentTarget.style.color = "#059bd1";
+                              e.currentTarget.style.color = "#059bd1";
                             }}
                             onMouseLeave={(e) => {
                               e.currentTarget.style.color = "#1f1f1f";
@@ -2303,64 +2755,15 @@ const DropdownMenu = ({
                               style={{
                                 fontFamily: '"Noto Sans", sans-serif',
                                 fontSize: "14px",
-                                  lineHeight: "1.6",
+                                lineHeight: "1.6",
                                 fontWeight: 500,
                                 color: "inherit",
                               }}
                             >
-                              {columnItem.menuItems[0].title}
+                              {columnItem.menuItems[1].title}
                             </div>
                           </a>
-                          
-                          {/* Gray Separator Line - Full Width */}
-                          <div
-                            style={{
-                              width: "calc(100% + 2.5rem)",
-                              height: "1px",
-                              backgroundColor: "#d1d5db",
-                              marginTop: "0.5rem",
-                              marginBottom: "0.5rem",
-                              marginLeft: "-1.25rem",
-                              marginRight: "-1.25rem",
-                            }}
-                          />
-                        </>
-                      )}
-                      
-                      {/* Third row - DataWeave Task Generator */}
-                      {columnItem.menuItems &&
-                        columnItem.menuItems.length > 1 && (
-                        <a
-                          href={columnItem.menuItems[1].href || "#"}
-                          className="link-item block"
-                          style={{
-                            display: "block",
-                            padding: "0.5rem 0.75rem",
-                            color: "#1f1f1f",
-                            transition: "color .3s ease 0s",
-                            textDecoration: "none",
-                            textAlign: "center",
-                          }}
-                          onMouseEnter={(e) => {
-                              e.currentTarget.style.color = "#059bd1";
-                          }}
-                          onMouseLeave={(e) => {
-                            e.currentTarget.style.color = "#1f1f1f";
-                          }}
-                        >
-                          <div
-                            style={{
-                              fontFamily: '"Noto Sans", sans-serif',
-                              fontSize: "14px",
-                                lineHeight: "1.6",
-                              fontWeight: 500,
-                              color: "inherit",
-                            }}
-                          >
-                            {columnItem.menuItems[1].title}
-                          </div>
-                        </a>
-                      )}
+                        )}
                     </>
                   ) : (
                     <>
@@ -2396,20 +2799,20 @@ const DropdownMenu = ({
                         }}
                       >
                         {(columnItem.menuItems || []).map((menuItem, index) => (
-                        <a
-                          key={index}
-                          href={menuItem.href || "#"}
+                          <a
+                            key={index}
+                            href={menuItem.href || "#"}
                             className="link-item block"
-                          style={{
+                            style={{
                               display: "block",
                               padding:
                                 navItem === "Products"
                                   ? "0.5rem 0"
                                   : "0.5rem 0.75rem",
-                            color: "#1f1f1f",
+                              color: "#1f1f1f",
                               transition: "color .3s ease 0s",
-                            textDecoration: "none",
-                          }}
+                              textDecoration: "none",
+                            }}
                             onMouseEnter={(e) => {
                               e.currentTarget.style.color = "#059bd1";
                             }}
@@ -2417,12 +2820,12 @@ const DropdownMenu = ({
                               e.currentTarget.style.color = "#1f1f1f";
                             }}
                           >
-                          {/* Content */}
+                            {/* Content */}
                             <div className="item-content">
-                            <div
-                              className="item-title"
-                              style={{
-                                fontFamily: '"Noto Sans", sans-serif',
+                              <div
+                                className="item-title"
+                                style={{
+                                  fontFamily: '"Noto Sans", sans-serif',
                                   fontSize: "15px",
                                   lineHeight:
                                     navItem === "Products" ? "1.8" : "1.6",
@@ -2431,18 +2834,18 @@ const DropdownMenu = ({
                                   whiteSpace: "nowrap",
                                   overflow: "hidden",
                                   textOverflow: "ellipsis",
-                              }}
-                            >
-                              {menuItem.title}
+                                }}
+                              >
+                                {menuItem.title}
                               </div>
                             </div>
                           </a>
                         ))}
                       </div>
                     </>
-                )}
-            </div>
+                  )}
                 </div>
+              </div>
             );
           })}
         </div>
@@ -2452,4 +2855,3 @@ const DropdownMenu = ({
 };
 
 export default DropdownMenu;
-
