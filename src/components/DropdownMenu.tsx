@@ -85,7 +85,7 @@ const DropdownMenu = ({
     const selectedItem =
       items.find((item) => item.label === selectedHeader) || items[0];
     const menuItems = selectedItem?.menuItems || [];
-    
+
     // Display all menuItems in the second column only (third column is image card only)
     const leftColumnItems = menuItems;
 
@@ -178,10 +178,10 @@ const DropdownMenu = ({
                       textAlign: "left",
                       backgroundColor:
                         selectedHeader === item.label
-                          ? "#e0f2f9"
+                          ? "hsl(var(--primary) / 0.1)"
                           : "transparent",
                       color:
-                        selectedHeader === item.label ? "#059bd1" : "#1f1f1f",
+                        selectedHeader === item.label ? "hsl(var(--primary))" : "#1f1f1f",
                       border: "none",
                       cursor: "pointer",
                       fontFamily: '"Noto Sans", sans-serif',
@@ -247,7 +247,7 @@ const DropdownMenu = ({
                           textDecoration: "none",
                         }}
                         onMouseEnter={(e) => {
-                          e.currentTarget.style.color = "#059bd1";
+                          e.currentTarget.style.color = "hsl(var(--primary))";
                         }}
                         onMouseLeave={(e) => {
                           e.currentTarget.style.color = "#1f1f1f";
@@ -292,13 +292,13 @@ const DropdownMenu = ({
                 >
                   {/* Image Card - Centered for all headers */}
                   {selectedImageCard && (
-                      <a
+                    <a
                       href={selectedImageCard.href || "#"}
                       target="_blank"
                       rel="noopener noreferrer"
-                        style={{
-                          display: "block",
-                          textDecoration: "none",
+                      style={{
+                        display: "block",
+                        textDecoration: "none",
                         color: "inherit",
                         borderRadius: "8px",
                         overflow: "hidden",
@@ -307,16 +307,16 @@ const DropdownMenu = ({
                         width: "100%",
                         minHeight: "200px",
                         transition: "transform 0.2s ease, box-shadow 0.2s ease",
-                        }}
-                        onMouseEnter={(e) => {
+                      }}
+                      onMouseEnter={(e) => {
                         e.currentTarget.style.transform = "translateY(-2px)";
                         e.currentTarget.style.boxShadow = "0 8px 20px rgba(0, 0, 0, 0.08)";
                         const img = e.currentTarget.querySelector("img");
                         if (img) {
                           (img as HTMLElement).style.transform = "scale(1.1)";
                         }
-                        }}
-                        onMouseLeave={(e) => {
+                      }}
+                      onMouseLeave={(e) => {
                         e.currentTarget.style.transform = "translateY(0)";
                         e.currentTarget.style.boxShadow = "none";
                         const img = e.currentTarget.querySelector("img");
@@ -331,16 +331,16 @@ const DropdownMenu = ({
                           width: "100%",
                           height: "200px",
                           overflow: "hidden",
-                          backgroundColor: selectedHeader === "SnapLogic" 
+                          backgroundColor: selectedHeader === "SnapLogic"
                             ? "#0E1831"
-                            : selectedHeader === "Digibee" 
-                            ? "#ffffff" 
-                            : "#f3f4f6",
-                          background: selectedHeader === "SnapLogic" 
+                            : selectedHeader === "Digibee"
+                              ? "#ffffff"
+                              : "#f3f4f6",
+                          background: selectedHeader === "SnapLogic"
                             ? "#0E1831"
-                            : selectedHeader === "Digibee" 
-                            ? "#ffffff" 
-                            : "#f3f4f6",
+                            : selectedHeader === "Digibee"
+                              ? "#ffffff"
+                              : "#f3f4f6",
                         }}
                       >
                         {selectedHeader === "MuleSoft" ? (
@@ -380,8 +380,8 @@ const DropdownMenu = ({
                         )}
                       </div>
                       {/* Card Content */}
-                      <div style={{ 
-                        padding: "1rem" 
+                      <div style={{
+                        padding: "1rem"
                       }}>
                         <div
                           style={{
@@ -405,8 +405,8 @@ const DropdownMenu = ({
                         >
                           {selectedImageCard.description}
                         </div>
-                        </div>
-                      </a>
+                      </div>
+                    </a>
                   )}
                 </div>
               </div>
@@ -490,10 +490,10 @@ const DropdownMenu = ({
                       textAlign: "left",
                       backgroundColor:
                         selectedHeader === item.label
-                          ? "#e0f2f9"
+                          ? "hsl(var(--primary) / 0.1)"
                           : "transparent",
                       color:
-                        selectedHeader === item.label ? "#059bd1" : "#1f1f1f",
+                        selectedHeader === item.label ? "hsl(var(--primary))" : "#1f1f1f",
                       border: "none",
                       cursor: "pointer",
                       fontFamily: '"Noto Sans", sans-serif',
@@ -619,10 +619,10 @@ const DropdownMenu = ({
                       {/* Card Content */}
                       <div style={{ padding: "1rem" }}>
                         <div
-                  style={{
-                    fontFamily: '"Noto Sans", sans-serif',
-                    fontSize: "13px",
-                    fontWeight: 600,
+                          style={{
+                            fontFamily: '"Noto Sans", sans-serif',
+                            fontSize: "13px",
+                            fontWeight: 600,
                             color: "#1f1f1f",
                             marginBottom: "0.5rem",
                             lineHeight: "1.4",
@@ -634,12 +634,12 @@ const DropdownMenu = ({
                           style={{
                             fontFamily: '"Noto Sans", sans-serif',
                             fontSize: "13px",
-                    color: "#6b7280",
+                            color: "#6b7280",
                             lineHeight: "1.5",
-                  }}
-                >
+                          }}
+                        >
                           {card.description}
-                </div>
+                        </div>
                       </div>
                     </a>
                   ))}
@@ -658,298 +658,298 @@ const DropdownMenu = ({
                     position: "relative",
                   }}
                 >
-                    {/* Second Column - Content Items */}
-                    <div
-                      style={{
-                        width: "45%",
-                        paddingRight: "0.75rem",
-                        display: "flex",
-                        flexDirection: "column",
-                        gap: "0.5rem",
-                      }}
-                    >
-                      {/* Training Content Items - 4 items */}
-                      <a
-                        href="https://training.mulecraft.in/courses"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        style={{
-                          display: "flex",
-                          alignItems: "flex-start",
-                          textDecoration: "none",
-                          color: "inherit",
-                          padding: "0.5rem",
-                          borderRadius: "6px",
-                          transition: "background-color 0.2s ease",
-                        }}
-                        onMouseEnter={(e) => {
-                          e.currentTarget.style.color = "#059bd1";
-                        }}
-                        onMouseLeave={(e) => {
-                          e.currentTarget.style.color = "inherit";
-                        }}
-                      >
-                        <div style={{ flex: 1 }}>
-                          <div
-                            style={{
-                              fontFamily: '"Noto Sans", sans-serif',
-                              fontSize: "14px",
-                    fontWeight: 600,
-                              marginBottom: "0.25rem",
-                            }}
-                          >
-                            MuleSoft Training
-                          </div>
-                          <div
-                            style={{
-                              fontFamily: '"Noto Sans", sans-serif',
-                              fontSize: "12px",
-                    color: "#6b7280",
-                              lineHeight: "1.5",
-                  }}
-                >
-                            Master MuleSoft integration platform with our comprehensive courses
-                </div>
-                        </div>
-                      </a>
-                      <a
-                        href="https://training.mulecraft.in/certifications"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        style={{
-                          display: "flex",
-                          alignItems: "flex-start",
-                          textDecoration: "none",
-                          color: "inherit",
-                          padding: "0.5rem",
-                          borderRadius: "6px",
-                          transition: "background-color 0.2s ease",
-                        }}
-                        onMouseEnter={(e) => {
-                          e.currentTarget.style.color = "#059bd1";
-                        }}
-                        onMouseLeave={(e) => {
-                          e.currentTarget.style.color = "inherit";
-                        }}
-                      >
-                        <div style={{ flex: 1 }}>
-                          <div
-                            style={{
-                              fontFamily: '"Noto Sans", sans-serif',
-                              fontSize: "14px",
-                              fontWeight: 600,
-                              marginBottom: "0.25rem",
-                            }}
-                          >
-                            Certification Programs
-                          </div>
-                          <div
-                            style={{
-                              fontFamily: '"Noto Sans", sans-serif',
-                              fontSize: "12px",
-                              color: "#6b7280",
-                              lineHeight: "1.5",
-                            }}
-                          >
-                            Get certified and validate your integration expertise
-                          </div>
-                        </div>
-                      </a>
-                      <a
-                        href="https://training.mulecraft.in/workshops"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        style={{
-                          display: "flex",
-                          alignItems: "flex-start",
-                          textDecoration: "none",
-                          color: "inherit",
-                          padding: "0.5rem",
-                          borderRadius: "6px",
-                          transition: "background-color 0.2s ease",
-                        }}
-                        onMouseEnter={(e) => {
-                          e.currentTarget.style.color = "#059bd1";
-                        }}
-                        onMouseLeave={(e) => {
-                          e.currentTarget.style.color = "inherit";
-                        }}
-                      >
-                        <div style={{ flex: 1 }}>
-                          <div
-                            style={{
-                              fontFamily: '"Noto Sans", sans-serif',
-                              fontSize: "14px",
-                              fontWeight: 600,
-                              marginBottom: "0.25rem",
-                            }}
-                          >
-                            Hands-on Workshops
-                          </div>
-                          <div
-                            style={{
-                              fontFamily: '"Noto Sans", sans-serif',
-                              fontSize: "12px",
-                              color: "#6b7280",
-                              lineHeight: "1.5",
-                            }}
-                          >
-                            Practice with real-world scenarios in guided workshops
-                          </div>
-                        </div>
-                      </a>
-                      <a
-                        href="https://training.mulecraft.in/learning-paths"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        style={{
-                          display: "flex",
-                          alignItems: "flex-start",
-                          textDecoration: "none",
-                          color: "inherit",
-                          padding: "0.5rem",
-                          borderRadius: "6px",
-                          transition: "background-color 0.2s ease",
-                        }}
-                        onMouseEnter={(e) => {
-                          e.currentTarget.style.color = "#059bd1";
-                        }}
-                        onMouseLeave={(e) => {
-                          e.currentTarget.style.color = "inherit";
-                        }}
-                      >
-                        <div style={{ flex: 1 }}>
-                          <div
-                            style={{
-                              fontFamily: '"Noto Sans", sans-serif',
-                              fontSize: "14px",
-                              fontWeight: 600,
-                              marginBottom: "0.25rem",
-                            }}
-                          >
-                            Learning Paths
-                          </div>
-                          <div
-                            style={{
-                              fontFamily: '"Noto Sans", sans-serif',
-                              fontSize: "12px",
-                              color: "#6b7280",
-                              lineHeight: "1.5",
-                            }}
-                          >
-                            Follow structured paths to build your integration skills
-                          </div>
-                        </div>
-                      </a>
-                    </div>
-
-                    {/* Vertical Separator */}
-                    <div
-                      style={{
-                        position: "absolute",
-                        left: "calc(45% + 0.25rem)",
-                        top: 0,
-                        bottom: 0,
-                        width: "1px",
-                        backgroundColor: "#d1d5db",
-                      }}
-                    />
-
-                    {/* Third Column - Training Image Card */}
-                    <div
-                      style={{
-                        width: "55%",
-                        paddingLeft: "1rem",
-                        display: "flex",
-                        flexDirection: "column",
-                        alignItems: "center",
-                        justifyContent: "center",
-                      }}
-                    >
-                      <a
-                        href={trainingMenuItem.href || "#"}
-                    target="_blank"
-                    rel="noopener noreferrer"
+                  {/* Second Column - Content Items */}
+                  <div
                     style={{
-                      display: "block",
-                          width: "90%",
-                      textDecoration: "none",
-                      color: "inherit",
-                          borderRadius: "8px",
-                          border: "1px solid #e5e7eb",
-                          overflow: "hidden",
-                          transition: "transform 0.2s ease, box-shadow 0.2s ease",
-                        }}
-                        onMouseEnter={(e) => {
-                          e.currentTarget.style.transform = "translateY(-2px)";
-                          e.currentTarget.style.boxShadow = "0 8px 20px rgba(0, 0, 0, 0.08)";
-                          const img = e.currentTarget.querySelector("img");
-                          if (img) {
-                            (img as HTMLElement).style.transform = "scale(1.1)";
-                          }
-                        }}
-                        onMouseLeave={(e) => {
-                          e.currentTarget.style.transform = "translateY(0)";
-                          e.currentTarget.style.boxShadow = "none";
-                          const img = e.currentTarget.querySelector("img");
-                          if (img) {
-                            (img as HTMLElement).style.transform = "scale(1)";
-                          }
-                        }}
-                      >
-                        {/* Image Container */}
-                        <div
-                          style={{
-                            width: "100%",
-                            height: "200px",
-                            overflow: "hidden",
-                            backgroundColor: "#f3f4f6",
-                            position: "relative",
-                            flexShrink: 0,
+                      width: "45%",
+                      paddingRight: "0.75rem",
+                      display: "flex",
+                      flexDirection: "column",
+                      gap: "0.5rem",
                     }}
                   >
-                    <img
-                            src={trainingImage}
-                            alt={trainingMenuItem.title}
+                    {/* Training Content Items - 4 items */}
+                    <a
+                      href="https://training.mulecraft.in/courses"
+                      target="_blank"
+                      rel="noopener noreferrer"
                       style={{
-                        width: "100%",
-                              height: "100%",
-                              objectFit: "fill",
-                              transition: "transform 0.3s ease",
+                        display: "flex",
+                        alignItems: "flex-start",
+                        textDecoration: "none",
+                        color: "inherit",
+                        padding: "0.5rem",
+                        borderRadius: "6px",
+                        transition: "background-color 0.2s ease",
                       }}
-                    />
+                      onMouseEnter={(e) => {
+                        e.currentTarget.style.color = "hsl(var(--primary))";
+                      }}
+                      onMouseLeave={(e) => {
+                        e.currentTarget.style.color = "inherit";
+                      }}
+                    >
+                      <div style={{ flex: 1 }}>
+                        <div
+                          style={{
+                            fontFamily: '"Noto Sans", sans-serif',
+                            fontSize: "14px",
+                            fontWeight: 600,
+                            marginBottom: "0.25rem",
+                          }}
+                        >
+                          MuleSoft Training
                         </div>
-
-                        {/* Card Content */}
-                        <div style={{ padding: "1rem" }}>
-                    <div
+                        <div
+                          style={{
+                            fontFamily: '"Noto Sans", sans-serif',
+                            fontSize: "12px",
+                            color: "#6b7280",
+                            lineHeight: "1.5",
+                          }}
+                        >
+                          Master MuleSoft integration platform with our comprehensive courses
+                        </div>
+                      </div>
+                    </a>
+                    <a
+                      href="https://training.mulecraft.in/certifications"
+                      target="_blank"
+                      rel="noopener noreferrer"
                       style={{
-                        fontFamily: '"Noto Sans", sans-serif',
-                              fontSize: "13px",
-                        fontWeight: 600,
-                              color: "#1f1f1f",
-                        marginBottom: "0.5rem",
-                              lineHeight: "1.4",
+                        display: "flex",
+                        alignItems: "flex-start",
+                        textDecoration: "none",
+                        color: "inherit",
+                        padding: "0.5rem",
+                        borderRadius: "6px",
+                        transition: "background-color 0.2s ease",
+                      }}
+                      onMouseEnter={(e) => {
+                        e.currentTarget.style.color = "hsl(var(--primary))";
+                      }}
+                      onMouseLeave={(e) => {
+                        e.currentTarget.style.color = "inherit";
                       }}
                     >
-                            {trainingMenuItem.title}
-                    </div>
-                    <div
+                      <div style={{ flex: 1 }}>
+                        <div
+                          style={{
+                            fontFamily: '"Noto Sans", sans-serif',
+                            fontSize: "14px",
+                            fontWeight: 600,
+                            marginBottom: "0.25rem",
+                          }}
+                        >
+                          Certification Programs
+                        </div>
+                        <div
+                          style={{
+                            fontFamily: '"Noto Sans", sans-serif',
+                            fontSize: "12px",
+                            color: "#6b7280",
+                            lineHeight: "1.5",
+                          }}
+                        >
+                          Get certified and validate your integration expertise
+                        </div>
+                      </div>
+                    </a>
+                    <a
+                      href="https://training.mulecraft.in/workshops"
+                      target="_blank"
+                      rel="noopener noreferrer"
                       style={{
-                        fontFamily: '"Noto Sans", sans-serif',
-                        fontSize: "13px",
-                        color: "#6b7280",
-                              lineHeight: "1.5",
+                        display: "flex",
+                        alignItems: "flex-start",
+                        textDecoration: "none",
+                        color: "inherit",
+                        padding: "0.5rem",
+                        borderRadius: "6px",
+                        transition: "background-color 0.2s ease",
+                      }}
+                      onMouseEnter={(e) => {
+                        e.currentTarget.style.color = "hsl(var(--primary))";
+                      }}
+                      onMouseLeave={(e) => {
+                        e.currentTarget.style.color = "inherit";
                       }}
                     >
-                            {trainingMenuItem.description}
-                          </div>
-                    </div>
-                  </a>
-                    </div>
+                      <div style={{ flex: 1 }}>
+                        <div
+                          style={{
+                            fontFamily: '"Noto Sans", sans-serif',
+                            fontSize: "14px",
+                            fontWeight: 600,
+                            marginBottom: "0.25rem",
+                          }}
+                        >
+                          Hands-on Workshops
+                        </div>
+                        <div
+                          style={{
+                            fontFamily: '"Noto Sans", sans-serif',
+                            fontSize: "12px",
+                            color: "#6b7280",
+                            lineHeight: "1.5",
+                          }}
+                        >
+                          Practice with real-world scenarios in guided workshops
+                        </div>
+                      </div>
+                    </a>
+                    <a
+                      href="https://training.mulecraft.in/learning-paths"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      style={{
+                        display: "flex",
+                        alignItems: "flex-start",
+                        textDecoration: "none",
+                        color: "inherit",
+                        padding: "0.5rem",
+                        borderRadius: "6px",
+                        transition: "background-color 0.2s ease",
+                      }}
+                      onMouseEnter={(e) => {
+                        e.currentTarget.style.color = "hsl(var(--primary))";
+                      }}
+                      onMouseLeave={(e) => {
+                        e.currentTarget.style.color = "inherit";
+                      }}
+                    >
+                      <div style={{ flex: 1 }}>
+                        <div
+                          style={{
+                            fontFamily: '"Noto Sans", sans-serif',
+                            fontSize: "14px",
+                            fontWeight: 600,
+                            marginBottom: "0.25rem",
+                          }}
+                        >
+                          Learning Paths
+                        </div>
+                        <div
+                          style={{
+                            fontFamily: '"Noto Sans", sans-serif',
+                            fontSize: "12px",
+                            color: "#6b7280",
+                            lineHeight: "1.5",
+                          }}
+                        >
+                          Follow structured paths to build your integration skills
+                        </div>
+                      </div>
+                    </a>
                   </div>
-                )}
-              </div>
+
+                  {/* Vertical Separator */}
+                  <div
+                    style={{
+                      position: "absolute",
+                      left: "calc(45% + 0.25rem)",
+                      top: 0,
+                      bottom: 0,
+                      width: "1px",
+                      backgroundColor: "#d1d5db",
+                    }}
+                  />
+
+                  {/* Third Column - Training Image Card */}
+                  <div
+                    style={{
+                      width: "55%",
+                      paddingLeft: "1rem",
+                      display: "flex",
+                      flexDirection: "column",
+                      alignItems: "center",
+                      justifyContent: "center",
+                    }}
+                  >
+                    <a
+                      href={trainingMenuItem.href || "#"}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      style={{
+                        display: "block",
+                        width: "90%",
+                        textDecoration: "none",
+                        color: "inherit",
+                        borderRadius: "8px",
+                        border: "1px solid #e5e7eb",
+                        overflow: "hidden",
+                        transition: "transform 0.2s ease, box-shadow 0.2s ease",
+                      }}
+                      onMouseEnter={(e) => {
+                        e.currentTarget.style.transform = "translateY(-2px)";
+                        e.currentTarget.style.boxShadow = "0 8px 20px rgba(0, 0, 0, 0.08)";
+                        const img = e.currentTarget.querySelector("img");
+                        if (img) {
+                          (img as HTMLElement).style.transform = "scale(1.1)";
+                        }
+                      }}
+                      onMouseLeave={(e) => {
+                        e.currentTarget.style.transform = "translateY(0)";
+                        e.currentTarget.style.boxShadow = "none";
+                        const img = e.currentTarget.querySelector("img");
+                        if (img) {
+                          (img as HTMLElement).style.transform = "scale(1)";
+                        }
+                      }}
+                    >
+                      {/* Image Container */}
+                      <div
+                        style={{
+                          width: "100%",
+                          height: "200px",
+                          overflow: "hidden",
+                          backgroundColor: "#f3f4f6",
+                          position: "relative",
+                          flexShrink: 0,
+                        }}
+                      >
+                        <img
+                          src={trainingImage}
+                          alt={trainingMenuItem.title}
+                          style={{
+                            width: "100%",
+                            height: "100%",
+                            objectFit: "fill",
+                            transition: "transform 0.3s ease",
+                          }}
+                        />
+                      </div>
+
+                      {/* Card Content */}
+                      <div style={{ padding: "1rem" }}>
+                        <div
+                          style={{
+                            fontFamily: '"Noto Sans", sans-serif',
+                            fontSize: "13px",
+                            fontWeight: 600,
+                            color: "#1f1f1f",
+                            marginBottom: "0.5rem",
+                            lineHeight: "1.4",
+                          }}
+                        >
+                          {trainingMenuItem.title}
+                        </div>
+                        <div
+                          style={{
+                            fontFamily: '"Noto Sans", sans-serif',
+                            fontSize: "13px",
+                            color: "#6b7280",
+                            lineHeight: "1.5",
+                          }}
+                        >
+                          {trainingMenuItem.description}
+                        </div>
+                      </div>
+                    </a>
+                  </div>
+                </div>
+              )}
+            </div>
           </div>
         </div>
       </>
@@ -1025,7 +1025,7 @@ const DropdownMenu = ({
           className="fixed left-1/2 -translate-x-1/2 z-50 bg-white shadow-2xl rounded-lg"
           onMouseEnter={onMouseEnter}
           onMouseLeave={onMouseLeave}
-                style={{
+          style={{
             top: `${navbarHeight}px`,
             width: "70%",
             maxWidth: "900px",
@@ -1057,10 +1057,10 @@ const DropdownMenu = ({
                       textAlign: "left",
                       backgroundColor:
                         selectedHeader === header
-                          ? "#e0f2f9"
+                          ? "hsl(var(--primary) / 0.1)"
                           : "transparent",
                       color:
-                        selectedHeader === header ? "#059bd1" : "#1f1f1f",
+                        selectedHeader === header ? "hsl(var(--primary))" : "#1f1f1f",
                       border: "none",
                       cursor: "pointer",
                       fontFamily: '"Noto Sans", sans-serif',
@@ -1090,9 +1090,9 @@ const DropdownMenu = ({
             </div>
 
             {/* Second & Third Columns Container */}
-              <div
+            <div
               className="flex-1 flex"
-                style={{
+              style={{
                 position: "relative",
               }}
             >
@@ -1121,7 +1121,7 @@ const DropdownMenu = ({
                             textDecoration: "none",
                           }}
                           onMouseEnter={(e) => {
-                            e.currentTarget.style.color = "#059bd1";
+                            e.currentTarget.style.color = "hsl(var(--primary))";
                           }}
                           onMouseLeave={(e) => {
                             e.currentTarget.style.color = "#1f1f1f";
@@ -1146,7 +1146,7 @@ const DropdownMenu = ({
                             textDecoration: "none",
                           }}
                           onMouseEnter={(e) => {
-                            e.currentTarget.style.color = "#059bd1";
+                            e.currentTarget.style.color = "hsl(var(--primary))";
                           }}
                           onMouseLeave={(e) => {
                             e.currentTarget.style.color = "#1f1f1f";
@@ -1171,7 +1171,7 @@ const DropdownMenu = ({
                             textDecoration: "none",
                           }}
                           onMouseEnter={(e) => {
-                            e.currentTarget.style.color = "#059bd1";
+                            e.currentTarget.style.color = "hsl(var(--primary))";
                           }}
                           onMouseLeave={(e) => {
                             e.currentTarget.style.color = "#1f1f1f";
@@ -1196,7 +1196,7 @@ const DropdownMenu = ({
                             textDecoration: "none",
                           }}
                           onMouseEnter={(e) => {
-                            e.currentTarget.style.color = "#059bd1";
+                            e.currentTarget.style.color = "hsl(var(--primary))";
                           }}
                           onMouseLeave={(e) => {
                             e.currentTarget.style.color = "#1f1f1f";
@@ -1225,7 +1225,7 @@ const DropdownMenu = ({
                             textDecoration: "none",
                           }}
                           onMouseEnter={(e) => {
-                            e.currentTarget.style.color = "#059bd1";
+                            e.currentTarget.style.color = "hsl(var(--primary))";
                           }}
                           onMouseLeave={(e) => {
                             e.currentTarget.style.color = "#1f1f1f";
@@ -1250,7 +1250,7 @@ const DropdownMenu = ({
                             textDecoration: "none",
                           }}
                           onMouseEnter={(e) => {
-                            e.currentTarget.style.color = "#059bd1";
+                            e.currentTarget.style.color = "hsl(var(--primary))";
                           }}
                           onMouseLeave={(e) => {
                             e.currentTarget.style.color = "#1f1f1f";
@@ -1275,7 +1275,7 @@ const DropdownMenu = ({
                             textDecoration: "none",
                           }}
                           onMouseEnter={(e) => {
-                            e.currentTarget.style.color = "#059bd1";
+                            e.currentTarget.style.color = "hsl(var(--primary))";
                           }}
                           onMouseLeave={(e) => {
                             e.currentTarget.style.color = "#1f1f1f";
@@ -1300,7 +1300,7 @@ const DropdownMenu = ({
                             textDecoration: "none",
                           }}
                           onMouseEnter={(e) => {
-                            e.currentTarget.style.color = "#059bd1";
+                            e.currentTarget.style.color = "hsl(var(--primary))";
                           }}
                           onMouseLeave={(e) => {
                             e.currentTarget.style.color = "#1f1f1f";
@@ -1329,7 +1329,7 @@ const DropdownMenu = ({
                             textDecoration: "none",
                           }}
                           onMouseEnter={(e) => {
-                            e.currentTarget.style.color = "#059bd1";
+                            e.currentTarget.style.color = "hsl(var(--primary))";
                           }}
                           onMouseLeave={(e) => {
                             e.currentTarget.style.color = "#1f1f1f";
@@ -1354,7 +1354,7 @@ const DropdownMenu = ({
                             textDecoration: "none",
                           }}
                           onMouseEnter={(e) => {
-                            e.currentTarget.style.color = "#059bd1";
+                            e.currentTarget.style.color = "hsl(var(--primary))";
                           }}
                           onMouseLeave={(e) => {
                             e.currentTarget.style.color = "#1f1f1f";
@@ -1379,7 +1379,7 @@ const DropdownMenu = ({
                             textDecoration: "none",
                           }}
                           onMouseEnter={(e) => {
-                            e.currentTarget.style.color = "#059bd1";
+                            e.currentTarget.style.color = "hsl(var(--primary))";
                           }}
                           onMouseLeave={(e) => {
                             e.currentTarget.style.color = "#1f1f1f";
@@ -1404,7 +1404,7 @@ const DropdownMenu = ({
                             textDecoration: "none",
                           }}
                           onMouseEnter={(e) => {
-                            e.currentTarget.style.color = "#059bd1";
+                            e.currentTarget.style.color = "hsl(var(--primary))";
                           }}
                           onMouseLeave={(e) => {
                             e.currentTarget.style.color = "#1f1f1f";
@@ -1433,7 +1433,7 @@ const DropdownMenu = ({
                             textDecoration: "none",
                           }}
                           onMouseEnter={(e) => {
-                            e.currentTarget.style.color = "#059bd1";
+                            e.currentTarget.style.color = "hsl(var(--primary))";
                           }}
                           onMouseLeave={(e) => {
                             e.currentTarget.style.color = "#1f1f1f";
@@ -1458,7 +1458,7 @@ const DropdownMenu = ({
                             textDecoration: "none",
                           }}
                           onMouseEnter={(e) => {
-                            e.currentTarget.style.color = "#059bd1";
+                            e.currentTarget.style.color = "hsl(var(--primary))";
                           }}
                           onMouseLeave={(e) => {
                             e.currentTarget.style.color = "#1f1f1f";
@@ -1483,7 +1483,7 @@ const DropdownMenu = ({
                             textDecoration: "none",
                           }}
                           onMouseEnter={(e) => {
-                            e.currentTarget.style.color = "#059bd1";
+                            e.currentTarget.style.color = "hsl(var(--primary))";
                           }}
                           onMouseLeave={(e) => {
                             e.currentTarget.style.color = "#1f1f1f";
@@ -1508,7 +1508,7 @@ const DropdownMenu = ({
                             textDecoration: "none",
                           }}
                           onMouseEnter={(e) => {
-                            e.currentTarget.style.color = "#059bd1";
+                            e.currentTarget.style.color = "hsl(var(--primary))";
                           }}
                           onMouseLeave={(e) => {
                             e.currentTarget.style.color = "#1f1f1f";
@@ -1537,7 +1537,7 @@ const DropdownMenu = ({
                             textDecoration: "none",
                           }}
                           onMouseEnter={(e) => {
-                            e.currentTarget.style.color = "#059bd1";
+                            e.currentTarget.style.color = "hsl(var(--primary))";
                           }}
                           onMouseLeave={(e) => {
                             e.currentTarget.style.color = "#1f1f1f";
@@ -1562,7 +1562,7 @@ const DropdownMenu = ({
                             textDecoration: "none",
                           }}
                           onMouseEnter={(e) => {
-                            e.currentTarget.style.color = "#059bd1";
+                            e.currentTarget.style.color = "hsl(var(--primary))";
                           }}
                           onMouseLeave={(e) => {
                             e.currentTarget.style.color = "#1f1f1f";
@@ -1587,7 +1587,7 @@ const DropdownMenu = ({
                             textDecoration: "none",
                           }}
                           onMouseEnter={(e) => {
-                            e.currentTarget.style.color = "#059bd1";
+                            e.currentTarget.style.color = "hsl(var(--primary))";
                           }}
                           onMouseLeave={(e) => {
                             e.currentTarget.style.color = "#1f1f1f";
@@ -1798,38 +1798,38 @@ const DropdownMenu = ({
                         height: "200px",
                         overflow: "hidden",
                         backgroundColor: "#ffffff",
-                    }}
-                  >
+                      }}
+                    >
                       {selectedHeader === "SnapMapper" && <SnapMapperPreview />}
                       {selectedHeader === "AnypointLP" && <AnypointLPPreview />}
                       {selectedHeader === "CloudHub 2.0 Migration" && <CloudHubMigrationPreview />}
                       {selectedHeader === "Goose" && <GoosePreview />}
                       {selectedHeader === "RAMLify" && <RAMLifyPreview />}
                       {selectedHeader === "MuleSoftLP" && <MuleSoftLPPreview />}
-            </div>
+                    </div>
 
                     {/* Title and Description */}
                     <div style={{ padding: "1rem" }}>
-                    <div
-                      style={{
-                        fontFamily: '"Noto Sans", sans-serif',
-                        fontSize: "16px",
-                        fontWeight: 600,
+                      <div
+                        style={{
+                          fontFamily: '"Noto Sans", sans-serif',
+                          fontSize: "16px",
+                          fontWeight: 600,
                           color: "#1f1f1f",
-                        marginBottom: "0.5rem",
+                          marginBottom: "0.5rem",
                           lineHeight: "1.4",
-                      }}
-                    >
+                        }}
+                      >
                         {productImages[selectedHeader].title}
-                    </div>
-                    <div
-                      style={{
-                        fontFamily: '"Noto Sans", sans-serif',
-                        fontSize: "13px",
-                        color: "#6b7280",
+                      </div>
+                      <div
+                        style={{
+                          fontFamily: '"Noto Sans", sans-serif',
+                          fontSize: "13px",
+                          color: "#6b7280",
                           lineHeight: "1.5",
-                      }}
-                    >
+                        }}
+                      >
                         {productImages[selectedHeader].description}
                       </div>
                     </div>
@@ -1927,9 +1927,9 @@ const DropdownMenu = ({
                       fontFamily: '"Noto Sans", sans-serif',
                       fontSize: "15px",
                       fontWeight: 500,
-                      color: selectedHeader === item.label ? "#059bd1" : "#1f1f1f",
+                      color: selectedHeader === item.label ? "hsl(var(--primary))" : "#1f1f1f",
                       backgroundColor:
-                        selectedHeader === item.label ? "#e0f2f9" : "transparent",
+                        selectedHeader === item.label ? "hsl(var(--primary) / 0.1)" : "transparent",
                       border: "none",
                       borderRadius: "6px",
                       cursor: "pointer",
@@ -1980,7 +1980,7 @@ const DropdownMenu = ({
                       borderRadius: "6px",
                     }}
                     onMouseEnter={(e) => {
-                      e.currentTarget.style.color = "#059bd1";
+                      e.currentTarget.style.color = "hsl(var(--primary))";
                     }}
                     onMouseLeave={(e) => {
                       e.currentTarget.style.color = "#1f1f1f";
@@ -1988,7 +1988,7 @@ const DropdownMenu = ({
                   >
                     {/* Content */}
                     <div className="item-content">
-                <div
+                      <div
                         className="item-title"
                         style={{
                           fontFamily: '"Noto Sans", sans-serif',
@@ -2003,15 +2003,15 @@ const DropdownMenu = ({
                       </div>
                       <div
                         className="item-description"
-                  style={{
-                    fontFamily: '"Noto Sans", sans-serif',
-                    fontSize: "13px",
+                        style={{
+                          fontFamily: '"Noto Sans", sans-serif',
+                          fontSize: "13px",
                           lineHeight: "1.5",
-                    color: "#6b7280",
-                  }}
-                >
+                          color: "#6b7280",
+                        }}
+                      >
                         {menuItem.description}
-                </div>
+                      </div>
                     </div>
                   </a>
                 ))}
@@ -2041,14 +2041,14 @@ const DropdownMenu = ({
               }}
             >
               {selectedImageCard && (
-                  <a
+                <a
                   href={selectedImageCard.href || "#"}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    style={{
-                      display: "block",
-                      textDecoration: "none",
-                      color: "inherit",
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  style={{
+                    display: "block",
+                    textDecoration: "none",
+                    color: "inherit",
                     borderRadius: "8px",
                     overflow: "hidden",
                     border: "1px solid #e5e7eb",
@@ -2081,7 +2081,7 @@ const DropdownMenu = ({
                       backgroundColor: "#f3f4f6",
                     }}
                   >
-                   <img
+                    <img
                       src={selectedImageCard.image}
                       alt={selectedImageCard.title}
                       style={{
@@ -2093,8 +2093,8 @@ const DropdownMenu = ({
                             : selectedHeader === "HR Management" ||
                               selectedHeader === "Healthcare Solutions" ||
                               selectedHeader === "Automation & Platforms"
-                            ? "fill"
-                            : "scale-down",
+                              ? "fill"
+                              : "scale-down",
                         transition: "transform 0.3s ease",
                       }}
                     />
@@ -2123,9 +2123,9 @@ const DropdownMenu = ({
                     >
                       {selectedImageCard.description}
                     </div>
-                    </div>
-                  </a>
-                )}
+                  </div>
+                </a>
+              )}
             </div>
           </div>
         </div>
@@ -2175,7 +2175,7 @@ const DropdownMenu = ({
           {columns.map((columnItem, columnIndex) => {
             const isOtherProducts =
               navItem === "Products" && columnItem.label === "OTHER PRODUCTS";
-            
+
             return (
               <div
                 key={columnIndex}
@@ -2199,16 +2199,16 @@ const DropdownMenu = ({
                 {/* Column Content */}
                 <div
                   className="flex-1 flex flex-col"
-                style={{
+                  style={{
                     padding:
                       navItem === "Products"
                         ? "1.5rem 1.25rem"
                         : "1.25rem 1.25rem",
-                  fontFamily: '"Noto Sans", sans-serif',
+                    fontFamily: '"Noto Sans", sans-serif',
                     overflowY: "auto",
                     overflowX: "hidden",
-                }}
-              >
+                  }}
+                >
                   {/* Special layout for OTHER PRODUCTS in Products dropdown */}
                   {isOtherProducts ? (
                     <>
@@ -2264,7 +2264,7 @@ const DropdownMenu = ({
                           </div>
                         </a>
                       </div>
-                      
+
                       {/* Gray Separator Line - Full Width */}
                       <div
                         style={{
@@ -2276,13 +2276,62 @@ const DropdownMenu = ({
                           marginRight: "-1.25rem",
                         }}
                       />
-                      
+
                       {/* Second row - Mule Migration Nexus */}
                       {columnItem.menuItems &&
                         columnItem.menuItems.length > 0 && (
-                        <>
+                          <>
+                            <a
+                              href={columnItem.menuItems[0].href || "#"}
+                              className="link-item block"
+                              style={{
+                                display: "block",
+                                padding: "0.5rem 0.75rem",
+                                color: "#1f1f1f",
+                                transition: "color .3s ease 0s",
+                                textDecoration: "none",
+                                textAlign: "center",
+                              }}
+                              onMouseEnter={(e) => {
+                                e.currentTarget.style.color = "hsl(var(--primary))";
+                              }}
+                              onMouseLeave={(e) => {
+                                e.currentTarget.style.color = "#1f1f1f";
+                              }}
+                            >
+                              <div
+                                style={{
+                                  fontFamily: '"Noto Sans", sans-serif',
+                                  fontSize: "14px",
+                                  lineHeight: "1.6",
+                                  fontWeight: 500,
+                                  color: "inherit",
+                                }}
+                              >
+                                {columnItem.menuItems[0].title}
+                              </div>
+                            </a>
+
+                            {/* Gray Separator Line - Full Width */}
+                            <div
+                              style={{
+                                width: "calc(100% + 2.5rem)",
+                                height: "1px",
+                                backgroundColor: "#d1d5db",
+                                marginTop: "0.5rem",
+                                marginBottom: "0.5rem",
+                                marginLeft: "-1.25rem",
+                                marginRight: "-1.25rem",
+                              }}
+                            />
+                          </>
+                        )}
+
+                      {/* Third row - DataWeave Task Generator */}
+                      {columnItem.menuItems &&
+                        columnItem.menuItems.length > 1 && (
                           <a
-                            href={columnItem.menuItems[0].href || "#"}
+                            href={columnItem.menuItems[1].href || "#"}
                             className="link-item block"
                             style={{
                               display: "block",
@@ -2293,7 +2342,7 @@ const DropdownMenu = ({
                               textAlign: "center",
                             }}
                             onMouseEnter={(e) => {
-                                e.currentTarget.style.color = "#059bd1";
+                              e.currentTarget.style.color = "hsl(var(--primary))";
                             }}
                             onMouseLeave={(e) => {
                               e.currentTarget.style.color = "#1f1f1f";
@@ -2303,64 +2352,15 @@ const DropdownMenu = ({
                               style={{
                                 fontFamily: '"Noto Sans", sans-serif',
                                 fontSize: "14px",
-                                  lineHeight: "1.6",
+                                lineHeight: "1.6",
                                 fontWeight: 500,
                                 color: "inherit",
                               }}
                             >
-                              {columnItem.menuItems[0].title}
+                              {columnItem.menuItems[1].title}
                             </div>
                           </a>
-                          
-                          {/* Gray Separator Line - Full Width */}
-                          <div
-                            style={{
-                              width: "calc(100% + 2.5rem)",
-                              height: "1px",
-                              backgroundColor: "#d1d5db",
-                              marginTop: "0.5rem",
-                              marginBottom: "0.5rem",
-                              marginLeft: "-1.25rem",
-                              marginRight: "-1.25rem",
-                            }}
-                          />
-                        </>
-                      )}
-                      
-                      {/* Third row - DataWeave Task Generator */}
-                      {columnItem.menuItems &&
-                        columnItem.menuItems.length > 1 && (
-                        <a
-                          href={columnItem.menuItems[1].href || "#"}
-                          className="link-item block"
-                          style={{
-                            display: "block",
-                            padding: "0.5rem 0.75rem",
-                            color: "#1f1f1f",
-                            transition: "color .3s ease 0s",
-                            textDecoration: "none",
-                            textAlign: "center",
-                          }}
-                          onMouseEnter={(e) => {
-                              e.currentTarget.style.color = "#059bd1";
-                          }}
-                          onMouseLeave={(e) => {
-                            e.currentTarget.style.color = "#1f1f1f";
-                          }}
-                        >
-                          <div
-                            style={{
-                              fontFamily: '"Noto Sans", sans-serif',
-                              fontSize: "14px",
-                                lineHeight: "1.6",
-                              fontWeight: 500,
-                              color: "inherit",
-                            }}
-                          >
-                            {columnItem.menuItems[1].title}
-                          </div>
-                        </a>
-                      )}
+                        )}
                     </>
                   ) : (
                     <>
@@ -2396,20 +2396,20 @@ const DropdownMenu = ({
                         }}
                       >
                         {(columnItem.menuItems || []).map((menuItem, index) => (
-                        <a
-                          key={index}
-                          href={menuItem.href || "#"}
+                          <a
+                            key={index}
+                            href={menuItem.href || "#"}
                             className="link-item block"
-                          style={{
+                            style={{
                               display: "block",
                               padding:
                                 navItem === "Products"
                                   ? "0.5rem 0"
                                   : "0.5rem 0.75rem",
-                            color: "#1f1f1f",
+                              color: "#1f1f1f",
                               transition: "color .3s ease 0s",
-                            textDecoration: "none",
-                          }}
+                              textDecoration: "none",
+                            }}
                             onMouseEnter={(e) => {
                               e.currentTarget.style.color = "#059bd1";
                             }}
@@ -2417,12 +2417,12 @@ const DropdownMenu = ({
                               e.currentTarget.style.color = "#1f1f1f";
                             }}
                           >
-                          {/* Content */}
+                            {/* Content */}
                             <div className="item-content">
-                            <div
-                              className="item-title"
-                              style={{
-                                fontFamily: '"Noto Sans", sans-serif',
+                              <div
+                                className="item-title"
+                                style={{
+                                  fontFamily: '"Noto Sans", sans-serif',
                                   fontSize: "15px",
                                   lineHeight:
                                     navItem === "Products" ? "1.8" : "1.6",
@@ -2431,18 +2431,18 @@ const DropdownMenu = ({
                                   whiteSpace: "nowrap",
                                   overflow: "hidden",
                                   textOverflow: "ellipsis",
-                              }}
-                            >
-                              {menuItem.title}
+                                }}
+                              >
+                                {menuItem.title}
                               </div>
                             </div>
                           </a>
                         ))}
                       </div>
                     </>
-                )}
-            </div>
+                  )}
                 </div>
+              </div>
             );
           })}
         </div>
