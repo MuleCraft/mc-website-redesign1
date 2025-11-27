@@ -24,9 +24,9 @@ import si4Image from "@/assets/n8n-i.png";
 import si5Image from "@/assets/si5.webp";
 import si6Image from "@/assets/Digibee1.png";
 import cs1Image from "@/assets/blog-images05-1200x747.webp";
-import cs2Image from "@/assets/healthcaresolutionfinal5.png";
+import cs2Image from "@/assets/healthcaretest3.png";
 import cs3Image from "@/assets/digitaltransformationfinal.webp";
-import cs4Image from "@/assets/automationsplatformfinal2.png";
+import cs4Image from "@/assets/automationsandplatformfinal3.png";
 
 interface DropdownItem {
   label: string;
@@ -2081,7 +2081,7 @@ const DropdownMenu = ({
                       backgroundColor: "#f3f4f6",
                     }}
                   >
-                    <img
+                   <img
                       src={selectedImageCard.image}
                       alt={selectedImageCard.title}
                       style={{
@@ -2090,11 +2090,13 @@ const DropdownMenu = ({
                         objectFit:
                           selectedHeader === "Digital Transformation"
                             ? "fill"
-                            : selectedHeader === "HR Management" ||
-                              selectedHeader === "Healthcare Solutions" ||
-                              selectedHeader === "Automation & Platforms"
-                              ? "fill"
-                              : "scale-down",
+                            : selectedHeader === "Healthcare Solutions"
+                            ? "cover"
+                            : selectedHeader === "Automation & Platforms"
+                            ? "cover"
+                            : selectedHeader === "HR Management"
+                            ? "fill"
+                            : "scale-down",
                         transition: "transform 0.3s ease",
                       }}
                     />
