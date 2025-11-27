@@ -97,29 +97,29 @@ const DropdownMenu = ({
         description: "API-led connectivity & Mule 3 to Mule 4 migration",
         href: "https://docs.MuleSoft.com/mule-runtime/latest/migration-intro",
       },
-      "SnapLogic": {
-        image: si2Image,
-        title: "SnapLogic Data Orchestration",
-        description: "Data integration and automation platform with intelligent pipeline design",
-        href: "https://www.snaplogic.com/glossary/orchestration",
-      },
-      "Salesforce": {
-        image: si3Image,
-        title: "Salesforce Integration Hub",
-        description: "CRM integration with custom workflows & data sync",
-        href: "https://www.salesforce.com/crm/",
-      },
       "n8n": {
         image: si4Image,
         title: "n8n Workflow Automation",
         description: "Fair-code automation platform for technical teams",
         href: "https://n8n.io/?ps_partner_key=YzQ1MWQxYjZjNDgx&ps_xid=EfWcuhfPTQdyZC&gsxid=EfWcuhfPTQdyZC&gspk=YzQ1MWQxYjZjNDgx&gad_source=1&gad_campaignid=23207748368&gbraid=0AAAABB6E8Q-exN_bvdLbThczUc4o90juR&gclid=CjwKCAiA8vXIBhAtEiwAf3B-g7Xw_SA94G7Y6eRaMUci_FnneMb7ZpWLrpEwldb1WTlubi8nf5ha9xoC5_EQAvD_BwE",
       },
+      "SnapLogic": {
+        image: si2Image,
+        title: "SnapLogic Data Orchestration",
+        description: "Data integration and automation platform with intelligent pipeline design",
+        href: "https://www.snaplogic.com/glossary/orchestration",
+      },
       "Workato": {
         image: si5Image,
         title: "Workato Chatbot Automation",
         description: "Enterprise automation with intelligent chatbots",
         href: "https://www.workato.com/the-connector/chatbot-automation/",
+      },
+      "Salesforce": {
+        image: si3Image,
+        title: "Salesforce Integration Hub",
+        description: "CRM integration with custom workflows & data sync",
+        href: "https://www.salesforce.com/crm/",
       },
       "Digibee": {
         image: si6Image,

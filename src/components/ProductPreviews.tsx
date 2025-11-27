@@ -4,6 +4,7 @@ import dtImage from "@/assets/dt.png";
 import csi2Image from "@/assets/csi2.png";
 import mulesoftlpImage from "@/assets/mulesoftlp-image.png";
 import newLogo from "@/assets/newlogo.png";
+import cmImage from "@/assets/cm.png";
 
 // RAMLify Preview - Dark theme with purple/blue/cyan gradients matching reference design
 export const RAMLifyPreview = () => {
@@ -1156,25 +1157,38 @@ export const CloudHubMigrationPreview = () => {
       >
         <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between" }}>
           <div style={{ display: "flex", alignItems: "center", gap: "0.5rem" }}>
-            {/* Logo - Blue square with building icon */}
+            {/* Logo - Bright cloud migration icon */}
             <div
               style={{
-                width: "20px",
-                height: "20px",
-                borderRadius: "4px",
-                background: "#2563eb",
+                width: "24px",
+                height: "24px",
+                borderRadius: "6px",
+                background: "linear-gradient(135deg, #4285F4 0%, #1a73e8 100%)",
                 display: "flex",
                 alignItems: "center",
                 justifyContent: "center",
-                position: "relative",
+                boxShadow: "0 2px 8px rgba(66, 133, 244, 0.4)",
               }}
             >
-              {/* Building icon representation */}
-              <svg width="12" height="12" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <rect x="3" y="6" width="2" height="4" fill="white" />
-                <rect x="6" y="4" width="2" height="6" fill="white" />
-                <rect x="9" y="6" width="2" height="4" fill="white" />
-                <line x1="2" y1="10" x2="12" y2="10" stroke="white" strokeWidth="1.5" />
+              <svg
+                width="16"
+                height="16"
+                viewBox="0 0 24 24"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                {/* Cloud with arrow up - migration symbol */}
+                <path
+                  d="M19.35 10.04C18.67 6.59 15.64 4 12 4C9.11 4 6.6 5.64 5.35 8.04C2.34 8.36 0 10.91 0 14C0 17.31 2.69 20 6 20H19C21.76 20 24 17.76 24 15C24 12.36 21.95 10.22 19.35 10.04Z"
+                  fill="#ffffff"
+                />
+                <path
+                  d="M12 8V16M12 16L9 13M12 16L15 13"
+                  stroke="#4285F4"
+                  strokeWidth="2"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                />
               </svg>
             </div>
             <span style={{ fontSize: "11px", fontWeight: "700", color: "#111827" }}>MuleMigration</span>
@@ -1185,15 +1199,14 @@ export const CloudHubMigrationPreview = () => {
               style={{
                 fontSize: "9px",
                 padding: "0.2rem 0.5rem",
-                background: "#ffffff",
-                color: "#0f0f23",
+                backgroundColor: "#2563eb",
+                color: "#ffffff",
                 borderRadius: "4px",
                 fontWeight: "600",
                 textDecoration: "none",
-                border: "1px solid rgba(255, 255, 255, 0.3)",
               }}
             >
-              Get Started
+              Try now
             </a>
           </div>
         </div>
@@ -1202,7 +1215,7 @@ export const CloudHubMigrationPreview = () => {
       {/* Content */}
       <div
         style={{
-          padding: "1.5rem 1rem",
+          padding: "1rem",
           flex: 1,
           display: "flex",
           flexDirection: "column",
@@ -1217,7 +1230,7 @@ export const CloudHubMigrationPreview = () => {
             fontSize: "18px",
             fontWeight: "800",
             color: "#111827",
-            margin: "0 0 0.75rem 0",
+            margin: "0 0 0.5rem 0",
             lineHeight: "1.2",
             letterSpacing: "-0.01em",
           }}
@@ -1232,13 +1245,37 @@ export const CloudHubMigrationPreview = () => {
             fontSize: "8px",
             color: "#4b5563",
             lineHeight: "1.5",
-            margin: "0 0 1rem 0",
-            maxWidth: "95%",
+            margin: "0 0 0.75rem 0",
+            maxWidth: "90%",
             alignSelf: "center",
           }}
         >
           Streamline your CloudHub 1.0 to 2.0 migration with assessment tools, compatibility reports, and expert guidance.
         </p>
+
+        {/* Image Preview */}
+        <div
+          style={{
+            marginTop: "0.5rem",
+            borderRadius: "12px",
+            overflow: "hidden",
+            border: "1px solid rgba(0, 0, 0, 0.1)",
+            background: "rgba(255, 255, 255, 0.5)",
+            boxShadow: "0 4px 12px rgba(0, 0, 0, 0.1)",
+            backdropFilter: "blur(4px)",
+          }}
+        >
+          <img
+            src={cmImage}
+            alt="CloudHub Migration Preview"
+            style={{
+              width: "100%",
+              height: "auto",
+              display: "block",
+              objectFit: "contain",
+            }}
+          />
+        </div>
       </div>
     </div>
   );
@@ -1251,7 +1288,7 @@ export const SnapMapperPreview = () => {
       style={{
         width: "100%",
         height: "100%",
-        background: "#1C4E8D",
+        background: "#0E1831",
         color: "#ffffff",
         fontFamily: '"Noto Sans", sans-serif',
         position: "relative",
@@ -1400,7 +1437,7 @@ export const SnapMapperPreview = () => {
       {/* Header */}
       <div
         style={{
-          backgroundColor: "rgba(30, 58, 138, 0.5)",
+          backgroundColor: "#0E1831",
           backdropFilter: "blur(12px)",
           borderBottom: "1px solid rgba(147, 197, 253, 0.3)",
           padding: "0.6rem 1rem",
@@ -1425,7 +1462,7 @@ export const SnapMapperPreview = () => {
                 fontSize: "10px",
                 fontWeight: "600",
                 color: "#ffffff",
-                background: "linear-gradient(135deg, #1e3a8a 0%, #3b82f6 30%, #60a5fa 60%, #93c5fd 100%)",
+                backgroundColor: "#E60077",
                 borderRadius: "6px",
                 textDecoration: "none",
               }}

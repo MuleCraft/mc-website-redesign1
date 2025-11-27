@@ -206,58 +206,6 @@ const Navbar = () => {
           ],
         },
         {
-          label: "SnapLogic",
-          isSelected: false,
-          menuItems: [
-            {
-              title: "AI-Powered Integrations",
-              description: "SnapGPT, generative integration design",
-              icon: "sparkles",
-            },
-            {
-              title: "Pipeline Orchestration",
-              description: "ETL/ELT data pipelines",
-              icon: "workflow",
-            },
-            {
-              title: "No-Code iPaaS",
-              description: "Visual workflow & drag-drop integration",
-              icon: "layers",
-            },
-            {
-              title: "AutoSync & Migration Tools",
-              description: "Schema-based app/data migration",
-              icon: "sync",
-            },
-          ],
-        },
-        {
-          label: "Salesforce",
-          isSelected: false,
-          menuItems: [
-            {
-              title: "Real-time CRM Data Sync",
-              description: "Live updates between Salesforce and other apps",
-              icon: "sync",
-            },
-            {
-              title: "Third-party App Connect",
-              description: "Seamless Salesforce integration",
-              icon: "link",
-            },
-            {
-              title: "Lightning Flow Automation",
-              description: "Process automation and workflow",
-              icon: "workflow",
-            },
-            {
-              title: "Salesforce Reports Integration",
-              description: "Data analytics and reporting",
-              icon: "chart",
-            },
-          ],
-        },
-        {
           label: "n8n",
           isSelected: false,
           menuItems: [
@@ -284,6 +232,32 @@ const Navbar = () => {
           ],
         },
         {
+          label: "SnapLogic",
+          isSelected: false,
+          menuItems: [
+            {
+              title: "AI-Powered Integrations",
+              description: "SnapGPT, generative integration design",
+              icon: "sparkles",
+            },
+            {
+              title: "Pipeline Orchestration",
+              description: "ETL/ELT data pipelines",
+              icon: "workflow",
+            },
+            {
+              title: "No-Code iPaaS",
+              description: "Visual workflow & drag-drop integration",
+              icon: "layers",
+            },
+            {
+              title: "AutoSync & Migration Tools",
+              description: "Schema-based app/data migration",
+              icon: "sync",
+            },
+          ],
+        },
+        {
           label: "Workato",
           isSelected: false,
           menuItems: [
@@ -306,6 +280,32 @@ const Navbar = () => {
               title: "Data Quality Automation",
               description: "Auto-cleansing and enrichment",
               icon: "check-circle",
+            },
+          ],
+        },
+        {
+          label: "Salesforce",
+          isSelected: false,
+          menuItems: [
+            {
+              title: "Real-time CRM Data Sync",
+              description: "Live updates between Salesforce and other apps",
+              icon: "sync",
+            },
+            {
+              title: "Third-party App Connect",
+              description: "Seamless Salesforce integration",
+              icon: "link",
+            },
+            {
+              title: "Lightning Flow Automation",
+              description: "Process automation and workflow",
+              icon: "workflow",
+            },
+            {
+              title: "Salesforce Reports Integration",
+              description: "Data analytics and reporting",
+              icon: "chart",
             },
           ],
         },

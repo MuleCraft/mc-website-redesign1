@@ -126,8 +126,8 @@ const SnapMapperPreview = () => {
                 padding: "0.25rem 0.5rem",
                 fontSize: "11px",
                 fontWeight: "600",
-                color: "#2563EB",
-                backgroundColor: "#ffffff",
+                color: "#ffffff",
+                backgroundColor: "#E60077",
                 borderRadius: "4px",
                 textDecoration: "none",
               }}
