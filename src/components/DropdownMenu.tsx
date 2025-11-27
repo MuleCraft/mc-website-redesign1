@@ -15,8 +15,8 @@ import csi6Image from "@/assets/csi6.png";
 import csi7Image from "@/assets/csi7.png";
 import trainingImage from "@/assets/training.png";
 import blog1Image from "@/assets/blog1.png";
-import blog2Image from "@/assets/blog2.png";
-import muleMaxImage from "@/assets/mule max.png";
+import blog2Image from "@/assets/blog2.webp";
+import muleMaxImage from "@/assets/mu-i.png";
 import si1Image from "@/assets/mulesoftfinal.png";
 import si2Image from "@/assets/snap-i.webp";
 import si3Image from "@/assets/salesforce-360.webp";
@@ -610,7 +610,7 @@ const DropdownMenu = ({
                           style={{
                             width: "100%",
                             height: "100%",
-                            objectFit: "fill",
+                            objectFit: index === 0 ? "fill" : "cover",
                             transition: "transform 0.3s ease",
                           }}
                         />
