@@ -2492,7 +2492,7 @@ const DropdownMenu = ({
                           selectedHeader === "Digital Transformation"
                             ? "fill"
                             : selectedHeader === "Healthcare Solutions"
-                            ? "contain"
+                            ? "cover"
                             : selectedHeader === "Automation & Platforms"
                             ? "cover"
                             : selectedHeader === "HR Management"
