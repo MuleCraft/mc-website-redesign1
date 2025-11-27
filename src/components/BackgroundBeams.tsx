@@ -13,13 +13,13 @@ export const BackgroundBeams = ({ className }: { className?: string }) => {
 
         let animationFrameId: number;
         let particles: Particle[] = [];
-        const particleCount = 40;
+        const particleCount = 30;
 
-        // Colors for the beams - enterprise blue/purple gradients
+        // Colors for the beams - enterprise blue/purple gradients (Very Dark)
         const colors = [
-            "rgba(59, 130, 246, 0.5)", // Blue
-            "rgba(147, 51, 234, 0.5)", // Purple
-            "rgba(99, 102, 241, 0.5)", // Indigo
+            "rgba(30, 58, 138, 0.9)", // Blue 900
+            "rgba(88, 28, 135, 0.9)", // Purple 900
+            "rgba(49, 46, 129, 0.9)", // Indigo 900
         ];
 
         const init = () => {
@@ -43,7 +43,7 @@ export const BackgroundBeams = ({ className }: { className?: string }) => {
             constructor(w: number, h: number, colors: string[]) {
                 this.x = Math.random() * w;
                 this.y = Math.random() * h;
-                this.length = Math.random() * 100 + 50;
+                this.length = Math.random() * 40 + 30;
                 this.speed = Math.random() * 0.5 + 0.2;
                 this.angle = -45 * (Math.PI / 180); // 45 degrees upwards
                 this.color = colors[Math.floor(Math.random() * colors.length)];
@@ -56,7 +56,10 @@ export const BackgroundBeams = ({ className }: { className?: string }) => {
 
                 // Reset if out of bounds
                 if (this.x > w + 100 || this.y < -100) {
-                    this.x = Math.random() * w - 200; // Start slightly off screen left
+                    // Spawn across a wider range to cover the left side
+                    // Since they move diagonally up-right, we need to spawn them far to the left
+                    // to reach the top-left corner.
+                    this.x = Math.random() * (w + h) - h;
                     this.y = h + 100; // Start slightly off screen bottom
                 }
             }
@@ -136,7 +139,7 @@ export const BackgroundBeams = ({ className }: { className?: string }) => {
         >
             <canvas
                 ref={beamsRef}
-                className="absolute inset-0 w-full h-full opacity-60"
+                className="absolute inset-0 w-full h-full opacity-90"
             />
             {/* Radial Gradient Mask */}
             <div className="absolute inset-0 bg-white [mask-image:radial-gradient(ellipse_at_center,transparent_20%,black)] pointer-events-none" />
