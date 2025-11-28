@@ -1,6 +1,5 @@
 import { useEffect, useRef } from "react";
 import logoDark from "@/assets/logo_dark.png";
-import dtImage from "@/assets/dt.png";
 import csi2Image from "@/assets/csi2.png";
 import mulesoftlpImage from "@/assets/mulesoftlp-image.png";
 import newLogo from "@/assets/newlogo.png";
