@@ -1,7 +1,6 @@
 import { useState, useRef, useEffect } from "react";
 import { Search, Globe, ChevronDown } from "lucide-react";
 import { Button } from "./ui/button";
-import mulecraftLogo from "../assets/mulecraftlogo.png";
 import DropdownMenu from "./DropdownMenu";
 
 const Navbar = () => {
@@ -588,17 +587,36 @@ const Navbar = () => {
       <nav className="w-full max-w-[1344px] mx-auto py-2 flex items-center justify-between min-h-[80px] overflow-visible">
         {/* Logo - Left side - Always visible */}
         <div className="flex items-center">
-          <div
-            className="flex items-center align-start overflow-hidden"
-            style={{ maxWidth: "150px", maxHeight: "25px" }}
-            overflow-visible
+          <a
+            href="/"
+            className="flex items-center align-start overflow-visible"
+            style={{ textDecoration: "none" }}
           >
-            <img
-              src={mulecraftLogo}
-              alt="Mulecraft Logo"
-              className="h-[24px] w-[130px] "
-            />
-          </div>
+            <span
+              className="font-bold"
+              style={{
+                fontFamily: '"Inter", "Noto Sans", sans-serif',
+                fontSize: "1.75rem",
+                letterSpacing: "-0.02em",
+                fontWeight: 700,
+                color: "#000000",
+              }}
+            >
+              Mulecra
+              <span
+                className="text-transparent bg-clip-text bg-gradient-to-r from-[#FF4D4D] to-[#F9CB28]"
+                style={{
+                  backgroundSize: "200% auto",
+                  backgroundClip: "text",
+                  WebkitBackgroundClip: "text",
+                  WebkitTextFillColor: "transparent",
+                }}
+              >
+                f
+              </span>
+              t
+            </span>
+          </a>
 
           {/* Navigation Links - Hidden when search is open */}
           {!isSearchOpen && (

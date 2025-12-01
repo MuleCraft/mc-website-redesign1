@@ -2,7 +2,8 @@
 
 import { useRef } from "react";
 import { motion } from "motion/react";
-import { BackgroundBeams } from "./BackgroundBeams";
+import { ThreeJSBackground } from "./ThreeJSBackground";
+import Clients from "./Clients";
 
 interface HeroProps {
   eyebrow?: string;
@@ -32,10 +33,10 @@ const Hero = ({
       ref={heroContainerRef}
       className="w-full relative bg-white overflow-hidden"
     >
-      {/* Background Beams */}
-      <BackgroundBeams className="absolute inset-0 z-0 opacity-50" />
+      {/* Three.js Background Animation */}
+      <ThreeJSBackground className="absolute inset-0 z-0" />
 
-      <div className="min-h-[90vh] flex items-center justify-center w-full flex-col px-4 relative pt-20 pb-24 md:pb-32">
+      <div className="min-h-[60vh] flex items-center justify-center w-full flex-col px-4 relative pt-16 pb-12 md:pb-16">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <article className="flex flex-col items-center justify-center text-center w-full">
             {/* Content Wrapper - Centered */}
@@ -47,7 +48,7 @@ const Hero = ({
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ delay: 0.1, duration: 0.5 }}
-                    className="flex justify-center mb-8"
+                    className="flex justify-center mb-6"
                   >
                     <span className="text-sm font-semibold text-gray-500 uppercase tracking-[0.2em]">
                       {eyebrow}
@@ -60,7 +61,7 @@ const Hero = ({
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: 0.2, duration: 0.6 }}
-                  className="text-5xl md:text-7xl lg:text-8xl font-bold tracking-tighter text-black mb-8 md:mb-10"
+                  className="text-5xl md:text-7xl lg:text-8xl font-bold tracking-tighter text-black mb-6 md:mb-8"
                   style={{
                     fontFamily: "'Inter', sans-serif",
                     lineHeight: 1.1,
@@ -82,7 +83,7 @@ const Hero = ({
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: 0.3, duration: 0.6 }}
-                  className="mb-10 md:mb-12"
+                  className="mb-6 md:mb-8"
                 >
                   <p className="text-lg md:text-xl text-gray-500 max-w-2xl mx-auto leading-relaxed font-normal">
                     {description}
@@ -95,7 +96,7 @@ const Hero = ({
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.4, duration: 0.6 }}
-                className="flex flex-col sm:flex-row sm:justify-center gap-4 mb-16 md:mb-24"
+                className="flex flex-col sm:flex-row sm:justify-center gap-4 mb-10 md:mb-12"
               >
                 <a
                   href={ctaUrl}
@@ -107,14 +108,15 @@ const Hero = ({
             </div>
           </article>
 
-          {/* Clients Container - Keeping existing */}
+          {/* Clients Container */}
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 0.6, duration: 0.8 }}
-            className="w-full flex flex-col items-center justify-center pt-4 relative z-20"
+            className="w-full flex flex-col items-center justify-center pt-4 md:pt-6 relative z-20"
           >
-             <div className="h-16 w-px bg-gradient-to-b from-gray-200 to-transparent mx-auto"></div>
+            <div className="h-12 w-px bg-gradient-to-b from-gray-200 to-transparent mx-auto mb-6"></div>
+            <Clients />
           </motion.div>
         </div>
       </div>
