@@ -1281,15 +1281,15 @@ export const CloudHubMigrationPreview = () => {
   );
 };
 
-// SnapMapper Preview - Light purple theme matching MuleSoftLP style
+// SnapMapper Preview - Dark blue theme
 export const SnapMapperPreview = () => {
   return (
     <div
       style={{
         width: "100%",
         height: "100%",
-        background: "linear-gradient(to bottom right, #f3e8ff 0%, #e9d5ff 50%, #ddd6fe 100%)",
-        color: "#1f2937",
+        background: "#0E1831",
+        color: "#ffffff",
         fontFamily: '"Noto Sans", sans-serif',
         position: "relative",
         overflow: "hidden",
@@ -1352,16 +1352,16 @@ export const SnapMapperPreview = () => {
       {/* Header */}
       <div
         style={{
-          backgroundColor: "rgba(255, 255, 255, 0.8)",
+          backgroundColor: "rgba(14, 24, 49, 0.8)",
           backdropFilter: "blur(12px)",
-          borderBottom: "none",
+          borderBottom: "1px solid rgba(255, 255, 255, 0.1)",
           padding: "0.5rem 1rem",
           flexShrink: 0,
           position: "relative",
           zIndex: 10,
           borderTopLeftRadius: "8px",
           borderTopRightRadius: "8px",
-          boxShadow: "0 4px 12px rgba(0, 0, 0, 0.1)",
+          boxShadow: "0 4px 12px rgba(0, 0, 0, 0.3)",
         }}
       >
         <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between" }}>
@@ -1390,7 +1390,7 @@ export const SnapMapperPreview = () => {
                 strokeLinejoin="round"
               />
             </svg>
-            <h1 style={{ fontSize: "14px", fontWeight: "bold", color: "#1f2937", margin: 0, letterSpacing: "-0.02em" }}>
+            <h1 style={{ fontSize: "14px", fontWeight: "bold", color: "#ffffff", margin: 0, letterSpacing: "-0.02em" }}>
               SnapMapper
             </h1>
           </div>
@@ -1433,7 +1433,7 @@ export const SnapMapperPreview = () => {
             fontSize: "clamp(20px, 6vw, 40px)",
             fontWeight: "600",
             letterSpacing: "-0.02em",
-            color: "#1f2937",
+            color: "#ffffff",
             margin: "0 0 0.5rem 0",
             lineHeight: "0.9",
             userSelect: "none",
@@ -1446,7 +1446,7 @@ export const SnapMapperPreview = () => {
         <p
           style={{
             fontSize: "9px",
-            color: "#6b7280",
+            color: "#d1d5db",
             margin: "0 0 0.75rem 0",
             lineHeight: "1.4",
             maxWidth: "90%",
@@ -1462,9 +1462,9 @@ export const SnapMapperPreview = () => {
             marginTop: "0.5rem",
             borderRadius: "12px",
             overflow: "hidden",
-            border: "1px solid rgba(0, 0, 0, 0.1)",
-            background: "rgba(255, 255, 255, 0.5)",
-            boxShadow: "0 4px 12px rgba(0, 0, 0, 0.1)",
+            border: "1px solid rgba(255, 255, 255, 0.1)",
+            background: "rgba(17, 24, 39, 0.5)",
+            boxShadow: "0 4px 12px rgba(0, 0, 0, 0.3)",
             backdropFilter: "blur(4px)",
           }}
         >
