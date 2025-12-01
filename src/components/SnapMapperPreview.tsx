@@ -4,7 +4,7 @@ const SnapMapperPreview = () => {
       style={{
         width: "100%",
         height: "100%",
-        background: "linear-gradient(135deg, #1e3a8a 0%, #1e40af 25%, #0e7490 50%, #0891b2 75%, #06b6d4 100%)",
+        background: "linear-gradient(135deg, #7c3aed 0%, #8b5cf6 25%, #a855f7 50%, #c026d3 75%, #e60077 100%)",
         color: "#e2e8f0",
         fontFamily: '"Noto Sans", sans-serif',
         position: "relative",
@@ -69,7 +69,7 @@ const SnapMapperPreview = () => {
       {/* Header */}
       <div
         style={{
-          backgroundColor: "rgba(30, 58, 138, 0.6)",
+          backgroundColor: "rgba(124, 58, 237, 0.6)",
           backdropFilter: "blur(10px)",
           borderBottom: "1px solid rgba(255, 255, 255, 0.1)",
           padding: "0.5rem 1rem",
@@ -114,7 +114,7 @@ const SnapMapperPreview = () => {
               style={{
                 fontSize: "11px",
                 fontWeight: "500",
-                color: "#93c5fd",
+                color: "#e9d5ff",
                 textDecoration: "none",
               }}
             >
@@ -184,7 +184,7 @@ const SnapMapperPreview = () => {
             maxWidth: "100%",
             margin: "0 auto 0.75rem auto",
             fontSize: "11px",
-            color: "#93c5fd",
+            color: "#e9d5ff",
             lineHeight: "1.4",
           }}
         >

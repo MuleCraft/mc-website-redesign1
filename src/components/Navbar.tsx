@@ -940,28 +940,35 @@ const Navbar = () => {
           </div>
 
           {/* Action Button */}
-          <div className="flex items-center" style={{ marginLeft: "1rem" }}>
+          {/* Action Button */}
+          <div className="flex items-center relative group" style={{ marginLeft: "1rem" }}>
+            <div className="absolute inset-0 bg-gradient-to-r from-[#FF4D4D] to-[#F9CB28] rounded-full p-[1px]">
+              <div className="h-full w-full bg-white rounded-full transition-colors duration-300 group-hover:bg-gray-50"></div>
+            </div>
             <Button
               variant="default"
-              className="transition-all duration-300 rounded-full bg-white text-primary border border-primary hover:bg-primary hover:text-white"
+              className="relative transition-all duration-300 rounded-full bg-transparent hover:bg-transparent border-none shadow-none"
               style={{
                 padding: "0.675rem 1rem",
                 fontSize: "0.875rem",
                 height: "auto",
+                border: "none", // Explicitly override .btn border
+                backgroundColor: "transparent", // Explicitly override .btn background
               }}
             >
-              Community
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#FF4D4D] to-[#F9CB28] font-medium">
+                Community
+              </span>
             </Button>
           </div>
           <div className="flex items-center" style={{ marginLeft: "1rem" }}>
             <Button
               variant="default"
-              className="transition-all duration-300 rounded-full bg-primary text-white hover:bg-primary/90 shadow-md hover:shadow-lg"
+              className="transition-all duration-300 rounded-full text-white shadow-md hover:shadow-lg bg-gradient-to-r from-[#FF4D4D] to-[#F9CB28] hover:opacity-90 border-none"
               style={{
                 padding: "0.675rem 1rem",
                 fontSize: "0.875rem",
                 height: "auto",
-                border: "none",
               }}
             >
               Schedule demo

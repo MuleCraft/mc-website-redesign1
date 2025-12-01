@@ -22,8 +22,8 @@ import si3Image from "@/assets/salesforce-360.webp";
 import si4Image from "@/assets/n8n-i.png";
 import si5Image from "@/assets/si5.webp";
 import si6Image from "@/assets/Digibee1.png";
-import cs1Image from "@/assets/hrms.webp";
-import cs2Image from "@/assets/healthcaresolutions33.webp";
+import cs1Image from "@/assets/hr1.png";
+import cs2Image from "@/assets/hlc1.png";
 import cs3Image from "@/assets/digitaltransformationfinal.webp";
 import cs4Image from "@/assets/automate1.png";
 
@@ -2184,7 +2184,10 @@ const DropdownMenu = ({
                         width: "100%",
                         height: "200px",
                         overflow: "hidden",
-                        backgroundColor: "#ffffff",
+                        backgroundColor:
+                          selectedHeader === "SnapMapper"
+                            ? "transparent"
+                            : "#ffffff",
                       }}
                     >
                       {selectedHeader === "SnapMapper" && <SnapMapperPreview />}
@@ -2498,7 +2501,7 @@ const DropdownMenu = ({
                           selectedHeader === "Digital Transformation"
                             ? "fill"
                             : selectedHeader === "Healthcare Solutions"
-                            ? "cover"
+                            ? "fill"
                             : selectedHeader === "Automation & Platforms"
                             ? "cover"
                             : selectedHeader === "HR Management"
