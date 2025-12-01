@@ -949,23 +949,23 @@ const Navbar = () => {
               className="transition-all duration-300 rounded-full"
               style={{
                 background: "transparent",
-                color: "#a03291",
-                border: "1px solid #a03291",
+                color: "#7C3AEC",
+                border: "1px solid #7C3AEC",
                 padding: "0.675rem 1rem",
                 fontSize: "0.875rem",
                 height: "auto",
                 transition: "all 0.3s ease",
               }}
               onMouseEnter={(e) => {
-                e.currentTarget.style.background = "linear-gradient(45deg, #8a2a7f, #3d3fd1)";
+                e.currentTarget.style.background = "#7C3AEC";
                 e.currentTarget.style.color = "#ffffff";
-                e.currentTarget.style.borderColor = "transparent";
+                e.currentTarget.style.borderColor = "#7C3AEC";
                 e.currentTarget.style.transform = "scale(1.02)";
               }}
               onMouseLeave={(e) => {
                 e.currentTarget.style.background = "transparent";
-                e.currentTarget.style.color = "#a03291";
-                e.currentTarget.style.borderColor = "#a03291";
+                e.currentTarget.style.color = "#7C3AEC";
+                e.currentTarget.style.borderColor = "#7C3AEC";
                 e.currentTarget.style.transform = "scale(1)";
               }}
             >
@@ -977,7 +977,7 @@ const Navbar = () => {
               variant="default"
               className="transition-all duration-300 rounded-full"
               style={{
-                background: "linear-gradient(45deg, #a03291, #4b4fe2)",
+                background: "#7C3AEC",
                 color: "#ffffff",
                 border: "none",
                 padding: "0.675rem 1rem",
@@ -986,11 +986,11 @@ const Navbar = () => {
                 transition: "all 0.3s ease",
               }}
               onMouseEnter={(e) => {
-                e.currentTarget.style.background = "linear-gradient(45deg, #8a2a7f, #3d3fd1)";
+                e.currentTarget.style.background = "#6D28D9";
                 e.currentTarget.style.transform = "scale(1.02)";
               }}
               onMouseLeave={(e) => {
-                e.currentTarget.style.background = "linear-gradient(45deg, #a03291, #4b4fe2)";
+                e.currentTarget.style.background = "#7C3AEC";
                 e.currentTarget.style.transform = "scale(1)";
               }}
             >

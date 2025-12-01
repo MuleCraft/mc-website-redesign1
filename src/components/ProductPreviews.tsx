@@ -488,8 +488,8 @@ export const GoosePreview = () => {
             style={{
               fontSize: "10px",
               padding: "0.25rem 0.6rem",
-              background: "linear-gradient(135deg, #a5f3fc 0%, #c084fc 100%)",
-              color: "#000000",
+              background: "#7C3AEC",
+              color: "#ffffff",
               borderRadius: "4px",
               fontWeight: "700",
             }}
