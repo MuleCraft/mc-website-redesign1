@@ -1,11 +1,11 @@
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import logoDark from "@/assets/logo_dark.png";
 import csi2Image from "@/assets/csi2.png";
 import mulesoftlpImage from "@/assets/mulesoftlp-image.png";
 import newLogo from "@/assets/newlogo.png";
 import cmImage from "@/assets/cm.png";
 import csi1Image from "@/assets/csi1.png";
-import academyIcon from "@/assets/Academy-icon.webp";
+import academyIcon from "@/assets/Academy-icon.png";
 import trainingBgImage from "@/assets/t-i.jpg";
 
 // RAMLify Preview - Dark theme with purple/blue/cyan gradients matching reference design
@@ -1488,6 +1488,25 @@ export const SnapMapperPreview = () => {
 
 // Training Preview - Enhanced Design with Blue Background
 export const TrainingPreview = () => {
+  const [currentIndex, setCurrentIndex] = useState(0);
+  
+  const courses = [
+    { name: "Full Stack Development", icon: "💻" },
+    { name: "UI/UX Design", icon: "🎨" },
+    { name: "Mulesoft Developer", icon: "⚙️" },
+    { name: "Digital Marketing", icon: "📱" },
+  ];
+
+  const visibleCourses = courses.slice(currentIndex, currentIndex + 2);
+
+  const handleNext = () => {
+    setCurrentIndex((prev) => (prev + 2 >= courses.length ? 0 : prev + 2));
+  };
+
+  const handlePrev = () => {
+    setCurrentIndex((prev) => (prev - 2 < 0 ? courses.length - 2 : prev - 2));
+  };
+
   return (
     <div
       style={{
@@ -1521,6 +1540,9 @@ export const TrainingPreview = () => {
           0%, 100% { opacity: 0.2; transform: scale(1); }
           50% { opacity: 0.4; transform: scale(1.1); }
         }
+        .hide-scrollbar::-webkit-scrollbar {
+          display: none;
+        }
       `}</style>
 
 
@@ -1545,7 +1567,7 @@ export const TrainingPreview = () => {
             alignItems: "center",
             marginBottom: "1rem",
             width: "100%",
-            padding: "0 1rem",
+            padding: "0 0.5rem",
           }}
         >
           <div style={{ display: "flex", alignItems: "center", gap: "0.5rem", marginLeft: 0 }}>
@@ -1553,8 +1575,8 @@ export const TrainingPreview = () => {
               src={academyIcon}
               alt="Academy"
               style={{
-                width: "28px",
-                height: "28px",
+                width: "40px",
+                height: "40px",
                 objectFit: "contain",
               }}
             />
@@ -1636,60 +1658,145 @@ export const TrainingPreview = () => {
         </div>
       </div>
 
-      {/* Content Section */}
+      {/* Content Section - Course Cards */}
       <div
         style={{
-          padding: "0.75rem 1rem 1rem",
-          flex: 1,
+          padding: "0.5rem 1rem 0.5rem",
           display: "flex",
           flexDirection: "column",
-          gap: "0.75rem",
+          gap: "0.5rem",
           position: "relative",
           zIndex: 10,
+          overflow: "hidden",
         }}
       >
-        {/* Stats Row */}
-        <div style={{ display: "flex", gap: "0.5rem" }}>
-          <div
+        {/* Course Cards Container with Navigation */}
+        <div
+          style={{
+            display: "flex",
+            alignItems: "center",
+            gap: "0.5rem",
+            position: "relative",
+          }}
+        >
+          {/* Left Arrow Button */}
+          <button
+            onClick={handlePrev}
             style={{
-              flex: 1,
-              padding: "0.6rem",
-              borderRadius: "8px",
+              width: "24px",
+              height: "24px",
+              borderRadius: "50%",
+              border: "1px solid rgba(255, 255, 255, 0.3)",
               background: "rgba(255, 255, 255, 0.15)",
-              border: "1px solid rgba(255, 255, 255, 0.2)",
               backdropFilter: "blur(4px)",
               display: "flex",
-              flexDirection: "column",
               alignItems: "center",
               justifyContent: "center",
-              transition: "transform 0.2s ease",
+              cursor: "pointer",
+              transition: "all 0.2s ease",
+              flexShrink: 0,
             }}
-            onMouseEnter={(e) => (e.currentTarget.style.transform = "translateY(-2px)")}
-            onMouseLeave={(e) => (e.currentTarget.style.transform = "translateY(0)")}
+            onMouseEnter={(e) => {
+              e.currentTarget.style.background = "rgba(255, 255, 255, 0.25)";
+              e.currentTarget.style.transform = "scale(1.1)";
+            }}
+            onMouseLeave={(e) => {
+              e.currentTarget.style.background = "rgba(255, 255, 255, 0.15)";
+              e.currentTarget.style.transform = "scale(1)";
+            }}
           >
-            <span style={{ fontSize: "18px", fontWeight: "800", color: "#fbbf24" }}>500+</span>
-            <span style={{ fontSize: "9px", color: "#e0e7ff", marginTop: "2px", fontWeight: "500" }}>Students</span>
-          </div>
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+              <path d="M15 18l-6-6 6-6" />
+            </svg>
+          </button>
+
+          {/* Course Cards */}
           <div
             style={{
+              display: "flex",
+              gap: "0.5rem",
               flex: 1,
-              padding: "0.6rem",
-              borderRadius: "8px",
+              justifyContent: "center",
+            }}
+          >
+            {visibleCourses.map((course, index) => (
+              <div
+                key={`${course.name}-${currentIndex + index}`}
+                style={{
+                  minWidth: "90px",
+                  width: "90px",
+                  borderRadius: "8px",
+                  background: "rgba(255, 255, 255, 0.95)",
+                  display: "flex",
+                  flexDirection: "column",
+                  alignItems: "center",
+                  justifyContent: "center",
+                  padding: "0.4rem 0.5rem",
+                  transition: "transform 0.2s ease",
+                  cursor: "pointer",
+                }}
+                onMouseEnter={(e) => (e.currentTarget.style.transform = "translateY(-2px)")}
+                onMouseLeave={(e) => (e.currentTarget.style.transform = "translateY(0)")}
+              >
+                {/* Icon */}
+                <div
+                  style={{
+                    fontSize: "24px",
+                    marginBottom: "0.25rem",
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "center",
+                  }}
+                >
+                  {course.icon}
+                </div>
+                {/* Course Name */}
+                <h3
+                  style={{
+                    fontSize: "7px",
+                    fontWeight: "700",
+                    color: "#111827",
+                    margin: 0,
+                    lineHeight: "1.2",
+                    textAlign: "center",
+                  }}
+                >
+                  {course.name}
+                </h3>
+              </div>
+            ))}
+          </div>
+
+          {/* Right Arrow Button */}
+          <button
+            onClick={handleNext}
+            style={{
+              width: "24px",
+              height: "24px",
+              borderRadius: "50%",
+              border: "1px solid rgba(255, 255, 255, 0.3)",
               background: "rgba(255, 255, 255, 0.15)",
-              border: "1px solid rgba(255, 255, 255, 0.2)",
               backdropFilter: "blur(4px)",
               display: "flex",
-              flexDirection: "column",
               alignItems: "center",
               justifyContent: "center",
-              transition: "transform 0.2s ease",
+              cursor: "pointer",
+              transition: "all 0.2s ease",
+              flexShrink: 0,
             }}
-            onMouseEnter={(e) => (e.currentTarget.style.transform = "translateY(-2px)")}
-            onMouseLeave={(e) => (e.currentTarget.style.transform = "translateY(0)")}
+            onMouseEnter={(e) => {
+              e.currentTarget.style.background = "rgba(255, 255, 255, 0.25)";
+              e.currentTarget.style.transform = "scale(1.1)";
+            }}
+            onMouseLeave={(e) => {
+              e.currentTarget.style.background = "rgba(255, 255, 255, 0.15)";
+              e.currentTarget.style.transform = "scale(1)";
+            }}
           >
-            <span style={{ fontSize: "18px", fontWeight: "800", color: "#fbbf24" }}>50+</span>
-            <span style={{ fontSize: "9px", color: "#e0e7ff", marginTop: "2px", fontWeight: "500" }}>Courses</span>
-          </div>
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+              <path d="M9 18l6-6-6-6" />
+            </svg>
+          </button>
         </div>
       </div>
     </div>
