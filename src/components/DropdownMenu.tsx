@@ -6,6 +6,7 @@ import {
   CloudHubMigrationPreview,
   GoosePreview,
   SnapMapperPreview,
+  TrainingPreview,
 } from "./ProductPreviews";
 import csi1Image from "@/assets/csi1.png";
 import csi2Image from "@/assets/csi2.png";
@@ -13,7 +14,6 @@ import csi3Image from "@/assets/csi3.png";
 import csi4Image from "@/assets/csi4.png";
 import csi6Image from "@/assets/csi6.png";
 import csi7Image from "@/assets/csi7.png";
-import trainingImage from "@/assets/training.png";
 import blog1Image from "@/assets/blog-i.png";
 import blog2Image from "@/assets/blog2.webp";
 import si1Image from "@/assets/mulesoftfinal.png";
@@ -883,7 +883,7 @@ const DropdownMenu = ({
                     }}
                   />
 
-                  {/* Third Column - Training Image Card */}
+                  {/* Third Column - Training Preview Card */}
                   <div
                     style={{
                       width: "55%",
@@ -912,21 +912,13 @@ const DropdownMenu = ({
                         e.currentTarget.style.transform = "translateY(-2px)";
                         e.currentTarget.style.boxShadow =
                           "0 8px 20px rgba(0, 0, 0, 0.08)";
-                        const img = e.currentTarget.querySelector("img");
-                        if (img) {
-                          (img as HTMLElement).style.transform = "scale(1.1)";
-                        }
                       }}
                       onMouseLeave={(e) => {
                         e.currentTarget.style.transform = "translateY(0)";
                         e.currentTarget.style.boxShadow = "none";
-                        const img = e.currentTarget.querySelector("img");
-                        if (img) {
-                          (img as HTMLElement).style.transform = "scale(1)";
-                        }
                       }}
                     >
-                      {/* Image Container */}
+                      {/* Preview Container */}
                       <div
                         style={{
                           width: "100%",
@@ -937,19 +929,10 @@ const DropdownMenu = ({
                           flexShrink: 0,
                         }}
                       >
-                        <img
-                          src={trainingImage}
-                          alt={trainingMenuItem.title}
-                          style={{
-                            width: "100%",
-                            height: "100%",
-                            objectFit: "fill",
-                            transition: "transform 0.3s ease",
-                          }}
-                        />
+                        <TrainingPreview />
                       </div>
 
-                      {/* Card Content */}
+                      {/* Card Content - Description Container */}
                       <div style={{ padding: "1rem" }}>
                         <div
                           style={{

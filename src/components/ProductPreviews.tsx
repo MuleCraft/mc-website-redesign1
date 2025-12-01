@@ -5,6 +5,7 @@ import mulesoftlpImage from "@/assets/mulesoftlp-image.png";
 import newLogo from "@/assets/newlogo.png";
 import cmImage from "@/assets/cm.png";
 import csi1Image from "@/assets/csi1.png";
+import academyIcon from "@/assets/Academy-icon.webp";
 
 // RAMLify Preview - Dark theme with purple/blue/cyan gradients matching reference design
 export const RAMLifyPreview = () => {
@@ -1484,6 +1485,250 @@ export const SnapMapperPreview = () => {
   );
 };
 
-// DataWeave Task Generator Preview - Will use the image as it's complex
-// (This one can use the existing image approach)
+// Training Preview - Based on training website design
+export const TrainingPreview = () => {
+  return (
+    <div
+      style={{
+        width: "100%",
+        height: "100%",
+        background: "#174e4f",
+        color: "#ffffff",
+        fontFamily: '"Noto Sans", sans-serif',
+        position: "relative",
+        overflow: "hidden",
+        display: "flex",
+        flexDirection: "column",
+        borderTopLeftRadius: "8px",
+        borderTopRightRadius: "8px",
+        borderBottom: "2px solid rgba(23, 78, 79, 0.2)",
+      }}
+    >
+      {/* Hero Section */}
+      <div
+        style={{
+          backgroundColor: "#174e4f",
+          padding: "0.75rem 1rem",
+          display: "flex",
+          justifyContent: "space-between",
+          alignItems: "center",
+          flexShrink: 0,
+          borderTopLeftRadius: "8px",
+          borderTopRightRadius: "8px",
+        }}
+      >
+        <div style={{ display: "flex", alignItems: "center", gap: "0.5rem" }}>
+          <img
+            src={academyIcon}
+            alt="Academy Icon"
+            style={{
+              width: "32px",
+              height: "32px",
+              objectFit: "contain",
+            }}
+          />
+          <div style={{ display: "flex", flexDirection: "column", gap: "0.25rem" }}>
+            <h1
+              style={{
+                fontSize: "14px",
+                fontWeight: "bold",
+                color: "palegoldenrod",
+                margin: 0,
+                lineHeight: "1.2",
+              }}
+            >
+              Learn Today,
+            </h1>
+            <h1
+              style={{
+                fontSize: "16px",
+                fontWeight: "bold",
+                color: "#ffffff",
+                margin: 0,
+                lineHeight: "1.2",
+              }}
+            >
+              Lead Tomorrow!
+            </h1>
+          </div>
+        </div>
+        {/* Button */}
+        <a
+          href="https://training.mulecraft.in/"
+          target="_blank"
+          rel="noopener noreferrer"
+          style={{
+            padding: "0.35rem 0.75rem",
+            fontSize: "9px",
+            fontWeight: "600",
+            color: "#174e4f",
+            backgroundColor: "#ffffff",
+            borderRadius: "6px",
+            textDecoration: "none",
+            boxShadow: "0 2px 4px rgba(0, 0, 0, 0.1)",
+            transition: "all 0.2s ease",
+            whiteSpace: "nowrap",
+          }}
+          onMouseEnter={(e) => {
+            e.currentTarget.style.backgroundColor = "palegoldenrod";
+            e.currentTarget.style.transform = "translateY(-1px)";
+            e.currentTarget.style.boxShadow = "0 4px 8px rgba(0, 0, 0, 0.15)";
+          }}
+          onMouseLeave={(e) => {
+            e.currentTarget.style.backgroundColor = "#ffffff";
+            e.currentTarget.style.transform = "translateY(0)";
+            e.currentTarget.style.boxShadow = "0 2px 4px rgba(0, 0, 0, 0.1)";
+          }}
+        >
+          Explore →
+        </a>
+      </div>
+
+      {/* Enhanced Content Section */}
+      <div
+        style={{
+          padding: "1rem",
+          flex: 1,
+          display: "flex",
+          flexDirection: "column",
+          gap: "0.75rem",
+          overflow: "hidden",
+          background: "#174e4f",
+        }}
+      >
+        {/* Statistics Grid */}
+        <div
+          style={{
+            display: "grid",
+            gridTemplateColumns: "1fr 1fr",
+            gap: "0.5rem",
+          }}
+        >
+          {/* Stat Card 1 */}
+          <div
+            style={{
+              padding: "0.6rem",
+              borderRadius: "8px",
+              background: "rgba(255, 255, 255, 0.15)",
+              border: "1px solid rgba(255, 255, 255, 0.2)",
+              color: "#ffffff",
+              display: "flex",
+              flexDirection: "column",
+              alignItems: "center",
+              boxShadow: "0 2px 8px rgba(0, 0, 0, 0.2)",
+            }}
+          >
+            <div
+              style={{
+                fontSize: "18px",
+                fontWeight: "800",
+                lineHeight: "1",
+                marginBottom: "0.25rem",
+              }}
+            >
+              500+
+            </div>
+            <div
+              style={{
+                fontSize: "7px",
+                fontWeight: "600",
+                opacity: 0.9,
+                textAlign: "center",
+              }}
+            >
+              Students
+            </div>
+          </div>
+
+          {/* Stat Card 2 */}
+          <div
+            style={{
+              padding: "0.6rem",
+              borderRadius: "8px",
+              background: "rgba(255, 255, 255, 0.15)",
+              border: "1px solid rgba(255, 255, 255, 0.2)",
+              color: "#ffffff",
+              display: "flex",
+              flexDirection: "column",
+              alignItems: "center",
+              boxShadow: "0 2px 8px rgba(0, 0, 0, 0.2)",
+            }}
+          >
+            <div
+              style={{
+                fontSize: "18px",
+                fontWeight: "800",
+                lineHeight: "1",
+                marginBottom: "0.25rem",
+              }}
+            >
+              50+
+            </div>
+            <div
+              style={{
+                fontSize: "7px",
+                fontWeight: "600",
+                opacity: 0.9,
+                textAlign: "center",
+              }}
+            >
+              Courses
+            </div>
+          </div>
+        </div>
+
+        {/* Feature Badges */}
+        <div
+          style={{
+            display: "flex",
+            flexWrap: "wrap",
+            gap: "0.4rem",
+            justifyContent: "center",
+          }}
+        >
+          <div
+            style={{
+              padding: "0.3rem 0.6rem",
+              borderRadius: "12px",
+              backgroundColor: "rgba(255, 255, 255, 0.15)",
+              border: "1px solid rgba(255, 255, 255, 0.3)",
+              fontSize: "8px",
+              fontWeight: "600",
+              color: "#ffffff",
+            }}
+          >
+            🎓 Certifications
+          </div>
+          <div
+            style={{
+              padding: "0.3rem 0.6rem",
+              borderRadius: "12px",
+              backgroundColor: "rgba(255, 255, 255, 0.15)",
+              border: "1px solid rgba(255, 255, 255, 0.3)",
+              fontSize: "8px",
+              fontWeight: "600",
+              color: "#ffffff",
+            }}
+          >
+            💼 Hands-on
+          </div>
+          <div
+            style={{
+              padding: "0.3rem 0.6rem",
+              borderRadius: "12px",
+              backgroundColor: "rgba(255, 255, 255, 0.15)",
+              border: "1px solid rgba(255, 255, 255, 0.3)",
+              fontSize: "8px",
+              fontWeight: "600",
+              color: "#ffffff",
+            }}
+          >
+            ⭐ Expert
+          </div>
+        </div>
+
+      </div>
+    </div>
+  );
+};
 
