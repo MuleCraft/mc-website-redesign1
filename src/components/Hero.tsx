@@ -42,8 +42,8 @@ const Hero = ({
             {/* Content Wrapper - Centered */}
             <div className="content__wrapper max-w-5xl mx-auto w-full">
               <header>
-                 {/* Eyebrow - Restored */}
-                 {eyebrow && (
+                {/* Eyebrow - Restored */}
+                {eyebrow && (
                   <motion.div
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}

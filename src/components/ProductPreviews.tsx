@@ -6,6 +6,7 @@ import newLogo from "@/assets/newlogo.png";
 import cmImage from "@/assets/cm.png";
 import csi1Image from "@/assets/csi1.png";
 import academyIcon from "@/assets/Academy-icon.webp";
+import trainingBgImage from "@/assets/t-i.jpg";
 
 // RAMLify Preview - Dark theme with purple/blue/cyan gradients matching reference design
 export const RAMLifyPreview = () => {
@@ -1485,14 +1486,17 @@ export const SnapMapperPreview = () => {
   );
 };
 
-// Training Preview - Based on training website design
+// Training Preview - Enhanced Design with Blue Background
 export const TrainingPreview = () => {
   return (
     <div
       style={{
         width: "100%",
         height: "100%",
-        background: "#174e4f",
+        backgroundImage: `url(${trainingBgImage})`,
+        backgroundSize: "cover",
+        backgroundPosition: "center",
+        backgroundRepeat: "no-repeat",
         color: "#ffffff",
         fontFamily: '"Noto Sans", sans-serif',
         position: "relative",
@@ -1501,232 +1505,192 @@ export const TrainingPreview = () => {
         flexDirection: "column",
         borderTopLeftRadius: "8px",
         borderTopRightRadius: "8px",
-        borderBottom: "2px solid rgba(23, 78, 79, 0.2)",
       }}
     >
-      {/* Hero Section */}
+      {/* Overlay for better text readability */}
       <div
         style={{
-          backgroundColor: "#174e4f",
-          padding: "0.75rem 1rem",
+          position: "absolute",
+          inset: 0,
+          background: "rgba(14, 24, 49, 0.6)",
+          zIndex: 1,
+        }}
+      />
+      <style>{`
+        @keyframes pulse-slow {
+          0%, 100% { opacity: 0.2; transform: scale(1); }
+          50% { opacity: 0.4; transform: scale(1.1); }
+        }
+      `}</style>
+
+
+      {/* Hero Section with Navbar */}
+      <div
+        style={{
+          padding: "0.5rem 0 1rem 0",
           display: "flex",
-          justifyContent: "space-between",
-          alignItems: "center",
-          flexShrink: 0,
+          flexDirection: "column",
+          flex: 1,
+          position: "relative",
+          zIndex: 10,
           borderTopLeftRadius: "8px",
           borderTopRightRadius: "8px",
         }}
       >
-        <div style={{ display: "flex", alignItems: "center", gap: "0.5rem" }}>
-          <img
-            src={academyIcon}
-            alt="Academy Icon"
-            style={{
-              width: "32px",
-              height: "32px",
-              objectFit: "contain",
-            }}
-          />
-          <div style={{ display: "flex", flexDirection: "column", gap: "0.25rem" }}>
-            <h1
-              style={{
-                fontSize: "14px",
-                fontWeight: "bold",
-                color: "palegoldenrod",
-                margin: 0,
-                lineHeight: "1.2",
-              }}
-            >
-              Learn Today,
-            </h1>
-            <h1
-              style={{
-                fontSize: "16px",
-                fontWeight: "bold",
-                color: "#ffffff",
-                margin: 0,
-                lineHeight: "1.2",
-              }}
-            >
-              Lead Tomorrow!
-            </h1>
-          </div>
-        </div>
-        {/* Button */}
-        <a
-          href="https://training.mulecraft.in/"
-          target="_blank"
-          rel="noopener noreferrer"
+        {/* Navbar inside Hero */}
+        <div
           style={{
-            padding: "0.35rem 0.75rem",
-            fontSize: "9px",
-            fontWeight: "600",
-            color: "#174e4f",
-            backgroundColor: "#ffffff",
-            borderRadius: "6px",
-            textDecoration: "none",
-            boxShadow: "0 2px 4px rgba(0, 0, 0, 0.1)",
-            transition: "all 0.2s ease",
-            whiteSpace: "nowrap",
-          }}
-          onMouseEnter={(e) => {
-            e.currentTarget.style.backgroundColor = "palegoldenrod";
-            e.currentTarget.style.transform = "translateY(-1px)";
-            e.currentTarget.style.boxShadow = "0 4px 8px rgba(0, 0, 0, 0.15)";
-          }}
-          onMouseLeave={(e) => {
-            e.currentTarget.style.backgroundColor = "#ffffff";
-            e.currentTarget.style.transform = "translateY(0)";
-            e.currentTarget.style.boxShadow = "0 2px 4px rgba(0, 0, 0, 0.1)";
+            display: "flex",
+            justifyContent: "space-between",
+            alignItems: "center",
+            marginBottom: "1rem",
+            width: "100%",
+            padding: "0 1rem",
           }}
         >
-          Explore →
-        </a>
+          <div style={{ display: "flex", alignItems: "center", gap: "0.5rem", marginLeft: 0 }}>
+            <img
+              src={academyIcon}
+              alt="Academy"
+              style={{
+                width: "28px",
+                height: "28px",
+                objectFit: "contain",
+              }}
+            />
+            <span
+              style={{
+                fontSize: "12px",
+                fontWeight: "600",
+                color: "#ffffff",
+              }}
+            >
+              MuleCraft Academy
+            </span>
+          </div>
+          <a
+            href="https://training.mulecraft.in/"
+            target="_blank"
+            rel="noopener noreferrer"
+            style={{
+              padding: "0.35rem 0.7rem",
+              fontSize: "9px",
+              fontWeight: "600",
+              color: "#0E1831",
+              backgroundColor: "#ffffff",
+              borderRadius: "6px",
+              textDecoration: "none",
+              boxShadow: "0 2px 4px rgba(0, 0, 0, 0.1)",
+              transition: "all 0.2s ease",
+              whiteSpace: "nowrap",
+            }}
+            onMouseEnter={(e) => {
+              e.currentTarget.style.backgroundColor = "#fbbf24";
+              e.currentTarget.style.transform = "translateY(-1px)";
+              e.currentTarget.style.boxShadow = "0 4px 8px rgba(0, 0, 0, 0.15)";
+            }}
+            onMouseLeave={(e) => {
+              e.currentTarget.style.backgroundColor = "#ffffff";
+              e.currentTarget.style.transform = "translateY(0)";
+              e.currentTarget.style.boxShadow = "0 2px 4px rgba(0, 0, 0, 0.1)";
+            }}
+          >
+            Explore →
+          </a>
+        </div>
+
+        {/* Hero Content - Proper Alignment */}
+        <div
+          style={{
+            display: "flex",
+            flexDirection: "column",
+            alignItems: "center",
+            justifyContent: "center",
+            textAlign: "center",
+            flex: 1,
+          }}
+        >
+          <h1
+            style={{
+              fontSize: "14px",
+              fontWeight: "600",
+              color: "#fbbf24",
+              margin: "0 0 0.25rem 0",
+              lineHeight: "1.2",
+            }}
+          >
+            Learn Today,
+          </h1>
+          <h1
+            style={{
+              fontSize: "16px",
+              fontWeight: "bold",
+              color: "#ffffff",
+              margin: 0,
+              lineHeight: "1.2",
+              textShadow: "0 2px 4px rgba(0,0,0,0.2)",
+            }}
+          >
+            Lead Tomorrow!
+          </h1>
+        </div>
       </div>
 
-      {/* Enhanced Content Section */}
+      {/* Content Section */}
       <div
         style={{
-          padding: "1rem",
+          padding: "0.75rem 1rem 1rem",
           flex: 1,
           display: "flex",
           flexDirection: "column",
           gap: "0.75rem",
-          overflow: "hidden",
-          background: "#174e4f",
+          position: "relative",
+          zIndex: 10,
         }}
       >
-        {/* Statistics Grid */}
-        <div
-          style={{
-            display: "grid",
-            gridTemplateColumns: "1fr 1fr",
-            gap: "0.5rem",
-          }}
-        >
-          {/* Stat Card 1 */}
+        {/* Stats Row */}
+        <div style={{ display: "flex", gap: "0.5rem" }}>
           <div
             style={{
+              flex: 1,
               padding: "0.6rem",
               borderRadius: "8px",
               background: "rgba(255, 255, 255, 0.15)",
               border: "1px solid rgba(255, 255, 255, 0.2)",
-              color: "#ffffff",
+              backdropFilter: "blur(4px)",
               display: "flex",
               flexDirection: "column",
               alignItems: "center",
-              boxShadow: "0 2px 8px rgba(0, 0, 0, 0.2)",
+              justifyContent: "center",
+              transition: "transform 0.2s ease",
             }}
+            onMouseEnter={(e) => (e.currentTarget.style.transform = "translateY(-2px)")}
+            onMouseLeave={(e) => (e.currentTarget.style.transform = "translateY(0)")}
           >
-            <div
-              style={{
-                fontSize: "18px",
-                fontWeight: "800",
-                lineHeight: "1",
-                marginBottom: "0.25rem",
-              }}
-            >
-              500+
-            </div>
-            <div
-              style={{
-                fontSize: "7px",
-                fontWeight: "600",
-                opacity: 0.9,
-                textAlign: "center",
-              }}
-            >
-              Students
-            </div>
+            <span style={{ fontSize: "18px", fontWeight: "800", color: "#fbbf24" }}>500+</span>
+            <span style={{ fontSize: "9px", color: "#e0e7ff", marginTop: "2px", fontWeight: "500" }}>Students</span>
           </div>
-
-          {/* Stat Card 2 */}
           <div
             style={{
+              flex: 1,
               padding: "0.6rem",
               borderRadius: "8px",
               background: "rgba(255, 255, 255, 0.15)",
               border: "1px solid rgba(255, 255, 255, 0.2)",
-              color: "#ffffff",
+              backdropFilter: "blur(4px)",
               display: "flex",
               flexDirection: "column",
               alignItems: "center",
-              boxShadow: "0 2px 8px rgba(0, 0, 0, 0.2)",
+              justifyContent: "center",
+              transition: "transform 0.2s ease",
             }}
+            onMouseEnter={(e) => (e.currentTarget.style.transform = "translateY(-2px)")}
+            onMouseLeave={(e) => (e.currentTarget.style.transform = "translateY(0)")}
           >
-            <div
-              style={{
-                fontSize: "18px",
-                fontWeight: "800",
-                lineHeight: "1",
-                marginBottom: "0.25rem",
-              }}
-            >
-              50+
-            </div>
-            <div
-              style={{
-                fontSize: "7px",
-                fontWeight: "600",
-                opacity: 0.9,
-                textAlign: "center",
-              }}
-            >
-              Courses
-            </div>
+            <span style={{ fontSize: "18px", fontWeight: "800", color: "#fbbf24" }}>50+</span>
+            <span style={{ fontSize: "9px", color: "#e0e7ff", marginTop: "2px", fontWeight: "500" }}>Courses</span>
           </div>
         </div>
-
-        {/* Feature Badges */}
-        <div
-          style={{
-            display: "flex",
-            flexWrap: "wrap",
-            gap: "0.4rem",
-            justifyContent: "center",
-          }}
-        >
-          <div
-            style={{
-              padding: "0.3rem 0.6rem",
-              borderRadius: "12px",
-              backgroundColor: "rgba(255, 255, 255, 0.15)",
-              border: "1px solid rgba(255, 255, 255, 0.3)",
-              fontSize: "8px",
-              fontWeight: "600",
-              color: "#ffffff",
-            }}
-          >
-            🎓 Certifications
-          </div>
-          <div
-            style={{
-              padding: "0.3rem 0.6rem",
-              borderRadius: "12px",
-              backgroundColor: "rgba(255, 255, 255, 0.15)",
-              border: "1px solid rgba(255, 255, 255, 0.3)",
-              fontSize: "8px",
-              fontWeight: "600",
-              color: "#ffffff",
-            }}
-          >
-            💼 Hands-on
-          </div>
-          <div
-            style={{
-              padding: "0.3rem 0.6rem",
-              borderRadius: "12px",
-              backgroundColor: "rgba(255, 255, 255, 0.15)",
-              border: "1px solid rgba(255, 255, 255, 0.3)",
-              fontSize: "8px",
-              fontWeight: "600",
-              color: "#ffffff",
-            }}
-          >
-            ⭐ Expert
-          </div>
-        </div>
-
       </div>
     </div>
   );
