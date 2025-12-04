@@ -1374,8 +1374,8 @@ export const SnapMapperPreview = () => {
               src={snapMapperIcon}
               alt="SnapMapper"
               style={{
-                width: "26px",
-                height: "26px",
+                width: "28px",
+                height: "28px",
                 objectFit: "contain",
               }}
             />
