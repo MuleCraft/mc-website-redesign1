@@ -1159,41 +1159,45 @@ export const CloudHubMigrationPreview = () => {
       >
         <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between" }}>
           <div style={{ display: "flex", alignItems: "center", gap: "0.5rem" }}>
-            {/* Logo - Bright cloud migration icon */}
-            <div
-              style={{
-                width: "24px",
-                height: "24px",
-                borderRadius: "6px",
-                background: "linear-gradient(135deg, #4285F4 0%, #1a73e8 100%)",
-                display: "flex",
-                alignItems: "center",
-                justifyContent: "center",
-                boxShadow: "0 2px 8px rgba(66, 133, 244, 0.4)",
-              }}
+            {/* Logo - CloudHub 2.0 Migration */}
+            <svg
+              width="35"
+              height="35"
+              viewBox="0 0 24 24"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
             >
-              <svg
-                width="16"
-                height="16"
-                viewBox="0 0 24 24"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                {/* Cloud with arrow up - migration symbol */}
-                <path
-                  d="M19.35 10.04C18.67 6.59 15.64 4 12 4C9.11 4 6.6 5.64 5.35 8.04C2.34 8.36 0 10.91 0 14C0 17.31 2.69 20 6 20H19C21.76 20 24 17.76 24 15C24 12.36 21.95 10.22 19.35 10.04Z"
-                  fill="#ffffff"
-                />
-                <path
-                  d="M12 8V16M12 16L9 13M12 16L15 13"
-                  stroke="#4285F4"
-                  strokeWidth="2"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                />
-              </svg>
-            </div>
-            <span style={{ fontSize: "11px", fontWeight: "700", color: "#111827" }}>MuleMigration</span>
+              {/* Base cloud */}
+              <path
+                d="M8.2 15.5C6.7 15.5 5.5 14.3 5.5 12.8C5.5 11.4 6.6 10.3 8 10.3C8.2 9.1 9.2 8.3 10.5 8.3C11.7 8.3 12.7 9 13 10.1C14.3 10.2 15.3 11.3 15.3 12.6C15.3 14.1 14.1 15.3 12.6 15.3H8.2Z"
+                fill="#1D4ED8"
+              />
+              {/* Destination cloud (small, to the right, for 2.0) */}
+              <path
+                d="M13.8 11.2C14.1 10.6 14.7 10.2 15.4 10.2C16.5 10.2 17.3 11.1 17.3 12.1C17.3 13.1 16.6 13.8 15.7 13.8H14.1"
+                stroke="#3B82F6"
+                strokeWidth="1.2"
+                strokeLinecap="round"
+              />
+              {/* Migration arrow */}
+              <path
+                d="M9 11L12.2 11"
+                stroke="#FFFFFF"
+                strokeWidth="1.4"
+                strokeLinecap="round"
+              />
+              <path
+                d="M11.4 10.3L12.2 11L11.4 11.7"
+                stroke="#FFFFFF"
+                strokeWidth="1.4"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              />
+              {/* Small 2.0 style dots to hint new platform */}
+              <circle cx="16.3" cy="9" r="0.6" fill="#2563EB" />
+              <circle cx="17.5" cy="9.6" r="0.4" fill="#60A5FA" />
+            </svg>
+            <span style={{ fontSize: "11px", fontWeight: "700", color: "#111827" }}>CloudHub 2.0</span>
           </div>
           <div style={{ display: "flex", alignItems: "center", gap: "0.5rem" }}>
             <a
@@ -1367,27 +1371,41 @@ export const SnapMapperPreview = () => {
         }}
       >
         <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between" }}>
-          <div style={{ display: "flex", alignItems: "center", gap: "0.5rem" }}>
+          <div style={{ display: "flex", alignItems: "center", gap: "0.5rem", padding: 0, marginLeft: "-0.5rem", marginRight: "-1rem" }}>
             {/* SnapMapper Logo - Data transformation icon */}
             <svg
-              width="20"
-              height="20"
+              width="35"
+              height="28"
               viewBox="0 0 24 24"
               fill="none"
               xmlns="http://www.w3.org/2000/svg"
             >
+              {/* Left data stack */}
+              <rect x="5" y="7" width="3" height="3" rx="0.8" fill="#9333ea" />
+              <rect x="5" y="11" width="3" height="3" rx="0.8" fill="#a78bfa" />
+              <rect x="5" y="15" width="3" height="3" rx="0.8" fill="#9333ea" />
+              {/* Right data stack */}
+              <rect x="16" y="7" width="3" height="3" rx="0.8" fill="#9333ea" />
+              <rect x="16" y="11" width="3" height="3" rx="0.8" fill="#a78bfa" />
+              <rect x="16" y="15" width="3" height="3" rx="0.8" fill="#9333ea" />
+              {/* Central transform loop */}
               <path
-                d="M12 2L2 7L12 12L22 7L12 2Z"
-                fill="#9333ea"
+                d="M9.5 9C9.5 8.17 10.17 7.5 11 7.5H13C13.83 7.5 14.5 8.17 14.5 9V9.4"
+                stroke="#7c3aed"
+                strokeWidth="1.4"
+                strokeLinecap="round"
               />
               <path
-                d="M2 17L12 22L22 17V12L12 17L2 12V17Z"
-                fill="#a855f7"
+                d="M14.5 15C14.5 15.83 13.83 16.5 13 16.5H11C10.17 16.5 9.5 15.83 9.5 15V14.6"
+                stroke="#7c3aed"
+                strokeWidth="1.4"
+                strokeLinecap="round"
               />
+              {/* Upper arrow (forward transform) */}
               <path
-                d="M2 12L12 17L22 12"
-                stroke="#c084fc"
-                strokeWidth="1.5"
+                d="M13.8 9.2L14.5 9.9L15.2 9.2"
+                stroke="#a78bfa"
+                strokeWidth="1.3"
                 strokeLinecap="round"
                 strokeLinejoin="round"
               />
