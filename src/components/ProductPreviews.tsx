@@ -7,6 +7,7 @@ import cmImage from "@/assets/cm.png";
 import csi1Image from "@/assets/csi1.png";
 import academyIcon from "@/assets/Academy-icon.png";
 import trainingBgImage from "@/assets/t-i.jpg";
+import snapMapperIcon from "@/assets/s-m.svg";
 
 // RAMLify Preview - Dark theme with purple/blue/cyan gradients matching reference design
 export const RAMLifyPreview = () => {
@@ -1368,45 +1369,16 @@ export const SnapMapperPreview = () => {
       >
         <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between" }}>
           <div style={{ display: "flex", alignItems: "center", gap: "0.5rem", padding: 0, marginLeft: "-0.5rem", marginRight: "-1rem" }}>
-            {/* SnapMapper Logo - Data transformation icon */}
-            <svg
-              width="30"
-              height="30"
-              viewBox="0 0 24 24"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              {/* Left data stack - larger and more visible */}
-              <rect x="4" y="6" width="4" height="4" rx="1" fill="#9333ea" />
-              <rect x="4" y="11" width="4" height="4" rx="1" fill="#a78bfa" />
-              <rect x="4" y="16" width="4" height="4" rx="1" fill="#9333ea" />
-              {/* Right data stack - larger and more visible */}
-              <rect x="16" y="6" width="4" height="4" rx="1" fill="#9333ea" />
-              <rect x="16" y="11" width="4" height="4" rx="1" fill="#a78bfa" />
-              <rect x="16" y="16" width="4" height="4" rx="1" fill="#9333ea" />
-              {/* Central transform loop - thicker and more visible */}
-              <path
-                d="M9.5 9C9.5 8.17 10.17 7.5 11 7.5H13C13.83 7.5 14.5 8.17 14.5 9V9.4"
-                stroke="#7c3aed"
-                strokeWidth="2"
-                strokeLinecap="round"
-              />
-              <path
-                d="M14.5 15C14.5 15.83 13.83 16.5 13 16.5H11C10.17 16.5 9.5 15.83 9.5 15V14.6"
-                stroke="#7c3aed"
-                strokeWidth="2"
-                strokeLinecap="round"
-              />
-              {/* Upper arrow (forward transform) - thicker */}
-              <path
-                d="M13.8 9.2L14.5 9.9L15.2 9.2"
-                stroke="#a78bfa"
-                strokeWidth="2"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                fill="none"
-              />
-            </svg>
+            {/* SnapMapper Logo */}
+            <img
+              src={snapMapperIcon}
+              alt="SnapMapper"
+              style={{
+                width: "26px",
+                height: "26px",
+                objectFit: "contain",
+              }}
+            />
             <h1 style={{ fontSize: "14px", fontWeight: "bold", color: "#ffffff", margin: 0, letterSpacing: "-0.02em" }}>
               SnapMapper
             </h1>
