@@ -22,8 +22,8 @@ import si3Image from "@/assets/salesforce-360.webp";
 import si4Image from "@/assets/n8n-i.png";
 import si5Image from "@/assets/si5.webp";
 import si6Image from "@/assets/Digibee1.png";
-import cs1Image from "@/assets/hrms211.png";
-import cs2Image from "@/assets/health21.png";
+import cs1Image from "@/assets/HRMS-1.png";
+import cs2Image from "@/assets/healthcare-1.png";
 import cs3Image from "@/assets/digitaltransformationfinal.webp";
 import cs4Image from "@/assets/automate.png";
 

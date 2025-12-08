@@ -2,8 +2,9 @@
 
 import { useRef } from "react";
 import { motion } from "motion/react";
-import { ThreeJSBackground } from "./ThreeJSBackground";
 import Clients from "./Clients";
+import heroimg1 from "../assets/heroimg1.png";
+import heroimg2 from "../assets/heroimg2.png";
 
 interface HeroProps {
   eyebrow?: string;
@@ -26,15 +27,43 @@ const Hero = ({
   // For "Build Smarter Integrations, Deliver Faster Results", we can highlight the second part.
   const headlineParts = headline.split(", ");
   const mainHeadline = headlineParts[0] + (headlineParts.length > 1 ? "," : "");
-  const highlightHeadline = headlineParts.length > 1 ? headlineParts.slice(1).join(", ") : "";
+  const highlightHeadline =
+    headlineParts.length > 1 ? headlineParts.slice(1).join(", ") : "";
 
   return (
     <div
       ref={heroContainerRef}
       className="w-full relative bg-white overflow-hidden"
     >
-      {/* Three.js Background Animation */}
-      <ThreeJSBackground className="absolute inset-0 z-0" />
+      {/* Curved Teal Shape - Bottom Left Corner */}
+      <div className="absolute bottom-0 left-0 z-0 pointer-events-none">
+        <img
+          src={heroimg2}
+          alt="Curved background shape"
+          className="h-auto"
+          style={{
+            maxWidth: "25vw",
+            height: "auto",
+            objectFit: "contain",
+            objectPosition: "left bottom",
+          }}
+        />
+      </div>
+
+      {/* Curved Shape - Top Right Corner */}
+      <div className="absolute top-0 right-0 z-0 pointer-events-none">
+        <img
+          src={heroimg1}
+          alt="Curved background shape top right"
+          className="h-auto"
+          style={{
+            maxWidth: "25vw",
+            height: "auto",
+            objectFit: "contain",
+            objectPosition: "right top",
+          }}
+        />
+      </div>
 
       <div className="min-h-[60vh] flex items-center justify-center w-full flex-col px-4 relative pt-16 pb-12 md:pb-16">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
@@ -61,7 +90,7 @@ const Hero = ({
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: 0.2, duration: 0.6 }}
-                  className="text-5xl md:text-7xl lg:text-8xl font-bold tracking-tighter text-black mb-6 md:mb-8"
+                  className="text-4xl md:text-6xl lg:text-7xl font-bold tracking-tighter text-black mb-6 md:mb-8"
                   style={{
                     fontFamily: "'Inter', sans-serif",
                     lineHeight: 1.1,
@@ -71,7 +100,7 @@ const Hero = ({
                   {highlightHeadline && (
                     <>
                       <br />
-                      <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#FF4D4D] to-[#F9CB28] bg-[length:200%_auto] animate-gradient">
+                      <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#10b981] to-[#06b6d4] bg-[length:200%_auto] animate-gradient">
                         {highlightHeadline}
                       </span>
                     </>
@@ -100,7 +129,7 @@ const Hero = ({
               >
                 <a
                   href={ctaUrl}
-                  className="inline-flex items-center justify-center px-8 py-3.5 text-base font-medium text-white bg-gradient-to-r from-[#FF4D4D] to-[#F9CB28] rounded-full hover:shadow-lg hover:opacity-90 transition-all duration-300 min-w-[160px]"
+                  className="inline-flex items-center justify-center px-8 py-3.5 text-base font-medium text-white bg-gradient-to-r from-[#10b981] to-[#06b6d4] rounded-full hover:shadow-lg hover:opacity-90 transition-all duration-300 min-w-[160px]"
                 >
                   {ctaText}
                 </a>
@@ -125,4 +154,3 @@ const Hero = ({
 };
 
 export default Hero;
-

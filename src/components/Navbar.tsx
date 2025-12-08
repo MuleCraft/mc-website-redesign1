@@ -502,7 +502,6 @@ const Navbar = () => {
               title: "Workflow Automation",
               description: "End-to-end business process automation platform",
             },
-
           ],
         },
       ];
@@ -604,7 +603,7 @@ const Navbar = () => {
             >
               Mulecra
               <span
-                className="text-transparent bg-clip-text bg-gradient-to-r from-[#FF4D4D] to-[#F9CB28]"
+                className="text-transparent bg-clip-text bg-gradient-to-r from-[#10b981] to-[#06b6d4]"
                 style={{
                   backgroundSize: "200% auto",
                   backgroundClip: "text",
@@ -627,8 +626,9 @@ const Navbar = () => {
               {navItems.map((item) => (
                 <div
                   key={item.label}
-                  className={`relative group ${openDropdown === item.label ? "dropdown-active" : ""
-                    }`}
+                  className={`relative group ${
+                    openDropdown === item.label ? "dropdown-active" : ""
+                  }`}
                   onMouseEnter={() => {
                     if (item.hasChevron) {
                       handleDropdownOpen(item.label);
@@ -791,8 +791,9 @@ const Navbar = () => {
                     setOpenDropdown(null);
                   }
                 }}
-                className={`px-1.5 py-0.5 rounded-full transition-colors ${isLanguageOpen ? "bg-gray-100" : "hover:bg-gray-100"
-                  }`}
+                className={`px-1.5 py-0.5 rounded-full transition-colors ${
+                  isLanguageOpen ? "bg-gray-100" : "hover:bg-gray-100"
+                }`}
                 aria-label="Language"
               >
                 <Globe className="w-5 h-5 text-gray-800" />
@@ -836,8 +837,9 @@ const Navbar = () => {
                     <button
                       key={lang.code}
                       onClick={() => handleLanguageSelect(lang.name)}
-                      className={`w-full flex items-center gap-3 px-4 py-2 text-left hover:bg-gray-100 transition-colors ${selectedLanguage === lang.name ? "bg-gray-100" : ""
-                        }`}
+                      className={`w-full flex items-center gap-3 px-4 py-2 text-left hover:bg-gray-100 transition-colors ${
+                        selectedLanguage === lang.name ? "bg-gray-100" : ""
+                      }`}
                       style={{
                         marginTop: index > 0 ? "0.25rem" : "0",
                         marginBottom:
@@ -957,32 +959,37 @@ const Navbar = () => {
             </div>
           </div>
 
-          {/* Action Button */}
-          {/* Action Button */}
-          <div className="flex items-center relative group" style={{ marginLeft: "1rem" }}>
-            <div className="absolute inset-0 bg-gradient-to-r from-[#FF4D4D] to-[#F9CB28] rounded-full p-[1px]">
-              <div className="h-full w-full bg-white rounded-full transition-colors duration-300 group-hover:bg-gray-50"></div>
-            </div>
+          {/* Action Buttons */}
+          <div
+            className="flex items-center gap-3"
+            style={{ marginLeft: "1rem" }}
+          >
             <Button
-              variant="default"
-              className="relative transition-all duration-300 rounded-full bg-transparent hover:bg-transparent border-none shadow-none"
+              variant="outline"
+              className="transition-all duration-300 rounded-full bg-white shadow-md hover:shadow-lg border-2 hover:opacity-90"
               style={{
                 padding: "0.675rem 1rem",
                 fontSize: "0.875rem",
                 height: "auto",
-                border: "none", // Explicitly override .btn border
-                backgroundColor: "transparent", // Explicitly override .btn background
+                borderColor: "#10b981",
+                color: "transparent",
+                backgroundImage: "linear-gradient(to right, #10b981, #06b6d4)",
+                WebkitBackgroundClip: "text",
+                backgroundClip: "text",
+                WebkitTextFillColor: "transparent",
               }}
+              onClick={() =>
+                window.open(
+                  "https://community.platform.mulecraft.in/",
+                  "_blank"
+                )
+              }
             >
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#FF4D4D] to-[#F9CB28] font-medium">
-                Community
-              </span>
+              Community
             </Button>
-          </div>
-          <div className="flex items-center" style={{ marginLeft: "1rem" }}>
             <Button
               variant="default"
-              className="transition-all duration-300 rounded-full text-white shadow-md hover:shadow-lg bg-gradient-to-r from-[#FF4D4D] to-[#F9CB28] hover:opacity-90 border-none"
+              className="transition-all duration-300 rounded-full text-white shadow-md hover:shadow-lg bg-gradient-to-r from-[#10b981] to-[#06b6d4] hover:opacity-90 border-none"
               style={{
                 padding: "0.675rem 1rem",
                 fontSize: "0.875rem",
