@@ -190,12 +190,10 @@ const DropdownMenu = ({
                       textAlign: "left",
                       backgroundColor:
                         selectedHeader === item.label
-                          ? "hsl(var(--primary) / 0.1)"
+                          ? "rgba(16, 185, 129, 0.1)"
                           : "transparent",
                       color:
-                        selectedHeader === item.label
-                          ? "hsl(var(--primary))"
-                          : "#1f1f1f",
+                        selectedHeader === item.label ? "#10b981" : "#1f1f1f",
                       border: "none",
                       cursor: "pointer",
                       fontFamily: '"Noto Sans", sans-serif',
@@ -261,7 +259,7 @@ const DropdownMenu = ({
                           textDecoration: "none",
                         }}
                         onMouseEnter={(e) => {
-                          e.currentTarget.style.color = "hsl(var(--primary))";
+                          e.currentTarget.style.color = "#10b981";
                         }}
                         onMouseLeave={(e) => {
                           e.currentTarget.style.color = "#1f1f1f";
@@ -532,12 +530,10 @@ const DropdownMenu = ({
                       textAlign: "left",
                       backgroundColor:
                         selectedHeader === item.label
-                          ? "hsl(var(--primary) / 0.1)"
+                          ? "rgba(16, 185, 129, 0.1)"
                           : "transparent",
                       color:
-                        selectedHeader === item.label
-                          ? "hsl(var(--primary))"
-                          : "#1f1f1f",
+                        selectedHeader === item.label ? "#10b981" : "#1f1f1f",
                       border: "none",
                       cursor: "pointer",
                       fontFamily: '"Noto Sans", sans-serif',
@@ -709,7 +705,7 @@ const DropdownMenu = ({
                         transition: "background-color 0.2s ease",
                       }}
                       onMouseEnter={(e) => {
-                        e.currentTarget.style.color = "hsl(var(--primary))";
+                        e.currentTarget.style.color = "#10b981";
                       }}
                       onMouseLeave={(e) => {
                         e.currentTarget.style.color = "inherit";
@@ -753,7 +749,7 @@ const DropdownMenu = ({
                         transition: "background-color 0.2s ease",
                       }}
                       onMouseEnter={(e) => {
-                        e.currentTarget.style.color = "hsl(var(--primary))";
+                        e.currentTarget.style.color = "#10b981";
                       }}
                       onMouseLeave={(e) => {
                         e.currentTarget.style.color = "inherit";
@@ -796,7 +792,7 @@ const DropdownMenu = ({
                         transition: "background-color 0.2s ease",
                       }}
                       onMouseEnter={(e) => {
-                        e.currentTarget.style.color = "hsl(var(--primary))";
+                        e.currentTarget.style.color = "#10b981";
                       }}
                       onMouseLeave={(e) => {
                         e.currentTarget.style.color = "inherit";
@@ -839,7 +835,7 @@ const DropdownMenu = ({
                         transition: "background-color 0.2s ease",
                       }}
                       onMouseEnter={(e) => {
-                        e.currentTarget.style.color = "hsl(var(--primary))";
+                        e.currentTarget.style.color = "#10b981";
                       }}
                       onMouseLeave={(e) => {
                         e.currentTarget.style.color = "inherit";
@@ -1080,12 +1076,9 @@ const DropdownMenu = ({
                       textAlign: "left",
                       backgroundColor:
                         selectedHeader === header
-                          ? "hsl(var(--primary) / 0.1)"
+                          ? "rgba(16, 185, 129, 0.1)"
                           : "transparent",
-                      color:
-                        selectedHeader === header
-                          ? "hsl(var(--primary))"
-                          : "#1f1f1f",
+                      color: selectedHeader === header ? "#10b981" : "#1f1f1f",
                       border: "none",
                       cursor: "pointer",
                       fontFamily: '"Noto Sans", sans-serif',
@@ -1146,7 +1139,7 @@ const DropdownMenu = ({
                             textDecoration: "none",
                           }}
                           onMouseEnter={(e) => {
-                            e.currentTarget.style.color = "hsl(var(--primary))";
+                            e.currentTarget.style.color = "#10b981";
                           }}
                           onMouseLeave={(e) => {
                             e.currentTarget.style.color = "#1f1f1f";
@@ -1185,7 +1178,7 @@ const DropdownMenu = ({
                             textDecoration: "none",
                           }}
                           onMouseEnter={(e) => {
-                            e.currentTarget.style.color = "hsl(var(--primary))";
+                            e.currentTarget.style.color = "#10b981";
                           }}
                           onMouseLeave={(e) => {
                             e.currentTarget.style.color = "#1f1f1f";
@@ -1224,7 +1217,7 @@ const DropdownMenu = ({
                             textDecoration: "none",
                           }}
                           onMouseEnter={(e) => {
-                            e.currentTarget.style.color = "hsl(var(--primary))";
+                            e.currentTarget.style.color = "#10b981";
                           }}
                           onMouseLeave={(e) => {
                             e.currentTarget.style.color = "#1f1f1f";
@@ -1263,7 +1256,7 @@ const DropdownMenu = ({
                             textDecoration: "none",
                           }}
                           onMouseEnter={(e) => {
-                            e.currentTarget.style.color = "hsl(var(--primary))";
+                            e.currentTarget.style.color = "#10b981";
                           }}
                           onMouseLeave={(e) => {
                             e.currentTarget.style.color = "#1f1f1f";
@@ -1306,7 +1299,7 @@ const DropdownMenu = ({
                             textDecoration: "none",
                           }}
                           onMouseEnter={(e) => {
-                            e.currentTarget.style.color = "hsl(var(--primary))";
+                            e.currentTarget.style.color = "#10b981";
                           }}
                           onMouseLeave={(e) => {
                             e.currentTarget.style.color = "#1f1f1f";
@@ -1345,7 +1338,7 @@ const DropdownMenu = ({
                             textDecoration: "none",
                           }}
                           onMouseEnter={(e) => {
-                            e.currentTarget.style.color = "hsl(var(--primary))";
+                            e.currentTarget.style.color = "#10b981";
                           }}
                           onMouseLeave={(e) => {
                             e.currentTarget.style.color = "#1f1f1f";
@@ -1384,7 +1377,7 @@ const DropdownMenu = ({
                             textDecoration: "none",
                           }}
                           onMouseEnter={(e) => {
-                            e.currentTarget.style.color = "hsl(var(--primary))";
+                            e.currentTarget.style.color = "#10b981";
                           }}
                           onMouseLeave={(e) => {
                             e.currentTarget.style.color = "#1f1f1f";
@@ -1423,7 +1416,7 @@ const DropdownMenu = ({
                             textDecoration: "none",
                           }}
                           onMouseEnter={(e) => {
-                            e.currentTarget.style.color = "hsl(var(--primary))";
+                            e.currentTarget.style.color = "#10b981";
                           }}
                           onMouseLeave={(e) => {
                             e.currentTarget.style.color = "#1f1f1f";
@@ -1466,7 +1459,7 @@ const DropdownMenu = ({
                             textDecoration: "none",
                           }}
                           onMouseEnter={(e) => {
-                            e.currentTarget.style.color = "hsl(var(--primary))";
+                            e.currentTarget.style.color = "#10b981";
                           }}
                           onMouseLeave={(e) => {
                             e.currentTarget.style.color = "#1f1f1f";
@@ -1505,7 +1498,7 @@ const DropdownMenu = ({
                             textDecoration: "none",
                           }}
                           onMouseEnter={(e) => {
-                            e.currentTarget.style.color = "hsl(var(--primary))";
+                            e.currentTarget.style.color = "#10b981";
                           }}
                           onMouseLeave={(e) => {
                             e.currentTarget.style.color = "#1f1f1f";
@@ -1544,7 +1537,7 @@ const DropdownMenu = ({
                             textDecoration: "none",
                           }}
                           onMouseEnter={(e) => {
-                            e.currentTarget.style.color = "hsl(var(--primary))";
+                            e.currentTarget.style.color = "#10b981";
                           }}
                           onMouseLeave={(e) => {
                             e.currentTarget.style.color = "#1f1f1f";
@@ -1583,7 +1576,7 @@ const DropdownMenu = ({
                             textDecoration: "none",
                           }}
                           onMouseEnter={(e) => {
-                            e.currentTarget.style.color = "hsl(var(--primary))";
+                            e.currentTarget.style.color = "#10b981";
                           }}
                           onMouseLeave={(e) => {
                             e.currentTarget.style.color = "#1f1f1f";
@@ -1626,7 +1619,7 @@ const DropdownMenu = ({
                             textDecoration: "none",
                           }}
                           onMouseEnter={(e) => {
-                            e.currentTarget.style.color = "hsl(var(--primary))";
+                            e.currentTarget.style.color = "#10b981";
                           }}
                           onMouseLeave={(e) => {
                             e.currentTarget.style.color = "#1f1f1f";
@@ -1666,7 +1659,7 @@ const DropdownMenu = ({
                             textDecoration: "none",
                           }}
                           onMouseEnter={(e) => {
-                            e.currentTarget.style.color = "hsl(var(--primary))";
+                            e.currentTarget.style.color = "#10b981";
                           }}
                           onMouseLeave={(e) => {
                             e.currentTarget.style.color = "#1f1f1f";
@@ -1705,7 +1698,7 @@ const DropdownMenu = ({
                             textDecoration: "none",
                           }}
                           onMouseEnter={(e) => {
-                            e.currentTarget.style.color = "hsl(var(--primary))";
+                            e.currentTarget.style.color = "#10b981";
                           }}
                           onMouseLeave={(e) => {
                             e.currentTarget.style.color = "#1f1f1f";
@@ -1745,7 +1738,7 @@ const DropdownMenu = ({
                             textDecoration: "none",
                           }}
                           onMouseEnter={(e) => {
-                            e.currentTarget.style.color = "hsl(var(--primary))";
+                            e.currentTarget.style.color = "#10b981";
                           }}
                           onMouseLeave={(e) => {
                             e.currentTarget.style.color = "#1f1f1f";
@@ -1788,7 +1781,7 @@ const DropdownMenu = ({
                             textDecoration: "none",
                           }}
                           onMouseEnter={(e) => {
-                            e.currentTarget.style.color = "hsl(var(--primary))";
+                            e.currentTarget.style.color = "#10b981";
                           }}
                           onMouseLeave={(e) => {
                             e.currentTarget.style.color = "#1f1f1f";
@@ -1827,7 +1820,7 @@ const DropdownMenu = ({
                             textDecoration: "none",
                           }}
                           onMouseEnter={(e) => {
-                            e.currentTarget.style.color = "hsl(var(--primary))";
+                            e.currentTarget.style.color = "#10b981";
                           }}
                           onMouseLeave={(e) => {
                             e.currentTarget.style.color = "#1f1f1f";
@@ -1866,7 +1859,7 @@ const DropdownMenu = ({
                             textDecoration: "none",
                           }}
                           onMouseEnter={(e) => {
-                            e.currentTarget.style.color = "hsl(var(--primary))";
+                            e.currentTarget.style.color = "#10b981";
                           }}
                           onMouseLeave={(e) => {
                             e.currentTarget.style.color = "#1f1f1f";
@@ -2315,12 +2308,10 @@ const DropdownMenu = ({
                       fontSize: "15px",
                       fontWeight: 500,
                       color:
-                        selectedHeader === item.label
-                          ? "hsl(var(--primary))"
-                          : "#1f1f1f",
+                        selectedHeader === item.label ? "#10b981" : "#1f1f1f",
                       backgroundColor:
                         selectedHeader === item.label
-                          ? "hsl(var(--primary) / 0.1)"
+                          ? "rgba(16, 185, 129, 0.1)"
                           : "transparent",
                       border: "none",
                       borderRadius: "6px",
@@ -2372,7 +2363,7 @@ const DropdownMenu = ({
                       borderRadius: "6px",
                     }}
                     onMouseEnter={(e) => {
-                      e.currentTarget.style.color = "hsl(var(--primary))";
+                      e.currentTarget.style.color = "#10b981";
                     }}
                     onMouseLeave={(e) => {
                       e.currentTarget.style.color = "#1f1f1f";
@@ -2688,8 +2679,7 @@ const DropdownMenu = ({
                                 textAlign: "center",
                               }}
                               onMouseEnter={(e) => {
-                                e.currentTarget.style.color =
-                                  "hsl(var(--primary))";
+                                e.currentTarget.style.color = "#10b981";
                               }}
                               onMouseLeave={(e) => {
                                 e.currentTarget.style.color = "#1f1f1f";
@@ -2738,8 +2728,7 @@ const DropdownMenu = ({
                               textAlign: "center",
                             }}
                             onMouseEnter={(e) => {
-                              e.currentTarget.style.color =
-                                "hsl(var(--primary))";
+                              e.currentTarget.style.color = "#10b981";
                             }}
                             onMouseLeave={(e) => {
                               e.currentTarget.style.color = "#1f1f1f";

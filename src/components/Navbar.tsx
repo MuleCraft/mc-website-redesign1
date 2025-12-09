@@ -598,7 +598,7 @@ const Navbar = () => {
                 fontSize: "1.75rem",
                 letterSpacing: "-0.02em",
                 fontWeight: 700,
-                color: "#000000",
+                color: "#0891b2",
               }}
             >
               Mulecra
@@ -613,7 +613,7 @@ const Navbar = () => {
               >
                 f
               </span>
-              t
+              <span style={{ color: "#0891b2" }}>t</span>
             </span>
           </a>
 

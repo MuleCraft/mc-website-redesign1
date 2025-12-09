@@ -90,13 +90,13 @@ const Hero = ({
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: 0.2, duration: 0.6 }}
-                  className="text-4xl md:text-6xl lg:text-7xl font-bold tracking-tighter text-black mb-6 md:mb-8"
+                  className="text-4xl md:text-6xl lg:text-7xl font-bold tracking-tighter mb-6 md:mb-8"
                   style={{
                     fontFamily: "'Inter', sans-serif",
                     lineHeight: 1.1,
                   }}
                 >
-                  {mainHeadline}
+                  <span style={{ color: "#6b7280" }}>{mainHeadline}</span>
                   {highlightHeadline && (
                     <>
                       <br />

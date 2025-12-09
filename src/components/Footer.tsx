@@ -4,7 +4,6 @@ import {
   FaYoutube,
   FaInstagram,
 } from "react-icons/fa";
-import whiteLogo from "@/assets/NewMulecraftWhiteLogo.png";
 import salesforceLogo from "@/assets/Salesforcelogo.png";
 
 const Footer = () => {
@@ -135,11 +134,30 @@ const Footer = () => {
             {/* Logo and Tagline */}
             <div className="flex-1">
               <div className="mb-4 ">
-                <img
-                  src={whiteLogo}
-                  alt="MuleCraft Logo"
-                  className="h-10 lg:h-15 w-auto"
-                />
+                <span
+                  className="font-bold inline-block"
+                  style={{
+                    fontFamily: '"Inter", "Noto Sans", sans-serif',
+                    fontSize: "2.5rem",
+                    letterSpacing: "-0.02em",
+                    fontWeight: 700,
+                    lineHeight: "1",
+                  }}
+                >
+                  <span style={{ color: "white" }}>Mulecra</span>
+                  <span
+                    className="text-transparent bg-clip-text bg-gradient-to-r from-[#10b981] to-[#06b6d4]"
+                    style={{
+                      backgroundSize: "200% auto",
+                      backgroundClip: "text",
+                      WebkitBackgroundClip: "text",
+                      WebkitTextFillColor: "transparent",
+                    }}
+                  >
+                    f
+                  </span>
+                  <span style={{ color: "white" }}>t</span>
+                </span>
               </div>
               <p className="text-white text-sm">
                 From Integration to Innovation. Instantly.
@@ -159,7 +177,6 @@ const Footer = () => {
                   fontSize: "16px",
                   fontWeight: 600,
                   color: "white",
-                  
                 }}
               >
                 PARTNER
@@ -209,7 +226,7 @@ const Footer = () => {
           {/* Divider */}
           <div
             className="mt-12 mb-6 h-[1px]"
-            style={{ background: "linear-gradient(45deg, #a03291, #4b4fe2)" }}
+            style={{ background: "linear-gradient(45deg, #10b981, #06b6d4)" }}
           ></div>
 
           {/* Bottom Section */}
