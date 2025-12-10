@@ -1,5 +1,5 @@
 import { useState, useRef, useEffect } from "react";
-import { Search, Globe, ChevronDown } from "lucide-react";
+import { Search, Globe } from "lucide-react";
 import { Button } from "./ui/button";
 import DropdownMenu from "./DropdownMenu";
 
@@ -580,55 +580,72 @@ const Navbar = () => {
   return (
     <header
       ref={navbarRef}
-      className="w-full fixed top-0 z-50 overflow-visible"
-      style={{ backgroundColor: "#fff" }}
+      className="mega_navigation__outer"
+      style={{ 
+        backgroundColor: "#fff",
+        borderBottom: "0.0625rem solid #f5f5f5",
+        position: "fixed",
+        top: 0,
+        left: 0,
+        right: 0,
+        display: "flex",
+        justifyContent: "space-between",
+        zIndex: 100,
+        width: "100%",
+        padding: "0 0.75rem",
+        height: "3.5rem",
+        transition: "transform 0.3s ease 0s",
+        transform: "translateY(0)",
+      }}
     >
-      <nav className="w-full max-w-[1344px] mx-auto py-2 flex items-center justify-between min-h-[80px] overflow-visible">
+      <nav className="mega_navigation__inner w-full max-w-[1344px] mx-auto flex items-center justify-between overflow-visible" style={{ height: "100%" }}>
         {/* Logo - Left side - Always visible */}
-        <div className="flex items-center">
-          <a
-            href="/"
-            className="flex items-center align-start overflow-visible"
-            style={{ textDecoration: "none" }}
-          >
-            <span
-              className="font-bold"
-              style={{
-                fontFamily: '"Inter", "Noto Sans", sans-serif',
-                fontSize: "1.75rem",
-                letterSpacing: "-0.02em",
-                fontWeight: 700,
-                color: "#0891b2",
-              }}
+        <ul className="mega_navigation__group flex items-center list-none" style={{ margin: 0, padding: 0 }}>
+          <li className="site_logo menu_item" style={{ listStyle: "none" }}>
+            <a
+              href="/"
+              className="site_logo__link flex items-center align-start overflow-visible"
+              style={{ textDecoration: "none" }}
+              title="Mulecraft"
+              role="button"
+              aria-haspopup="false"
             >
-              Mulecra
               <span
-                className="text-transparent bg-clip-text bg-gradient-to-r from-[#10b981] to-[#06b6d4]"
+                className="font-bold"
                 style={{
-                  backgroundSize: "200% auto",
-                  backgroundClip: "text",
-                  WebkitBackgroundClip: "text",
-                  WebkitTextFillColor: "transparent",
+                  fontFamily: "'Articulat CF', 'Inter', 'Noto Sans', sans-serif",
+                  fontSize: "1.75rem",
+                  letterSpacing: "0.05em",
+                  fontWeight: 700,
+                  color: "#000000",
+                  display: "inline-flex",
+                  alignItems: "center",
                 }}
               >
-                f
+                Mulecra
+                <span
+                  style={{
+                    color: "#3E016F",
+                    display: "inline-block",
+                  }}
+                >
+                  f
+                </span>
+                t
               </span>
-              <span style={{ color: "#0891b2" }}>t</span>
-            </span>
-          </a>
+            </a>
+          </li>
 
           {/* Navigation Links - Hidden when search is open */}
           {!isSearchOpen && (
-            <div
-              className="hidden lg:flex items-center relative"
-              style={{ padding: ".5rem 1rem" }}
-            >
+            <ul className="mega_navigation__group hidden lg:flex items-center relative list-none" style={{ margin: 0, padding: 0, marginLeft: "2rem" }}>
               {navItems.map((item) => (
-                <div
+                <li
                   key={item.label}
-                  className={`relative group ${
+                  className={`menu_item relative ${
                     openDropdown === item.label ? "dropdown-active" : ""
                   }`}
+                  style={{ listStyle: "none" }}
                   onMouseEnter={() => {
                     if (item.hasChevron) {
                       handleDropdownOpen(item.label);
@@ -656,30 +673,27 @@ const Navbar = () => {
                         e.preventDefault();
                       }
                     }}
-                    className="flex items-center gap-1.5 whitespace-nowrap transition-all rounded-md nav-link"
+                    className="menu_item__link whitespace-nowrap transition-all nav-link"
                     style={{
-                      fontFamily: '"Noto Sans", sans-serif',
-                      color: "#333",
+                      fontFamily: "'Articulat CF', Arial, sans-serif",
+                      color: "#0f001b",
                       display: "flex",
                       alignItems: "center",
                       textDecoration: "none",
                       fontWeight: 500,
-                      fontSize: ".9rem",
+                      fontSize: "1rem",
                       transition: "color .3s ease-in-out",
                       position: "relative",
-                      lineHeight: 1,
+                      lineHeight: 1.5,
                       userSelect: "none",
                       WebkitUserSelect: "none" as any,
                       padding: "0.35rem .75rem",
+                      WebkitTapHighlightColor: "transparent",
                     }}
                   >
-                    {item.label}
-                    {item.hasChevron && (
-                      <ChevronDown
-                        className="w-4 h-4"
-                        style={{ color: "rgb(31, 31, 31)", strokeWidth: 1.6 }}
-                      />
-                    )}
+                    <span className="hover">
+                      <span className="text--node">{item.label}</span>
+                    </span>
                   </a>
                   {/* Animated underline at bottom of navbar */}
                   <span
@@ -695,11 +709,11 @@ const Navbar = () => {
                       transition: "width 0.3s ease-in-out",
                     }}
                   />
-                </div>
+                </li>
               ))}
-            </div>
+            </ul>
           )}
-        </div>
+        </ul>
 
         {/* Middle section - Search or empty space */}
         <div className="flex-1 flex items-center justify-center px-4">
@@ -734,55 +748,30 @@ const Navbar = () => {
         </div>
 
         {/* Right side icons and button - Always in same place */}
-        <div className="flex items-center flex-shrink-0 overflow-visible">
+        <ul className="mega_navigation__group flex items-center flex-shrink-0 overflow-visible list-none" style={{ margin: 0, padding: 0 }}>
           {/* Utility Icons */}
           <div
             className="hidden md:flex items-center overflow-visible"
             style={{ gap: "0.5rem" }}
           >
             {!isSearchOpen && (
-              <div className="relative group">
-                <button
-                  onClick={() => setIsSearchOpen(true)}
-                  className="px-1.5 rounded-full transition-colors hover:bg-gray-100"
-                  style={{ paddingTop: 0, paddingBottom: 0 }}
-                  aria-label="Search"
-                >
-                  <Search
-                    className="w-5 h-5 text-gray-800"
-                    style={{ strokeWidth: 2.8 }}
-                  />
-                </button>
-                {/* Tooltip */}
-                <div
-                  className="absolute bottom-full left-1/2 -translate-x-1/2 mb-0.5 opacity-0 group-hover:opacity-100 transition-opacity duration-200 pointer-events-none z-50"
-                  style={{ marginBottom: "2px" }}
-                >
-                  <div
-                    className="bg-black text-white px-1.5 py-0.5 rounded whitespace-nowrap relative"
-                    style={{
-                      fontFamily: '"Noto Sans", sans-serif',
-                      fontSize: "10px",
-                      lineHeight: "1.2",
-                    }}
-                  >
-                    Search
-                    {/* Tooltip arrow */}
-                    <div
-                      className="absolute top-full left-1/2 -translate-x-1/2 -mt-px"
-                      style={{
-                        width: 0,
-                        height: 0,
-                        borderLeft: "3px solid transparent",
-                        borderRight: "3px solid transparent",
-                        borderTop: "3px solid #000000",
-                      }}
-                    />
-                  </div>
-                </div>
-              </div>
+              <button
+                onClick={() => setIsSearchOpen(true)}
+                className="rounded-full transition-colors hover:bg-gray-100 flex items-center justify-center"
+                style={{ 
+                  width: "2rem",
+                  height: "2rem",
+                  padding: 0
+                }}
+                aria-label="Search"
+              >
+                <Search
+                  className="w-5 h-5 text-gray-800"
+                  style={{ strokeWidth: 2.8 }}
+                />
+              </button>
             )}
-            <div className="relative group">
+            <div className="relative">
               <button
                 ref={languageButtonRef}
                 onClick={() => {
@@ -791,42 +780,18 @@ const Navbar = () => {
                     setOpenDropdown(null);
                   }
                 }}
-                className={`px-1.5 py-0.5 rounded-full transition-colors ${
+                className={`rounded-full transition-colors flex items-center justify-center ${
                   isLanguageOpen ? "bg-gray-100" : "hover:bg-gray-100"
                 }`}
+                style={{ 
+                  width: "2rem",
+                  height: "2rem",
+                  padding: 0
+                }}
                 aria-label="Language"
               >
                 <Globe className="w-5 h-5 text-gray-800" />
               </button>
-              {/* Tooltip */}
-              {!isLanguageOpen && (
-                <div
-                  className="absolute bottom-full left-1/2 -translate-x-1/2 mb-0.5 opacity-0 group-hover:opacity-100 transition-opacity duration-200 pointer-events-none z-50"
-                  style={{ marginBottom: "2px" }}
-                >
-                  <div
-                    className="bg-black text-white px-1.5 py-0.5 rounded whitespace-nowrap relative"
-                    style={{
-                      fontFamily: '"Noto Sans", sans-serif',
-                      fontSize: "10px",
-                      lineHeight: "1.2",
-                    }}
-                  >
-                    Language
-                    {/* Tooltip arrow */}
-                    <div
-                      className="absolute top-full left-1/2 -translate-x-1/2 -mt-px"
-                      style={{
-                        width: 0,
-                        height: 0,
-                        borderLeft: "3px solid transparent",
-                        borderRight: "3px solid transparent",
-                        borderTop: "3px solid #000000",
-                      }}
-                    />
-                  </div>
-                </div>
-              )}
               {isLanguageOpen && (
                 <div
                   data-language-dropdown
@@ -862,8 +827,10 @@ const Navbar = () => {
               )}
             </div>
             {/* Theme Toggle Button */}
-            <div className="relative group">
-              <label className="inline-flex items-center relative cursor-pointer px-1.5 py-0.5 rounded-full transition-colors hover:bg-gray-100">
+            <div className="relative">
+              <label className="inline-flex items-center justify-center relative cursor-pointer rounded-full transition-colors hover:bg-gray-100" style={{ 
+                padding: "0.25rem"
+              }}>
                 <input
                   className="peer hidden"
                   id="toggle"
@@ -928,34 +895,6 @@ const Navbar = () => {
                   <path d="M12.009,24A12.067,12.067,0,0,1,.075,10.725,12.121,12.121,0,0,1,10.1.152a13,13,0,0,1,5.03.206,2.5,2.5,0,0,1,1.8,1.8,2.47,2.47,0,0,1-.7,2.425c-4.559,4.168-4.165,10.645.807,14.412h0a2.5,2.5,0,0,1-.7,4.319A13.875,13.875,0,0,1,12.009,24Zm.074-22a10.776,10.776,0,0,0-1.675.127,10.1,10.1,0,0,0-8.344,8.8A9.928,9.928,0,0,0,4.581,18.7a10.473,10.473,0,0,0,11.093,2.734.5.5,0,0,0,.138-.856h0C9.883,16.1,9.417,8.087,14.865,3.124a.459.459,0,0,0,.127-.465.491.491,0,0,0-.356-.362A10.68,10.68,0,0,0,12.083,2ZM20.5,12a1,1,0,0,1-.97-.757l-.358-1.43L17.74,9.428a1,1,0,0,1,.035-1.94l1.4-.325.351-1.406a1,1,0,0,1,1.94,0l.355,1.418,1.418.355a1,1,0,0,1,0,1.94l-1.418.355-.355,1.418A1,1,0,0,1,20.5,12ZM16,14a1,1,0,0,0,2,0A1,1,0,0,0,16,14Zm6,4a1,1,0,0,0,2,0A1,1,0,0,0,22,18Z"></path>
                 </svg>
               </label>
-              {/* Tooltip */}
-              <div
-                className="absolute bottom-full left-1/2 -translate-x-1/2 mb-0.5 opacity-0 group-hover:opacity-100 transition-opacity duration-200 pointer-events-none z-50"
-                style={{ marginBottom: "2px" }}
-              >
-                <div
-                  className="bg-black text-white px-1.5 py-0.5 rounded whitespace-nowrap relative"
-                  style={{
-                    fontFamily: '"Noto Sans", sans-serif',
-                    fontSize: "10px",
-                    lineHeight: "1.2",
-                  }}
-                >
-                  {selectedTheme === "Dark"
-                    ? "Switch to Light"
-                    : "Switch to Dark"}
-                  <div
-                    className="absolute top-full left-1/2 -translate-x-1/2 -mt-px"
-                    style={{
-                      width: 0,
-                      height: 0,
-                      borderLeft: "3px solid transparent",
-                      borderRight: "3px solid transparent",
-                      borderTop: "3px solid #000000",
-                    }}
-                  />
-                </div>
-              </div>
             </div>
           </div>
 
@@ -968,15 +907,14 @@ const Navbar = () => {
               variant="outline"
               className="transition-all duration-300 rounded-full bg-white shadow-md hover:shadow-lg border-2 hover:opacity-90"
               style={{
-                padding: "0.675rem 1rem",
-                fontSize: "0.875rem",
+                padding: "0.375rem 0.75rem",
+                fontSize: "0.75rem",
                 height: "auto",
-                borderColor: "#10b981",
-                color: "transparent",
-                backgroundImage: "linear-gradient(to right, #10b981, #06b6d4)",
-                WebkitBackgroundClip: "text",
-                backgroundClip: "text",
-                WebkitTextFillColor: "transparent",
+                minHeight: "auto",
+                borderColor: "#3E016F",
+                color: "#3E016F",
+                fontFamily: "'Articulat CF', sans-serif",
+                lineHeight: "1.5"
               }}
               onClick={() =>
                 window.open(
@@ -989,17 +927,22 @@ const Navbar = () => {
             </Button>
             <Button
               variant="default"
-              className="transition-all duration-300 rounded-full text-white shadow-md hover:shadow-lg bg-gradient-to-r from-[#10b981] to-[#06b6d4] hover:opacity-90 border-none"
+              className="transition-all duration-300 rounded-full text-white shadow-md hover:shadow-lg hover:opacity-90 border-none"
               style={{
-                padding: "0.675rem 1rem",
-                fontSize: "0.875rem",
+                padding: "0.375rem 0.75rem",
+                fontSize: "0.75rem",
                 height: "auto",
+                minHeight: "auto",
+                backgroundColor: "#3E016F",
+                fontFamily: "'Articulat CF', sans-serif",
+                lineHeight: "1.5",
+                border: "2px solid transparent"
               }}
             >
               Schedule demo
             </Button>
           </div>
-        </div>
+        </ul>
       </nav>
 
       {/* Full-width Dropdown Menu - Rendered outside nav but inside header */}

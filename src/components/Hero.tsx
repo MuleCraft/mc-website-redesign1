@@ -3,8 +3,6 @@
 import { useRef } from "react";
 import { motion } from "motion/react";
 import Clients from "./Clients";
-import heroimg1 from "../assets/heroimg1.png";
-import heroimg2 from "../assets/heroimg2.png";
 
 interface HeroProps {
   eyebrow?: string;
@@ -35,36 +33,6 @@ const Hero = ({
       ref={heroContainerRef}
       className="w-full relative bg-white overflow-hidden"
     >
-      {/* Curved Teal Shape - Bottom Left Corner */}
-      <div className="absolute bottom-0 left-0 z-0 pointer-events-none">
-        <img
-          src={heroimg2}
-          alt="Curved background shape"
-          className="h-auto"
-          style={{
-            maxWidth: "25vw",
-            height: "auto",
-            objectFit: "contain",
-            objectPosition: "left bottom",
-          }}
-        />
-      </div>
-
-      {/* Curved Shape - Top Right Corner */}
-      <div className="absolute top-0 right-0 z-0 pointer-events-none">
-        <img
-          src={heroimg1}
-          alt="Curved background shape top right"
-          className="h-auto"
-          style={{
-            maxWidth: "25vw",
-            height: "auto",
-            objectFit: "contain",
-            objectPosition: "right top",
-          }}
-        />
-      </div>
-
       <div className="min-h-[60vh] flex items-center justify-center w-full flex-col px-4 relative pt-16 pb-12 md:pb-16">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <article className="flex flex-col items-center justify-center text-center w-full">
@@ -79,7 +47,15 @@ const Hero = ({
                     transition={{ delay: 0.1, duration: 0.5 }}
                     className="flex justify-center mb-6"
                   >
-                    <span className="text-sm font-semibold text-gray-500 uppercase tracking-[0.2em]">
+                    <span 
+                      style={{ 
+                        fontFamily: "'Articulat CF', Arial, sans-serif",
+                        fontWeight: 700,
+                        color: "#000000",
+                        fontSize: "18px",
+                        lineHeight: "18px"
+                      }}
+                    >
                       {eyebrow}
                     </span>
                   </motion.div>
@@ -90,17 +66,31 @@ const Hero = ({
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: 0.2, duration: 0.6 }}
-                  className="text-4xl md:text-6xl lg:text-7xl font-bold tracking-tighter mb-6 md:mb-8"
+                  className="mb-6 md:mb-8"
                   style={{
-                    fontFamily: "'Inter', sans-serif",
-                    lineHeight: 1.1,
+                    fontFamily: "'Articulat CF', Arial, sans-serif",
+                    fontWeight: 700,
                   }}
                 >
-                  <span style={{ color: "#6b7280" }}>{mainHeadline}</span>
+                  <span 
+                    style={{ 
+                      color: "#0F011B",
+                      fontSize: "69px",
+                      lineHeight: "69px"
+                    }}
+                  >
+                    {mainHeadline}
+                  </span>
                   {highlightHeadline && (
                     <>
                       <br />
-                      <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#10b981] to-[#06b6d4] bg-[length:200%_auto] animate-gradient">
+                      <span 
+                        className="text-gradient--animated"
+                        style={{
+                          fontSize: "69px",
+                          lineHeight: "69px"
+                        }}
+                      >
                         {highlightHeadline}
                       </span>
                     </>
@@ -114,7 +104,21 @@ const Hero = ({
                   transition={{ delay: 0.3, duration: 0.6 }}
                   className="mb-6 md:mb-8"
                 >
-                  <p className="text-lg md:text-xl text-gray-500 max-w-2xl mx-auto leading-relaxed font-normal">
+                  <p 
+                    className="max-w-2xl mx-auto"
+                    style={{ 
+                      fontFamily: "'Articulat CF', Arial, sans-serif",
+                      fontWeight: 100,
+                      color: "#0F011B",
+                      fontSize: "24px",
+                      lineHeight: "36px",
+                      display: "-webkit-box",
+                      WebkitLineClamp: 2,
+                      WebkitBoxOrient: "vertical",
+                      overflow: "hidden",
+                      textOverflow: "ellipsis"
+                    }}
+                  >
                     {description}
                   </p>
                 </motion.div>
@@ -129,7 +133,11 @@ const Hero = ({
               >
                 <a
                   href={ctaUrl}
-                  className="inline-flex items-center justify-center px-8 py-3.5 text-base font-medium text-white bg-gradient-to-r from-[#10b981] to-[#06b6d4] rounded-full hover:shadow-lg hover:opacity-90 transition-all duration-300 min-w-[160px]"
+                  className="inline-flex items-center justify-center px-8 py-3.5 text-base font-medium text-white rounded-full hover:shadow-lg hover:opacity-90 transition-all duration-300 min-w-[160px]"
+                  style={{ 
+                    backgroundColor: "#8353FD",
+                    fontFamily: "'Articulat CF', sans-serif"
+                  }}
                 >
                   {ctaText}
                 </a>

@@ -2,6 +2,55 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Articulat CF Font - Self-hosted */
+@font-face {
+  font-family: 'Articulat CF';
+  src: url('/fonts/Articulat CF Normal.ttf') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Articulat CF';
+  src: url('/fonts/Articulat CF Normal.ttf') format('truetype');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Articulat CF';
+  src: url('/fonts/Articulat CF Normal.ttf') format('truetype');
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Articulat CF';
+  src: url('/fonts/Articulat CF Normal.ttf') format('truetype');
+  font-weight: 100;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Articulat CF';
+  src: url('/fonts/Articulat CF Bold.ttf') format('truetype');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Articulat CF';
+  src: url('/fonts/Articulat CF Bold.ttf') format('truetype');
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+
 @layer base {
   :root {
     --background: 0 0% 100%;
@@ -33,7 +82,7 @@
   }
   body {
     @apply text-foreground;
-    font-family: 'Noto Sans', sans-serif;
+    font-family: 'Articulat CF', 'Noto Sans', sans-serif;
     background: #ffffff;
     overscroll-behavior: none;
   }
@@ -84,5 +133,84 @@
   .nav-link:hover svg,
   .dropdown-active .nav-link svg {
     color: rgb(7, 43, 85) !important;
+  }
+
+  /* Gradient text animation */
+  @keyframes gradShift {
+    100% {
+      background-position: calc(1 * var(--bg-size)) 0;
+    }
+  }
+
+  .text-gradient--animated {
+    --bg-size: 200%;
+    --grad: linear-gradient(94.96deg, #3E016F 0%, #8353FD 24.3%, #E60054 47.7%, #E60054 52.3%, #8353FD 75.7%, #3E016F 100%);
+    background-image: var(--grad);
+    background-size: var(--bg-size) 100%;
+    animation: gradShift 5s linear infinite alternate;
+    -webkit-text-fill-color: transparent;
+    -webkit-background-clip: text;
+    -webkit-box-decoration-break: clone;
+    background-clip: text;
+  }
+
+  /* Mega Navigation Styles */
+  .mega_navigation * {
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  .mega_navigation__outer {
+    background-color: #fff;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    display: flex;
+    justify-content: space-between;
+    z-index: 100;
+    width: 100%;
+    padding: 0 0.75rem;
+    transition: transform 0.3s ease 0s;
+    transform: translateY(0);
+    border-bottom: 0.0625rem solid #f5f5f5;
+    height: 3.5rem;
+  }
+
+  @media screen and (min-width: 37.5rem) {
+    .mega_navigation__outer {
+      padding: 0 1rem;
+    }
+  }
+
+  @media screen and (min-width: 56.25rem) {
+    .mega_navigation__outer {
+      height: 3.625rem;
+    }
+  }
+
+  .mega_navigation__group {
+    display: flex;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  .menu_item {
+    list-style: none;
+  }
+
+  .menu_item__link {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    color: #0f001b;
+    font-family: 'Articulat CF', Arial, sans-serif;
+    font-weight: 500;
+    font-size: 1rem;
+    line-height: 1.5rem;
+  }
+
+  .text--node {
+    display: inline-block;
   }
 }

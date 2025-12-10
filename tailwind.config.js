@@ -8,7 +8,7 @@ export default {
   theme: {
     extend: {
       fontFamily: {
-        sans: ['Noto Sans', 'sans-serif'],
+        sans: ['Articulat CF', 'Noto Sans', 'sans-serif'],
       },
       colors: {
         border: "hsl(var(--border))",

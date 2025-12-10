@@ -146,12 +146,9 @@ const Footer = () => {
                 >
                   <span style={{ color: "white" }}>Mulecra</span>
                   <span
-                    className="text-transparent bg-clip-text bg-gradient-to-r from-[#10b981] to-[#06b6d4]"
                     style={{
-                      backgroundSize: "200% auto",
-                      backgroundClip: "text",
-                      WebkitBackgroundClip: "text",
-                      WebkitTextFillColor: "transparent",
+                      color: "white",
+                      display: "inline-block",
                     }}
                   >
                     f
