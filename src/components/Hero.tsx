@@ -32,46 +32,83 @@ const Hero = ({
     <div
       ref={heroContainerRef}
       className="w-full relative bg-white overflow-hidden"
+      style={{
+        minHeight: "90vh",
+        display: "flex",
+        alignItems: "center"
+      }}
     >
-      <div className="min-h-[60vh] flex items-center justify-center w-full flex-col px-4 relative pt-16 pb-12 md:pb-16">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-          <article className="flex flex-col items-center justify-center text-center w-full">
-            {/* Content Wrapper - Centered */}
-            <div className="content__wrapper max-w-5xl mx-auto w-full">
-              <header>
-                {/* Eyebrow - Restored */}
-                {eyebrow && (
-                  <motion.div
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ delay: 0.1, duration: 0.5 }}
-                    className="flex justify-center mb-6"
-                  >
-                    <span 
-                      style={{ 
-                        fontFamily: "'Articulat CF', Arial, sans-serif",
-                        fontWeight: 700,
-                        color: "#000000",
-                        fontSize: "18px",
-                        lineHeight: "18px"
-                      }}
-                    >
-                      {eyebrow}
-                    </span>
-                  </motion.div>
-                )}
-
-                {/* Headline */}
-                <motion.h1
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: 0.2, duration: 0.6 }}
-                  className="mb-6 md:mb-8"
-                  style={{
+      {/* Row container matching reference structure */}
+      <div 
+        className="row"
+        style={{
+          margin: "0 auto",
+          display: "flex",
+          flexWrap: "wrap",
+          maxWidth: "100%",
+          width: "100%",
+          padding: "0rem 0 4rem 0",
+          justifyContent: "center",
+          alignItems: "center"
+        }}
+      >
+        {/* Column 12 - Centered */}
+        <div 
+          className="col__12 text--center section-head__container_inner"
+          style={{
+            width: "100%",
+            textAlign: "center"
+          }}
+        >
+          {/* Text Header Container */}
+          <div className="text_header">
+            {/* Tagline/Eyebrow */}
+            {eyebrow && (
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.1, duration: 0.5 }}
+                className="text_header__tagline"
+                style={{ marginBottom: "1.5rem" }}
+              >
+                <span 
+                  style={{ 
                     fontFamily: "'Articulat CF', Arial, sans-serif",
                     fontWeight: 700,
+                    color: "#000000",
+                    fontSize: "18px",
+                    lineHeight: "18px"
                   }}
                 >
+                  {eyebrow}
+                </span>
+              </motion.div>
+            )}
+
+            {/* Headline */}
+            <motion.h1
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.2, duration: 0.6 }}
+              className="text_header__title"
+              style={{
+                fontFamily: "'Articulat CF', Arial, sans-serif",
+                fontWeight: 700,
+                marginBottom: "1.5rem"
+              }}
+            >
+              <span 
+                className="text-gradient--animated"
+                style={{
+                  fontSize: "69px",
+                  lineHeight: "69px"
+                }}
+              >
+                {mainHeadline}
+              </span>
+              {highlightHeadline && (
+                <>
+                  <br />
                   <span 
                     style={{ 
                       color: "#0F011B",
@@ -79,83 +116,91 @@ const Hero = ({
                       lineHeight: "69px"
                     }}
                   >
-                    {mainHeadline}
+                    {highlightHeadline}
                   </span>
-                  {highlightHeadline && (
-                    <>
-                      <br />
-                      <span 
-                        className="text-gradient--animated"
-                        style={{
-                          fontSize: "69px",
-                          lineHeight: "69px"
-                        }}
-                      >
-                        {highlightHeadline}
-                      </span>
-                    </>
-                  )}
-                </motion.h1>
+                </>
+              )}
+            </motion.h1>
 
-                {/* Description */}
-                <motion.div
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: 0.3, duration: 0.6 }}
-                  className="mb-6 md:mb-8"
-                >
-                  <p 
-                    className="max-w-2xl mx-auto"
-                    style={{ 
-                      fontFamily: "'Articulat CF', Arial, sans-serif",
-                      fontWeight: 100,
-                      color: "#0F011B",
-                      fontSize: "24px",
-                      lineHeight: "36px",
-                      display: "-webkit-box",
-                      WebkitLineClamp: 2,
-                      WebkitBoxOrient: "vertical",
-                      overflow: "hidden",
-                      textOverflow: "ellipsis"
-                    }}
-                  >
-                    {description}
-                  </p>
-                </motion.div>
-              </header>
-
-              {/* CTA Container */}
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.4, duration: 0.6 }}
-                className="flex flex-col sm:flex-row sm:justify-center gap-4 mb-10 md:mb-12"
+            {/* Description */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.3, duration: 0.6 }}
+              className="text_header__description"
+              style={{ marginBottom: "2rem" }}
+            >
+              <p 
+                style={{ 
+                  fontFamily: "'Articulat CF', Arial, sans-serif",
+                  fontWeight: 100,
+                  color: "#0F011B",
+                  fontSize: "24px",
+                  lineHeight: "36px",
+                  display: "-webkit-box",
+                  WebkitLineClamp: 2,
+                  WebkitBoxOrient: "vertical",
+                  overflow: "hidden",
+                  textOverflow: "ellipsis",
+                  maxWidth: "42rem",
+                  margin: "0 auto"
+                }}
               >
-                <a
-                  href={ctaUrl}
-                  className="inline-flex items-center justify-center px-8 py-3.5 text-base font-medium text-white rounded-full hover:shadow-lg hover:opacity-90 transition-all duration-300 min-w-[160px]"
-                  style={{ 
-                    backgroundColor: "#8353FD",
-                    fontFamily: "'Articulat CF', sans-serif"
-                  }}
-                >
-                  {ctaText}
-                </a>
-              </motion.div>
-            </div>
-          </article>
+                {description}
+              </p>
+            </motion.div>
+          </div>
 
-          {/* Clients Container */}
+          {/* CTA Buttons Container */}
           <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 0.6, duration: 0.8 }}
-            className="w-full flex flex-col items-center justify-center pt-4 md:pt-6 relative z-20"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.4, duration: 0.6 }}
+            className="section-head__buttons"
+            style={{
+              display: "flex",
+              flexDirection: "column",
+              gap: "1rem",
+              alignItems: "center",
+              justifyContent: "center"
+            }}
           >
-            <div className="h-12 w-px bg-gradient-to-b from-gray-200 to-transparent mx-auto mb-6"></div>
-            <Clients />
+            <a
+              href={ctaUrl}
+              className="btn btn--large btn--primary"
+              style={{ 
+                backgroundColor: "#8353FD",
+                color: "white",
+                fontFamily: "'Articulat CF', sans-serif",
+                padding: "0.75rem 1.5rem",
+                borderRadius: "9999px",
+                textDecoration: "none",
+                display: "inline-flex",
+                alignItems: "center",
+                justifyContent: "center",
+                fontSize: "1rem",
+                fontWeight: 500,
+                transition: "all 0.3s",
+                minWidth: "160px",
+                border: "none"
+              }}
+            >
+              <span className="btn--text">{ctaText}</span>
+            </a>
           </motion.div>
         </div>
+
+        {/* Clients Container */}
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 0.6, duration: 0.8 }}
+          className="w-full flex flex-col items-center justify-center pt-4 md:pt-6 relative z-20"
+          style={{ width: "100%" }}
+        >
+          <div className="h-12 w-px bg-gradient-to-b from-gray-200 to-transparent mx-auto mb-6"></div>
+          <Clients />
+        </motion.div>
       </div>
     </div>
   );
