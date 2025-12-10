@@ -57,7 +57,7 @@ const Hero = ({
                     className="flex justify-center mb-2 md:mb-3"
                   >
                     <span 
-                      className="uppercase tracking-[0.2em]"
+                      className="uppercase tracking-[0.09em]"
                       style={{
                         fontFamily: '"Mona Sans", "Mona Sans Header Fallback", -apple-system, "system-ui", "Segoe UI", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol"',
                         fontStyle: 'normal',
