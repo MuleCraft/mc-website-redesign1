@@ -62,7 +62,6 @@ const Hero = ({
       alt="Left decoration"
       style={{
         height: "98vh",  // a little taller than container → looks longer
-        maxWidth: "195px",
         width: "auto",
         objectFit: "cover",
         objectPosition: "center"
