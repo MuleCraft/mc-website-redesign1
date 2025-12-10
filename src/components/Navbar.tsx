@@ -580,8 +580,12 @@ const Navbar = () => {
   return (
     <header
       ref={navbarRef}
-      className="w-full fixed top-0 z-50 overflow-visible"
-      style={{ backgroundColor: "#fff" }}
+      className="w-full fixed top-0 z-50 overflow-visible border-b"
+      style={{ 
+        backgroundColor: "#fff",
+        borderBottomWidth: "1px",
+        borderBottomColor: "black-200"
+      }}
     >
       <nav className="w-full max-w-[1344px] mx-auto py-2 flex items-center justify-between min-h-[80px] overflow-visible">
         {/* Logo - Left side - Always visible */}
