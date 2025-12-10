@@ -278,4 +278,110 @@
       flex-direction: row;
     }
   }
+
+  /* Client Logos Scrolling Styles */
+  .signpost_block_image__inner {
+    max-width: 57.75rem;
+    margin: 0 auto;
+  }
+
+  .signpost_block_image__signposts {
+    width: 100%;
+    overflow: hidden;
+    position: relative;
+    mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
+    -webkit-mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
+  }
+
+  .signpost_block_image__signposts_inner {
+    width: 100%;
+    overflow: hidden;
+  }
+
+  .signpost_block_image__signposts__content {
+    display: flex;
+    gap: 3rem;
+    animation: scrollLogos linear infinite;
+    animation-duration: var(--duration, 50000ms);
+    width: fit-content;
+    will-change: transform;
+  }
+
+  .signpost_block_image__signposts__content.left {
+    animation-direction: normal;
+  }
+
+  @keyframes scrollLogos {
+    0% {
+      transform: translateX(0);
+    }
+    100% {
+      transform: translateX(calc(-100% / 3));
+    }
+  }
+
+  .signpost_block_image__signpost_box {
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .signpost_block_image__signpost {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1rem;
+  }
+
+  .signpost__asset {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .signpost__asset img {
+    max-width: 100%;
+    height: auto;
+    object-fit: contain;
+  }
+
+  .client-logo {
+    opacity: 0.2;
+    filter: grayscale(100%);
+    transition: opacity 0.3s ease, filter 0.3s ease;
+  }
+
+  .client-logo:hover {
+    opacity: 1;
+    filter: grayscale(0%);
+  }
+
+  .col__md__10 {
+    width: 100%;
+  }
+
+  @media screen and (min-width: 37.5rem) {
+    .col__md__10 {
+      width: 83.333333%;
+    }
+  }
+
+  .col__lg__8 {
+    width: 100%;
+  }
+
+  @media screen and (min-width: 56.25rem) {
+    .col__lg__8 {
+      width: 66.666667%;
+    }
+  }
+
+  .cp {
+    padding: 4rem 0;
+  }
+
+  .cp--white {
+    background-color: #fff;
+  }
 }

@@ -191,16 +191,7 @@ const Hero = ({
         </div>
 
         {/* Clients Container */}
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 0.6, duration: 0.8 }}
-          className="w-full flex flex-col items-center justify-center pt-4 md:pt-6 relative z-20"
-          style={{ width: "100%" }}
-        >
-          <div className="h-12 w-px bg-gradient-to-b from-gray-200 to-transparent mx-auto mb-6"></div>
-          <Clients />
-        </motion.div>
+        <Clients />
       </div>
     </div>
   );
