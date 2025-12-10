@@ -3,7 +3,7 @@
 import { useRef } from "react";
 import { motion } from "motion/react";
 // import Clients from "./Clients";
-import hbg from "../assets/hbg2.png";
+import hbg from "../assets/hbg6.png";
 
 interface HeroProps {
   eyebrow?: string;
