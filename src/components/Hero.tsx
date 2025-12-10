@@ -15,7 +15,7 @@ interface HeroProps {
 
 const Hero = ({
   eyebrow = "Enterprise Integration Experts",
-  headline = "Seamless Integration Solutions Powered by MuleSoft",
+  headline = "Seamless Integration  Powered by MuleSoft",
   description = "We are the dedicated specialists who connect your systems and automate your workflows. No platforms to manage—just custom integrations built by experts to drive your business forward.",
   ctaText = "Talk to an Expert",
   ctaUrl = "#",
@@ -26,7 +26,6 @@ const Hero = ({
   const headlineWords = headline.split(' ');
   const topLine = headlineWords.slice(0, 3).join(' ');
   const bottomLine = headlineWords.slice(3).join(' ');
-
   return (
     <div
       ref={heroContainerRef}
@@ -44,7 +43,7 @@ const Hero = ({
         }}
       />
       <div className="h-full min-h-[92vh] flex items-start justify-center w-full flex-col px-4 relative pt-0 pb-12 md:pt-2 md:pb-16 z-10">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-20">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-20 -mt-8 md:-mt-12">
           <article className="flex flex-col items-center justify-center text-center w-full">
             {/* Content Wrapper - Centered */}
             <div className="content__wrapper max-w-5xl mx-auto w-full">
@@ -57,7 +56,17 @@ const Hero = ({
                     transition={{ delay: 0.1, duration: 0.5 }}
                     className="flex justify-center mb-2 md:mb-3"
                   >
-                    <span className="text-sm font-semibold text-gray-600 uppercase tracking-[0.2em]">
+                    <span 
+                      className="uppercase tracking-[0.2em]"
+                      style={{
+                        fontFamily: '"Mona Sans", "Mona Sans Header Fallback", -apple-system, "system-ui", "Segoe UI", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol"',
+                        fontStyle: 'normal',
+                        fontWeight: 400,
+                        fontSize: '16px',
+                        lineHeight: '24px',
+                        color: '#59636E',
+                      }}
+                    >
                       {eyebrow}
                     </span>
                   </motion.div>
@@ -68,11 +77,14 @@ const Hero = ({
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: 0.2, duration: 0.6 }}
-                  className="text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold tracking-tight mb-3 md:mb-4"
+                  className="mb-3 md:mb-4"
                   style={{
-                    fontFamily: "'Inter', sans-serif",
-                    lineHeight: 1.1,
-                    color: '#000000',
+                    fontFamily: '"Mona Sans", "Mona Sans Header Fallback", -apple-system, "system-ui", "Segoe UI", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol"',
+                    fontStyle: 'normal',
+                    fontWeight: 800,
+                    fontSize: '72px',
+                    lineHeight: '76px',
+                    color: '#1F2328',
                   }}
                 >
                   {topLine}
@@ -91,7 +103,17 @@ const Hero = ({
                     transition={{ delay: 0.3, duration: 0.6 }}
                     className="mb-4 md:mb-5"
                   >
-                  <p className="text-base md:text-lg lg:text-xl text-gray-700 max-w-2xl mx-auto leading-relaxed font-normal">
+                  <p 
+                    className="max-w-2xl mx-auto"
+                    style={{
+                      fontFamily: '"Mona Sans", "Mona Sans Fallback", -apple-system, "system-ui", "Segoe UI", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol"',
+                      fontStyle: 'normal',
+                      fontWeight: 400,
+                      fontSize: '20px',
+                      lineHeight: '28px',
+                      color: '#59636E',
+                    }}
+                  >
                     {description}
                   </p>
                 </motion.div>
