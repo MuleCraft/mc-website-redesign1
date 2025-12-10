@@ -1,4 +1,4 @@
-import zensarkLogo from "@/assets/zensark.png";
+import zensarkLogo from "@/assets/Zensark.png";
 import nvidiaLogo from "@/assets/nvidia.png";
 import accionLogo from "@/assets/accion.svg";
 import tekisticLogo from "@/assets/tekistic.webp";

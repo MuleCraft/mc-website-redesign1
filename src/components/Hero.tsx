@@ -8,7 +8,6 @@ import h2Img from "../assets/h2.png";
 
 interface HeroProps {
   eyebrow?: string;
-  headline?: string;
   description?: string;
   ctaText?: string;
   ctaUrl?: string;
@@ -16,7 +15,6 @@ interface HeroProps {
 
 const Hero = ({
   eyebrow = "MULECRAFT INTEGRATION PLATFORM",
-  headline = "Open the doors to seamless integrations for your customers",
   description = "Enable your customers to integrate anywhere in the world—right from your product. Use MuleCraft's powerful APIs and low-code solutions to expand into a new category in days. Transform the world of integrations with us.",
   ctaText = "Contact Us",
   ctaUrl = "#",
