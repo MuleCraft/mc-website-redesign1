@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { Search, Globe, ChevronDown, Menu, X } from "lucide-react";
 import { Button } from "./ui/button";
 import DropdownMenu from "./DropdownMenu";
+import { getRoutePath } from "../utils/routes";
 
 const Navbar = () => {
   const [openDropdown, setOpenDropdown] = useState<string | null>(null);
@@ -205,21 +206,25 @@ const Navbar = () => {
               title: "Mule 4 Migration",
               description: "Specialized migration from Mule 3 to Mule 4",
               icon: "refresh",
+              href: getRoutePath("Mule 4 Migration", "solutions"),
             },
             {
               title: "Mule B2B Integration",
               description: "EDI, partner API integration",
               icon: "network",
+              href: getRoutePath("Mule B2B Integration", "solutions"),
             },
             {
               title: "API-led Connectivity",
               description: "App and data integration using APIs",
               icon: "link",
+              href: getRoutePath("API-led Connectivity", "solutions"),
             },
             {
               title: "Custom Connector Development",
               description: "Bespoke connectors via Mule SDK",
               icon: "code",
+              href: getRoutePath("Custom Connector Development", "solutions"),
             },
           ],
         },
@@ -231,21 +236,25 @@ const Navbar = () => {
               title: "Workflow Automation",
               description: "Visual workflow builder and automation",
               icon: "workflow",
+              href: getRoutePath("Workflow Automation", "solutions"),
             },
             {
               title: "Self-Hosted Integration",
               description: "Deploy on your own infrastructure",
               icon: "server",
+              href: getRoutePath("Self-Hosted Integration", "solutions"),
             },
             {
               title: "Custom Node Development",
               description: "Build custom integration nodes",
               icon: "code",
+              href: getRoutePath("Custom Node Development", "solutions"),
             },
             {
               title: "API Integration",
               description: "Connect any API with ease",
               icon: "link",
+              href: getRoutePath("API Integration", "solutions"),
             },
           ],
         },
@@ -257,21 +266,25 @@ const Navbar = () => {
               title: "AI-Powered Integrations",
               description: "SnapGPT, generative integration design",
               icon: "sparkles",
+              href: getRoutePath("AI-Powered Integrations", "solutions"),
             },
             {
               title: "Pipeline Orchestration",
               description: "ETL/ELT data pipelines",
               icon: "workflow",
+              href: getRoutePath("Pipeline Orchestration", "solutions"),
             },
             {
               title: "No-Code iPaaS",
               description: "Visual workflow & drag-drop integration",
               icon: "layers",
+              href: getRoutePath("No-Code iPaaS", "solutions"),
             },
             {
               title: "AutoSync & Migration Tools",
               description: "Schema-based app/data migration",
               icon: "sync",
+              href: getRoutePath("AutoSync & Migration Tools", "solutions"),
             },
           ],
         },
@@ -283,21 +296,25 @@ const Navbar = () => {
               title: "Recipe-based Automation",
               description: "Reusable integration 'recipes'",
               icon: "book-open",
+              href: getRoutePath("Recipe-based Automation", "solutions"),
             },
             {
               title: "Workbot ChatOps",
               description: "Slack/MS Teams bots for workflow triggers",
               icon: "message-circle",
+              href: getRoutePath("Workbot ChatOps", "solutions"),
             },
             {
               title: "Multi-app Transaction Sync",
               description: "Cross-system process automation",
               icon: "refresh-cw",
+              href: getRoutePath("Multi-app Transaction Sync", "solutions"),
             },
             {
               title: "Data Quality Automation",
               description: "Auto-cleansing and enrichment",
               icon: "check-circle",
+              href: getRoutePath("Data Quality Automation", "solutions"),
             },
           ],
         },
@@ -309,21 +326,25 @@ const Navbar = () => {
               title: "Real-time CRM Data Sync",
               description: "Live updates between Salesforce and other apps",
               icon: "sync",
+              href: getRoutePath("Real-time CRM Data Sync", "solutions"),
             },
             {
               title: "Third-party App Connect",
               description: "Seamless Salesforce integration",
               icon: "link",
+              href: getRoutePath("Third-party App Connect", "solutions"),
             },
             {
               title: "Lightning Flow Automation",
               description: "Process automation and workflow",
               icon: "workflow",
+              href: getRoutePath("Lightning Flow Automation", "solutions"),
             },
             {
               title: "Salesforce Reports Integration",
               description: "Data analytics and reporting",
               icon: "chart",
+              href: getRoutePath("Salesforce Reports Integration", "solutions"),
             },
           ],
         },
@@ -335,21 +356,25 @@ const Navbar = () => {
               title: "Microservices Orchestration",
               description: "Connect/distribute microservices workloads",
               icon: "git-branch",
+              href: getRoutePath("Microservices Orchestration", "solutions"),
             },
             {
               title: "Agile Lifecycle Management",
               description: "DevOps-native integration oversight",
               icon: "workflow",
+              href: getRoutePath("Agile Lifecycle Management", "solutions"),
             },
             {
               title: "AI-Driven Connector Import",
               description: "Auto-import existing integrations using AI",
               icon: "sparkles",
+              href: getRoutePath("AI-Driven Connector Import", "solutions"),
             },
             {
               title: "Cloud/Hybrid Integration",
               description: "Deploy to AWS, Azure, on-premises",
               icon: "cloud",
+              href: getRoutePath("Cloud/Hybrid Integration", "solutions"),
             },
           ],
         },
@@ -372,7 +397,7 @@ const Navbar = () => {
               title: "Community Platform",
               description: "Open-source integration community hub",
               image: "csi8.png",
-              href: "https://community.platform.mulecraft.in/",
+              href: getRoutePath("Community Platform", "products"),
             },
             {
               title: "AnypointLP",
@@ -442,18 +467,22 @@ const Navbar = () => {
             {
               title: "Resource Management",
               description: "Employee record and performance analysis platform",
+              href: getRoutePath("Resource Management", "case-studies"),
             },
             {
               title: "HR Management",
               description: "Automated HR workflows and employee engagement",
+              href: getRoutePath("HR Management", "case-studies"),
             },
             {
               title: "HR Systems Unification",
               description: "Unifying HR systems for improved efficiency",
+              href: getRoutePath("HR Systems Unification", "case-studies"),
             },
             {
               title: "Workday to SAP Sync",
               description: "SnapLogic iPaaS integration for employee data",
+              href: getRoutePath("Workday to SAP Sync", "case-studies"),
             },
           ],
         },
@@ -464,18 +493,22 @@ const Navbar = () => {
             {
               title: "EDI File Processing",
               description: "HIPAA-compliant healthcare claims management",
+              href: getRoutePath("EDI File Processing", "case-studies"),
             },
             {
               title: "Payment Workflows",
               description: "Healthcare payment processing for 2M patients",
+              href: getRoutePath("Payment Workflows", "case-studies"),
             },
             {
               title: "Better Life Pharmacy",
               description: "HIPAA-compliant pharmacy communication platform",
+              href: getRoutePath("Better Life Pharmacy", "case-studies"),
             },
             {
               title: "Patient Self Scheduling",
               description: "IVR and AI-powered appointment booking",
+              href: getRoutePath("Patient Self Scheduling", "case-studies"),
             },
           ],
         },
@@ -486,18 +519,22 @@ const Navbar = () => {
             {
               title: "Manufacturing Transformation",
               description: "Global manufacturing leader integration framework",
+              href: getRoutePath("Manufacturing Transformation", "case-studies"),
             },
             {
               title: "Equity Automation",
               description: "Stock purchase and compensation automation",
+              href: getRoutePath("Equity Automation", "case-studies"),
             },
             {
               title: "Real-Time Monitoring",
               description: "Financial client monitoring and optimization",
+              href: getRoutePath("Real-Time Monitoring", "case-studies"),
             },
             {
               title: "Dynamics 365 Integration",
               description: "Automated data processing with RabbitMQ",
+              href: getRoutePath("Dynamics 365 Integration", "case-studies"),
             },
           ],
         },
@@ -508,18 +545,22 @@ const Navbar = () => {
             {
               title: "Community Anypoint Platform",
               description: "Open-source integration and deployment tool",
+              href: getRoutePath("Community Anypoint Platform", "case-studies"),
             },
             {
               title: "Email Management",
               description: "Email categorization and draft generation",
+              href: getRoutePath("Email Management", "case-studies"),
             },
             {
               title: "HeyDrive Driving School",
               description: "Automated scheduling and billing system",
+              href: getRoutePath("HeyDrive Driving School", "case-studies"),
             },
             {
               title: "Workflow Automation",
               description: "End-to-end business process automation platform",
+              href: getRoutePath("Workflow Automation", "case-studies"),
             },
           ],
         },
@@ -557,10 +598,10 @@ const Navbar = () => {
 
     if (openDropdown === "About") {
       return [
-        { label: "Our Story", isSelected: true },
-        { label: "Team", isSelected: false },
-        { label: "Partners", isSelected: false },
-        { label: "News & Press", isSelected: false },
+        { label: "Our Story", isSelected: true, href: getRoutePath("Our Story", "about") },
+        { label: "Team", isSelected: false, href: getRoutePath("Team", "about") },
+        { label: "Partners", isSelected: false, href: getRoutePath("Partners", "about") },
+        { label: "News & Press", isSelected: false, href: getRoutePath("News & Press", "about") },
       ];
     }
 
@@ -691,23 +732,23 @@ const Navbar = () => {
                       {item.label}
                     </Link>
                   ) : (
-                    <a
-                      ref={(el) => {
-                        navItemRefs.current[item.label] = el;
-                      }}
-                      href={item.href}
-                      target={(item as any).openInNewTab ? "_blank" : undefined}
-                      rel={
-                        (item as any).openInNewTab
-                          ? "noopener noreferrer"
-                          : undefined
+                  <a
+                    ref={(el) => {
+                      navItemRefs.current[item.label] = el;
+                    }}
+                    href={item.href}
+                    target={(item as any).openInNewTab ? "_blank" : undefined}
+                    rel={
+                      (item as any).openInNewTab
+                        ? "noopener noreferrer"
+                        : undefined
+                    }
+                    onClick={(e) => {
+                      if (item.hasChevron) {
+                        e.preventDefault();
                       }
-                      onClick={(e) => {
-                        if (item.hasChevron) {
-                          e.preventDefault();
-                        }
-                      }}
-                      className="flex items-center gap-1.5 whitespace-nowrap transition-all rounded-md nav-link"
+                    }}
+                    className="flex items-center gap-1.5 whitespace-nowrap transition-all rounded-md nav-link"
                     style={{
                       fontFamily: '"Noto Sans", sans-serif',
                       color: "#333",
@@ -724,14 +765,14 @@ const Navbar = () => {
                       padding: "0.35rem .75rem",
                     }}
                   >
-                      {item.label}
-                      {item.hasChevron && (
-                        <ChevronDown
-                          className="w-4 h-4"
-                          style={{ color: "rgb(31, 31, 31)", strokeWidth: 1.6 }}
-                        />
-                      )}
-                    </a>
+                    {item.label}
+                    {item.hasChevron && (
+                      <ChevronDown
+                        className="w-4 h-4"
+                        style={{ color: "rgb(31, 31, 31)", strokeWidth: 1.6 }}
+                      />
+                    )}
+                  </a>
                   )}
                   {/* Animated underline at bottom of navbar */}
                   <span
@@ -1053,17 +1094,17 @@ const Navbar = () => {
               Community
             </Button>
             <Link to="/contact">
-              <Button
-                variant="default"
-                className="transition-all duration-300 rounded-full text-white shadow-md hover:shadow-lg bg-gradient-to-r from-[#10b981] to-[#06b6d4] hover:opacity-90 border-none"
-                style={{
-                  padding: "0.675rem 1rem",
-                  fontSize: "0.875rem",
-                  height: "auto",
-                }}
-              >
-                Schedule demo
-              </Button>
+            <Button
+              variant="default"
+              className="transition-all duration-300 rounded-full text-white shadow-md hover:shadow-lg bg-gradient-to-r from-[#10b981] to-[#06b6d4] hover:opacity-90 border-none"
+              style={{
+                padding: "0.675rem 1rem",
+                fontSize: "0.875rem",
+                height: "auto",
+              }}
+            >
+              Schedule demo
+            </Button>
             </Link>
           </div>
         </div>
@@ -1315,18 +1356,18 @@ const Navbar = () => {
       {/* Full-width Dropdown Menu - Rendered outside nav but inside header - Desktop only */}
       {openDropdown && (
         <div className="hidden lg:block">
-          <DropdownMenu
-            items={getDropdownItems()}
-            isOpen={true}
-            onClose={() => {
-              setOpenDropdown(null);
-            }}
-            navbarHeight={getNavbarHeight()}
-            contentType={getContentType()}
-            navItem={openDropdown}
-            onMouseEnter={handleDropdownCancelClose}
-            onMouseLeave={() => handleDropdownClose(300)}
-          />
+        <DropdownMenu
+          items={getDropdownItems()}
+          isOpen={true}
+          onClose={() => {
+            setOpenDropdown(null);
+          }}
+          navbarHeight={getNavbarHeight()}
+          contentType={getContentType()}
+          navItem={openDropdown}
+          onMouseEnter={handleDropdownCancelClose}
+          onMouseLeave={() => handleDropdownClose(300)}
+        />
         </div>
       )}
     </header>

@@ -8,6 +8,7 @@ import { Link } from "react-router-dom";
 import salesforceLogo from "@/assets/Salesforcelogo.png";
 import MuleCraftName from "./MuleCraftName";
 import CTASection from "./CTASection";
+import { getRoutePath } from "../utils/routes";
 
 // Helper function to render text with MuleCraftName component
 const renderTextWithMuleCraft = (text: string) => {
@@ -244,25 +245,102 @@ const Footer = () => {
                     margin: 0,
                   }}
                 >
-                  {section.links.map((link) => (
-                    <li key={link} className="footer-link-item gap-8">
-                      {link === "Contact us" ? (
+                  {section.links.map((link) => {
+                    // Special cases
+                    if (link === "Contact us") {
+                      return (
+                        <li key={link} className="footer-link-item gap-8">
+                          <Link
+                            to="/contact"
+                            className="text-white hover:text-white transition-colors footer-link"
+                          >
+                            {renderTextWithMuleCraft(link)}
+                          </Link>
+                        </li>
+                      );
+                    }
+                    if (link === "Blog") {
+                      return (
+                        <li key={link} className="footer-link-item gap-8">
+                          <a
+                            href="https://blogs.mulecraft.in/"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="text-white hover:text-white transition-colors footer-link"
+                          >
+                            {renderTextWithMuleCraft(link)}
+                          </a>
+                        </li>
+                      );
+                    }
+                    if (link === "Training") {
+                      return (
+                        <li key={link} className="footer-link-item gap-8">
+                          <a
+                            href="https://training.mulecraft.in/"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="text-white hover:text-white transition-colors footer-link"
+                          >
+                            {renderTextWithMuleCraft(link)}
+                          </a>
+                        </li>
+                      );
+                    }
+                    if (link === "About") {
+                      return (
+                        <li key={link} className="footer-link-item gap-8">
+                          <Link
+                            to="/about"
+                            className="text-white hover:text-white transition-colors footer-link"
+                          >
+                            {renderTextWithMuleCraft(link)}
+                          </Link>
+                        </li>
+                      );
+                    }
+                    // Products section - use actual links from Navbar
+                    if (section.title === "PRODUCTS") {
+                      const productLinks: { [key: string]: string } = {
+                        "SnapMapper": "https://snaplogic.playground.mulecraft.in/",
+                        "MuleSoftLP": "https://MuleSoft.dev/",
+                        "Goose": "https://goosed.in/",
+                        "Cloudhib 2.0 migration": "https://mule-migration-nexus.lovable.app/",
+                        "CloudHub 2.0 Migration": "https://mule-migration-nexus.lovable.app/",
+                        "Anypoint LP": "https://anypointlp-secondary.lovable.app/",
+                        "AnypointLP": "https://anypointlp-secondary.lovable.app/",
+                        "RAMLify Flow Agent": "https://ramlify-flow-agent.lovable.app/",
+                      };
+                      
+                      const productHref = productLinks[link];
+                      if (productHref) {
+                        return (
+                          <li key={link} className="footer-link-item gap-8">
+                            <a
+                              href={productHref}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              className="text-white hover:text-white transition-colors footer-link"
+                            >
+                              {renderTextWithMuleCraft(link)}
+                            </a>
+                          </li>
+                        );
+                      }
+                    }
+                    // For all other links, generate route based on section title and link name
+                    const routePath = getRoutePath(link, section.title.toLowerCase());
+                    return (
+                      <li key={link} className="footer-link-item gap-8">
                         <Link
-                          to="/contact"
+                          to={routePath}
                           className="text-white hover:text-white transition-colors footer-link"
                         >
                           {renderTextWithMuleCraft(link)}
                         </Link>
-                      ) : (
-                        <a
-                          href="#"
-                          className="text-white hover:text-white transition-colors footer-link"
-                        >
-                          {renderTextWithMuleCraft(link)}
-                        </a>
-                      )}
-                    </li>
-                  ))}
+                      </li>
+                    );
+                  })}
                 </ul>
               </div>
             ))}
