@@ -2,7 +2,7 @@ import React, { useEffect, useRef, useState } from "react";
 import logoDark from "@/assets/logo_dark.png";
 import gooseLogo from "@/assets/Goose.svg";
 import csi2Image from "@/assets/csi2.png";
-import mulesoftlpImage from "@/assets/mulesoftlp-image.png";
+import csi3Image from "@/assets/csi3.png";
 import newLogo from "@/assets/newlogo.png";
 import cmImage from "@/assets/cm.png";
 import csi1Image from "@/assets/csi1.png";
@@ -346,6 +346,7 @@ export const MuleSoftLPPreview = () => {
           backdropFilter: "blur(12px)",
           boxShadow: "0 2px 8px rgba(0, 0, 0, 0.5)",
           padding: "0.5rem 1rem",
+          marginBottom: "0.5rem",
           flexShrink: 0,
           borderTopLeftRadius: "8px",
           borderTopRightRadius: "8px",
@@ -396,6 +397,7 @@ export const MuleSoftLPPreview = () => {
         style={{
           position: "relative",
           padding: "1rem",
+          paddingTop: "0.5rem",
           flex: 1,
           display: "flex",
           flexDirection: "column",
@@ -409,13 +411,10 @@ export const MuleSoftLPPreview = () => {
           {/* Large MulesoftLP Text */}
           <h4
             style={{
-              fontSize: "clamp(30px, 10vw, 70px)",
+              fontSize: "clamp(20px, 6vw, 40px)",
               fontWeight: "600",
               letterSpacing: "-0.02em",
-              background: "linear-gradient(to bottom, rgba(229, 231, 235, 1) 0%, rgba(156, 163, 175, 1) 100%)",
-              WebkitBackgroundClip: "text",
-              WebkitTextFillColor: "transparent",
-              backgroundClip: "text",
+              color: "#ffffff",
               margin: "0 0 0.5rem 0",
               lineHeight: "0.9",
               userSelect: "none",
@@ -428,60 +427,38 @@ export const MuleSoftLPPreview = () => {
 
           <p
             style={{
-              fontSize: "8px",
-              color: "rgba(209, 213, 219, 1)",
+              fontSize: "9px",
+              color: "#d1d5db",
               margin: "0 0 0.75rem 0",
-              lineHeight: "1.5",
+              lineHeight: "1.4",
               maxWidth: "90%",
-              marginLeft: "auto",
-              marginRight: "auto",
+              alignSelf: "center",
               fontFamily: '"Noto Sans", sans-serif',
-              fontWeight: 300,
             }}
           >
             Transform your MuleSoft journey with our revolutionary AI-powered learning platform. Generate personalized
             challenges, practice in real-time, and master DataWeave faster than ever before.
           </p>
 
-          {/* Hero Image/GIF Placeholder */}
+          {/* Image Preview */}
           <div
             style={{
-              position: "relative",
-              marginBottom: "0.75rem",
+              marginTop: "0.5rem",
+              borderRadius: "12px",
+              overflow: "hidden",
+              background: "transparent",
             }}
           >
-            <div
+            <img
+              src={csi3Image}
+              alt="MuleSoft Learning Platform Hero"
               style={{
-                position: "absolute",
-                inset: 0,
-                background: "linear-gradient(to right, rgba(59, 130, 246, 0.3) 0%, rgba(147, 51, 234, 0.3) 50%, rgba(236, 72, 153, 0.2) 100%)",
-                borderRadius: "12px",
-                filter: "blur(40px)",
-                opacity: 0.6,
+                width: "100%",
+                height: "auto",
+                display: "block",
+                objectFit: "contain",
               }}
             />
-            <div
-              style={{
-                position: "relative",
-                background: "rgba(17, 24, 39, 0.5)",
-                borderRadius: "12px",
-                border: "1px solid rgba(156, 163, 175, 0.3)",
-                overflow: "hidden",
-                backdropFilter: "blur(4px)",
-                boxShadow: "0 4px 24px rgba(0, 0, 0, 0.5)",
-              }}
-            >
-              <img
-                src={mulesoftlpImage}
-                alt="MuleSoft Learning Platform Hero"
-                style={{
-                  width: "100%",
-                  height: "auto",
-                  objectFit: "cover",
-                  display: "block",
-                }}
-              />
-            </div>
           </div>
 
           {/* Enhanced Stats */}
