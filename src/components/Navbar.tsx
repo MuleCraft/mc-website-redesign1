@@ -9,6 +9,7 @@ const Navbar = () => {
   const [isLanguageOpen, setIsLanguageOpen] = useState(false);
   const [selectedLanguage, setSelectedLanguage] = useState("English");
   const [selectedTheme, setSelectedTheme] = useState("Light");
+  const [isScrolling, setIsScrolling] = useState(false);
   const navItemRefs = useRef<{ [key: string]: HTMLAnchorElement | null }>({});
   const navbarRef = useRef<HTMLElement | null>(null);
   const searchInputRef = useRef<HTMLInputElement | null>(null);
@@ -173,6 +174,21 @@ const Navbar = () => {
       document.removeEventListener("mousedown", handleNavbarClick);
     };
   }, [isSearchOpen]);
+
+  // Handle scroll to add shadow
+  useEffect(() => {
+    const handleScroll = () => {
+      const scrollY = window.scrollY;
+      setIsScrolling(scrollY > 0);
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    handleScroll(); // Check initial scroll position
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
 
   // Dropdown items for left sidebar - different content based on nav item
   const getDropdownItems = () => {
@@ -584,7 +600,9 @@ const Navbar = () => {
       style={{ 
         backgroundColor: "#fff",
         borderBottomWidth: "1px",
-        borderBottomColor: "black-200"
+        borderBottomColor: "black-200",
+        boxShadow: isScrolling ? "0 2px 8px rgba(0, 0, 0, 0.1)" : "none",
+        transition: "box-shadow 0.3s ease",
       }}
     >
       <nav className="w-full max-w-[1344px] mx-auto py-2 flex items-center justify-between min-h-[80px] overflow-visible">

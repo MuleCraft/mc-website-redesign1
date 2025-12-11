@@ -1,10 +1,12 @@
-import { useEffect, useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import logoDark from "@/assets/logo_dark.png";
+import gooseLogo from "@/assets/Goose.svg";
 import csi2Image from "@/assets/csi2.png";
 import mulesoftlpImage from "@/assets/mulesoftlp-image.png";
 import newLogo from "@/assets/newlogo.png";
 import cmImage from "@/assets/cm.png";
 import csi1Image from "@/assets/csi1.png";
+import csi6Image from "@/assets/csi6.png";
 import academyIcon from "@/assets/Academy-icon.png";
 import trainingBgImage from "@/assets/t-i.jpg";
 import snapMapperIcon from "@/assets/s-m.svg";
@@ -282,64 +284,71 @@ export const MuleSoftLPPreview = () => {
           0%, 100% { opacity: 0.1; }
           50% { opacity: 0.2; }
         }
+        @keyframes pulse-slow {
+          0%, 100% { opacity: 0.6; }
+          50% { opacity: 1; }
+        }
+        @keyframes violetMove {
+          0% { transform: translateY(0) scale(1); opacity: 0.7; }
+          50% { transform: translateY(15px) scale(1.08); opacity: 1; }
+          100% { transform: translateY(0) scale(1); opacity: 0.7; }
+        }
+        .animate-violet-move {
+          animation: violetMove 5s ease-in-out infinite;
+        }
       `}</style>
 
-      {/* Animated Background Elements */}
+      {/* Animated Background */}
       <div style={{ position: "absolute", inset: 0, overflow: "hidden", pointerEvents: "none" }}>
+        {/* Animated Gradient Background Shape */}
         <div
           style={{
             position: "absolute",
-            top: "-40px",
-            right: "-40px",
-            width: "80px",
-            height: "80px",
-            background: "rgba(59, 130, 246, 0.1)",
+            top: "-80px",
+            left: "50%",
+            transform: "translateX(-50%)",
+            width: "300px",
+            height: "150px",
+            background: "linear-gradient(to right, rgba(59, 130, 246, 0.2) 0%, rgba(147, 51, 234, 0.2) 50%, rgba(236, 72, 153, 0.1) 100%)",
             borderRadius: "50%",
-            filter: "blur(40px)",
-            animation: "pulse 3s ease-in-out infinite",
+            filter: "blur(60px)",
+            opacity: 0.6,
+            animation: "pulse-slow 6s cubic-bezier(0.4, 0, 0.6, 1) infinite",
+            zIndex: 0,
           }}
         />
+        {/* Violet animated background on the top right */}
         <div
+          className="animate-violet-move"
           style={{
             position: "absolute",
-            top: "50%",
-            left: "-40px",
-            width: "80px",
-            height: "80px",
-            background: "rgba(147, 51, 234, 0.1)",
+            top: "0",
+            right: "12px",
+            width: "96px",
+            height: "72px",
+            background: "linear-gradient(to bottom right, rgba(139, 92, 246, 0.6) 0%, rgba(147, 51, 234, 0.4) 50%, transparent 100%)",
             borderRadius: "50%",
-            filter: "blur(40px)",
-            animation: "pulse 3s ease-in-out infinite 1.5s",
-          }}
-        />
-        <div
-          style={{
-            position: "absolute",
-            bottom: "-40px",
-            right: "1/3",
-            width: "80px",
-            height: "80px",
-            background: "rgba(236, 72, 153, 0.1)",
-            borderRadius: "50%",
-            filter: "blur(40px)",
-            animation: "pulse 3s ease-in-out infinite 2s",
+            filter: "blur(60px)",
+            opacity: 0.7,
+            zIndex: 10,
+            pointerEvents: "none",
           }}
         />
       </div>
 
       {/* Header */}
-      <div
+      <header
         style={{
-          backgroundColor: "rgba(0, 0, 0, 0.8)",
-          backdropFilter: "blur(12px)",
+          position: "relative",
+          zIndex: 50,
           borderBottom: "none",
+          background: "rgba(0, 0, 0, 0.8)",
+          backdropFilter: "blur(12px)",
+          boxShadow: "0 2px 8px rgba(0, 0, 0, 0.5)",
           padding: "0.5rem 1rem",
           flexShrink: 0,
-          position: "relative",
-          zIndex: 10,
           borderTopLeftRadius: "8px",
           borderTopRightRadius: "8px",
-          boxShadow: "0 4px 12px rgba(0, 0, 0, 0.5)",
         }}
       >
         <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between" }}>
@@ -348,25 +357,30 @@ export const MuleSoftLPPreview = () => {
               src={newLogo}
               alt="Logo"
               style={{
-                width: "32px",
-                height: "32px",
+                width: "24px",
+                height: "24px",
                 objectFit: "contain",
               }}
             />
-            <h1 style={{ fontSize: "14px", fontWeight: "bold", color: "#ffffff", margin: 0, letterSpacing: "-0.02em" }}>
-              MuleSoftLP
-            </h1>
+            <div>
+              <h1 style={{ fontSize: "12px", fontWeight: "bold", color: "#ffffff", margin: 0, letterSpacing: "-0.02em" }}>
+                MuleSoftLP
+              </h1>
+              <p style={{ fontSize: "6px", color: "rgba(156, 163, 175, 1)", margin: 0, fontFamily: '"Noto Sans", sans-serif' }}>
+                AI-Powered Integration Learning
+              </p>
+            </div>
           </div>
           <div style={{ display: "flex", alignItems: "center", gap: "0.5rem" }}>
             <a
               href="#"
               style={{
-                padding: "0.25rem 0.5rem",
-                fontSize: "9px",
+                padding: "0.2rem 0.5rem",
+                fontSize: "8px",
                 fontWeight: "600",
                 color: "#ffffff",
                 background: "linear-gradient(135deg, #2563eb 0%, #8b5cf6 100%)",
-                borderRadius: "4px",
+                borderRadius: "6px",
                 textDecoration: "none",
                 boxShadow: "0 2px 8px rgba(37, 99, 235, 0.25)",
               }}
@@ -375,79 +389,242 @@ export const MuleSoftLPPreview = () => {
             </a>
           </div>
         </div>
-      </div>
+      </header>
 
       {/* Hero Section */}
-      <div
+      <section
         style={{
+          position: "relative",
           padding: "1rem",
           flex: 1,
           display: "flex",
           flexDirection: "column",
           justifyContent: "center",
-          position: "relative",
-          zIndex: 1,
           textAlign: "center",
+          overflow: "hidden",
+          zIndex: 10,
         }}
       >
-        {/* Large MulesoftLP Text */}
-        <h4
-          style={{
-            fontSize: "clamp(20px, 6vw, 40px)",
-            fontWeight: "600",
-            letterSpacing: "-0.02em",
-            color: "#ffffff",
-            margin: "0 0 0.5rem 0",
-            lineHeight: "0.9",
-            userSelect: "none",
-            display: "block",
-          }}
-        >
-          MulesoftLP
-        </h4>
-
-        <p
-          style={{
-            fontSize: "9px",
-            color: "#d1d5db",
-            margin: "0 0 0.75rem 0",
-            lineHeight: "1.4",
-            maxWidth: "90%",
-            alignSelf: "center",
-          }}
-        >
-          Master MuleSoft with AI-powered learning. Generate personalized challenges and practice DataWeave.
-        </p>
-
-        {/* Image Preview */}
-        <div
-          style={{
-            marginTop: "0.5rem",
-            borderRadius: "12px",
-            overflow: "hidden",
-            border: "1px solid rgba(255, 255, 255, 0.1)",
-            background: "rgba(17, 24, 39, 0.5)",
-            boxShadow: "0 4px 12px rgba(0, 0, 0, 0.3)",
-            backdropFilter: "blur(4px)",
-          }}
-        >
-          <img
-            src={mulesoftlpImage}
-            alt="MuleSoftLP Preview"
+        <div style={{ maxWidth: "100%", margin: "0 auto", position: "relative", zIndex: 10 }}>
+          {/* Large MulesoftLP Text */}
+          <h4
             style={{
-              width: "100%",
-              height: "auto",
+              fontSize: "clamp(30px, 10vw, 70px)",
+              fontWeight: "600",
+              letterSpacing: "-0.02em",
+              background: "linear-gradient(to bottom, rgba(229, 231, 235, 1) 0%, rgba(156, 163, 175, 1) 100%)",
+              WebkitBackgroundClip: "text",
+              WebkitTextFillColor: "transparent",
+              backgroundClip: "text",
+              margin: "0 0 0.5rem 0",
+              lineHeight: "0.9",
+              userSelect: "none",
               display: "block",
-              objectFit: "contain",
+              textAlign: "center",
             }}
-          />
+          >
+            MulesoftLP
+          </h4>
+
+          <p
+            style={{
+              fontSize: "8px",
+              color: "rgba(209, 213, 219, 1)",
+              margin: "0 0 0.75rem 0",
+              lineHeight: "1.5",
+              maxWidth: "90%",
+              marginLeft: "auto",
+              marginRight: "auto",
+              fontFamily: '"Noto Sans", sans-serif',
+              fontWeight: 300,
+            }}
+          >
+            Transform your MuleSoft journey with our revolutionary AI-powered learning platform. Generate personalized
+            challenges, practice in real-time, and master DataWeave faster than ever before.
+          </p>
+
+          {/* Hero Image/GIF Placeholder */}
+          <div
+            style={{
+              position: "relative",
+              marginBottom: "0.75rem",
+            }}
+          >
+            <div
+              style={{
+                position: "absolute",
+                inset: 0,
+                background: "linear-gradient(to right, rgba(59, 130, 246, 0.3) 0%, rgba(147, 51, 234, 0.3) 50%, rgba(236, 72, 153, 0.2) 100%)",
+                borderRadius: "12px",
+                filter: "blur(40px)",
+                opacity: 0.6,
+              }}
+            />
+            <div
+              style={{
+                position: "relative",
+                background: "rgba(17, 24, 39, 0.5)",
+                borderRadius: "12px",
+                border: "1px solid rgba(156, 163, 175, 0.3)",
+                overflow: "hidden",
+                backdropFilter: "blur(4px)",
+                boxShadow: "0 4px 24px rgba(0, 0, 0, 0.5)",
+              }}
+            >
+              <img
+                src={mulesoftlpImage}
+                alt="MuleSoft Learning Platform Hero"
+                style={{
+                  width: "100%",
+                  height: "auto",
+                  objectFit: "cover",
+                  display: "block",
+                }}
+              />
+            </div>
+          </div>
+
+          {/* Enhanced Stats */}
+          <div
+            style={{
+              display: "flex",
+              flexWrap: "wrap",
+              justifyContent: "center",
+              alignItems: "center",
+              gap: "0.5rem",
+              marginBottom: "0.75rem",
+            }}
+          >
+            <div
+              style={{
+                display: "flex",
+                alignItems: "center",
+                gap: "0.5rem",
+                background: "linear-gradient(to bottom right, rgba(30, 58, 138, 0.2) 0%, rgba(30, 64, 175, 0.1) 100%)",
+                padding: "0.4rem 0.6rem",
+                borderRadius: "12px",
+                border: "1px solid rgba(59, 130, 246, 0.2)",
+                boxShadow: "0 2px 8px rgba(0, 0, 0, 0.3)",
+                backdropFilter: "blur(4px)",
+              }}
+            >
+              <svg
+                width="12"
+                height="12"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="rgba(96, 165, 250, 1)"
+                strokeWidth="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              >
+                <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" />
+                <circle cx="9" cy="7" r="4" />
+                <path d="M23 21v-2a4 4 0 0 0-3-3.87" />
+                <path d="M16 3.13a4 4 0 0 1 0 7.75" />
+              </svg>
+              <div style={{ textAlign: "left" }}>
+                <div style={{ fontSize: "12px", fontWeight: "bold", color: "#ffffff" }}>1.2K</div>
+                <div style={{ fontSize: "6px", color: "rgba(156, 163, 175, 1)" }}>Active Learners</div>
+              </div>
+            </div>
+            <div
+              style={{
+                display: "flex",
+                alignItems: "center",
+                gap: "0.5rem",
+                background: "linear-gradient(to bottom right, rgba(20, 83, 45, 0.2) 0%, rgba(22, 101, 52, 0.1) 100%)",
+                padding: "0.4rem 0.6rem",
+                borderRadius: "12px",
+                border: "1px solid rgba(34, 197, 94, 0.2)",
+                boxShadow: "0 2px 8px rgba(0, 0, 0, 0.3)",
+                backdropFilter: "blur(4px)",
+              }}
+            >
+              <svg
+                width="12"
+                height="12"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="rgba(74, 222, 128, 1)"
+                strokeWidth="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              >
+                <polyline points="22 12 18 12 15 21 9 3 6 12 2 12" />
+              </svg>
+              <div style={{ textAlign: "left" }}>
+                <div style={{ fontSize: "12px", fontWeight: "bold", color: "#ffffff" }}>98%</div>
+                <div style={{ fontSize: "6px", color: "rgba(156, 163, 175, 1)" }}>Success Rate</div>
+              </div>
+            </div>
+            <div
+              style={{
+                display: "flex",
+                alignItems: "center",
+                gap: "0.5rem",
+                background: "linear-gradient(to bottom right, rgba(88, 28, 135, 0.2) 0%, rgba(107, 33, 168, 0.1) 100%)",
+                padding: "0.4rem 0.6rem",
+                borderRadius: "12px",
+                border: "1px solid rgba(168, 85, 247, 0.2)",
+                boxShadow: "0 2px 8px rgba(0, 0, 0, 0.3)",
+                backdropFilter: "blur(4px)",
+              }}
+            >
+              <svg
+                width="12"
+                height="12"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="rgba(192, 132, 252, 1)"
+                strokeWidth="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              >
+                <path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z" />
+              </svg>
+              <div style={{ textAlign: "left" }}>
+                <div style={{ fontSize: "12px", fontWeight: "bold", color: "#ffffff" }}>Free</div>
+                <div style={{ fontSize: "6px", color: "rgba(156, 163, 175, 1)" }}>To Start</div>
+              </div>
+            </div>
+          </div>
+
+          {/* Enhanced CTA */}
+          <div style={{ textAlign: "center", marginTop: "0.5rem" }}>
+            <a
+              href="#"
+              style={{
+                display: "inline-flex",
+                alignItems: "center",
+                gap: "0.5rem",
+                background: "linear-gradient(135deg, #3b82f6 0%, #8b5cf6 50%, #ec4899 100%)",
+                color: "#ffffff",
+                fontSize: "10px",
+                fontWeight: "bold",
+                padding: "0.5rem 1rem",
+                borderRadius: "12px",
+                textDecoration: "none",
+                boxShadow: "0 4px 12px rgba(59, 130, 246, 0.25)",
+                transition: "all 0.3s ease",
+              }}
+            >
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                <path d="M5 12h14M12 5l7 7-7 7" />
+              </svg>
+              Start Learning Today
+            </a>
+            <p style={{ fontSize: "6px", color: "rgba(156, 163, 175, 1)", marginTop: "0.5rem", fontFamily: '"Noto Sans", sans-serif', fontWeight: 300 }}>
+              No credit card required • Start learning in 30 seconds
+            </p>
+          </div>
         </div>
-      </div>
+      </section>
     </div>
   );
 };
 
-// Goose Preview - Black theme with cyan accent
+// Goose Preview - Black theme with cyan accent matching Hero design
 export const GoosePreview = () => {
   return (
     <div
@@ -456,7 +633,7 @@ export const GoosePreview = () => {
         height: "100%",
         backgroundColor: "#000000",
         color: "#ffffff",
-        fontFamily: '"Noto Sans", sans-serif',
+        fontFamily: '"Lexend", "Inter", system-ui, sans-serif',
         position: "relative",
         overflow: "hidden",
         display: "flex",
@@ -465,45 +642,114 @@ export const GoosePreview = () => {
         borderTopRightRadius: "8px",
       }}
     >
-      {/* Header */}
+      {/* Grid Background */}
       <div
         style={{
+          position: "absolute",
+          inset: 0,
+          backgroundImage: `
+            linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px),
+            linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px)
+          `,
+          backgroundSize: "50px 50px",
+          pointerEvents: "none",
+        }}
+      />
+
+      {/* Navigation */}
+      <div
+        style={{
+          position: "relative",
+          zIndex: 50,
+          backgroundColor: "rgba(0, 0, 0, 0.2)",
+          backdropFilter: "blur(12px)",
+          borderBottom: "1px solid rgba(255, 255, 255, 0.05)",
           padding: "0.5rem 1rem",
           flexShrink: 0,
-          borderBottom: "1px solid rgba(255, 255, 255, 0.1)",
           borderTopLeftRadius: "8px",
           borderTopRightRadius: "8px",
         }}
       >
         <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between" }}>
+          {/* Logo */}
           <div style={{ display: "flex", alignItems: "center", gap: "0.5rem" }}>
-            <span
+            <img
+              src={gooseLogo}
+              alt="GooseD Platform"
               style={{
-                fontSize: "13px",
-                fontWeight: "800",
-                letterSpacing: "0.1em",
-                color: "#ffffff",
+                height: "20px",
+                width: "auto",
+              }}
+            />
+          </div>
+          
+          {/* Desktop Navigation - All items on the right */}
+          <div style={{ display: "flex", alignItems: "center", gap: "0.5rem" }}>
+            {/* Navigation Links Container */}
+            <div
+              style={{
+                display: "flex",
+                alignItems: "center",
+                gap: 0,
+                borderRadius: "9999px",
+                background: "rgba(255, 255, 255, 0.05)",
+                border: "1px solid rgba(255, 255, 255, 0.1)",
+                overflow: "hidden",
               }}
             >
-              GOOSE
-            </span>
+              {["Features", "Demo", "Contact"].map((item, index) => (
+                <React.Fragment key={item}>
+                  <button
+                    style={{
+                      position: "relative",
+                      padding: "0.375rem 0.75rem",
+                      fontSize: "8px",
+                      fontWeight: "500",
+                      color: "rgba(255, 255, 255, 0.7)",
+                      background: "transparent",
+                      border: "none",
+                      cursor: "pointer",
+                      transition: "all 0.2s ease",
+                    }}
+                    onMouseEnter={(e) => {
+                      e.currentTarget.style.color = "#ffffff";
+                      e.currentTarget.style.background = "linear-gradient(135deg, rgba(167, 224, 217, 0.1) 0%, rgba(167, 136, 217, 0.1) 100%)";
+                    }}
+                    onMouseLeave={(e) => {
+                      e.currentTarget.style.color = "rgba(255, 255, 255, 0.7)";
+                      e.currentTarget.style.background = "transparent";
+                    }}
+                  >
+                    <span style={{ position: "relative", zIndex: 10 }}>{item}</span>
+                  </button>
+                  {index < 2 && (
+                    <div style={{ width: "1px", height: "12px", backgroundColor: "rgba(255, 255, 255, 0.1)" }} />
+                  )}
+                </React.Fragment>
+              ))}
+            </div>
+            
+            {/* CTA Button */}
+            <div style={{ marginLeft: "0.75rem" }}>
+              <span
+                style={{
+                  fontSize: "9px",
+                  padding: "0.25rem 0.5rem",
+                  background: "linear-gradient(135deg, #A7E0D9 0%, #A788D9 100%)",
+                  color: "#000000",
+                  borderRadius: "12px",
+                  fontWeight: "600",
+                  display: "inline-block",
+                }}
+              >
+                Schedule Demo
+              </span>
+            </div>
           </div>
-          <span
-            style={{
-              fontSize: "10px",
-              padding: "0.25rem 0.6rem",
-              background: "linear-gradient(135deg, #a5f3fc 0%, #c084fc 100%)",
-              color: "#000000",
-              borderRadius: "4px",
-              fontWeight: "700",
-            }}
-          >
-            Schedule Demo
-          </span>
         </div>
       </div>
 
-      {/* Content - Two Column Layout */}
+      {/* Main Content */}
       <div
         style={{
           padding: "1rem",
@@ -512,112 +758,166 @@ export const GoosePreview = () => {
           flexDirection: "row",
           gap: "1rem",
           alignItems: "center",
+          position: "relative",
+          zIndex: 10,
         }}
       >
-        {/* Left Column - Text Content */}
+        {/* Left Section - Text Content */}
         <div
           style={{
             flex: 1,
             display: "flex",
             flexDirection: "column",
-            justifyContent: "center",
+            gap: "0.75rem",
           }}
         >
-          <span
-            style={{
-              fontSize: "9px",
-              padding: "0.15rem 0.4rem",
-              backgroundColor: "rgba(255, 255, 255, 0.1)",
-              color: "#a5f3fc",
-              borderRadius: "12px",
-              fontWeight: "600",
-              display: "inline-block",
-              marginBottom: "0.5rem",
-              width: "fit-content",
-            }}
-          >
-            ● GOOSED
-          </span>
-          <h1
-            style={{
-              fontSize: "22px",
-              fontWeight: "800",
-              color: "#ffffff",
-              margin: 0,
-              lineHeight: "1.1",
-            }}
-          >
-            Deploy, Scale<br />
-            <span style={{ color: "#a5f3fc" }}>Dominate</span>
-          </h1>
-        </div>
-
-        {/* Right Column - Animated Bird with Feathers */}
-        <div
-          style={{
-            flex: 1,
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "center",
-            position: "relative",
-            height: "100%",
-          }}
-        >
-          <style>{`
-            @keyframes featherMove1 {
-              0%, 100% { transform: rotate(12deg) translateY(0px) scale(1); opacity: 0.6; }
-              25% { transform: rotate(15deg) translateY(-2px) scale(1.1); opacity: 0.8; }
-              50% { transform: rotate(10deg) translateY(-1px) scale(0.9); opacity: 0.7; }
-              75% { transform: rotate(14deg) translateY(-3px) scale(1.05); opacity: 0.9; }
-            }
-            @keyframes featherMove2 {
-              0%, 100% { transform: rotate(-12deg) translateY(0px) scale(1); opacity: 0.5; }
-              25% { transform: rotate(-15deg) translateY(-1px) scale(1.1); opacity: 0.7; }
-              50% { transform: rotate(-10deg) translateY(-2px) scale(0.9); opacity: 0.6; }
-              75% { transform: rotate(-14deg) translateY(-1px) scale(1.05); opacity: 0.8; }
-            }
-            @keyframes featherMove3 {
-              0%, 100% { transform: rotate(45deg) translateY(0px) scale(1); opacity: 0.4; }
-              25% { transform: rotate(48deg) translateY(-1px) scale(1.1); opacity: 0.6; }
-              50% { transform: rotate(42deg) translateY(-2px) scale(0.9); opacity: 0.5; }
-              75% { transform: rotate(47deg) translateY(-1px) scale(1.05); opacity: 0.7; }
-            }
-            @keyframes featherMove4 {
-              0%, 100% { transform: rotate(-30deg) translateY(0px) scale(1); opacity: 0.5; }
-              25% { transform: rotate(-33deg) translateY(-2px) scale(1.1); opacity: 0.7; }
-              50% { transform: rotate(-28deg) translateY(-1px) scale(0.9); opacity: 0.6; }
-              75% { transform: rotate(-32deg) translateY(-3px) scale(1.05); opacity: 0.8; }
-            }
-            @keyframes featherMove5 {
-              0%, 100% { transform: rotate(60deg) translateY(0px) scale(1); opacity: 0.3; }
-              25% { transform: rotate(63deg) translateY(-1px) scale(1.1); opacity: 0.5; }
-              50% { transform: rotate(58deg) translateY(-2px) scale(0.9); opacity: 0.4; }
-              75% { transform: rotate(62deg) translateY(-1px) scale(1.05); opacity: 0.6; }
-            }
-            @keyframes featherMove6 {
-              0%, 100% { transform: rotate(-45deg) translateY(0px) scale(1); opacity: 0.4; }
-              25% { transform: rotate(-48deg) translateY(-1px) scale(1.1); opacity: 0.6; }
-              50% { transform: rotate(-42deg) translateY(-2px) scale(0.9); opacity: 0.5; }
-              75% { transform: rotate(-47deg) translateY(-1px) scale(1.05); opacity: 0.7; }
-            }
-          `}</style>
-          
-          {/* Main logo container */}
+          {/* Brand Badge */}
           <div
             style={{
-              position: "relative",
-              width: "100px",
-              height: "100px",
-              margin: "0 auto",
+              display: "inline-flex",
+              alignItems: "center",
+              gap: "0.5rem",
+              padding: "0.35rem 0.7rem",
+              borderRadius: "9999px",
+              background: "linear-gradient(135deg, rgba(167, 224, 217, 0.1) 0%, rgba(167, 136, 217, 0.1) 100%)",
+              border: "1px solid rgba(167, 224, 217, 0.2)",
+              backdropFilter: "blur(4px)",
+              width: "fit-content",
             }}
           >
             <div
               style={{
-                position: "relative",
-                width: "100%",
-                height: "100%",
+                width: "5px",
+                height: "5px",
+                backgroundColor: "#A7E0D9",
+                borderRadius: "50%",
+                animation: "pulse 2s ease-in-out infinite",
+              }}
+            />
+            <span
+              style={{
+                fontSize: "9px",
+                fontWeight: "600",
+                color: "#A7E0D9",
+                textTransform: "uppercase",
+                letterSpacing: "0.1em",
               }}
             >
+              GooseD
+            </span>
+          </div>
+
+          {/* Main Headline */}
+          <div>
+            <h1
+              style={{
+                fontSize: "22px",
+                fontWeight: "500",
+                lineHeight: "1.2",
+                letterSpacing: "-0.01em",
+                margin: 0,
+              }}
+            >
+              <span style={{ color: "#ffffff", display: "block", marginBottom: "3px" }}>Deploy, Scale</span>
+              <span
+                style={{
+                  background: "linear-gradient(135deg, #A7E0D9 0%, #A788D9 100%)",
+                  WebkitBackgroundClip: "text",
+                  WebkitTextFillColor: "transparent",
+                  backgroundClip: "text",
+                }}
+              >
+                Dominate
+              </span>
+            </h1>
+            <p
+              style={{
+                fontSize: "8px",
+                color: "rgba(255, 255, 255, 0.7)",
+                lineHeight: "1.5",
+                marginTop: "0.75rem",
+                maxWidth: "90%",
+              }}
+            >
+              The ultimate DevOps platform that transforms how you build, deploy, and scale applications.
+            </p>
+          </div>
+
+          {/* Feature Grid */}
+          <div
+            style={{
+              display: "grid",
+              gridTemplateColumns: "repeat(3, 1fr)",
+              gap: "0.75rem",
+              paddingTop: "0.75rem",
+            }}
+          >
+            {["One-Click Deploy", "Auto-Scale", "Enterprise Security"].map((feature, index) => (
+              <div key={index} style={{ display: "flex", flexDirection: "column", gap: "0.35rem" }}>
+                <div
+                  style={{
+                    width: "20px",
+                    height: "20px",
+                    borderRadius: "10px",
+                    background: "linear-gradient(135deg, rgba(167, 224, 217, 0.2) 0%, rgba(167, 136, 217, 0.1) 100%)",
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "center",
+                  }}
+                >
+                  <div
+                    style={{
+                      width: "8px",
+                      height: "8px",
+                      backgroundColor: "#A7E0D9",
+                      borderRadius: "50%",
+                    }}
+                  />
+                </div>
+                <span
+                  style={{
+                    fontSize: "7px",
+                    fontWeight: "500",
+                    color: "rgba(255, 255, 255, 0.7)",
+                  }}
+                >
+                  {feature}
+                </span>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        {/* Right Section - Enhanced Visual */}
+        <div
+          style={{
+            flex: 1,
+            position: "relative",
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+            height: "100%",
+          }}
+        >
+          {/* Main Background Glow */}
+          <div
+            style={{
+              position: "absolute",
+              top: "50%",
+              left: "50%",
+              width: "120px",
+              height: "120px",
+              background: "linear-gradient(135deg, rgba(167, 224, 217, 0.15) 0%, rgba(167, 136, 217, 0.05) 100%)",
+              borderRadius: "50%",
+              filter: "blur(40px)",
+              transform: "translate(-50%, -50%)",
+            }}
+          />
+
+          {/* Animated Bird Logo */}
+          <div style={{ position: "relative", width: "128px", height: "128px", margin: "0 auto", zIndex: 10 }}>
+            {/* Main logo container */}
+            <div style={{ position: "relative", width: "100%", height: "100%" }}>
               {/* Logo image */}
               <img
                 src={logoDark}
@@ -628,18 +928,11 @@ export const GoosePreview = () => {
                   objectFit: "contain",
                   position: "relative",
                   zIndex: 10,
-                  filter: "brightness(0.7) contrast(1.2)",
                 }}
               />
-              
+
               {/* Animated feather elements */}
-              <div
-                style={{
-                  position: "absolute",
-                  inset: 0,
-                  pointerEvents: "none",
-                }}
-              >
+              <div style={{ position: "absolute", inset: 0, pointerEvents: "none" }}>
                 {/* Feather 1 - Top right */}
                 <div
                   style={{
@@ -655,7 +948,6 @@ export const GoosePreview = () => {
                     animationDelay: "0s",
                   }}
                 />
-                
                 {/* Feather 2 - Top left */}
                 <div
                   style={{
@@ -671,7 +963,6 @@ export const GoosePreview = () => {
                     animationDelay: "0.5s",
                   }}
                 />
-                
                 {/* Feather 3 - Bottom right */}
                 <div
                   style={{
@@ -687,7 +978,6 @@ export const GoosePreview = () => {
                     animationDelay: "1s",
                   }}
                 />
-                
                 {/* Feather 4 - Bottom left */}
                 <div
                   style={{
@@ -703,7 +993,6 @@ export const GoosePreview = () => {
                     animationDelay: "1.5s",
                   }}
                 />
-                
                 {/* Feather 5 - Middle right */}
                 <div
                   style={{
@@ -719,7 +1008,6 @@ export const GoosePreview = () => {
                     animationDelay: "2s",
                   }}
                 />
-                
                 {/* Feather 6 - Middle left */}
                 <div
                   style={{
@@ -738,8 +1026,110 @@ export const GoosePreview = () => {
               </div>
             </div>
           </div>
+
+          {/* Floating Elements */}
+          <div
+            style={{
+              position: "absolute",
+              top: "10px",
+              right: "10px",
+              width: "20px",
+              height: "20px",
+              border: "2px solid rgba(167, 224, 217, 0.2)",
+              borderRadius: "50%",
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+              animation: "float 6s ease-in-out infinite",
+            }}
+          >
+            <div
+              style={{
+                width: "12px",
+                height: "12px",
+                border: "2px solid rgba(167, 224, 217, 0.3)",
+                borderRadius: "50%",
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+              }}
+            >
+              <div
+                style={{
+                  width: "6px",
+                  height: "6px",
+                  background: "linear-gradient(135deg, #A7E0D9 0%, #A788D9 100%)",
+                  borderRadius: "50%",
+                }}
+              />
+            </div>
+          </div>
+
+          {/* Animated Grid Pattern */}
+          <div
+            style={{
+              position: "absolute",
+              inset: 0,
+              opacity: 0.2,
+              backgroundImage: `
+                linear-gradient(rgba(167, 224, 217, 0.1) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(167, 224, 217, 0.1) 1px, transparent 1px)
+              `,
+              backgroundSize: "40px 40px",
+            }}
+          />
         </div>
       </div>
+
+      {/* CSS Animations */}
+      <style>{`
+        @keyframes pulse {
+          0%, 100% { opacity: 0.2; transform: scale(1); }
+          50% { opacity: 0.4; transform: scale(1.1); }
+        }
+        @keyframes float {
+          0%, 100% { transform: translateY(0px) translateX(0px); }
+          25% { transform: translateY(-10px) translateX(5px); }
+          50% { transform: translateY(-5px) translateX(-3px); }
+          75% { transform: translateY(-8px) translateX(4px); }
+        }
+        @keyframes featherMove1 {
+          0%, 100% { transform: rotate(12deg) translateY(0px) scale(1); opacity: 0.6; }
+          25% { transform: rotate(15deg) translateY(-2px) scale(1.1); opacity: 0.8; }
+          50% { transform: rotate(10deg) translateY(-1px) scale(0.9); opacity: 0.7; }
+          75% { transform: rotate(14deg) translateY(-3px) scale(1.05); opacity: 0.9; }
+        }
+        @keyframes featherMove2 {
+          0%, 100% { transform: rotate(-12deg) translateY(0px) scale(1); opacity: 0.5; }
+          25% { transform: rotate(-15deg) translateY(-1px) scale(1.1); opacity: 0.7; }
+          50% { transform: rotate(-10deg) translateY(-2px) scale(0.9); opacity: 0.6; }
+          75% { transform: rotate(-14deg) translateY(-1px) scale(1.05); opacity: 0.8; }
+        }
+        @keyframes featherMove3 {
+          0%, 100% { transform: rotate(45deg) translateY(0px) scale(1); opacity: 0.4; }
+          25% { transform: rotate(48deg) translateY(-1px) scale(1.1); opacity: 0.6; }
+          50% { transform: rotate(42deg) translateY(-2px) scale(0.9); opacity: 0.5; }
+          75% { transform: rotate(47deg) translateY(-1px) scale(1.05); opacity: 0.7; }
+        }
+        @keyframes featherMove4 {
+          0%, 100% { transform: rotate(-30deg) translateY(0px) scale(1); opacity: 0.5; }
+          25% { transform: rotate(-33deg) translateY(-2px) scale(1.1); opacity: 0.7; }
+          50% { transform: rotate(-28deg) translateY(-1px) scale(0.9); opacity: 0.6; }
+          75% { transform: rotate(-32deg) translateY(-3px) scale(1.05); opacity: 0.8; }
+        }
+        @keyframes featherMove5 {
+          0%, 100% { transform: rotate(60deg) translateY(0px) scale(1); opacity: 0.3; }
+          25% { transform: rotate(63deg) translateY(-1px) scale(1.1); opacity: 0.5; }
+          50% { transform: rotate(58deg) translateY(-2px) scale(0.9); opacity: 0.4; }
+          75% { transform: rotate(62deg) translateY(-1px) scale(1.05); opacity: 0.6; }
+        }
+        @keyframes featherMove6 {
+          0%, 100% { transform: rotate(-45deg) translateY(0px) scale(1); opacity: 0.4; }
+          25% { transform: rotate(-48deg) translateY(-1px) scale(1.1); opacity: 0.6; }
+          50% { transform: rotate(-42deg) translateY(-2px) scale(0.9); opacity: 0.5; }
+          75% { transform: rotate(-47deg) translateY(-1px) scale(1.05); opacity: 0.7; }
+        }
+      `}</style>
     </div>
   );
 };
@@ -1003,127 +1393,27 @@ export const AnypointLPPreview = () => {
         borderTopRightRadius: "8px",
       }}
     >
-      {/* Star-like speckles background */}
+      {/* Main Content - Full Image */}
       <div
         style={{
-          position: "absolute",
-          inset: 0,
-          backgroundImage: `
-            radial-gradient(2px 2px at 20% 30%, rgba(167, 139, 250, 0.3), transparent),
-            radial-gradient(1px 1px at 50% 50%, rgba(139, 92, 246, 0.4), transparent),
-            radial-gradient(1.5px 1.5px at 80% 70%, rgba(99, 102, 241, 0.3), transparent),
-            radial-gradient(1px 1px at 30% 80%, rgba(167, 139, 250, 0.2), transparent)
-          `,
-          backgroundSize: "100% 100%",
-          pointerEvents: "none",
-        }}
-      />
-      
-      {/* Header */}
-      <div
-        style={{
-          backgroundColor: "rgba(15, 15, 35, 0.8)",
-          backdropFilter: "blur(10px)",
-          padding: "0.5rem 1rem",
-          flexShrink: 0,
-          borderBottom: "1px solid rgba(139, 92, 246, 0.2)",
-          borderTopLeftRadius: "8px",
-          borderTopRightRadius: "8px",
-          position: "relative",
-          zIndex: 1,
-        }}
-      >
-        <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between" }}>
-          <div style={{ display: "flex", alignItems: "center", gap: "0.5rem" }}>
-            {/* Logo - Stacked rectangles */}
-            <div style={{ display: "flex", flexDirection: "column", gap: "1px" }}>
-              <div style={{ width: "12px", height: "3px", background: "#a78bfa", borderRadius: "1px" }} />
-              <div style={{ width: "12px", height: "3px", background: "#8b5cf6", borderRadius: "1px", marginLeft: "2px" }} />
-              <div style={{ width: "12px", height: "3px", background: "#7c3aed", borderRadius: "1px", marginLeft: "4px" }} />
-            </div>
-            <span style={{ fontSize: "11px", fontWeight: "600", color: "#ffffff" }}>Anypoint LP</span>
-          </div>
-          <div style={{ display: "flex", alignItems: "center", gap: "0.5rem" }}>
-            <a href="#" style={{ fontSize: "9px", color: "rgba(255, 255, 255, 0.8)", textDecoration: "none" }}>Login</a>
-            <span
-              style={{
-                fontSize: "9px",
-                padding: "0.2rem 0.5rem",
-                background: "#ffffff",
-                color: "#0f0f23",
-                borderRadius: "4px",
-                fontWeight: "600",
-                border: "1px solid rgba(255, 255, 255, 0.3)",
-              }}
-            >
-              Sign up for Free
-            </span>
-          </div>
-        </div>
-      </div>
-
-      {/* Main Content - Two Column Layout */}
-      <div
-        style={{
-          padding: "1rem",
+          padding: "0",
           flex: 1,
           display: "flex",
-          flexDirection: "row",
-          gap: "1rem",
           position: "relative",
           zIndex: 1,
-          paddingTop: "0.5rem",
+          overflow: "hidden",
         }}
       >
-        {/* Left Column - Content */}
-        <div
+        <img
+          src={csi6Image}
+          alt="AnypointLP Preview"
           style={{
-            flex: 1,
-            display: "flex",
-            flexDirection: "column",
-            justifyContent: "flex-start",
-            textAlign: "center",
-            paddingTop: "1rem",
+            width: "100%",
+            height: "100%",
+            objectFit: "cover",
+            display: "block",
           }}
-        >
-          {/* Headline */}
-          <h1
-            style={{
-              fontSize: "14px",
-              fontWeight: "800",
-              color: "#ffffff",
-              margin: "0 0 0.6rem 0",
-              lineHeight: "1.2",
-              letterSpacing: "-0.01em",
-              textAlign: "center",
-            }}
-          >
-            AI-optimized acceleration<br />
-            for MuleSoft<br />
-            <span style={{ color: "#a78bfa" }}>development</span>
-          </h1>
-          
-          {/* CTA Button */}
-          <div style={{ display: "flex", gap: "0.4rem", justifyContent: "center", marginBottom: "0.5rem", flexWrap: "wrap" }}>
-            <a
-              href="#"
-              style={{
-                padding: "0.25rem 0.5rem",
-                fontSize: "8px",
-                fontWeight: "600",
-                background: "linear-gradient(135deg, #7c3aed 0%, #6366f1 100%)",
-                color: "#ffffff",
-                borderRadius: "4px",
-                textDecoration: "none",
-              }}
-            >
-              Start Building →
-            </a>
-          </div>
-        </div>
-        
-        {/* Right Column - Canvas Animation */}
-        <DataFlowCanvas />
+        />
       </div>
     </div>
   );

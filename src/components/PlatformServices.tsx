@@ -1,5 +1,6 @@
 import { RefreshCw, Network, Link2, Workflow } from "lucide-react";
 import VerticalLine from "./VerticalLine";
+import MuleCraftName from "./MuleCraftName";
 
 const PlatformServices = () => {
   // Using MuleSoft solutions from the dropdown
@@ -52,7 +53,7 @@ const PlatformServices = () => {
               color: 'rgb(31, 31, 31)',
             }}
           >
-            MuleCraft Enterprise Platform
+            <MuleCraftName /> Enterprise Platform
           </h2>
           <div className="main-subheading max-w-3xl mx-auto">
             <p
@@ -65,7 +66,7 @@ const PlatformServices = () => {
                 color: 'rgb(31, 31, 31)',
               }}
             >
-              Turn complexity into seamless connectivity with MuleCraft — a comprehensive platform that integrates applications, APIs, data, and automation, transforming businesses with intelligent integration solutions.
+              Turn complexity into seamless connectivity with <MuleCraftName /> — a comprehensive platform that integrates applications, APIs, data, and automation, transforming businesses with intelligent integration solutions.
             </p>
           </div>
         </div>

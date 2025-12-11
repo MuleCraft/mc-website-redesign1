@@ -3,6 +3,7 @@ import Footer from "./components/Footer"
 import Hero from "./components/Hero"
 import Clients from "./components/Clients"
 import PlatformServices from "./components/PlatformServices"
+import ProductSection from "./components/ProductSection"
 import "./App.css"
 
 function App() {
@@ -13,6 +14,7 @@ function App() {
         <Hero />
         <Clients />
         <PlatformServices />
+        <ProductSection />
         {/* <Services /> */}
       </main>
       <Footer />

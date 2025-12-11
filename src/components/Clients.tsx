@@ -46,15 +46,15 @@ const Clients = () => {
           
           <div className="flex animate-scroll gap-8 md:gap-12 lg:gap-16 items-center will-change-transform">
             {duplicatedLogos.map((logo, index) => (
-              <div key={index} className="flex-shrink-0">
-                <img
-                  className={`${logo.className} w-auto object-contain opacity-60 grayscale hover:opacity-100 hover:grayscale-0 transition-all duration-300`}
-                  src={logo.src}
-                  alt={logo.alt}
-                  loading="lazy"
-                />
-              </div>
-            ))}
+          <div key={index} className="flex-shrink-0">
+            <img
+              className={`${logo.className} w-auto object-contain opacity-60 grayscale hover:opacity-100 hover:grayscale-0 transition-all duration-300`}
+              src={logo.src}
+              alt={logo.alt}
+              loading="lazy"
+            />
+          </div>
+        ))}
           </div>
         </div>
 

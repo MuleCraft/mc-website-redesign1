@@ -1,6 +1,7 @@
 import { Button } from "./ui/button";
 import { cn } from "@/lib/utils";
 import { Network, Code, Database, Zap } from "lucide-react";
+import MuleCraftName from "./MuleCraftName";
 
 const Services = () => {
   const services = [
@@ -36,7 +37,7 @@ const Services = () => {
         {/* Header Section */}
         <div className="mb-10">
           <h2 className="text-3xl md:text-4xl font-bold mb-4 text-gray-900">
-            MuleCraft Services
+            <MuleCraftName /> Services
           </h2>
           <p className="text-base md:text-lg text-gray-600 max-w-2xl">
             Comprehensive integration and automation solutions to transform your business connectivity.

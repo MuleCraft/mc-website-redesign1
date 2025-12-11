@@ -5,6 +5,18 @@ import {
   FaInstagram,
 } from "react-icons/fa";
 import salesforceLogo from "@/assets/Salesforcelogo.png";
+import MuleCraftName from "./MuleCraftName";
+
+// Helper function to render text with MuleCraftName component
+const renderTextWithMuleCraft = (text: string) => {
+  const parts = text.split(/(Mule[Cc]raft|Mulecraft)/g);
+  return parts.map((part, index) => {
+    if (part.match(/^Mule[Cc]raft$/i)) {
+      return <MuleCraftName key={index} />;
+    }
+    return part;
+  });
+};
 
 const Footer = () => {
   const footerSections = [
@@ -144,7 +156,7 @@ const Footer = () => {
                     lineHeight: "1",
                   }}
                 >
-                  <span style={{ color: "white" }}>Mulecra</span>
+                  <span style={{ color: "white" }}>Mulழ்cra</span>
                   <span
                     className="text-transparent bg-clip-text bg-gradient-to-r from-[#10b981] to-[#06b6d4]"
                     style={{
@@ -199,7 +211,7 @@ const Footer = () => {
             {footerSections.map((section) => (
               <div key={section.title}>
                 <h3 className="font-bold uppercase footer-subtitle">
-                  {section.title}
+                  {renderTextWithMuleCraft(section.title)}
                 </h3>
                 <ul
                   style={{
@@ -214,7 +226,7 @@ const Footer = () => {
                         href="#"
                         className="text-white hover:text-white transition-colors footer-link"
                       >
-                        {link}
+                        {renderTextWithMuleCraft(link)}
                       </a>
                     </li>
                   ))}
@@ -232,7 +244,7 @@ const Footer = () => {
           {/* Bottom Section */}
           <div className="flex flex-col md:flex-row justify-between items-center gap-[2rem] mb-6 pb-5 text-sm ">
             <div className="flex flex-wrap items-center gap-8 text-white px-[4px py-[12px]">
-              <span>© 2025 Copyright MuleCraft. All rights reserved.</span>
+              <span>© 2025 Copyright <MuleCraftName />. All rights reserved.</span>
               <a href="#" className="hover:text-white transition-colors">
                 Privacy
               </a>
