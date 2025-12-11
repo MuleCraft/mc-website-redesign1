@@ -69,7 +69,7 @@ const Hero = ({
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.1, duration: 0.5 }}
                 className="text_header__tagline"
-                style={{ marginBottom: "1.5rem" }}
+                style={{ marginTop: "3rem", marginBottom: "1.5rem" }}
               >
                 <span 
                   style={{ 
@@ -162,7 +162,8 @@ const Hero = ({
               flexDirection: "column",
               gap: "1rem",
               alignItems: "center",
-              justifyContent: "center"
+              justifyContent: "center",
+              marginBottom: "0.5rem"
             }}
           >
             <a

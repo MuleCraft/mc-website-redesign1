@@ -5,13 +5,14 @@ import tekisticLogo from "@/assets/tekistic.webp";
 
 const Clients = () => {
   const logos = [
-    { src: nvidiaLogo, alt: "NVIDIA" },
-    { src: tekisticLogo, alt: "Tekistic" },
-    { src: accionLogo, alt: "Accion" },
-    { src: zensarkLogo, alt: "Zensark" },
+    { src: nvidiaLogo, alt: "NVIDIA", size: "50px" },
+    { src: tekisticLogo, alt: "Tekistic", size: "40px" },
+    { src: accionLogo, alt: "Accion", size: "30px" },
+    { src: zensarkLogo, alt: "Zensark", size: "40px" },
     {
       src: "https://gitlab.mulecraft.in/mc-public-group/mc-website-image-data/-/raw/feature/images/Common%20Images/aequalis-logo.webp",
       alt: "Aequalis",
+      size: "40px"
     },
   ];
 
@@ -19,11 +20,11 @@ const Clients = () => {
   const duplicatedLogos = [...logos, ...logos, ...logos];
 
   return (
-    <section className="cp cp--white signpost_block_image left" style={{ width: "100%", padding: "4rem 0" }}>
+    <section className="cp cp--white signpost_block_image left" style={{ width: "100%", padding: "2rem 0" }}>
       <div className="container" style={{ maxWidth: "90rem", margin: "0 auto", padding: "0 1rem" }}>
         <div className="signpost_block_image__inner row" style={{ maxWidth: "57.75rem", margin: "0 auto" }}>
           {/* Title Section */}
-          <div className="col__12 col__md__10 col__lg__8 text--center" style={{ width: "100%", marginBottom: "3rem" }}>
+          <div className="col__12 col__md__10 col__lg__8 text--center" style={{ width: "100%", marginBottom: "1rem" }}>
             <div className="text_header text--center">
               <h2 className="text_header__title" style={{ marginBottom: 0 }}>
                 <div className="text_header__title_inner">
@@ -31,7 +32,7 @@ const Clients = () => {
                     className="text--node" 
                     style={{ 
                       fontFamily: "'Articulat CF', Arial, sans-serif",
-                      fontWeight: 600,
+                      fontWeight: 400,
                       color: "#0F011B",
                       fontSize: "16px",
                       lineHeight: "24px"
@@ -52,7 +53,7 @@ const Clients = () => {
                   className="signpost_block_image__signposts__content left"
                   style={{
                     '--slides-count': logos.length * 3,
-                    '--duration': '20000ms'
+                    '--duration': '8000ms'
                   } as React.CSSProperties}
                 >
                   {duplicatedLogos.map((logo, index) => (
@@ -62,13 +63,13 @@ const Clients = () => {
                           <img
                             alt={logo.alt}
                             data-mime-type="image/png"
-                            height="40"
+                            height={logo.size || "40"}
                             loading="eager"
                             src={logo.src}
-                            width="40"
+                            width={logo.size || "40"}
                             className="client-logo"
                             style={{
-                              height: "40px",
+                              height: logo.size || "40px",
                               width: "auto",
                               objectFit: "contain",
                               display: "block"

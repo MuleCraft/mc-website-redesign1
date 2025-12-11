@@ -311,6 +311,10 @@
     animation-direction: normal;
   }
 
+  .signpost_block_image__signposts:hover .signpost_block_image__signposts__content {
+    animation-play-state: paused;
+  }
+
   @keyframes scrollLogos {
     0% {
       transform: translateX(0);
@@ -347,7 +351,7 @@
   }
 
   .client-logo {
-    opacity: 0.2;
+    opacity: 0.5;
     filter: grayscale(100%);
     transition: opacity 0.3s ease, filter 0.3s ease;
   }
