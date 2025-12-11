@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import MuleCraftName from "./MuleCraftName";
 
 const CTASection = () => {
@@ -17,7 +18,7 @@ const CTASection = () => {
         <div
           className="fwc-wrap"
           style={{
-            '--BGcolor': '#4b4fe2',
+            '--BGcolor': '#0991B2',
             padding: '2rem 1.25rem',
             borderRadius: '0.63rem',
             backgroundColor: 'var(--BGcolor)',
@@ -90,9 +91,8 @@ const CTASection = () => {
                   alignItems: 'center',
                 }}
               >
-                <a
-                  href="/company/contact/"
-                  target="_self"
+                <Link
+                  to="/contact"
                   className="btn"
                   style={{
                     position: 'relative',
@@ -203,7 +203,7 @@ const CTASection = () => {
                     </div>
                   </div>
                   <span className="btn-text">Talk to an expert</span>
-                </a>
+                </Link>
               </div>
             </div>
           </div>

@@ -1,5 +1,4 @@
 import VerticalLine from "./VerticalLine";
-import MuleCraftName from "./MuleCraftName";
 import pi1Image from "@/assets/pi1.png";
 import pi2Image from "@/assets/pi2.png";
 import pi3Image from "@/assets/pi3.png";
@@ -56,7 +55,7 @@ const PlatformServices = () => {
               color: 'rgb(31, 31, 31)',
             }}
           >
-            <MuleCraftName /> Enterprise Platform
+            Connect. Integrate. Transform
           </h2>
           <div className="main-subheading max-w-3xl mx-auto">
             <p
@@ -69,7 +68,7 @@ const PlatformServices = () => {
                 color: 'rgb(31, 31, 31)',
               }}
             >
-              Turn complexity into seamless connectivity with <MuleCraftName /> — a comprehensive platform that integrates applications, APIs, data, and automation, transforming businesses with intelligent integration solutions.
+              Turn complexity into seamless connectivity. Experts in connecting apps, APIs, data, and automation to streamline operations and unlock your systems' potential.
             </p>
           </div>
         </div>
@@ -146,13 +145,13 @@ const PlatformServices = () => {
                     verticalAlign: 'top',
                     padding: '.82rem 1.44rem',
                     marginTop: 'auto',
-                    color: '#4b4fe2',
+                    color: '#11b981',
                     fontSize: '.82rem',
                     fontWeight: 600,
                     lineHeight: '1.5',
                     textAlign: 'center',
                     textDecoration: 'none',
-                    border: '1px solid #4b4fe2',
+                    border: '1px solid #11b981',
                     borderRadius: '100vh',
                     transition: 'background-color .3s ease 0s, color .3s ease 0s, border-color .3s ease 0s',
                     WebkitUserSelect: 'none',

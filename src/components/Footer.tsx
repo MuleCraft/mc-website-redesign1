@@ -4,6 +4,7 @@ import {
   FaYoutube,
   FaInstagram,
 } from "react-icons/fa";
+import { Link } from "react-router-dom";
 import salesforceLogo from "@/assets/Salesforcelogo.png";
 import MuleCraftName from "./MuleCraftName";
 import CTASection from "./CTASection";
@@ -223,12 +224,21 @@ const Footer = () => {
                 >
                   {section.links.map((link) => (
                     <li key={link} className="footer-link-item gap-8">
-                      <a
-                        href="#"
-                        className="text-white hover:text-white transition-colors footer-link"
-                      >
-                        {renderTextWithMuleCraft(link)}
-                      </a>
+                      {link === "Contact us" ? (
+                        <Link
+                          to="/contact"
+                          className="text-white hover:text-white transition-colors footer-link"
+                        >
+                          {renderTextWithMuleCraft(link)}
+                        </Link>
+                      ) : (
+                        <a
+                          href="#"
+                          className="text-white hover:text-white transition-colors footer-link"
+                        >
+                          {renderTextWithMuleCraft(link)}
+                        </a>
+                      )}
                     </li>
                   ))}
                 </ul>

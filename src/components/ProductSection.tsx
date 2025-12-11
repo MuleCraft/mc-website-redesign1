@@ -131,7 +131,7 @@ const ProductSection = () => {
                 color: 'rgb(31, 31, 31)',
               }}
             >
-              Explore our comprehensive suite of integration and automation products designed to streamline your workflows, accelerate development, and transform how you build, deploy, and scale applications.
+              Explore our comprehensive suite of designing, data transformation, and automation products—built to streamline workflows, accelerate development, and transform how you build, deploy, and scale applications.
             </p>
           </div>
         </div>
@@ -183,7 +183,7 @@ const ProductSection = () => {
                         fontWeight: 400,
                         fontSize: '14px',
                         lineHeight: '20px',
-                        color: '#4b4fe2',
+                        color: '#11b981',
                         textTransform: 'uppercase',
                         letterSpacing: '0.05em',
                         display: 'block',
@@ -226,7 +226,7 @@ const ProductSection = () => {
                       target="_blank"
                       rel="noopener noreferrer"
                       style={{
-                        color: '#4b4fe2',
+                        color: '#11b981',
                         textDecoration: 'none',
                         fontFamily: '"Noto Sans", sans-serif',
                         fontSize: '16px',
@@ -248,12 +248,12 @@ const ProductSection = () => {
                         <path
                           className="hover-arrow-line"
                           d="M5 17H24.5863L25.5 16.0001L24.5863 15H5C4.73478 15 4.48043 15.1054 4.29289 15.2929C4.10536 15.4804 4 15.7348 4 16C4 16.2652 4.10536 16.5196 4.29289 16.7071C4.48043 16.8947 4.73478 17 5 17Z"
-                          fill="#4B4FE2"
+                          fill="#11B981"
                         />
                         <path
                           className="hover-arrow-tip"
                           d="M18.7081 25.708L27.7081 16.708C27.8011 16.6151 27.8748 16.5048 27.9252 16.3834C27.9755 16.262 28.0014 16.1319 28.0014 16.0005C28.0014 15.8691 27.9755 15.739 27.9252 15.6176C27.8748 15.4962 27.8011 15.3859 27.7081 15.293L18.7081 6.29306C18.5205 6.10542 18.266 6 18.0006 6C17.7352 6 17.4807 6.10542 17.2931 6.29306C17.1055 6.4807 17 6.73519 17 7.00056C17 7.26592 17.1055 7.52042 17.2931 7.70806L24.5869 15.0005L25.5006 16.0006L24.5869 17.0005L17.2931 24.293C17.1055 24.4806 17 24.7351 17 25.0005C17 25.2659 17.1055 25.5205 17.2931 25.708C17.4807 25.8956 17.7352 26.0012 18.0006 26.0012C18.266 26.0012 18.5205 25.8956 18.7081 25.708Z"
-                          fill="#4B4FE2"
+                          fill="#11B981"
                         />
                       </svg>
                     </a>

@@ -1,6 +1,7 @@
 "use client";
 
 import { useRef } from "react";
+import { Link } from "react-router-dom";
 import { motion } from "motion/react";
 import hbg from "../assets/hbg4.png";
 
@@ -15,9 +16,9 @@ interface HeroProps {
 const Hero = ({
   eyebrow = "Enterprise Integration Experts",
   headline = "Seamless Integrations  for Customers",
-  description = "We are the dedicated specialists who connect your systems and automate your workflows. No platforms to manage—just custom integrations built by experts to drive your business forward.",
+  description = "We are the dedicated specialists who connect your systems and automate your workflows. No platforms to manage just custom integrations built by experts to drive your business forward.",
   ctaText = "Talk to an Expert",
-  ctaUrl = "#",
+  ctaUrl = "/contact",
 }: HeroProps) => {
   const heroContainerRef = useRef<HTMLDivElement>(null);
   
@@ -125,12 +126,12 @@ const Hero = ({
                 transition={{ delay: 0.4, duration: 0.6 }}
                 className="flex flex-col sm:flex-row sm:justify-center gap-4"
               >
-                <a
-                  href={ctaUrl}
+                <Link
+                  to={ctaUrl}
                   className="inline-flex items-center justify-center px-6 py-2.5 text-sm font-medium text-white bg-gradient-to-r from-[#10b981] to-[#06b6d4] rounded-full hover:shadow-lg hover:opacity-90 transition-all duration-300 min-w-[160px] shadow-md"
                 >
                   {ctaText}
-                </a>
+                </Link>
               </motion.div>
             </div>
           </article>

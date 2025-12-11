@@ -1,4 +1,5 @@
 import { useState, useRef, useEffect } from "react";
+import { Link } from "react-router-dom";
 import { Search, Globe, ChevronDown } from "lucide-react";
 import { Button } from "./ui/button";
 import DropdownMenu from "./DropdownMenu";
@@ -25,7 +26,7 @@ const Navbar = () => {
       href: "#",
     },
     { label: "About", hasChevron: false, href: "/about" },
-    { label: "Contact Sales", hasChevron: false, href: "/contact-sales" },
+    { label: "Contact Sales", hasChevron: false, href: "/contact" },
   ];
 
   const dropdownTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
@@ -662,23 +663,49 @@ const Navbar = () => {
                     }
                   }}
                 >
-                  <a
-                    ref={(el) => {
-                      navItemRefs.current[item.label] = el;
-                    }}
-                    href={item.href}
-                    target={(item as any).openInNewTab ? "_blank" : undefined}
-                    rel={
-                      (item as any).openInNewTab
-                        ? "noopener noreferrer"
-                        : undefined
-                    }
-                    onClick={(e) => {
-                      if (item.hasChevron) {
-                        e.preventDefault();
+                  {item.label === "Contact Sales" ? (
+                    <Link
+                      ref={(el) => {
+                        navItemRefs.current[item.label] = el;
+                      }}
+                      to={item.href}
+                      className="flex items-center gap-1.5 whitespace-nowrap transition-all rounded-md nav-link"
+                      style={{
+                        fontFamily: '"Noto Sans", sans-serif',
+                        color: "#333",
+                        display: "flex",
+                        alignItems: "center",
+                        textDecoration: "none",
+                        fontWeight: 500,
+                        fontSize: ".9rem",
+                        transition: "color .3s ease-in-out",
+                        position: "relative",
+                        lineHeight: 1,
+                        userSelect: "none",
+                        WebkitUserSelect: "none" as any,
+                        padding: "0.35rem .75rem",
+                      }}
+                    >
+                      {item.label}
+                    </Link>
+                  ) : (
+                    <a
+                      ref={(el) => {
+                        navItemRefs.current[item.label] = el;
+                      }}
+                      href={item.href}
+                      target={(item as any).openInNewTab ? "_blank" : undefined}
+                      rel={
+                        (item as any).openInNewTab
+                          ? "noopener noreferrer"
+                          : undefined
                       }
-                    }}
-                    className="flex items-center gap-1.5 whitespace-nowrap transition-all rounded-md nav-link"
+                      onClick={(e) => {
+                        if (item.hasChevron) {
+                          e.preventDefault();
+                        }
+                      }}
+                      className="flex items-center gap-1.5 whitespace-nowrap transition-all rounded-md nav-link"
                     style={{
                       fontFamily: '"Noto Sans", sans-serif',
                       color: "#333",
@@ -695,14 +722,15 @@ const Navbar = () => {
                       padding: "0.35rem .75rem",
                     }}
                   >
-                    {item.label}
-                    {item.hasChevron && (
-                      <ChevronDown
-                        className="w-4 h-4"
-                        style={{ color: "rgb(31, 31, 31)", strokeWidth: 1.6 }}
-                      />
-                    )}
-                  </a>
+                      {item.label}
+                      {item.hasChevron && (
+                        <ChevronDown
+                          className="w-4 h-4"
+                          style={{ color: "rgb(31, 31, 31)", strokeWidth: 1.6 }}
+                        />
+                      )}
+                    </a>
+                  )}
                   {/* Animated underline at bottom of navbar */}
                   <span
                     className="nav-underline"
@@ -1009,17 +1037,19 @@ const Navbar = () => {
             >
               Community
             </Button>
-            <Button
-              variant="default"
-              className="transition-all duration-300 rounded-full text-white shadow-md hover:shadow-lg bg-gradient-to-r from-[#10b981] to-[#06b6d4] hover:opacity-90 border-none"
-              style={{
-                padding: "0.675rem 1rem",
-                fontSize: "0.875rem",
-                height: "auto",
-              }}
-            >
-              Schedule demo
-            </Button>
+            <Link to="/contact">
+              <Button
+                variant="default"
+                className="transition-all duration-300 rounded-full text-white shadow-md hover:shadow-lg bg-gradient-to-r from-[#10b981] to-[#06b6d4] hover:opacity-90 border-none"
+                style={{
+                  padding: "0.675rem 1rem",
+                  fontSize: "0.875rem",
+                  height: "auto",
+                }}
+              >
+                Schedule demo
+              </Button>
+            </Link>
           </div>
         </div>
       </nav>

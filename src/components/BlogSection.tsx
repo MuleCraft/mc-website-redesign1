@@ -141,7 +141,7 @@ const BlogSection = () => {
             }
             .embla__dot.embla-dot-adjacent-current,
             .embla__dot.active {
-              background: #4b4fe2;
+              background: #11b981;
               width: 24px;
               border-radius: 4px;
             }
@@ -195,7 +195,7 @@ const BlogSection = () => {
                           fontFamily: '"Noto Sans", sans-serif',
                           fontSize: '0.75rem',
                           fontWeight: 600,
-                          color: '#4b4fe2',
+                          color: '#11b981',
                           textTransform: 'uppercase',
                           letterSpacing: '0.05em',
                         }}
@@ -247,7 +247,7 @@ const BlogSection = () => {
                       href={blog.url || "#"}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="text-button group flex items-center text-[#4b4fe2] hover:underline mt-2"
+                      className="text-button group flex items-center text-[#11b981] hover:underline mt-2"
                       style={{
                         textDecoration: 'none',
                       }}
@@ -295,7 +295,7 @@ const BlogSection = () => {
                 }}
                 onMouseEnter={(e) => {
                   e.currentTarget.style.background = '#f5f5f5';
-                  e.currentTarget.style.borderColor = '#4b4fe2';
+                      e.currentTarget.style.borderColor = '#11b981';
                 }}
                 onMouseLeave={(e) => {
                   e.currentTarget.style.background = '#ffffff';
@@ -308,7 +308,7 @@ const BlogSection = () => {
               </button>
             </div>
             <div className="embla__dots flex items-center">
-              {blogs.map((_, index) => (
+              {Array.from({ length: 4 }).map((_, index) => (
                 <button
                   key={index}
                   type="button"
@@ -338,7 +338,7 @@ const BlogSection = () => {
                 }}
                 onMouseEnter={(e) => {
                   e.currentTarget.style.background = '#f5f5f5';
-                  e.currentTarget.style.borderColor = '#4b4fe2';
+                      e.currentTarget.style.borderColor = '#11b981';
                 }}
                 onMouseLeave={(e) => {
                   e.currentTarget.style.background = '#ffffff';
