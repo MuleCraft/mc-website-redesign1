@@ -1,10 +1,14 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Phone, Mail, MapPin, ArrowRight } from "lucide-react";
 import Navbar from "./Navbar";
 import Footer from "./Footer";
 import BlogSection from "./BlogSection";
 
 const Contact = () => {
+  // Scroll to top when component mounts
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
   const [formData, setFormData] = useState({
     firstName: "",
     lastName: "",

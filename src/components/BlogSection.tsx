@@ -116,7 +116,7 @@ const BlogSection = () => {
         </div>
 
         {/* Carousel Section */}
-        <div className="relative">
+        <div className="relative blog-carousel-wrapper">
           <style>{`
             .carousel-border {
               border: 1px solid #e5e5e5;
@@ -145,6 +145,47 @@ const BlogSection = () => {
               width: 24px;
               border-radius: 4px;
             }
+            /* Desktop fixed sizes - 1024px and above */
+            @media (min-width: 1024px) {
+              .blog-carousel-wrapper {
+                max-width: 1200px !important;
+                margin: 0 auto !important;
+                width: 100% !important;
+              }
+              .embla__viewport {
+                max-width: 1200px !important;
+                margin: 0 auto !important;
+              }
+              .blog-card {
+                width: 384px !important;
+                minWidth: 384px !important;
+                maxWidth: 384px !important;
+              }
+              .embla__container {
+                max-width: 1200px !important;
+                width: 1200px !important;
+                margin: 0 auto !important;
+              }
+            }
+            /* Tablet and mobile responsive */
+            @media (max-width: 1023px) {
+              .blog-carousel-wrapper {
+                max-width: 100% !important;
+                width: 100% !important;
+              }
+              .embla__viewport {
+                max-width: 100% !important;
+              }
+              .blog-card {
+                width: calc(33.333% - 1rem) !important;
+                minWidth: calc(33.333% - 1rem) !important;
+                maxWidth: none !important;
+              }
+              .embla__container {
+                max-width: 100% !important;
+                width: 100% !important;
+              }
+            }
           `}</style>
 
           {/* Carousel Viewport */}
@@ -158,7 +199,7 @@ const BlogSection = () => {
               {blogs.map((blog) => (
                 <div
                   key={blog.id}
-                  className="embla__slide carousel-border mx-2 flex flex-col rounded-[10px] overflow-hidden flex-shrink-0"
+                  className="embla__slide carousel-border mx-2 flex flex-col rounded-[10px] overflow-hidden flex-shrink-0 blog-card"
                   style={{
                     width: `calc(${100 / slidesPerView}% - 1rem)`,
                     minWidth: `calc(${100 / slidesPerView}% - 1rem)`,

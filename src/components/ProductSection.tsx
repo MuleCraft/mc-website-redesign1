@@ -139,12 +139,14 @@ const ProductSection = () => {
         {/* Content Row */}
         <div className="lss-row row">
           <div 
-            className="lss-content"
+            className="lss-content-wrapper"
             style={{
               display: 'flex',
               flexDirection: 'column',
               gap: '3rem',
               position: 'relative',
+              maxWidth: '1200px',
+              margin: '0 auto',
             }}
           >
             {products.map((product, index) => (
@@ -170,10 +172,12 @@ const ProductSection = () => {
                   transformOrigin: 'center top',
                   imageRendering: 'auto' as const,
                   height: '421px',
+                  width: '100%',
+                  maxWidth: '1200px',
                 }}
               >
                 {/* Content Section */}
-                <div className="lss-content" style={{ gridColumn: 'span 2', padding: '2.5rem', display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
+                <div className="lss-content" style={{ gridColumn: 'span 2', padding: '2.5rem', display: 'flex', flexDirection: 'column', justifyContent: 'center', width: '100%' }}>
                   <div className="lss-content-inner">
                     <span
                       className="eyebrow-text"
@@ -261,7 +265,7 @@ const ProductSection = () => {
                 </div>
 
                 {/* Preview Section */}
-                <div className="lss-responsive" style={{ gridColumn: 'span 3', height: '100%', overflow: 'hidden', padding: '1.5rem' }}>
+                <div className="lss-responsive" style={{ gridColumn: 'span 3', height: '100%', overflow: 'hidden', padding: '1.5rem', width: '100%' }}>
                   <div className="video-block" style={{ width: '100%', height: '100%', borderRadius: '8px', overflow: 'hidden' }}>
                     {product.preview}
                   </div>
@@ -280,18 +284,50 @@ const ProductSection = () => {
         .btn-link:hover {
           opacity: 0.8;
         }
-        @media (max-width: 991px) {
+        /* Desktop fixed sizes - 1024px and above */
+        @media (min-width: 1024px) {
+          .lock-screen-section .lss-content-item {
+            width: 1200px !important;
+            maxWidth: 1200px !important;
+            height: 421px !important;
+            gridTemplateColumns: repeat(5, 1fr) !important;
+          }
+          .lss-content-wrapper {
+            maxWidth: 1200px !important;
+            width: 100% !important;
+          }
+          .lss-content {
+            gridColumn: span 2 !important;
+            padding: 2.5rem !important;
+            width: 100% !important;
+          }
+          .lss-responsive {
+            gridColumn: span 3 !important;
+            padding: 1.5rem !important;
+            height: 100% !important;
+            width: 100% !important;
+          }
+        }
+        /* Tablet and mobile responsive */
+        @media (max-width: 1023px) {
           .lock-screen-section .lss-content-item {
             display: flex !important;
             grid-template-columns: 1fr !important;
             height: auto !important;
+            maxWidth: 100% !important;
+            width: 100% !important;
+          }
+          .lss-content-wrapper {
+            maxWidth: 100% !important;
           }
           .lss-content {
             grid-column: span 1 !important;
+            width: 100% !important;
           }
           .lss-responsive {
             grid-column: span 1 !important;
             height: 300px !important;
+            width: 100% !important;
           }
         }
       `}</style>

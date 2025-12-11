@@ -13,23 +13,42 @@ const ImageSection = () => {
         </div>
 
         {/* Full Width Image with Overlay Content */}
+        <style>{`
+          .image-section-container {
+            min-height: 500px;
+            height: clamp(500px, 60vh, 900px);
+          }
+          @media (max-width: 640px) {
+            .image-section-container {
+              min-height: 500px !important;
+              height: 500px !important;
+            }
+          }
+          @media (min-width: 641px) and (max-width: 1024px) {
+            .image-section-container {
+              min-height: 600px !important;
+              height: 65vh !important;
+            }
+          }
+          @media (min-width: 1025px) {
+            .image-section-container {
+              min-height: 700px !important;
+              height: clamp(700px, 60vh, 900px) !important;
+            }
+          }
+        `}</style>
         <div
+          className="image-section-container relative overflow-hidden w-full"
           style={{
-            width: "100%",
-            height: "600px",
             position: "relative",
-            overflow: "hidden",
           }}
         >
           {/* Background Image */}
           <img
             src={siImage}
             alt="Integration Partners"
+            className="w-full h-full object-cover object-center"
             style={{
-              width: "100%",
-              height: "100%",
-              objectFit: "cover",
-              objectPosition: "center",
               display: "block",
             }}
           />
@@ -43,7 +62,7 @@ const ImageSection = () => {
               transform: "translate(-50%, -50%)",
               width: "100%",
               maxWidth: "1280px",
-              padding: "0 1rem",
+              padding: "0 clamp(1rem, 4vw, 2rem)",
               zIndex: 10,
             }}
           >

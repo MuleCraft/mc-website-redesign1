@@ -12,13 +12,13 @@ function App() {
         <Route
           path="/"
           element={
-            <div className="min-h-[120vh] flex flex-col">
-              <Navbar />
-              <main className="flex-grow pt-[80px]">
+    <div className="min-h-[120vh] flex flex-col">
+      <Navbar />
+      <main className="flex-grow pt-[80px]">
                 <Home />
-              </main>
-              <Footer />
-            </div>
+      </main>
+      <Footer />
+    </div>
           }
         />
         <Route path="/contact" element={<Contact />} />
