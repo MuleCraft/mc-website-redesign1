@@ -94,7 +94,7 @@ const Footer = () => {
   ];
 
   return (
-    <div style={{ position: 'relative', width: '100%' }}>
+    <div style={{ position: "relative", width: "100%" }}>
       <style>{`
         .footer-nav-grid {
           grid-template-columns: repeat(1, 1fr);
@@ -166,7 +166,11 @@ const Footer = () => {
       `}</style>
       <footer
         className="w-full text-white"
-        style={{ backgroundColor: "rgb(7, 43, 85)", position: 'relative', zIndex: 0 }}
+        style={{
+          backgroundColor: "rgb(7, 43, 85)",
+          position: "relative",
+          zIndex: 0,
+        }}
       >
         <div className="w-full max-w-[1344px] mx-auto pt-[16rem] md:pt-[17rem] pb-4 px-4 sm:px-6 lg:px-0">
           {/* Top Section */}
@@ -184,7 +188,7 @@ const Footer = () => {
                     lineHeight: "1",
                   }}
                 >
-                  <span style={{ color: "white" }}>Mulழ்cra</span>
+                  <span style={{ color: "white" }}>Mul</span>
                   <span
                     className="text-transparent bg-clip-text bg-gradient-to-r from-[#10b981] to-[#06b6d4]"
                     style={{
@@ -194,12 +198,17 @@ const Footer = () => {
                       WebkitTextFillColor: "transparent",
                     }}
                   >
-                    f
+                    ழ்
                   </span>
+                  <span style={{ color: "white" }}>cra</span>
+                  <span style={{ color: "white" }}>f</span>
                   <span style={{ color: "white" }}>t</span>
                 </span>
               </div>
-              <p className="text-white" style={{ fontSize: 'clamp(12px, 2.5vw, 14px)' }}>
+              <p
+                className="text-white"
+                style={{ fontSize: "clamp(12px, 2.5vw, 14px)" }}
+              >
                 From Integration to Innovation. Instantly.
               </p>
             </div>
@@ -355,18 +364,36 @@ const Footer = () => {
           {/* Bottom Section */}
           <div className="flex flex-col md:flex-row justify-between items-center gap-4 md:gap-[2rem] mb-4 md:mb-6 pb-4 md:pb-5 text-sm">
             <div className="flex flex-col sm:flex-row flex-wrap items-center justify-center md:justify-start gap-3 md:gap-8 text-white text-center md:text-left">
-              <span style={{ fontSize: 'clamp(11px, 2.5vw, 14px)' }}>© 2025 Copyright <MuleCraftName />. All rights reserved.</span>
+              <span style={{ fontSize: "clamp(11px, 2.5vw, 14px)" }}>
+                © 2025 Copyright <MuleCraftName />. All rights reserved.
+              </span>
               <div className="flex flex-wrap items-center justify-center gap-3 md:gap-4">
-                <a href="#" className="hover:text-white transition-colors" style={{ fontSize: 'clamp(11px, 2.5vw, 14px)' }}>
+                <a
+                  href="#"
+                  className="hover:text-white transition-colors"
+                  style={{ fontSize: "clamp(11px, 2.5vw, 14px)" }}
+                >
                   Privacy
                 </a>
-                <a href="#" className="hover:text-white transition-colors" style={{ fontSize: 'clamp(11px, 2.5vw, 14px)' }}>
+                <a
+                  href="#"
+                  className="hover:text-white transition-colors"
+                  style={{ fontSize: "clamp(11px, 2.5vw, 14px)" }}
+                >
                   Compliance
                 </a>
-                <a href="#" className="hover:text-white transition-colors" style={{ fontSize: 'clamp(11px, 2.5vw, 14px)' }}>
+                <a
+                  href="#"
+                  className="hover:text-white transition-colors"
+                  style={{ fontSize: "clamp(11px, 2.5vw, 14px)" }}
+                >
                   Terms
                 </a>
-                <a href="#" className="hover:text-white transition-colors" style={{ fontSize: 'clamp(11px, 2.5vw, 14px)' }}>
+                <a
+                  href="#"
+                  className="hover:text-white transition-colors"
+                  style={{ fontSize: "clamp(11px, 2.5vw, 14px)" }}
+                >
                   GDPR
                 </a>
               </div>
@@ -375,16 +402,24 @@ const Footer = () => {
             {/* Social Media Icons */}
             <div className="flex items-center gap-4 md:gap-6">
               <a href="#" className="hover:opacity-80 transition-opacity">
-                <FaFacebookF style={{ color: "white", fontSize: "clamp(18px, 3vw, 20px)" }} />
+                <FaFacebookF
+                  style={{ color: "white", fontSize: "clamp(18px, 3vw, 20px)" }}
+                />
               </a>
               <a href="#" className="hover:opacity-80 transition-opacity">
-                <FaLinkedin style={{ color: "white", fontSize: "clamp(18px, 3vw, 20px)" }} />
+                <FaLinkedin
+                  style={{ color: "white", fontSize: "clamp(18px, 3vw, 20px)" }}
+                />
               </a>
               <a href="#" className="hover:opacity-80 transition-opacity">
-                <FaYoutube style={{ color: "white", fontSize: "clamp(18px, 3vw, 20px)" }} />
+                <FaYoutube
+                  style={{ color: "white", fontSize: "clamp(18px, 3vw, 20px)" }}
+                />
               </a>
               <a href="#" className="hover:opacity-80 transition-opacity">
-                <FaInstagram style={{ color: "white", fontSize: "clamp(18px, 3vw, 20px)" }} />
+                <FaInstagram
+                  style={{ color: "white", fontSize: "clamp(18px, 3vw, 20px)" }}
+                />
               </a>
             </div>
           </div>

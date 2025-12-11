@@ -3,7 +3,7 @@
 import { useRef } from "react";
 import { Link } from "react-router-dom";
 import { motion } from "motion/react";
-import hbg from "../assets/hbg4.png";
+import hbg from "../assets/bc.png";
 
 interface HeroProps {
   eyebrow?: string;
@@ -21,21 +21,21 @@ const Hero = ({
   ctaUrl = "/contact",
 }: HeroProps) => {
   const heroContainerRef = useRef<HTMLDivElement>(null);
-  
+
   // Split headline into first 3 words and remaining words
-  const headlineWords = headline.split(' ');
-  const topLine = headlineWords.slice(0, 3).join(' ');
-  const bottomLine = headlineWords.slice(3).join(' ');
+  const headlineWords = headline.split(" ");
+  const topLine = headlineWords.slice(0, 3).join(" ");
+  const bottomLine = headlineWords.slice(3).join(" ");
   return (
     <div
       ref={heroContainerRef}
       className="w-full relative"
       style={{
-        minHeight: 'clamp(600px, 92vh, 92vh)',
-        height: 'clamp(600px, 92vh, 92vh)',
+        minHeight: "clamp(600px, 92vh, 92vh)",
+        height: "clamp(600px, 92vh, 92vh)",
       }}
     >
-      <div 
+      <div
         className="hidden lg:block absolute inset-0 hero-bg-image"
         style={{
           backgroundImage: `url(${hbg})`,
@@ -56,15 +56,16 @@ const Hero = ({
                     transition={{ delay: 0.1, duration: 0.5 }}
                     className="flex justify-center mb-2 md:mb-3"
                   >
-                    <span 
+                    <span
                       className="uppercase tracking-[0.09em]"
                       style={{
-                        fontFamily: '"Mona Sans", "Mona Sans Header Fallback", -apple-system, "system-ui", "Segoe UI", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol"',
-                        fontStyle: 'normal',
+                        fontFamily:
+                          '"Mona Sans", "Mona Sans Header Fallback", -apple-system, "system-ui", "Segoe UI", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol"',
+                        fontStyle: "normal",
                         fontWeight: 400,
-                        fontSize: '16px',
-                        lineHeight: '24px',
-                        color: '#59636E',
+                        fontSize: "16px",
+                        lineHeight: "24px",
+                        color: "#59636E",
                       }}
                     >
                       {eyebrow}
@@ -79,12 +80,13 @@ const Hero = ({
                   transition={{ delay: 0.2, duration: 0.6 }}
                   className="mb-3 md:mb-4"
                   style={{
-                    fontFamily: '"Mona Sans", "Mona Sans Header Fallback", -apple-system, "system-ui", "Segoe UI", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol"',
-                    fontStyle: 'normal',
+                    fontFamily:
+                      '"Mona Sans", "Mona Sans Header Fallback", -apple-system, "system-ui", "Segoe UI", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol"',
+                    fontStyle: "normal",
                     fontWeight: 800,
-                    fontSize: 'clamp(32px, 8vw, 72px)',
-                    lineHeight: 'clamp(36px, 8.5vw, 76px)',
-                    color: '#1F2328',
+                    fontSize: "clamp(32px, 8vw, 72px)",
+                    lineHeight: "clamp(36px, 8.5vw, 76px)",
+                    color: "#1F2328",
                   }}
                 >
                   {topLine}
@@ -97,21 +99,22 @@ const Hero = ({
                 </motion.h1>
 
                 {/* Description */}
-                  <motion.div
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ delay: 0.3, duration: 0.6 }}
-                    className="mb-4 md:mb-5"
-                  >
-                  <p 
+                <motion.div
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.3, duration: 0.6 }}
+                  className="mb-4 md:mb-5"
+                >
+                  <p
                     className="max-w-2xl mx-auto px-4"
                     style={{
-                      fontFamily: '"Mona Sans", "Mona Sans Fallback", -apple-system, "system-ui", "Segoe UI", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol"',
-                      fontStyle: 'normal',
+                      fontFamily:
+                        '"Mona Sans", "Mona Sans Fallback", -apple-system, "system-ui", "Segoe UI", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol"',
+                      fontStyle: "normal",
                       fontWeight: 400,
-                      fontSize: 'clamp(16px, 4vw, 20px)',
-                      lineHeight: 'clamp(24px, 5vw, 28px)',
-                      color: '#59636E',
+                      fontSize: "clamp(16px, 4vw, 20px)",
+                      lineHeight: "clamp(24px, 5vw, 28px)",
+                      color: "#59636E",
                     }}
                   >
                     {description}

@@ -13,7 +13,9 @@ const Navbar = () => {
   const [selectedTheme, setSelectedTheme] = useState("Light");
   const [isScrolling, setIsScrolling] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-  const [mobileDropdownOpen, setMobileDropdownOpen] = useState<string | null>(null);
+  const [mobileDropdownOpen, setMobileDropdownOpen] = useState<string | null>(
+    null
+  );
   const navItemRefs = useRef<{ [key: string]: HTMLAnchorElement | null }>({});
   const navbarRef = useRef<HTMLElement | null>(null);
   const searchInputRef = useRef<HTMLInputElement | null>(null);
@@ -519,7 +521,10 @@ const Navbar = () => {
             {
               title: "Manufacturing Transformation",
               description: "Global manufacturing leader integration framework",
-              href: getRoutePath("Manufacturing Transformation", "case-studies"),
+              href: getRoutePath(
+                "Manufacturing Transformation",
+                "case-studies"
+              ),
             },
             {
               title: "Equity Automation",
@@ -598,10 +603,26 @@ const Navbar = () => {
 
     if (openDropdown === "About") {
       return [
-        { label: "Our Story", isSelected: true, href: getRoutePath("Our Story", "about") },
-        { label: "Team", isSelected: false, href: getRoutePath("Team", "about") },
-        { label: "Partners", isSelected: false, href: getRoutePath("Partners", "about") },
-        { label: "News & Press", isSelected: false, href: getRoutePath("News & Press", "about") },
+        {
+          label: "Our Story",
+          isSelected: true,
+          href: getRoutePath("Our Story", "about"),
+        },
+        {
+          label: "Team",
+          isSelected: false,
+          href: getRoutePath("Team", "about"),
+        },
+        {
+          label: "Partners",
+          isSelected: false,
+          href: getRoutePath("Partners", "about"),
+        },
+        {
+          label: "News & Press",
+          isSelected: false,
+          href: getRoutePath("News & Press", "about"),
+        },
       ];
     }
 
@@ -641,7 +662,7 @@ const Navbar = () => {
     <header
       ref={navbarRef}
       className="w-full fixed top-0 z-50 overflow-visible border-b"
-      style={{ 
+      style={{
         backgroundColor: "#fff",
         borderBottomWidth: "1px",
         borderBottomColor: "black-200",
@@ -667,7 +688,7 @@ const Navbar = () => {
                 color: "#0891b2",
               }}
             >
-              Mulழ்cra
+              Mul
               <span
                 className="text-transparent bg-clip-text bg-gradient-to-r from-[#10b981] to-[#06b6d4]"
                 style={{
@@ -677,8 +698,10 @@ const Navbar = () => {
                   WebkitTextFillColor: "transparent",
                 }}
               >
-                f
+                ழ்
               </span>
+              cra
+              <span style={{ color: "#0891b2" }}>f</span>
               <span style={{ color: "#0891b2" }}>t</span>
             </span>
           </a>
@@ -732,47 +755,47 @@ const Navbar = () => {
                       {item.label}
                     </Link>
                   ) : (
-                  <a
-                    ref={(el) => {
-                      navItemRefs.current[item.label] = el;
-                    }}
-                    href={item.href}
-                    target={(item as any).openInNewTab ? "_blank" : undefined}
-                    rel={
-                      (item as any).openInNewTab
-                        ? "noopener noreferrer"
-                        : undefined
-                    }
-                    onClick={(e) => {
-                      if (item.hasChevron) {
-                        e.preventDefault();
+                    <a
+                      ref={(el) => {
+                        navItemRefs.current[item.label] = el;
+                      }}
+                      href={item.href}
+                      target={(item as any).openInNewTab ? "_blank" : undefined}
+                      rel={
+                        (item as any).openInNewTab
+                          ? "noopener noreferrer"
+                          : undefined
                       }
-                    }}
-                    className="flex items-center gap-1.5 whitespace-nowrap transition-all rounded-md nav-link"
-                    style={{
-                      fontFamily: '"Noto Sans", sans-serif',
-                      color: "#333",
-                      display: "flex",
-                      alignItems: "center",
-                      textDecoration: "none",
-                      fontWeight: 500,
-                      fontSize: ".9rem",
-                      transition: "color .3s ease-in-out",
-                      position: "relative",
-                      lineHeight: 1,
-                      userSelect: "none",
-                      WebkitUserSelect: "none" as any,
-                      padding: "0.35rem .75rem",
-                    }}
-                  >
-                    {item.label}
-                    {item.hasChevron && (
-                      <ChevronDown
-                        className="w-4 h-4"
-                        style={{ color: "rgb(31, 31, 31)", strokeWidth: 1.6 }}
-                      />
-                    )}
-                  </a>
+                      onClick={(e) => {
+                        if (item.hasChevron) {
+                          e.preventDefault();
+                        }
+                      }}
+                      className="flex items-center gap-1.5 whitespace-nowrap transition-all rounded-md nav-link"
+                      style={{
+                        fontFamily: '"Noto Sans", sans-serif',
+                        color: "#333",
+                        display: "flex",
+                        alignItems: "center",
+                        textDecoration: "none",
+                        fontWeight: 500,
+                        fontSize: ".9rem",
+                        transition: "color .3s ease-in-out",
+                        position: "relative",
+                        lineHeight: 1,
+                        userSelect: "none",
+                        WebkitUserSelect: "none" as any,
+                        padding: "0.35rem .75rem",
+                      }}
+                    >
+                      {item.label}
+                      {item.hasChevron && (
+                        <ChevronDown
+                          className="w-4 h-4"
+                          style={{ color: "rgb(31, 31, 31)", strokeWidth: 1.6 }}
+                        />
+                      )}
+                    </a>
                   )}
                   {/* Animated underline at bottom of navbar */}
                   <span
@@ -1094,17 +1117,17 @@ const Navbar = () => {
               Community
             </Button>
             <Link to="/contact">
-            <Button
-              variant="default"
-              className="transition-all duration-300 rounded-full text-white shadow-md hover:shadow-lg bg-gradient-to-r from-[#10b981] to-[#06b6d4] hover:opacity-90 border-none"
-              style={{
-                padding: "0.675rem 1rem",
-                fontSize: "0.875rem",
-                height: "auto",
-              }}
-            >
-              Schedule demo
-            </Button>
+              <Button
+                variant="default"
+                className="transition-all duration-300 rounded-full text-white shadow-md hover:shadow-lg bg-gradient-to-r from-[#10b981] to-[#06b6d4] hover:opacity-90 border-none"
+                style={{
+                  padding: "0.675rem 1rem",
+                  fontSize: "0.875rem",
+                  height: "auto",
+                }}
+              >
+                Schedule demo
+              </Button>
             </Link>
           </div>
         </div>
@@ -1122,10 +1145,10 @@ const Navbar = () => {
           {/* Menu Panel */}
           <div
             className="lg:hidden fixed left-0 right-0 z-50 bg-white shadow-xl"
-            style={{ 
+            style={{
               top: `${getNavbarHeight()}px`,
               maxHeight: `calc(100vh - ${getNavbarHeight()}px)`,
-              overflowY: 'auto',
+              overflowY: "auto",
             }}
             onClick={(e) => e.stopPropagation()}
           >
@@ -1136,7 +1159,10 @@ const Navbar = () => {
                     <>
                       <button
                         onClick={() => {
-                          const newOpenState = mobileDropdownOpen === item.label ? null : item.label;
+                          const newOpenState =
+                            mobileDropdownOpen === item.label
+                              ? null
+                              : item.label;
                           setMobileDropdownOpen(newOpenState);
                           // Set openDropdown for getDropdownItems() to work correctly
                           if (newOpenState) {
@@ -1156,7 +1182,9 @@ const Navbar = () => {
                         <span>{item.label}</span>
                         <ChevronDown
                           className={`w-5 h-5 transition-transform ${
-                            mobileDropdownOpen === item.label ? "rotate-180" : ""
+                            mobileDropdownOpen === item.label
+                              ? "rotate-180"
+                              : ""
                           }`}
                           style={{ color: "#666" }}
                         />
@@ -1210,14 +1238,23 @@ const Navbar = () => {
                           ) : item.label === "Products" ? (
                             // Show all product items from all categories
                             (() => {
-                              const allProducts: Array<{ title: string; href?: string; isSelected?: boolean }> = [];
+                              const allProducts: Array<{
+                                title: string;
+                                href?: string;
+                                isSelected?: boolean;
+                              }> = [];
                               const dropdownItems = getDropdownItems();
                               dropdownItems.forEach((category: any) => {
-                                if (category.menuItems && Array.isArray(category.menuItems)) {
+                                if (
+                                  category.menuItems &&
+                                  Array.isArray(category.menuItems)
+                                ) {
                                   category.menuItems.forEach((product: any) => {
                                     // Map product titles to match the image list
                                     let displayTitle = product.title;
-                                    if (product.title === "RAMLify Flow Agent") {
+                                    if (
+                                      product.title === "RAMLify Flow Agent"
+                                    ) {
                                       displayTitle = "RAMLify";
                                     }
                                     allProducts.push({
@@ -1229,50 +1266,73 @@ const Navbar = () => {
                                 }
                               });
                               // Order products to match the image: Goose (selected), SnapMapper, AnypointLP, RAMLify, CloudHub 2.0 Migration, MuleSoftLP
-                              const order = ["Goose", "SnapMapper", "AnypointLP", "RAMLify", "CloudHub 2.0 Migration", "MuleSoftLP"];
-                              const orderedProducts: Array<{ title: string; href?: string; isSelected?: boolean }> = [];
-                              
+                              const order = [
+                                "Goose",
+                                "SnapMapper",
+                                "AnypointLP",
+                                "RAMLify",
+                                "CloudHub 2.0 Migration",
+                                "MuleSoftLP",
+                              ];
+                              const orderedProducts: Array<{
+                                title: string;
+                                href?: string;
+                                isSelected?: boolean;
+                              }> = [];
+
                               // Add products in specified order
-                              order.forEach(title => {
-                                const product = allProducts.find(p => p.title === title);
+                              order.forEach((title) => {
+                                const product = allProducts.find(
+                                  (p) => p.title === title
+                                );
                                 if (product) {
                                   orderedProducts.push(product);
                                 }
                               });
-                              
+
                               // Add any remaining products that weren't in the order list
-                              allProducts.forEach(product => {
+                              allProducts.forEach((product) => {
                                 if (!order.includes(product.title)) {
                                   orderedProducts.push(product);
                                 }
                               });
-                              
+
                               return orderedProducts.map((product) => (
                                 <a
                                   key={product.title}
                                   href={product.href || "#"}
                                   target={product.href ? "_blank" : undefined}
-                                  rel={product.href ? "noopener noreferrer" : undefined}
+                                  rel={
+                                    product.href
+                                      ? "noopener noreferrer"
+                                      : undefined
+                                  }
                                   onClick={() => {
                                     setMobileDropdownOpen(null);
                                     setIsMobileMenuOpen(false);
                                   }}
                                   className="w-full block"
                                   style={{
-                                    backgroundColor: product.isSelected ? '#f0fdf4' : 'transparent',
-                                    borderRadius: '8px',
-                                    marginBottom: '2px',
-                                    textDecoration: 'none',
+                                    backgroundColor: product.isSelected
+                                      ? "#f0fdf4"
+                                      : "transparent",
+                                    borderRadius: "8px",
+                                    marginBottom: "2px",
+                                    textDecoration: "none",
                                   }}
                                 >
                                   <div
                                     className="w-full text-left py-2.5 px-3 rounded-md"
                                     style={{
                                       fontFamily: '"Noto Sans", sans-serif',
-                                      color: product.isSelected ? '#11b981' : '#333',
-                                      fontWeight: product.isSelected ? 600 : 400,
+                                      color: product.isSelected
+                                        ? "#11b981"
+                                        : "#333",
+                                      fontWeight: product.isSelected
+                                        ? 600
+                                        : 400,
                                       fontSize: "0.95rem",
-                                      cursor: 'pointer',
+                                      cursor: "pointer",
                                     }}
                                   >
                                     {product.title}
@@ -1287,19 +1347,25 @@ const Navbar = () => {
                                 key={dropdownItem.label}
                                 className="w-full"
                                 style={{
-                                  backgroundColor: dropdownItem.isSelected ? '#f0fdf4' : 'transparent',
-                                  borderRadius: '8px',
-                                  marginBottom: '2px',
+                                  backgroundColor: dropdownItem.isSelected
+                                    ? "#f0fdf4"
+                                    : "transparent",
+                                  borderRadius: "8px",
+                                  marginBottom: "2px",
                                 }}
                               >
                                 <div
                                   className="w-full text-left py-2.5 px-3 rounded-md"
                                   style={{
                                     fontFamily: '"Noto Sans", sans-serif',
-                                    color: dropdownItem.isSelected ? '#11b981' : '#333',
-                                    fontWeight: dropdownItem.isSelected ? 600 : 500,
+                                    color: dropdownItem.isSelected
+                                      ? "#11b981"
+                                      : "#333",
+                                    fontWeight: dropdownItem.isSelected
+                                      ? 600
+                                      : 500,
                                     fontSize: "0.95rem",
-                                    cursor: 'default',
+                                    cursor: "default",
                                   }}
                                 >
                                   {dropdownItem.label}
@@ -1356,18 +1422,18 @@ const Navbar = () => {
       {/* Full-width Dropdown Menu - Rendered outside nav but inside header - Desktop only */}
       {openDropdown && (
         <div className="hidden lg:block">
-        <DropdownMenu
-          items={getDropdownItems()}
-          isOpen={true}
-          onClose={() => {
-            setOpenDropdown(null);
-          }}
-          navbarHeight={getNavbarHeight()}
-          contentType={getContentType()}
-          navItem={openDropdown}
-          onMouseEnter={handleDropdownCancelClose}
-          onMouseLeave={() => handleDropdownClose(300)}
-        />
+          <DropdownMenu
+            items={getDropdownItems()}
+            isOpen={true}
+            onClose={() => {
+              setOpenDropdown(null);
+            }}
+            navbarHeight={getNavbarHeight()}
+            contentType={getContentType()}
+            navItem={openDropdown}
+            onMouseEnter={handleDropdownCancelClose}
+            onMouseLeave={() => handleDropdownClose(300)}
+          />
         </div>
       )}
     </header>
