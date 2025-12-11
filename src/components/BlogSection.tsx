@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import VerticalLine from "./VerticalLine";
 import blog1Image from "@/assets/blog-i.png";
 import b6Image from "@/assets/b6.png";
@@ -19,6 +19,24 @@ interface Blog {
 
 const BlogSection = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
+  const [slidesPerView, setSlidesPerView] = useState(3);
+
+  // Update slidesPerView based on screen size
+  useEffect(() => {
+    const updateSlidesPerView = () => {
+      if (window.innerWidth < 768) {
+        setSlidesPerView(1); // Mobile: 1 card
+      } else if (window.innerWidth < 1024) {
+        setSlidesPerView(2); // Tablet: 2 cards
+      } else {
+        setSlidesPerView(3); // Desktop: 3 cards
+      }
+    };
+
+    updateSlidesPerView();
+    window.addEventListener('resize', updateSlidesPerView);
+    return () => window.removeEventListener('resize', updateSlidesPerView);
+  }, []);
 
   const blogs: Blog[] = [
     {
@@ -65,7 +83,6 @@ const BlogSection = () => {
     },
   ];
 
-  const slidesPerView = 3; // Always show 3 blogs at a time
   const maxIndex = Math.max(0, blogs.length - slidesPerView);
 
   const handleNext = () => {
@@ -91,10 +108,11 @@ const BlogSection = () => {
               fontFamily: '"Poppins", sans-serif',
               fontStyle: 'normal',
               fontWeight: 700,
-              fontSize: '32px',
-              lineHeight: '40px',
+              fontSize: 'clamp(24px, 6vw, 32px)',
+              lineHeight: 'clamp(30px, 7vw, 40px)',
               color: 'rgb(31, 31, 31)',
               marginBottom: '2rem',
+              padding: '0 1rem',
             }}
           >
             Latest Blog Posts & Insights
@@ -104,11 +122,12 @@ const BlogSection = () => {
               fontFamily: '"Noto Sans", sans-serif',
               fontStyle: 'normal',
               fontWeight: 400,
-              fontSize: '1rem',
+              fontSize: 'clamp(14px, 3.5vw, 1rem)',
               lineHeight: '1.5',
               color: 'rgb(31, 31, 31)',
               maxWidth: '42rem',
               margin: '2rem auto',
+              padding: '0 1rem',
             }}
           >
             Stay updated with the latest insights, trends, and best practices in integration, automation, and digital transformation. Explore our curated blog posts to enhance your knowledge and stay ahead in the industry.
@@ -167,8 +186,8 @@ const BlogSection = () => {
                 margin: 0 auto !important;
               }
             }
-            /* Tablet and mobile responsive */
-            @media (max-width: 1023px) {
+            /* Tablet responsive */
+            @media (min-width: 768px) and (max-width: 1023px) {
               .blog-carousel-wrapper {
                 max-width: 100% !important;
                 width: 100% !important;
@@ -177,13 +196,37 @@ const BlogSection = () => {
                 max-width: 100% !important;
               }
               .blog-card {
-                width: calc(33.333% - 1rem) !important;
-                minWidth: calc(33.333% - 1rem) !important;
+                width: calc(50% - 1rem) !important;
+                minWidth: calc(50% - 1rem) !important;
                 maxWidth: none !important;
               }
               .embla__container {
                 max-width: 100% !important;
                 width: 100% !important;
+              }
+            }
+            /* Mobile responsive - one card at a time */
+            @media (max-width: 767px) {
+              .blog-carousel-wrapper {
+                max-width: 100% !important;
+                width: 100% !important;
+              }
+              .embla__viewport {
+                max-width: 100% !important;
+                padding: 0 !important;
+              }
+              .blog-card {
+                width: calc(100% - 1rem) !important;
+                minWidth: calc(100% - 1rem) !important;
+                maxWidth: calc(100% - 1rem) !important;
+                margin: 0 0.5rem !important;
+              }
+              .embla__container {
+                max-width: 100% !important;
+                width: 100% !important;
+              }
+              .embla__slide {
+                padding: 0 !important;
               }
             }
           `}</style>
@@ -209,7 +252,7 @@ const BlogSection = () => {
                   <div
                     style={{
                       width: "100%",
-                      height: "200px",
+                      height: "clamp(180px, 40vw, 200px)",
                       overflow: "hidden",
                       backgroundColor: "#f3f4f6",
                       position: "relative",
@@ -229,12 +272,12 @@ const BlogSection = () => {
                   </div>
                   
                   {/* Blog Content */}
-                  <div className="flex flex-col gap-3 p-6">
+                  <div className="flex flex-col gap-3 p-4 md:p-6">
                     {blog.category && (
                       <span
                         style={{
                           fontFamily: '"Noto Sans", sans-serif',
-                          fontSize: '0.75rem',
+                          fontSize: 'clamp(0.7rem, 2vw, 0.75rem)',
                           fontWeight: 600,
                           color: '#11b981',
                           textTransform: 'uppercase',
@@ -250,7 +293,7 @@ const BlogSection = () => {
                         fontFamily: '"Poppins", sans-serif',
                         fontStyle: 'normal',
                         fontWeight: 600,
-                        fontSize: '1.25rem',
+                        fontSize: 'clamp(1rem, 3vw, 1.25rem)',
                         lineHeight: '1.3',
                         color: 'rgb(31, 31, 31)',
                         margin: 0,
@@ -264,7 +307,7 @@ const BlogSection = () => {
                         fontFamily: '"Noto Sans", sans-serif',
                         fontStyle: 'normal',
                         fontWeight: 400,
-                        fontSize: '0.9375rem',
+                        fontSize: 'clamp(0.875rem, 2.5vw, 0.9375rem)',
                         lineHeight: '1.5',
                         color: 'rgba(31, 31, 31, 0.7)',
                         margin: 0,
@@ -349,13 +392,13 @@ const BlogSection = () => {
               </button>
             </div>
             <div className="embla__dots flex items-center">
-              {Array.from({ length: 4 }).map((_, index) => (
+              {Array.from({ length: Math.min(blogs.length, slidesPerView === 1 ? blogs.length : 4) }).map((_, index) => (
                 <button
                   key={index}
                   type="button"
-                  className={`embla__dot ${index === currentIndex ? 'active' : ''}`}
+                  className={`embla__dot ${slidesPerView === 1 ? (index === currentIndex ? 'active' : '') : (Math.floor(currentIndex / slidesPerView) === index ? 'active' : '')}`}
                   aria-label={`Go to slide ${index + 1}`}
-                  onClick={() => goToSlide(index)}
+                  onClick={() => goToSlide(slidesPerView === 1 ? index : index * slidesPerView)}
                 />
               ))}
             </div>

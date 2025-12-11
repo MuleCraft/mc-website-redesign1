@@ -19,11 +19,10 @@ const CTASection = () => {
           className="fwc-wrap"
           style={{
             '--BGcolor': '#0991B2',
-            padding: '2rem 1.25rem',
+            padding: 'clamp(1.5rem, 4vw, 2rem) clamp(1rem, 3vw, 1.25rem)',
             borderRadius: '0.63rem',
             backgroundColor: 'var(--BGcolor)',
             position: 'relative',
-            width: '100%',
             maxWidth: '1000px',
             margin: '0 auto',
           } as React.CSSProperties}
@@ -35,7 +34,7 @@ const CTASection = () => {
               flexDirection: 'column',
               alignItems: 'center',
               textAlign: 'center',
-              gap: '1.5rem',
+              gap: 'clamp(1rem, 3vw, 1.5rem)',
             }}
           >
             {/* Text Content */}
@@ -51,11 +50,11 @@ const CTASection = () => {
                   fontFamily: '"Poppins", sans-serif',
                   fontStyle: 'normal',
                   fontWeight: 700,
-                  fontSize: '32px',
-                  lineHeight: '40px',
+                  fontSize: 'clamp(20px, 5vw, 32px)',
+                  lineHeight: 'clamp(28px, 6vw, 40px)',
                   color: 'rgb(255, 255, 255)',
                   margin: '0 0 1rem 0',
-                  whiteSpace: 'nowrap',
+                  whiteSpace: 'normal',
                 }}
               >
                 Integrate everything. Accelerate anything.™
@@ -65,10 +64,11 @@ const CTASection = () => {
                   fontFamily: '"Noto Sans", sans-serif',
                   fontStyle: 'normal',
                   fontWeight: 400,
-                  fontSize: '16px',
-                  lineHeight: '24px',
+                  fontSize: 'clamp(14px, 3.5vw, 16px)',
+                  lineHeight: 'clamp(20px, 5vw, 24px)',
                   color: 'rgb(255, 255, 255)',
                   margin: '0',
+                  padding: '0 0.5rem',
                 }}
               >
                 Empowering businesses with <MuleCraftName />.
@@ -98,11 +98,12 @@ const CTASection = () => {
                     position: 'relative',
                     display: 'flex',
                     alignItems: 'center',
+                    justifyContent: 'center',
                     verticalAlign: 'top',
-                    padding: '0.82rem 1.44rem',
-                    paddingLeft: '128px',
+                    padding: 'clamp(0.75rem, 2vw, 0.82rem) clamp(1rem, 3vw, 1.44rem)',
+                    paddingLeft: 'clamp(60px, 18vw, 128px)',
                     color: '#072b55',
-                    fontSize: '1rem',
+                    fontSize: 'clamp(0.875rem, 2.5vw, 1rem)',
                     fontWeight: 600,
                     lineHeight: '1.5',
                     textAlign: 'center',
@@ -114,6 +115,9 @@ const CTASection = () => {
                     WebkitUserSelect: 'none',
                     userSelect: 'none',
                     cursor: 'pointer',
+                    minWidth: 'fit-content',
+                    maxWidth: '100%',
+                    overflow: 'hidden',
                   }}
                 >
                   {/* Avatar Group */}
@@ -121,7 +125,7 @@ const CTASection = () => {
                     className="fwc-avatar-group"
                     style={{
                       position: 'absolute',
-                      left: '1.44rem',
+                      left: 'clamp(0.75rem, 2vw, 1.44rem)',
                       display: 'flex',
                       alignItems: 'center',
                     }}
@@ -129,13 +133,13 @@ const CTASection = () => {
                     <div
                       className="fwc-avatar"
                       style={{
-                        width: '32px',
-                        height: '32px',
+                        width: 'clamp(24px, 5vw, 32px)',
+                        height: 'clamp(24px, 5vw, 32px)',
                         borderRadius: '50%',
                         border: '2px solid #fff',
                         overflow: 'hidden',
                         backgroundColor: '#fff',
-                        marginLeft: '-8px',
+                        marginLeft: 'clamp(-6px, -1.5vw, -8px)',
                         position: 'relative',
                         zIndex: 3,
                       }}
@@ -154,13 +158,13 @@ const CTASection = () => {
                     <div
                       className="fwc-avatar"
                       style={{
-                        width: '32px',
-                        height: '32px',
+                        width: 'clamp(24px, 5vw, 32px)',
+                        height: 'clamp(24px, 5vw, 32px)',
                         borderRadius: '50%',
                         border: '2px solid #fff',
                         overflow: 'hidden',
                         backgroundColor: '#fff',
-                        marginLeft: '-8px',
+                        marginLeft: 'clamp(-6px, -1.5vw, -8px)',
                         position: 'relative',
                         zIndex: 2,
                       }}
@@ -179,13 +183,13 @@ const CTASection = () => {
                     <div
                       className="fwc-avatar"
                       style={{
-                        width: '32px',
-                        height: '32px',
+                        width: 'clamp(24px, 5vw, 32px)',
+                        height: 'clamp(24px, 5vw, 32px)',
                         borderRadius: '50%',
                         border: '2px solid #fff',
                         overflow: 'hidden',
                         backgroundColor: '#fff',
-                        marginLeft: '-8px',
+                        marginLeft: 'clamp(-6px, -1.5vw, -8px)',
                         position: 'relative',
                         zIndex: 1,
                       }}
@@ -202,13 +206,41 @@ const CTASection = () => {
                       />
                     </div>
                   </div>
-                  <span className="btn-text">Talk to an expert</span>
+                  <span className="btn-text-desktop hidden md:inline" style={{ whiteSpace: 'nowrap' }}>Talk to an expert</span>
+                  <span className="btn-text-mobile md:hidden" style={{ whiteSpace: 'nowrap' }}></span>
                 </Link>
               </div>
             </div>
           </div>
         </div>
       </div>
+      <style>{`
+        @media (max-width: 640px) {
+          .fwc-wrap {
+            width: calc(100% - 1rem) !important;
+            max-width: calc(100% - 1rem) !important;
+          }
+          .btn {
+            width: 100% !important;
+            max-width: 100% !important;
+            padding-left: clamp(50px, 15vw, 60px) !important;
+          }
+          .btn-text-mobile,
+          .btn-text-desktop {
+            font-size: clamp(0.8rem, 2.5vw, 1rem) !important;
+            overflow: hidden;
+            text-overflow: ellipsis;
+          }
+          .fwc-avatar-group {
+            left: clamp(0.5rem, 1.5vw, 0.75rem) !important;
+          }
+        }
+        @media (min-width: 768px) {
+          .btn-text-desktop {
+            font-size: clamp(0.875rem, 2.5vw, 1rem) !important;
+          }
+        }
+      `}</style>
     </div>
   );
 };

@@ -31,12 +31,12 @@ const Hero = ({
       ref={heroContainerRef}
       className="w-full relative"
       style={{
-        minHeight: '92vh',
-        height: '92vh',
+        minHeight: 'clamp(600px, 92vh, 92vh)',
+        height: 'clamp(600px, 92vh, 92vh)',
       }}
     >
       <div 
-        className="absolute inset-0 hero-bg-image"
+        className="hidden lg:block absolute inset-0 hero-bg-image"
         style={{
           backgroundImage: `url(${hbg})`,
           zIndex: 0,
@@ -82,8 +82,8 @@ const Hero = ({
                     fontFamily: '"Mona Sans", "Mona Sans Header Fallback", -apple-system, "system-ui", "Segoe UI", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol"',
                     fontStyle: 'normal',
                     fontWeight: 800,
-                    fontSize: '72px',
-                    lineHeight: '76px',
+                    fontSize: 'clamp(32px, 8vw, 72px)',
+                    lineHeight: 'clamp(36px, 8.5vw, 76px)',
                     color: '#1F2328',
                   }}
                 >
@@ -104,13 +104,13 @@ const Hero = ({
                     className="mb-4 md:mb-5"
                   >
                   <p 
-                    className="max-w-2xl mx-auto"
+                    className="max-w-2xl mx-auto px-4"
                     style={{
                       fontFamily: '"Mona Sans", "Mona Sans Fallback", -apple-system, "system-ui", "Segoe UI", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol"',
                       fontStyle: 'normal',
                       fontWeight: 400,
-                      fontSize: '20px',
-                      lineHeight: '28px',
+                      fontSize: 'clamp(16px, 4vw, 20px)',
+                      lineHeight: 'clamp(24px, 5vw, 28px)',
                       color: '#59636E',
                     }}
                   >

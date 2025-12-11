@@ -96,63 +96,88 @@ const Footer = () => {
     <div style={{ position: 'relative', width: '100%' }}>
       <style>{`
         .footer-nav-grid {
-          grid-template-columns: repeat(2, auto);
+          grid-template-columns: repeat(1, 1fr);
+          gap: 2rem;
+        }
+        @media (min-width: 640px) {
+          .footer-nav-grid {
+            grid-template-columns: repeat(2, 1fr);
+            gap: 2.5rem;
+          }
         }
         @media (min-width: 768px) {
           .footer-nav-grid {
             grid-template-columns: repeat(4, auto);
+            gap: 3rem;
           }
         }
         @media (min-width: 1024px) {
           .footer-nav-grid {
             grid-template-columns: repeat(6, auto);
+            gap: 3rem;
           }
         }
         @media (min-width: 1280px) {
           .footer-nav-grid {
             grid-template-columns: repeat(7, auto);
+            gap: 3rem;
           }
         }
         .footer-subtitle {
-          font-size: 14px !important;
+          font-size: clamp(12px, 2.5vw, 14px) !important;
           line-height: 1.3 !important;
-          margin-bottom: 15px !important;
+          margin-bottom: 12px !important;
           margin-top: 0 !important;
           padding-bottom: 0 !important;
           color: #ccc !important;
           letter-spacing: 0.5px !important;
         }
+        @media (min-width: 768px) {
+          .footer-subtitle {
+            margin-bottom: 15px !important;
+          }
+        }
         .footer-link-item {
-          margin-bottom: 10px !important;
+          margin-bottom: 8px !important;
           margin-top: 0 !important;
           padding: 0 !important;
+        }
+        @media (min-width: 768px) {
+          .footer-link-item {
+            margin-bottom: 10px !important;
+          }
         }
         .footer-link-item:last-child {
           margin-bottom: 0 !important;
         }
         .footer-link {
-          font-size: 14px !important;
-          line-height: 2.2 !important;
+          font-size: clamp(13px, 2.5vw, 14px) !important;
+          line-height: 1.8 !important;
           font-family: "Noto Sans", sans-serif !important;
           font-weight: 400 !important;
           display: block !important;
+        }
+        @media (min-width: 768px) {
+          .footer-link {
+            line-height: 2.2 !important;
+          }
         }
       `}</style>
       <footer
         className="w-full text-white"
         style={{ backgroundColor: "rgb(7, 43, 85)", position: 'relative', zIndex: 0 }}
       >
-        <div className="w-full max-w-[1344px] mx-auto pt-[16rem] md:pt-[17rem] pb-4">
+        <div className="w-full max-w-[1344px] mx-auto pt-[16rem] md:pt-[17rem] pb-4 px-4 sm:px-6 lg:px-0">
           {/* Top Section */}
-          <div className="flex flex-col md:flex-row justify-between items-start mb-6 gap-8">
+          <div className="flex flex-col md:flex-row justify-between items-start mb-6 md:mb-8 gap-6 md:gap-8">
             {/* Logo and Tagline */}
-            <div className="flex-1">
-              <div className="mb-4 ">
+            <div className="flex-1 w-full md:w-auto">
+              <div className="mb-3 md:mb-4">
                 <span
                   className="font-bold inline-block"
                   style={{
                     fontFamily: '"Inter", "Noto Sans", sans-serif',
-                    fontSize: "2.5rem",
+                    fontSize: "clamp(1.5rem, 4vw, 2.5rem)",
                     letterSpacing: "-0.02em",
                     fontWeight: 700,
                     lineHeight: "1",
@@ -173,22 +198,22 @@ const Footer = () => {
                   <span style={{ color: "white" }}>t</span>
                 </span>
               </div>
-              <p className="text-white text-sm">
+              <p className="text-white" style={{ fontSize: 'clamp(12px, 2.5vw, 14px)' }}>
                 From Integration to Innovation. Instantly.
               </p>
             </div>
 
             {/* Salesforce Partner Badge */}
-            <div className="flex items-center gap-4 mt-[20px]">
+            <div className="flex items-center gap-3 md:gap-4 mt-0 md:mt-[20px]">
               <img
                 src={salesforceLogo}
                 alt="Salesforce"
-                style={{ height: "50px", width: "auto" }}
+                style={{ height: "clamp(40px, 8vw, 50px)", width: "auto" }}
               />
               <span
                 style={{
                   fontFamily: '"Noto Sans", sans-serif',
-                  fontSize: "16px",
+                  fontSize: "clamp(12px, 2.5vw, 16px)",
                   fontWeight: 600,
                   color: "white",
                 }}
@@ -200,11 +225,8 @@ const Footer = () => {
 
           {/* Navigation Links */}
           <div
-            className="grid mb-8 footer-nav-grid"
+            className="grid mb-6 md:mb-8 footer-nav-grid"
             style={{
-              gap: "3rem",
-              rowGap: "3rem",
-              columnGap: "3rem",
               paddingLeft: 0,
               listStyle: "none",
               width: "100%",
@@ -248,41 +270,43 @@ const Footer = () => {
 
           {/* Divider */}
           <div
-            className="mt-12 mb-6 h-[1px]"
+            className="mt-8 md:mt-12 mb-4 md:mb-6 h-[1px]"
             style={{ background: "linear-gradient(45deg, #10b981, #06b6d4)" }}
           ></div>
 
           {/* Bottom Section */}
-          <div className="flex flex-col md:flex-row justify-between items-center gap-[2rem] mb-6 pb-5 text-sm ">
-            <div className="flex flex-wrap items-center gap-8 text-white px-[4px py-[12px]">
-              <span>© 2025 Copyright <MuleCraftName />. All rights reserved.</span>
-              <a href="#" className="hover:text-white transition-colors">
-                Privacy
-              </a>
-              <a href="#" className="hover:text-white transition-colors">
-                Compliance
-              </a>
-              <a href="#" className="hover:text-white transition-colors">
-                Terms
-              </a>
-              <a href="#" className="hover:text-white transition-colors">
-                GDPR
-              </a>
+          <div className="flex flex-col md:flex-row justify-between items-center gap-4 md:gap-[2rem] mb-4 md:mb-6 pb-4 md:pb-5 text-sm">
+            <div className="flex flex-col sm:flex-row flex-wrap items-center justify-center md:justify-start gap-3 md:gap-8 text-white text-center md:text-left">
+              <span style={{ fontSize: 'clamp(11px, 2.5vw, 14px)' }}>© 2025 Copyright <MuleCraftName />. All rights reserved.</span>
+              <div className="flex flex-wrap items-center justify-center gap-3 md:gap-4">
+                <a href="#" className="hover:text-white transition-colors" style={{ fontSize: 'clamp(11px, 2.5vw, 14px)' }}>
+                  Privacy
+                </a>
+                <a href="#" className="hover:text-white transition-colors" style={{ fontSize: 'clamp(11px, 2.5vw, 14px)' }}>
+                  Compliance
+                </a>
+                <a href="#" className="hover:text-white transition-colors" style={{ fontSize: 'clamp(11px, 2.5vw, 14px)' }}>
+                  Terms
+                </a>
+                <a href="#" className="hover:text-white transition-colors" style={{ fontSize: 'clamp(11px, 2.5vw, 14px)' }}>
+                  GDPR
+                </a>
+              </div>
             </div>
 
             {/* Social Media Icons */}
-            <div className="flex items-center gap-6">
+            <div className="flex items-center gap-4 md:gap-6">
               <a href="#" className="hover:opacity-80 transition-opacity">
-                <FaFacebookF style={{ color: "white", fontSize: "20px" }} />
+                <FaFacebookF style={{ color: "white", fontSize: "clamp(18px, 3vw, 20px)" }} />
               </a>
               <a href="#" className="hover:opacity-80 transition-opacity">
-                <FaLinkedin style={{ color: "white", fontSize: "20px" }} />
+                <FaLinkedin style={{ color: "white", fontSize: "clamp(18px, 3vw, 20px)" }} />
               </a>
               <a href="#" className="hover:opacity-80 transition-opacity">
-                <FaYoutube style={{ color: "white", fontSize: "20px" }} />
+                <FaYoutube style={{ color: "white", fontSize: "clamp(18px, 3vw, 20px)" }} />
               </a>
               <a href="#" className="hover:opacity-80 transition-opacity">
-                <FaInstagram style={{ color: "white", fontSize: "20px" }} />
+                <FaInstagram style={{ color: "white", fontSize: "clamp(18px, 3vw, 20px)" }} />
               </a>
             </div>
           </div>

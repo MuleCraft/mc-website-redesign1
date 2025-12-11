@@ -1,6 +1,6 @@
 import { useState, useRef, useEffect } from "react";
 import { Link } from "react-router-dom";
-import { Search, Globe, ChevronDown } from "lucide-react";
+import { Search, Globe, ChevronDown, Menu, X } from "lucide-react";
 import { Button } from "./ui/button";
 import DropdownMenu from "./DropdownMenu";
 
@@ -11,6 +11,8 @@ const Navbar = () => {
   const [selectedLanguage, setSelectedLanguage] = useState("English");
   const [selectedTheme, setSelectedTheme] = useState("Light");
   const [isScrolling, setIsScrolling] = useState(false);
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [mobileDropdownOpen, setMobileDropdownOpen] = useState<string | null>(null);
   const navItemRefs = useRef<{ [key: string]: HTMLAnchorElement | null }>({});
   const navbarRef = useRef<HTMLElement | null>(null);
   const searchInputRef = useRef<HTMLInputElement | null>(null);
@@ -606,7 +608,7 @@ const Navbar = () => {
         transition: "box-shadow 0.3s ease",
       }}
     >
-      <nav className="w-full max-w-[1344px] mx-auto py-2 flex items-center justify-between min-h-[80px] overflow-visible">
+      <nav className="w-full max-w-[1344px] mx-auto py-2 flex items-center justify-between min-h-[80px] overflow-visible px-4 sm:px-6 lg:px-0">
         {/* Logo - Left side - Always visible */}
         <div className="flex items-center">
           <a
@@ -618,7 +620,7 @@ const Navbar = () => {
               className="font-bold"
               style={{
                 fontFamily: '"Inter", "Noto Sans", sans-serif',
-                fontSize: "1.75rem",
+                fontSize: "clamp(1.25rem, 4vw, 1.75rem)",
                 letterSpacing: "-0.02em",
                 fontWeight: 700,
                 color: "#0891b2",
@@ -751,8 +753,8 @@ const Navbar = () => {
           )}
         </div>
 
-        {/* Middle section - Search or empty space */}
-        <div className="flex-1 flex items-center justify-center px-4">
+        {/* Middle section - Search or empty space - Hidden on mobile/tablet */}
+        <div className="hidden lg:flex flex-1 items-center justify-center px-4">
           {isSearchOpen ? (
             <div className="w-full relative" style={{ maxWidth: "700px" }}>
               <div className="relative flex items-center">
@@ -785,9 +787,22 @@ const Navbar = () => {
 
         {/* Right side icons and button - Always in same place */}
         <div className="flex items-center flex-shrink-0 overflow-visible">
-          {/* Utility Icons */}
+          {/* Mobile Burger Menu Button - Only visible on mobile/tablet */}
+          <button
+            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+            className="lg:hidden px-3 py-2 rounded-md transition-colors hover:bg-gray-100"
+            aria-label="Toggle menu"
+          >
+            {isMobileMenuOpen ? (
+              <X className="w-6 h-6 text-gray-800" />
+            ) : (
+              <Menu className="w-6 h-6 text-gray-800" />
+            )}
+          </button>
+
+          {/* Utility Icons - Hidden on mobile/tablet */}
           <div
-            className="hidden md:flex items-center overflow-visible"
+            className="hidden lg:flex items-center overflow-visible"
             style={{ gap: "0.5rem" }}
           >
             {!isSearchOpen && (
@@ -1009,9 +1024,9 @@ const Navbar = () => {
             </div>
           </div>
 
-          {/* Action Buttons */}
+          {/* Action Buttons - Hidden on mobile/tablet */}
           <div
-            className="flex items-center gap-3"
+            className="hidden lg:flex items-center gap-3"
             style={{ marginLeft: "1rem" }}
           >
             <Button
@@ -1054,20 +1069,265 @@ const Navbar = () => {
         </div>
       </nav>
 
-      {/* Full-width Dropdown Menu - Rendered outside nav but inside header */}
+      {/* Mobile Menu Dialog - Only visible on mobile/tablet */}
+      {isMobileMenuOpen && (
+        <>
+          {/* Backdrop */}
+          <div
+            className="lg:hidden fixed inset-0 z-40 bg-black/50"
+            onClick={() => setIsMobileMenuOpen(false)}
+            style={{ top: `${getNavbarHeight()}px` }}
+          />
+          {/* Menu Panel */}
+          <div
+            className="lg:hidden fixed left-0 right-0 z-50 bg-white shadow-xl"
+            style={{ 
+              top: `${getNavbarHeight()}px`,
+              maxHeight: `calc(100vh - ${getNavbarHeight()}px)`,
+              overflowY: 'auto',
+            }}
+            onClick={(e) => e.stopPropagation()}
+          >
+            <div className="px-4 py-6">
+              {navItems.map((item) => (
+                <div key={item.label} className="mb-1">
+                  {item.hasChevron ? (
+                    <>
+                      <button
+                        onClick={() => {
+                          const newOpenState = mobileDropdownOpen === item.label ? null : item.label;
+                          setMobileDropdownOpen(newOpenState);
+                          // Set openDropdown for getDropdownItems() to work correctly
+                          if (newOpenState) {
+                            setOpenDropdown(item.label);
+                          } else {
+                            setOpenDropdown(null);
+                          }
+                        }}
+                        className="w-full flex items-center justify-between py-3 px-3 text-left hover:bg-gray-50 rounded-md transition-colors"
+                        style={{
+                          fontFamily: '"Noto Sans", sans-serif',
+                          color: "#333",
+                          fontWeight: 500,
+                          fontSize: "1rem",
+                        }}
+                      >
+                        <span>{item.label}</span>
+                        <ChevronDown
+                          className={`w-5 h-5 transition-transform ${
+                            mobileDropdownOpen === item.label ? "rotate-180" : ""
+                          }`}
+                          style={{ color: "#666" }}
+                        />
+                      </button>
+                      {/* Mobile Dropdown - Show only headers */}
+                      {mobileDropdownOpen === item.label && (
+                        <div className="pl-4 mt-1 space-y-0.5 border-l-2 border-gray-100">
+                          {item.label === "Resources" ? (
+                            <>
+                              {/* Blog Link */}
+                              <a
+                                href="https://blogs.mulecraft.in/"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                onClick={() => {
+                                  setMobileDropdownOpen(null);
+                                  setIsMobileMenuOpen(false);
+                                }}
+                                className="w-full text-left py-2.5 px-3 hover:bg-gray-50 rounded-md transition-colors block"
+                                style={{
+                                  fontFamily: '"Noto Sans", sans-serif',
+                                  color: "#666",
+                                  fontWeight: 400,
+                                  fontSize: "0.9rem",
+                                  textDecoration: "none",
+                                }}
+                              >
+                                Blog
+                              </a>
+                              {/* Training Link */}
+                              <a
+                                href="https://training.mulecraft.in/"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                onClick={() => {
+                                  setMobileDropdownOpen(null);
+                                  setIsMobileMenuOpen(false);
+                                }}
+                                className="w-full text-left py-2.5 px-3 hover:bg-gray-50 rounded-md transition-colors block"
+                                style={{
+                                  fontFamily: '"Noto Sans", sans-serif',
+                                  color: "#666",
+                                  fontWeight: 400,
+                                  fontSize: "0.9rem",
+                                  textDecoration: "none",
+                                }}
+                              >
+                                Training
+                              </a>
+                            </>
+                          ) : item.label === "Products" ? (
+                            // Show all product items from all categories
+                            (() => {
+                              const allProducts: Array<{ title: string; href?: string; isSelected?: boolean }> = [];
+                              const dropdownItems = getDropdownItems();
+                              dropdownItems.forEach((category: any) => {
+                                if (category.menuItems && Array.isArray(category.menuItems)) {
+                                  category.menuItems.forEach((product: any) => {
+                                    // Map product titles to match the image list
+                                    let displayTitle = product.title;
+                                    if (product.title === "RAMLify Flow Agent") {
+                                      displayTitle = "RAMLify";
+                                    }
+                                    allProducts.push({
+                                      title: displayTitle,
+                                      href: product.href,
+                                      isSelected: product.title === "Goose",
+                                    });
+                                  });
+                                }
+                              });
+                              // Order products to match the image: Goose (selected), SnapMapper, AnypointLP, RAMLify, CloudHub 2.0 Migration, MuleSoftLP
+                              const order = ["Goose", "SnapMapper", "AnypointLP", "RAMLify", "CloudHub 2.0 Migration", "MuleSoftLP"];
+                              const orderedProducts: Array<{ title: string; href?: string; isSelected?: boolean }> = [];
+                              
+                              // Add products in specified order
+                              order.forEach(title => {
+                                const product = allProducts.find(p => p.title === title);
+                                if (product) {
+                                  orderedProducts.push(product);
+                                }
+                              });
+                              
+                              // Add any remaining products that weren't in the order list
+                              allProducts.forEach(product => {
+                                if (!order.includes(product.title)) {
+                                  orderedProducts.push(product);
+                                }
+                              });
+                              
+                              return orderedProducts.map((product) => (
+                                <a
+                                  key={product.title}
+                                  href={product.href || "#"}
+                                  target={product.href ? "_blank" : undefined}
+                                  rel={product.href ? "noopener noreferrer" : undefined}
+                                  onClick={() => {
+                                    setMobileDropdownOpen(null);
+                                    setIsMobileMenuOpen(false);
+                                  }}
+                                  className="w-full block"
+                                  style={{
+                                    backgroundColor: product.isSelected ? '#f0fdf4' : 'transparent',
+                                    borderRadius: '8px',
+                                    marginBottom: '2px',
+                                    textDecoration: 'none',
+                                  }}
+                                >
+                                  <div
+                                    className="w-full text-left py-2.5 px-3 rounded-md"
+                                    style={{
+                                      fontFamily: '"Noto Sans", sans-serif',
+                                      color: product.isSelected ? '#11b981' : '#333',
+                                      fontWeight: product.isSelected ? 600 : 400,
+                                      fontSize: "0.95rem",
+                                      cursor: 'pointer',
+                                    }}
+                                  >
+                                    {product.title}
+                                  </div>
+                                </a>
+                              ));
+                            })()
+                          ) : item.label === "Solutions" ? (
+                            // Show proper headers for Solutions
+                            getDropdownItems().map((dropdownItem) => (
+                              <div
+                                key={dropdownItem.label}
+                                className="w-full"
+                                style={{
+                                  backgroundColor: dropdownItem.isSelected ? '#f0fdf4' : 'transparent',
+                                  borderRadius: '8px',
+                                  marginBottom: '2px',
+                                }}
+                              >
+                                <div
+                                  className="w-full text-left py-2.5 px-3 rounded-md"
+                                  style={{
+                                    fontFamily: '"Noto Sans", sans-serif',
+                                    color: dropdownItem.isSelected ? '#11b981' : '#333',
+                                    fontWeight: dropdownItem.isSelected ? 600 : 500,
+                                    fontSize: "0.95rem",
+                                    cursor: 'default',
+                                  }}
+                                >
+                                  {dropdownItem.label}
+                                </div>
+                              </div>
+                            ))
+                          ) : (
+                            // For other dropdowns (Case Studies, etc.)
+                            getDropdownItems().map((dropdownItem) => (
+                              <button
+                                key={dropdownItem.label}
+                                onClick={() => {
+                                  setMobileDropdownOpen(null);
+                                  setIsMobileMenuOpen(false);
+                                }}
+                                className="w-full text-left py-2.5 px-3 hover:bg-gray-50 rounded-md transition-colors"
+                                style={{
+                                  fontFamily: '"Noto Sans", sans-serif',
+                                  color: "#666",
+                                  fontWeight: 400,
+                                  fontSize: "0.9rem",
+                                }}
+                              >
+                                {dropdownItem.label}
+                              </button>
+                            ))
+                          )}
+                        </div>
+                      )}
+                    </>
+                  ) : (
+                    <Link
+                      to={item.href}
+                      onClick={() => setIsMobileMenuOpen(false)}
+                      className="block py-3 px-3 hover:bg-gray-50 rounded-md transition-colors"
+                      style={{
+                        fontFamily: '"Noto Sans", sans-serif',
+                        color: "#333",
+                        fontWeight: 500,
+                        fontSize: "1rem",
+                        textDecoration: "none",
+                      }}
+                    >
+                      {item.label}
+                    </Link>
+                  )}
+                </div>
+              ))}
+            </div>
+          </div>
+        </>
+      )}
+
+      {/* Full-width Dropdown Menu - Rendered outside nav but inside header - Desktop only */}
       {openDropdown && (
-        <DropdownMenu
-          items={getDropdownItems()}
-          isOpen={true}
-          onClose={() => {
-            setOpenDropdown(null);
-          }}
-          navbarHeight={getNavbarHeight()}
-          contentType={getContentType()}
-          navItem={openDropdown}
-          onMouseEnter={handleDropdownCancelClose}
-          onMouseLeave={() => handleDropdownClose(300)}
-        />
+        <div className="hidden lg:block">
+          <DropdownMenu
+            items={getDropdownItems()}
+            isOpen={true}
+            onClose={() => {
+              setOpenDropdown(null);
+            }}
+            navbarHeight={getNavbarHeight()}
+            contentType={getContentType()}
+            navItem={openDropdown}
+            onMouseEnter={handleDropdownCancelClose}
+            onMouseLeave={() => handleDropdownClose(300)}
+          />
+        </div>
       )}
     </header>
   );

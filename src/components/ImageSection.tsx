@@ -66,14 +66,14 @@ const ImageSection = () => {
               zIndex: 10,
             }}
           >
-            <div className="text-center mx-auto" style={{ maxWidth: "600px", width: "100%" }}>
+            <div className="text-center mx-auto px-4" style={{ maxWidth: "600px", width: "100%" }}>
               <h2
                 className="mb-3"
                 style={{
                   fontFamily: '"Poppins", sans-serif',
                   fontStyle: 'normal',
                   fontWeight: 700,
-                  fontSize: 'clamp(28px, 5vw, 48px)',
+                  fontSize: 'clamp(24px, 6vw, 48px)',
                   lineHeight: '1.2',
                   color: 'rgb(31, 31, 31)',
                 }}
@@ -86,7 +86,7 @@ const ImageSection = () => {
                   fontFamily: '"Noto Sans", sans-serif',
                   fontStyle: 'normal',
                   fontWeight: 400,
-                  fontSize: 'clamp(16px, 2vw, 20px)',
+                  fontSize: 'clamp(14px, 3.5vw, 20px)',
                   lineHeight: '1.6',
                   color: 'rgba(31, 31, 31, 0.8)',
                   marginBottom: '0',
@@ -96,8 +96,8 @@ const ImageSection = () => {
               </p>
 
               {/* Statistics */}
-              <div className="flex flex-wrap justify-center gap-8 md:gap-12 pt-8 md:pt-12">
-                <div className="text-center mb-4 flex-1 min-w-[120px]">
+              <div className="flex flex-wrap justify-center gap-4 md:gap-8 lg:gap-12 pt-6 md:pt-8 lg:pt-12">
+                <div className="text-center mb-4 flex-1 min-w-[100px] md:min-w-[120px]">
                   <p className="m-0">
                     <span
                       className="mb-1 block"

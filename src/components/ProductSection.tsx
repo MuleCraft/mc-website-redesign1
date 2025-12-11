@@ -108,26 +108,26 @@ const ProductSection = () => {
         <div className="lss-heading sec-heading text-center mb-12 md:mb-16 -mt-4 md:-mt-6">
           <VerticalLine />
           <h2
-            className="h2 mb-4 md:mb-6"
+            className="h2 mb-4 md:mb-6 px-4"
             style={{
               fontFamily: '"Poppins", sans-serif',
               fontStyle: 'normal',
               fontWeight: 700,
-              fontSize: '32px',
-              lineHeight: '40px',
+              fontSize: 'clamp(24px, 6vw, 32px)',
+              lineHeight: 'clamp(30px, 7vw, 40px)',
               color: 'rgb(31, 31, 31)',
             }}
           >
             How the Product works
           </h2>
-          <div className="main-subheading max-w-3xl mx-auto">
+          <div className="main-subheading max-w-3xl mx-auto px-4">
             <p
               style={{
                 fontFamily: '"Noto Sans", sans-serif',
                 fontStyle: 'normal',
                 fontWeight: 400,
-                fontSize: '16px',
-                lineHeight: '24px',
+                fontSize: 'clamp(14px, 3.5vw, 16px)',
+                lineHeight: 'clamp(20px, 5vw, 24px)',
                 color: 'rgb(31, 31, 31)',
               }}
             >
@@ -177,7 +177,7 @@ const ProductSection = () => {
                 }}
               >
                 {/* Content Section */}
-                <div className="lss-content" style={{ gridColumn: 'span 2', padding: '2.5rem', display: 'flex', flexDirection: 'column', justifyContent: 'center', width: '100%' }}>
+                <div className="lss-content" style={{ gridColumn: 'span 2', padding: 'clamp(1.5rem, 4vw, 2.5rem)', display: 'flex', flexDirection: 'column', justifyContent: 'center', width: '100%' }}>
                   <div className="lss-content-inner">
                     <span
                       className="eyebrow-text"
@@ -201,8 +201,8 @@ const ProductSection = () => {
                         fontFamily: '"Noto Sans", sans-serif',
                         fontStyle: 'normal',
                         fontWeight: 700,
-                        fontSize: '36px',
-                        lineHeight: '44px',
+                        fontSize: 'clamp(24px, 6vw, 36px)',
+                        lineHeight: 'clamp(30px, 7vw, 44px)',
                         color: 'rgb(31, 31, 31)',
                         marginBottom: '1.5rem',
                       }}
@@ -215,8 +215,8 @@ const ProductSection = () => {
                           fontFamily: '"Noto Sans", sans-serif',
                           fontStyle: 'normal',
                           fontWeight: 400,
-                          fontSize: '16px',
-                          lineHeight: '24px',
+                          fontSize: 'clamp(14px, 3.5vw, 16px)',
+                          lineHeight: 'clamp(20px, 5vw, 24px)',
                           color: 'rgb(112, 112, 112)',
                           marginBottom: '2rem',
                         }}
@@ -265,7 +265,7 @@ const ProductSection = () => {
                 </div>
 
                 {/* Preview Section */}
-                <div className="lss-responsive" style={{ gridColumn: 'span 3', height: '100%', overflow: 'hidden', padding: '1.5rem', width: '100%' }}>
+                <div className="lss-responsive" style={{ gridColumn: 'span 3', height: '100%', overflow: 'hidden', padding: 'clamp(1rem, 3vw, 1.5rem)', width: '100%' }}>
                   <div className="video-block" style={{ width: '100%', height: '100%', borderRadius: '8px', overflow: 'hidden' }}>
                     {product.preview}
                   </div>
@@ -308,8 +308,8 @@ const ProductSection = () => {
             width: 100% !important;
           }
         }
-        /* Tablet and mobile responsive */
-        @media (max-width: 1023px) {
+        /* Tablet responsive */
+        @media (min-width: 768px) and (max-width: 1023px) {
           .lock-screen-section .lss-content-item {
             display: flex !important;
             grid-template-columns: 1fr !important;
@@ -328,6 +328,26 @@ const ProductSection = () => {
             grid-column: span 1 !important;
             height: 300px !important;
             width: 100% !important;
+          }
+        }
+        /* Mobile responsive - hide image container */
+        @media (max-width: 767px) {
+          .lock-screen-section .lss-content-item {
+            display: flex !important;
+            grid-template-columns: 1fr !important;
+            height: auto !important;
+            maxWidth: 100% !important;
+            width: 100% !important;
+          }
+          .lss-content-wrapper {
+            maxWidth: 100% !important;
+          }
+          .lss-content {
+            grid-column: span 1 !important;
+            width: 100% !important;
+          }
+          .lss-responsive {
+            display: none !important;
           }
         }
       `}</style>

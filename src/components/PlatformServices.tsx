@@ -45,26 +45,26 @@ const PlatformServices = () => {
           {/* Vertical Line */}
           <VerticalLine />
           <h2
-            className="main-heading mb-4 md:mb-6"
+            className="main-heading mb-4 md:mb-6 px-4"
             style={{
               fontFamily: '"Poppins", sans-serif',
               fontStyle: 'normal',
               fontWeight: 700,
-              fontSize: '32px',
-              lineHeight: '40px',
+              fontSize: 'clamp(24px, 6vw, 32px)',
+              lineHeight: 'clamp(30px, 7vw, 40px)',
               color: 'rgb(31, 31, 31)',
             }}
           >
             Connect. Integrate. Transform
           </h2>
-          <div className="main-subheading max-w-3xl mx-auto">
+          <div className="main-subheading max-w-3xl mx-auto px-4">
             <p
               style={{
                 fontFamily: '"Noto Sans", sans-serif',
                 fontStyle: 'normal',
                 fontWeight: 400,
-                fontSize: '16px',
-                lineHeight: '24px',
+                fontSize: 'clamp(14px, 3.5vw, 16px)',
+                lineHeight: 'clamp(20px, 5vw, 24px)',
                 color: 'rgb(31, 31, 31)',
               }}
             >
@@ -75,6 +75,16 @@ const PlatformServices = () => {
 
         {/* Cards Container */}
         <div className="cards-container flex flex-wrap justify-center gap-4">
+          <style>{`
+            @media (max-width: 640px) {
+              .single-card {
+                minWidth: 100% !important;
+                maxWidth: 100% !important;
+                width: 100% !important;
+                flex: 1 1 100% !important;
+              }
+            }
+          `}</style>
           {services.map((service, index) => (
             <div
               key={index}

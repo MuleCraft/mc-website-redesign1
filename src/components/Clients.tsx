@@ -25,26 +25,27 @@ const Clients = () => {
         {/* Trusted by Companies Text */}
         <div className="text-center mb-8 md:mb-12">
           <h2
-            className="text-xl md:text-2xl"
+            className="text-xl md:text-2xl px-4"
             style={{
               fontFamily: '"Poppins", sans-serif',
               fontStyle: 'normal',
               fontWeight: 800,
               color: '#1F2328',
               letterSpacing: '0.02em',
+              fontSize: 'clamp(18px, 4.5vw, 24px)',
             }}
           >
             Trusted by Companies
           </h2>
         </div>
 
-        {/* Scrolling Logos Container */}
-        <div className="relative overflow-hidden max-w-4xl mx-auto">
+        {/* Scrolling Logos Container - Desktop */}
+        <div className="hidden lg:block relative overflow-hidden max-w-4xl mx-auto">
           {/* Gradient masks for smooth fade effect */}
           <div className="absolute left-0 top-0 bottom-0 w-20 md:w-32 bg-gradient-to-r from-white to-transparent z-10 pointer-events-none"></div>
           <div className="absolute right-0 top-0 bottom-0 w-20 md:w-32 bg-gradient-to-l from-white to-transparent z-10 pointer-events-none"></div>
           
-          <div className="flex animate-scroll gap-8 md:gap-12 lg:gap-16 items-center will-change-transform">
+          <div className="flex animate-scroll gap-4 md:gap-8 lg:gap-12 xl:gap-16 items-center will-change-transform">
             {duplicatedLogos.map((logo, index) => (
           <div key={index} className="flex-shrink-0">
             <img
@@ -55,6 +56,25 @@ const Clients = () => {
             />
           </div>
         ))}
+          </div>
+        </div>
+
+        {/* Static Grid - Mobile/Tablet */}
+        <div className="lg:hidden max-w-4xl mx-auto">
+          <div className="grid grid-cols-2 gap-6 items-center justify-items-center">
+            {logos.map((logo, index) => (
+              <div 
+                key={index} 
+                className={`flex items-center justify-center ${index === 4 ? 'col-span-2' : ''}`}
+              >
+                <img
+                  className={`${logo.className} w-auto object-contain opacity-60 grayscale hover:opacity-100 hover:grayscale-0 transition-all duration-300`}
+                  src={logo.src}
+                  alt={logo.alt}
+                  loading="lazy"
+                />
+              </div>
+            ))}
           </div>
         </div>
 

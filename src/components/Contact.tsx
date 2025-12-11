@@ -67,10 +67,11 @@ const Contact = () => {
                     fontFamily: '"Poppins", sans-serif',
                     fontStyle: 'normal',
                     fontWeight: 700,
-                    fontSize: '48px',
-                    lineHeight: '56px',
+                    fontSize: 'clamp(28px, 7vw, 48px)',
+                    lineHeight: 'clamp(36px, 8vw, 56px)',
                     color: 'rgb(31, 31, 31)',
                     margin: '0 0 1.5rem 0',
+                    padding: '0 1rem',
                   }}
                 >
                   Get in Touch
@@ -80,25 +81,27 @@ const Contact = () => {
                     fontFamily: '"Noto Sans", sans-serif',
                     fontStyle: 'normal',
                     fontWeight: 400,
-                    fontSize: '18px',
-                    lineHeight: '28px',
+                    fontSize: 'clamp(14px, 3.5vw, 18px)',
+                    lineHeight: 'clamp(20px, 5vw, 28px)',
                     color: 'rgb(112, 112, 112)',
                     maxWidth: '600px',
                     margin: '0 auto',
+                    padding: '0 1rem',
                   }}
                 >
                   Have a question or want to work together? We'd love to hear from you. Send us a message and we'll respond as soon as possible.
                 </p>
               </div>
 
-              <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16">
+              <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16">
                 {/* Contact Form */}
                 <div>
                   <div
+                    className="contact-form-card"
                     style={{
                       backgroundColor: '#fff',
                       borderRadius: '12px',
-                      padding: '2.5rem',
+                      padding: 'clamp(1.5rem, 4vw, 2.5rem)',
                       boxShadow: '0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06)',
                       border: '1px solid rgba(0, 0, 0, 0.05)',
                     }}
@@ -108,8 +111,8 @@ const Contact = () => {
                         fontFamily: '"Poppins", sans-serif',
                         fontStyle: 'normal',
                         fontWeight: 700,
-                        fontSize: '28px',
-                        lineHeight: '36px',
+                        fontSize: 'clamp(20px, 5vw, 28px)',
+                        lineHeight: 'clamp(28px, 6vw, 36px)',
                         color: 'rgb(31, 31, 31)',
                         marginBottom: '2rem',
                       }}
@@ -118,7 +121,7 @@ const Contact = () => {
                     </h2>
                     <form onSubmit={handleSubmit} className="space-y-5">
                       {/* First Name and Last Name Row */}
-                      <div className="grid grid-cols-2 gap-4">
+                      <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                         <div>
                           <input
                             type="text"
@@ -245,12 +248,13 @@ const Contact = () => {
                       </div>
 
                       {/* Phone Number */}
-                      <div className="flex gap-3">
-                        <div style={{ flex: '0 0 auto' }}>
+                      <div className="flex flex-col sm:flex-row gap-4">
+                        <div className="w-full sm:w-auto sm:flex-shrink-0" style={{ minWidth: '140px' }}>
                           <select
                             name="phoneCode"
                             value={formData.phoneCode}
                             onChange={handleChange}
+                            className="contact-input"
                             style={{
                               padding: '0.875rem 1.25rem',
                               border: '1px solid #e5e7eb',
@@ -260,7 +264,12 @@ const Contact = () => {
                               color: 'rgb(31, 31, 31)',
                               backgroundColor: '#fff',
                               cursor: 'pointer',
-                              minWidth: '140px',
+                              width: '100%',
+                              appearance: 'none',
+                              backgroundImage: `url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%23333' d='M6 9L1 4h10z'/%3E%3C/svg%3E")`,
+                              backgroundRepeat: 'no-repeat',
+                              backgroundPosition: 'right 1rem center',
+                              paddingRight: '2.5rem',
                               transition: 'all 0.2s ease',
                             }}
                             onFocus={(e) => {
@@ -277,7 +286,7 @@ const Contact = () => {
                             <option value="+1">🇺🇸 +1</option>
                           </select>
                         </div>
-                        <div style={{ flex: '1' }}>
+                        <div className="flex-1 w-full">
                           <input
                             type="tel"
                             name="phoneNumber"
@@ -382,7 +391,7 @@ const Contact = () => {
                       style={{
                         backgroundColor: '#fff',
                         borderRadius: '12px',
-                        padding: '2.5rem',
+                        padding: 'clamp(1.5rem, 4vw, 2.5rem)',
                         border: '1px solid rgba(0, 0, 0, 0.05)',
                         boxShadow: '0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06)',
                         transition: 'all 0.3s ease',
@@ -400,14 +409,15 @@ const Contact = () => {
                       <div className="flex items-center gap-3 mb-6">
                         <div
                           style={{
-                            width: '48px',
-                            height: '48px',
+                            width: 'clamp(40px, 8vw, 48px)',
+                            height: 'clamp(40px, 8vw, 48px)',
                             borderRadius: '12px',
                             backgroundColor: '#f0fdf4',
                             display: 'flex',
                             alignItems: 'center',
                             justifyContent: 'center',
-                            fontSize: '24px',
+                            fontSize: 'clamp(20px, 4vw, 24px)',
+                            flexShrink: 0,
                           }}
                         >
                           {info.flag}
@@ -417,8 +427,8 @@ const Contact = () => {
                             fontFamily: '"Poppins", sans-serif',
                             fontStyle: 'normal',
                             fontWeight: 700,
-                            fontSize: '24px',
-                            lineHeight: '32px',
+                            fontSize: 'clamp(18px, 4.5vw, 24px)',
+                            lineHeight: 'clamp(24px, 5.5vw, 32px)',
                             color: 'rgb(31, 31, 31)',
                             margin: 0,
                           }}
@@ -444,10 +454,11 @@ const Contact = () => {
                               fontFamily: '"Noto Sans", sans-serif',
                               fontStyle: 'normal',
                               fontWeight: 400,
-                              fontSize: '16px',
-                              lineHeight: '24px',
+                              fontSize: 'clamp(14px, 3.5vw, 16px)',
+                              lineHeight: 'clamp(20px, 5vw, 24px)',
                               color: 'rgb(112, 112, 112)',
                               margin: 0,
+                              wordBreak: 'break-word',
                             }}
                           >
                             {info.phone}
@@ -470,10 +481,11 @@ const Contact = () => {
                               fontFamily: '"Noto Sans", sans-serif',
                               fontStyle: 'normal',
                               fontWeight: 400,
-                              fontSize: '16px',
-                              lineHeight: '24px',
+                              fontSize: 'clamp(14px, 3.5vw, 16px)',
+                              lineHeight: 'clamp(20px, 5vw, 24px)',
                               color: 'rgb(112, 112, 112)',
                               margin: 0,
+                              wordBreak: 'break-word',
                             }}
                           >
                             {info.email}
@@ -496,10 +508,11 @@ const Contact = () => {
                               fontFamily: '"Noto Sans", sans-serif',
                               fontStyle: 'normal',
                               fontWeight: 400,
-                              fontSize: '16px',
-                              lineHeight: '24px',
+                              fontSize: 'clamp(14px, 3.5vw, 16px)',
+                              lineHeight: 'clamp(20px, 5vw, 24px)',
                               color: 'rgb(112, 112, 112)',
                               margin: 0,
+                              wordBreak: 'break-word',
                             }}
                           >
                             {info.address}
@@ -514,7 +527,7 @@ const Contact = () => {
                             color: '#11b981',
                             textDecoration: 'none',
                             fontFamily: '"Noto Sans", sans-serif',
-                            fontSize: '16px',
+                            fontSize: 'clamp(14px, 3.5vw, 16px)',
                             fontWeight: 600,
                             marginTop: '1.5rem',
                             padding: '0.5rem 0',
@@ -545,6 +558,44 @@ const Contact = () => {
         <BlogSection />
       </main>
       <Footer />
+      <style>{`
+        /* Fix select dropdown styling */
+        .contact-input {
+          box-sizing: border-box;
+        }
+        select.contact-input {
+          -webkit-appearance: none;
+          -moz-appearance: none;
+          appearance: none;
+        }
+        /* Mobile responsive fixes */
+        @media (max-width: 767px) {
+          .contact-form-card {
+            padding: 1.5rem !important;
+          }
+          .grid.grid-cols-1.lg\\:grid-cols-2 {
+            gap: 2rem !important;
+          }
+          /* Ensure form inputs are full width on mobile */
+          .contact-input {
+            width: 100% !important;
+            box-sizing: border-box;
+          }
+          /* Fix phone number section on mobile */
+          .flex.flex-col.sm\\:flex-row {
+            flex-direction: column !important;
+          }
+          .flex.flex-col.sm\\:flex-row > div {
+            width: 100% !important;
+          }
+        }
+        /* Tablet responsive */
+        @media (min-width: 768px) and (max-width: 1023px) {
+          .contact-form-card {
+            padding: 2rem !important;
+          }
+        }
+      `}</style>
     </div>
   );
 };
