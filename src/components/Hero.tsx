@@ -2,8 +2,7 @@
 
 import { useRef } from "react";
 import { motion } from "motion/react";
-// import Clients from "./Clients";
-import hbg from "../assets/hbg7.png";
+import hbg from "../assets/hbg4.png";
 
 interface HeroProps {
   eyebrow?: string;
@@ -135,17 +134,6 @@ const Hero = ({
               </motion.div>
             </div>
           </article>
-
-          {/* Clients Container */}
-          {/* <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 0.6, duration: 0.8 }}
-            className="w-full flex flex-col items-center justify-center pt-4 md:pt-6 relative z-20"
-          >
-            <div className="h-12 w-px bg-gradient-to-b from-gray-400 to-transparent mx-auto mb-6"></div>
-            <Clients />
-          </motion.div> */}
         </div>
       </div>
     </div>

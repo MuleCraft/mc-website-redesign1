@@ -1,6 +1,8 @@
 import Navbar from "./components/Navbar"
 import Footer from "./components/Footer"
 import Hero from "./components/Hero"
+import Clients from "./components/Clients"
+import PlatformServices from "./components/PlatformServices"
 import "./App.css"
 
 function App() {
@@ -9,6 +11,8 @@ function App() {
       <Navbar />
       <main className="flex-grow pt-[80px]">
         <Hero />
+        <Clients />
+        <PlatformServices />
         {/* <Services /> */}
       </main>
       <Footer />
