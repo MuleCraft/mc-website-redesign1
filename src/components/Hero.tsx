@@ -93,7 +93,7 @@ const Hero = ({
               className="text_header__title"
               style={{
                 fontFamily: "'Articulat CF', Arial, sans-serif",
-                fontWeight: 700,
+                fontWeight: 600,
                 marginBottom: "1.5rem"
               }}
             >
@@ -101,7 +101,8 @@ const Hero = ({
                 className="text-gradient--animated"
                 style={{
                   fontSize: "69px",
-                  lineHeight: "69px"
+                  lineHeight: "69px",
+                  fontWeight: 600
                 }}
               >
                 {mainHeadline}
@@ -113,7 +114,8 @@ const Hero = ({
                     style={{ 
                       color: "#0F011B",
                       fontSize: "69px",
-                      lineHeight: "69px"
+                      lineHeight: "69px",
+                      fontWeight: 600
                     }}
                   >
                     {highlightHeadline}

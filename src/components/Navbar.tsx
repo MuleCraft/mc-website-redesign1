@@ -528,7 +528,7 @@ const Navbar = () => {
             {
               title: "Learn Today, Lead Tomorrow!",
               description:
-                "MuleCraft Academy offers comprehensive training programs to help you master integration technologies ",
+                "Mulழ்Craft Academy offers comprehensive training programs to help you master integration technologies ",
               href: "https://training.mulecraft.in/",
             },
           ],
@@ -622,7 +622,7 @@ const Navbar = () => {
                   alignItems: "center",
                 }}
               >
-                Mulecra
+                Mulழ்cra
                 <span
                   className="text-gradient--animated"
                   style={{
