@@ -193,7 +193,7 @@ const DropdownMenu = ({
                           ? "rgba(16, 185, 129, 0.1)"
                           : "transparent",
                       color:
-                        selectedHeader === item.label ? "#10b981" : "#1f1f1f",
+                        selectedHeader === item.label ? "#3E016F" : "#1f1f1f",
                       border: "none",
                       cursor: "pointer",
                       fontFamily: '"Noto Sans", sans-serif',
@@ -259,7 +259,7 @@ const DropdownMenu = ({
                           textDecoration: "none",
                         }}
                         onMouseEnter={(e) => {
-                          e.currentTarget.style.color = "#10b981";
+                          e.currentTarget.style.color = "#3E016F";
                         }}
                         onMouseLeave={(e) => {
                           e.currentTarget.style.color = "#1f1f1f";
@@ -533,7 +533,7 @@ const DropdownMenu = ({
                           ? "rgba(16, 185, 129, 0.1)"
                           : "transparent",
                       color:
-                        selectedHeader === item.label ? "#10b981" : "#1f1f1f",
+                        selectedHeader === item.label ? "#3E016F" : "#1f1f1f",
                       border: "none",
                       cursor: "pointer",
                       fontFamily: '"Noto Sans", sans-serif',
@@ -705,7 +705,7 @@ const DropdownMenu = ({
                         transition: "background-color 0.2s ease",
                       }}
                       onMouseEnter={(e) => {
-                        e.currentTarget.style.color = "#10b981";
+                        e.currentTarget.style.color = "#3E016F";
                       }}
                       onMouseLeave={(e) => {
                         e.currentTarget.style.color = "inherit";
@@ -749,7 +749,7 @@ const DropdownMenu = ({
                         transition: "background-color 0.2s ease",
                       }}
                       onMouseEnter={(e) => {
-                        e.currentTarget.style.color = "#10b981";
+                        e.currentTarget.style.color = "#3E016F";
                       }}
                       onMouseLeave={(e) => {
                         e.currentTarget.style.color = "inherit";
@@ -792,7 +792,7 @@ const DropdownMenu = ({
                         transition: "background-color 0.2s ease",
                       }}
                       onMouseEnter={(e) => {
-                        e.currentTarget.style.color = "#10b981";
+                        e.currentTarget.style.color = "#3E016F";
                       }}
                       onMouseLeave={(e) => {
                         e.currentTarget.style.color = "inherit";
@@ -835,7 +835,7 @@ const DropdownMenu = ({
                         transition: "background-color 0.2s ease",
                       }}
                       onMouseEnter={(e) => {
-                        e.currentTarget.style.color = "#10b981";
+                        e.currentTarget.style.color = "#3E016F";
                       }}
                       onMouseLeave={(e) => {
                         e.currentTarget.style.color = "inherit";
@@ -1078,7 +1078,7 @@ const DropdownMenu = ({
                         selectedHeader === header
                           ? "rgba(16, 185, 129, 0.1)"
                           : "transparent",
-                      color: selectedHeader === header ? "#10b981" : "#1f1f1f",
+                      color: selectedHeader === header ? "#3E016F" : "#1f1f1f",
                       border: "none",
                       cursor: "pointer",
                       fontFamily: '"Noto Sans", sans-serif',
@@ -1139,7 +1139,7 @@ const DropdownMenu = ({
                             textDecoration: "none",
                           }}
                           onMouseEnter={(e) => {
-                            e.currentTarget.style.color = "#10b981";
+                            e.currentTarget.style.color = "#3E016F";
                           }}
                           onMouseLeave={(e) => {
                             e.currentTarget.style.color = "#1f1f1f";
@@ -1178,7 +1178,7 @@ const DropdownMenu = ({
                             textDecoration: "none",
                           }}
                           onMouseEnter={(e) => {
-                            e.currentTarget.style.color = "#10b981";
+                            e.currentTarget.style.color = "#3E016F";
                           }}
                           onMouseLeave={(e) => {
                             e.currentTarget.style.color = "#1f1f1f";
@@ -1217,7 +1217,7 @@ const DropdownMenu = ({
                             textDecoration: "none",
                           }}
                           onMouseEnter={(e) => {
-                            e.currentTarget.style.color = "#10b981";
+                            e.currentTarget.style.color = "#3E016F";
                           }}
                           onMouseLeave={(e) => {
                             e.currentTarget.style.color = "#1f1f1f";
@@ -1256,7 +1256,7 @@ const DropdownMenu = ({
                             textDecoration: "none",
                           }}
                           onMouseEnter={(e) => {
-                            e.currentTarget.style.color = "#10b981";
+                            e.currentTarget.style.color = "#3E016F";
                           }}
                           onMouseLeave={(e) => {
                             e.currentTarget.style.color = "#1f1f1f";
@@ -1299,7 +1299,7 @@ const DropdownMenu = ({
                             textDecoration: "none",
                           }}
                           onMouseEnter={(e) => {
-                            e.currentTarget.style.color = "#10b981";
+                            e.currentTarget.style.color = "#3E016F";
                           }}
                           onMouseLeave={(e) => {
                             e.currentTarget.style.color = "#1f1f1f";
@@ -1338,7 +1338,7 @@ const DropdownMenu = ({
                             textDecoration: "none",
                           }}
                           onMouseEnter={(e) => {
-                            e.currentTarget.style.color = "#10b981";
+                            e.currentTarget.style.color = "#3E016F";
                           }}
                           onMouseLeave={(e) => {
                             e.currentTarget.style.color = "#1f1f1f";
@@ -1377,7 +1377,7 @@ const DropdownMenu = ({
                             textDecoration: "none",
                           }}
                           onMouseEnter={(e) => {
-                            e.currentTarget.style.color = "#10b981";
+                            e.currentTarget.style.color = "#3E016F";
                           }}
                           onMouseLeave={(e) => {
                             e.currentTarget.style.color = "#1f1f1f";
@@ -1416,7 +1416,7 @@ const DropdownMenu = ({
                             textDecoration: "none",
                           }}
                           onMouseEnter={(e) => {
-                            e.currentTarget.style.color = "#10b981";
+                            e.currentTarget.style.color = "#3E016F";
                           }}
                           onMouseLeave={(e) => {
                             e.currentTarget.style.color = "#1f1f1f";
@@ -1459,7 +1459,7 @@ const DropdownMenu = ({
                             textDecoration: "none",
                           }}
                           onMouseEnter={(e) => {
-                            e.currentTarget.style.color = "#10b981";
+                            e.currentTarget.style.color = "#3E016F";
                           }}
                           onMouseLeave={(e) => {
                             e.currentTarget.style.color = "#1f1f1f";
@@ -1498,7 +1498,7 @@ const DropdownMenu = ({
                             textDecoration: "none",
                           }}
                           onMouseEnter={(e) => {
-                            e.currentTarget.style.color = "#10b981";
+                            e.currentTarget.style.color = "#3E016F";
                           }}
                           onMouseLeave={(e) => {
                             e.currentTarget.style.color = "#1f1f1f";
@@ -1537,7 +1537,7 @@ const DropdownMenu = ({
                             textDecoration: "none",
                           }}
                           onMouseEnter={(e) => {
-                            e.currentTarget.style.color = "#10b981";
+                            e.currentTarget.style.color = "#3E016F";
                           }}
                           onMouseLeave={(e) => {
                             e.currentTarget.style.color = "#1f1f1f";
@@ -1576,7 +1576,7 @@ const DropdownMenu = ({
                             textDecoration: "none",
                           }}
                           onMouseEnter={(e) => {
-                            e.currentTarget.style.color = "#10b981";
+                            e.currentTarget.style.color = "#3E016F";
                           }}
                           onMouseLeave={(e) => {
                             e.currentTarget.style.color = "#1f1f1f";
@@ -1619,7 +1619,7 @@ const DropdownMenu = ({
                             textDecoration: "none",
                           }}
                           onMouseEnter={(e) => {
-                            e.currentTarget.style.color = "#10b981";
+                            e.currentTarget.style.color = "#3E016F";
                           }}
                           onMouseLeave={(e) => {
                             e.currentTarget.style.color = "#1f1f1f";
@@ -1659,7 +1659,7 @@ const DropdownMenu = ({
                             textDecoration: "none",
                           }}
                           onMouseEnter={(e) => {
-                            e.currentTarget.style.color = "#10b981";
+                            e.currentTarget.style.color = "#3E016F";
                           }}
                           onMouseLeave={(e) => {
                             e.currentTarget.style.color = "#1f1f1f";
@@ -1698,7 +1698,7 @@ const DropdownMenu = ({
                             textDecoration: "none",
                           }}
                           onMouseEnter={(e) => {
-                            e.currentTarget.style.color = "#10b981";
+                            e.currentTarget.style.color = "#3E016F";
                           }}
                           onMouseLeave={(e) => {
                             e.currentTarget.style.color = "#1f1f1f";
@@ -1738,7 +1738,7 @@ const DropdownMenu = ({
                             textDecoration: "none",
                           }}
                           onMouseEnter={(e) => {
-                            e.currentTarget.style.color = "#10b981";
+                            e.currentTarget.style.color = "#3E016F";
                           }}
                           onMouseLeave={(e) => {
                             e.currentTarget.style.color = "#1f1f1f";
@@ -1781,7 +1781,7 @@ const DropdownMenu = ({
                             textDecoration: "none",
                           }}
                           onMouseEnter={(e) => {
-                            e.currentTarget.style.color = "#10b981";
+                            e.currentTarget.style.color = "#3E016F";
                           }}
                           onMouseLeave={(e) => {
                             e.currentTarget.style.color = "#1f1f1f";
@@ -1820,7 +1820,7 @@ const DropdownMenu = ({
                             textDecoration: "none",
                           }}
                           onMouseEnter={(e) => {
-                            e.currentTarget.style.color = "#10b981";
+                            e.currentTarget.style.color = "#3E016F";
                           }}
                           onMouseLeave={(e) => {
                             e.currentTarget.style.color = "#1f1f1f";
@@ -1859,7 +1859,7 @@ const DropdownMenu = ({
                             textDecoration: "none",
                           }}
                           onMouseEnter={(e) => {
-                            e.currentTarget.style.color = "#10b981";
+                            e.currentTarget.style.color = "#3E016F";
                           }}
                           onMouseLeave={(e) => {
                             e.currentTarget.style.color = "#1f1f1f";
@@ -2308,7 +2308,7 @@ const DropdownMenu = ({
                       fontSize: "15px",
                       fontWeight: 500,
                       color:
-                        selectedHeader === item.label ? "#10b981" : "#1f1f1f",
+                        selectedHeader === item.label ? "#3E016F" : "#1f1f1f",
                       backgroundColor:
                         selectedHeader === item.label
                           ? "rgba(16, 185, 129, 0.1)"
@@ -2363,7 +2363,7 @@ const DropdownMenu = ({
                       borderRadius: "6px",
                     }}
                     onMouseEnter={(e) => {
-                      e.currentTarget.style.color = "#10b981";
+                      e.currentTarget.style.color = "#3E016F";
                     }}
                     onMouseLeave={(e) => {
                       e.currentTarget.style.color = "#1f1f1f";
@@ -2679,7 +2679,7 @@ const DropdownMenu = ({
                                 textAlign: "center",
                               }}
                               onMouseEnter={(e) => {
-                                e.currentTarget.style.color = "#10b981";
+                                e.currentTarget.style.color = "#3E016F";
                               }}
                               onMouseLeave={(e) => {
                                 e.currentTarget.style.color = "#1f1f1f";
@@ -2728,7 +2728,7 @@ const DropdownMenu = ({
                               textAlign: "center",
                             }}
                             onMouseEnter={(e) => {
-                              e.currentTarget.style.color = "#10b981";
+                              e.currentTarget.style.color = "#3E016F";
                             }}
                             onMouseLeave={(e) => {
                               e.currentTarget.style.color = "#1f1f1f";

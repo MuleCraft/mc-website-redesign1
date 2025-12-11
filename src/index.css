@@ -116,23 +116,27 @@
   }
 
   /* Nav item hover underline effect */
-  .group:hover .nav-underline,
-  .dropdown-active .nav-underline {
+  .group:hover .nav-underline {
     width: auto !important;
     left: 0.5rem !important;
     right: 0.5rem !important;
   }
 
+  /* Hide underline when dropdown is active */
+  .dropdown-active .nav-underline {
+    display: none !important;
+  }
+
   /* Nav item hover text color change */
   .nav-link:hover,
   .dropdown-active .nav-link {
-    color: rgb(7, 43, 85) !important;
+    color: #3E016F !important;
   }
 
   /* Change chevron color on hover */
   .nav-link:hover svg,
   .dropdown-active .nav-link svg {
-    color: rgb(7, 43, 85) !important;
+    color: #3E016F !important;
   }
 
   /* Gradient text animation */

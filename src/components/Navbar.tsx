@@ -696,19 +696,21 @@ const Navbar = () => {
                     </span>
                   </a>
                   {/* Animated underline at bottom of navbar */}
-                  <span
-                    className="nav-underline"
-                    style={{
-                      position: "absolute",
-                      bottom: "-29px",
-                      left: "0.5rem",
-                      right: "0.5rem",
-                      width: 0,
-                      height: "3px",
-                      backgroundColor: "rgb(7, 43, 85)",
-                      transition: "width 0.3s ease-in-out",
-                    }}
-                  />
+                  {openDropdown !== item.label && (
+                    <span
+                      className="nav-underline"
+                      style={{
+                        position: "absolute",
+                        bottom: "-29px",
+                        left: "0.5rem",
+                        right: "0.5rem",
+                        width: 0,
+                        height: "3px",
+                        backgroundColor: "#3E016F",
+                        transition: "width 0.3s ease-in-out",
+                      }}
+                    />
+                  )}
                 </li>
               ))}
             </ul>

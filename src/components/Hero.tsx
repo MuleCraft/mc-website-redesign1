@@ -15,7 +15,7 @@ interface HeroProps {
 const Hero = ({
   eyebrow = "Enterprise Integration Experts",
   headline = "Seamless Integrations, Expertly Delivered",
-  description = "We are the dedicated specialists who connect your systems and automate your workflows. No platforms to manage—just custom integrations built by experts to drive your business forward.",
+  description = "We are the dedicated specialists who connect your systems and automate your workflows. ",
   ctaText = "Talk to an Expert",
   ctaUrl = "#",
 }: HeroProps) => {
