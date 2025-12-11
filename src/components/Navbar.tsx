@@ -662,7 +662,7 @@ const Navbar = () => {
     <header
       ref={navbarRef}
       className="w-full fixed top-0 z-50 overflow-visible border-b"
-      style={{
+      style={{ 
         backgroundColor: "#fff",
         borderBottomWidth: "1px",
         borderBottomColor: "black-200",
@@ -685,13 +685,14 @@ const Navbar = () => {
                 fontSize: "clamp(1.25rem, 4vw, 1.75rem)",
                 letterSpacing: "-0.02em",
                 fontWeight: 700,
-                color: "#0891b2",
+                color: "#1F2328",
               }}
             >
               Mul
               <span
                 className="text-transparent bg-clip-text bg-gradient-to-r from-[#10b981] to-[#06b6d4]"
                 style={{
+                  fontFamily: '"Noto Sans Tamil", sans-serif',
                   backgroundSize: "200% auto",
                   backgroundClip: "text",
                   WebkitBackgroundClip: "text",
@@ -701,8 +702,8 @@ const Navbar = () => {
                 ழ்
               </span>
               cra
-              <span style={{ color: "#0891b2" }}>f</span>
-              <span style={{ color: "#0891b2" }}>t</span>
+              <span style={{ color: "#1F2328" }}>f</span>
+              <span style={{ color: "#1F2328" }}>t</span>
             </span>
           </a>
 
@@ -755,47 +756,47 @@ const Navbar = () => {
                       {item.label}
                     </Link>
                   ) : (
-                    <a
-                      ref={(el) => {
-                        navItemRefs.current[item.label] = el;
-                      }}
-                      href={item.href}
-                      target={(item as any).openInNewTab ? "_blank" : undefined}
-                      rel={
-                        (item as any).openInNewTab
-                          ? "noopener noreferrer"
-                          : undefined
+                  <a
+                    ref={(el) => {
+                      navItemRefs.current[item.label] = el;
+                    }}
+                    href={item.href}
+                    target={(item as any).openInNewTab ? "_blank" : undefined}
+                    rel={
+                      (item as any).openInNewTab
+                        ? "noopener noreferrer"
+                        : undefined
+                    }
+                    onClick={(e) => {
+                      if (item.hasChevron) {
+                        e.preventDefault();
                       }
-                      onClick={(e) => {
-                        if (item.hasChevron) {
-                          e.preventDefault();
-                        }
-                      }}
-                      className="flex items-center gap-1.5 whitespace-nowrap transition-all rounded-md nav-link"
-                      style={{
-                        fontFamily: '"Noto Sans", sans-serif',
-                        color: "#333",
-                        display: "flex",
-                        alignItems: "center",
-                        textDecoration: "none",
-                        fontWeight: 500,
-                        fontSize: ".9rem",
-                        transition: "color .3s ease-in-out",
-                        position: "relative",
-                        lineHeight: 1,
-                        userSelect: "none",
-                        WebkitUserSelect: "none" as any,
-                        padding: "0.35rem .75rem",
-                      }}
-                    >
-                      {item.label}
-                      {item.hasChevron && (
-                        <ChevronDown
-                          className="w-4 h-4"
-                          style={{ color: "rgb(31, 31, 31)", strokeWidth: 1.6 }}
-                        />
-                      )}
-                    </a>
+                    }}
+                    className="flex items-center gap-1.5 whitespace-nowrap transition-all rounded-md nav-link"
+                    style={{
+                      fontFamily: '"Noto Sans", sans-serif',
+                      color: "#333",
+                      display: "flex",
+                      alignItems: "center",
+                      textDecoration: "none",
+                      fontWeight: 500,
+                      fontSize: ".9rem",
+                      transition: "color .3s ease-in-out",
+                      position: "relative",
+                      lineHeight: 1,
+                      userSelect: "none",
+                      WebkitUserSelect: "none" as any,
+                      padding: "0.35rem .75rem",
+                    }}
+                  >
+                    {item.label}
+                    {item.hasChevron && (
+                      <ChevronDown
+                        className="w-4 h-4"
+                        style={{ color: "rgb(31, 31, 31)", strokeWidth: 1.6 }}
+                      />
+                    )}
+                  </a>
                   )}
                   {/* Animated underline at bottom of navbar */}
                   <span
@@ -1117,17 +1118,17 @@ const Navbar = () => {
               Community
             </Button>
             <Link to="/contact">
-              <Button
-                variant="default"
-                className="transition-all duration-300 rounded-full text-white shadow-md hover:shadow-lg bg-gradient-to-r from-[#10b981] to-[#06b6d4] hover:opacity-90 border-none"
-                style={{
-                  padding: "0.675rem 1rem",
-                  fontSize: "0.875rem",
-                  height: "auto",
-                }}
-              >
-                Schedule demo
-              </Button>
+            <Button
+              variant="default"
+              className="transition-all duration-300 rounded-full text-white shadow-md hover:shadow-lg bg-gradient-to-r from-[#10b981] to-[#06b6d4] hover:opacity-90 border-none"
+              style={{
+                padding: "0.675rem 1rem",
+                fontSize: "0.875rem",
+                height: "auto",
+              }}
+            >
+              Schedule demo
+            </Button>
             </Link>
           </div>
         </div>
@@ -1422,18 +1423,18 @@ const Navbar = () => {
       {/* Full-width Dropdown Menu - Rendered outside nav but inside header - Desktop only */}
       {openDropdown && (
         <div className="hidden lg:block">
-          <DropdownMenu
-            items={getDropdownItems()}
-            isOpen={true}
-            onClose={() => {
-              setOpenDropdown(null);
-            }}
-            navbarHeight={getNavbarHeight()}
-            contentType={getContentType()}
-            navItem={openDropdown}
-            onMouseEnter={handleDropdownCancelClose}
-            onMouseLeave={() => handleDropdownClose(300)}
-          />
+        <DropdownMenu
+          items={getDropdownItems()}
+          isOpen={true}
+          onClose={() => {
+            setOpenDropdown(null);
+          }}
+          navbarHeight={getNavbarHeight()}
+          contentType={getContentType()}
+          navItem={openDropdown}
+          onMouseEnter={handleDropdownCancelClose}
+          onMouseLeave={() => handleDropdownClose(300)}
+        />
         </div>
       )}
     </header>

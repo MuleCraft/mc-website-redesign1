@@ -192,6 +192,7 @@ const Footer = () => {
                   <span
                     className="text-transparent bg-clip-text bg-gradient-to-r from-[#10b981] to-[#06b6d4]"
                     style={{
+                      fontFamily: '"Noto Sans Tamil", sans-serif',
                       backgroundSize: "200% auto",
                       backgroundClip: "text",
                       WebkitBackgroundClip: "text",

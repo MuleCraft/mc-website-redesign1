@@ -86,11 +86,29 @@ const BlogSection = () => {
   const maxIndex = Math.max(0, blogs.length - slidesPerView);
 
   const handleNext = () => {
-    setCurrentIndex((prev) => (prev + 1 > maxIndex ? 0 : prev + 1));
+    if (slidesPerView === 1) {
+      // Mobile: move by 1 slide
+      setCurrentIndex((prev) => (prev + 1 > maxIndex ? 0 : prev + 1));
+    } else {
+      // Desktop/Tablet: move by 1 page (slidesPerView slides)
+      setCurrentIndex((prev) => {
+        const nextIndex = prev + slidesPerView;
+        return nextIndex > maxIndex ? 0 : nextIndex;
+      });
+    }
   };
 
   const handlePrev = () => {
-    setCurrentIndex((prev) => (prev - 1 < 0 ? maxIndex : prev - 1));
+    if (slidesPerView === 1) {
+      // Mobile: move by 1 slide
+      setCurrentIndex((prev) => (prev - 1 < 0 ? maxIndex : prev - 1));
+    } else {
+      // Desktop/Tablet: move by 1 page (slidesPerView slides)
+      setCurrentIndex((prev) => {
+        const prevIndex = prev - slidesPerView;
+        return prevIndex < 0 ? maxIndex : prevIndex;
+      });
+    }
   };
 
   const goToSlide = (index: number) => {
@@ -392,15 +410,38 @@ const BlogSection = () => {
               </button>
             </div>
             <div className="embla__dots flex items-center">
-              {Array.from({ length: Math.min(blogs.length, slidesPerView === 1 ? blogs.length : 4) }).map((_, index) => (
-                <button
-                  key={index}
-                  type="button"
-                  className={`embla__dot ${slidesPerView === 1 ? (index === currentIndex ? 'active' : '') : (Math.floor(currentIndex / slidesPerView) === index ? 'active' : '')}`}
-                  aria-label={`Go to slide ${index + 1}`}
-                  onClick={() => goToSlide(slidesPerView === 1 ? index : index * slidesPerView)}
-                />
-              ))}
+              {(() => {
+                // Calculate number of dots based on slides per view
+                const totalDots = slidesPerView === 1 
+                  ? blogs.length 
+                  : Math.min(4, Math.ceil(blogs.length / slidesPerView));
+                
+                // Calculate which dot should be active
+                // For desktop/tablet, each dot represents a page (slidesPerView slides)
+                const activeDotIndex = slidesPerView === 1 
+                  ? currentIndex 
+                  : Math.floor(currentIndex / slidesPerView);
+                
+                return Array.from({ length: totalDots }).map((_, index) => {
+                  const isActive = index === activeDotIndex;
+                  return (
+                    <button
+                      key={index}
+                      type="button"
+                      className={`embla__dot ${isActive ? 'active' : ''}`}
+                      aria-label={`Go to slide ${index + 1}`}
+                      onClick={() => {
+                        if (slidesPerView === 1) {
+                          goToSlide(index);
+                        } else {
+                          // Go to the start of the page
+                          goToSlide(index * slidesPerView);
+                        }
+                      }}
+                    />
+                  );
+                });
+              })()}
             </div>
             <div className="embla__buttons">
               <button

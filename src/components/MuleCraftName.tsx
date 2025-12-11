@@ -6,7 +6,15 @@ interface MuleCraftNameProps {
 const MuleCraftName = ({ className = "", style }: MuleCraftNameProps) => {
   return (
     <span className={className} style={style}>
-      Mulழ்craft
+      Mul
+      <span
+        style={{
+          fontFamily: '"Noto Sans Tamil", sans-serif',
+        }}
+      >
+        ழ்
+      </span>
+      craft
     </span>
   );
 };

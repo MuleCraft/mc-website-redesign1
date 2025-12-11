@@ -434,34 +434,13 @@ const Contact = () => {
                       <button
                         type="submit"
                         disabled={isSubmitting}
+                        className={`transition-all duration-300 rounded-full text-white shadow-md hover:shadow-lg bg-gradient-to-r from-[#10b981] to-[#06b6d4] hover:opacity-90 border-none ${isSubmitting ? 'opacity-70 cursor-not-allowed' : 'cursor-pointer'}`}
                         style={{
                           width: '100%',
                           padding: '0.875rem 2rem',
-                          backgroundColor: isSubmitting ? '#9ca3af' : '#11b981',
-                          color: '#fff',
-                          border: 'none',
-                          borderRadius: '8px',
                           fontSize: '16px',
                           fontFamily: '"Noto Sans", sans-serif',
                           fontWeight: 600,
-                          cursor: isSubmitting ? 'not-allowed' : 'pointer',
-                          transition: 'all 0.3s ease',
-                          boxShadow: isSubmitting ? 'none' : '0 4px 6px -1px rgba(17, 185, 129, 0.3)',
-                          opacity: isSubmitting ? 0.7 : 1,
-                        }}
-                        onMouseEnter={(e) => {
-                          if (!isSubmitting) {
-                            e.currentTarget.style.backgroundColor = '#0ea571';
-                            e.currentTarget.style.transform = 'translateY(-2px)';
-                            e.currentTarget.style.boxShadow = '0 6px 12px -1px rgba(17, 185, 129, 0.4)';
-                          }
-                        }}
-                        onMouseLeave={(e) => {
-                          if (!isSubmitting) {
-                            e.currentTarget.style.backgroundColor = '#11b981';
-                            e.currentTarget.style.transform = 'translateY(0)';
-                            e.currentTarget.style.boxShadow = '0 4px 6px -1px rgba(17, 185, 129, 0.3)';
-                          }
                         }}
                       >
                         {isSubmitting ? 'Sending...' : 'Submit'}
