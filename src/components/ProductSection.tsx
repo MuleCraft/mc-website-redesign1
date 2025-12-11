@@ -32,7 +32,7 @@ const ProductSection = () => {
       preview: <SnapMapperPreview />,
     },
     {
-      eyebrow: "SnapLogic",
+      eyebrow: "RAML",
       title: "RAMLify Flow Agent",
       description: "API design and flow automation agent that accelerates API development and integration.",
       buttonText: "Explore RAMLify",
@@ -40,7 +40,7 @@ const ProductSection = () => {
       preview: <RAMLifyPreview />,
     },
     {
-      eyebrow: "RAML",
+      eyebrow: "MuleSoft",
       title: "AnypointLP",
       description: "Complete API lifecycle management platform for designing, deploying, and managing APIs.",
       buttonText: "Explore AnypointLP",

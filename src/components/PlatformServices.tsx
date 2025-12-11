@@ -1,33 +1,36 @@
-import { RefreshCw, Network, Link2, Workflow } from "lucide-react";
 import VerticalLine from "./VerticalLine";
 import MuleCraftName from "./MuleCraftName";
+import pi1Image from "@/assets/pi1.png";
+import pi2Image from "@/assets/pi2.png";
+import pi3Image from "@/assets/pi3.png";
+import pi4Image from "@/assets/pi4.png";
 
 const PlatformServices = () => {
   // Using MuleSoft solutions from the dropdown
   const services = [
     {
-      icon: <RefreshCw className="w-6 h-6" />,
+      icon: pi1Image,
       title: "Mule 4 Migration",
       description: "Specialized migration from Mule 3 to Mule 4",
       buttonText: "Explore Mule 4 Migration",
       href: "#",
     },
     {
-      icon: <Network className="w-6 h-6" />,
+      icon: pi2Image,
       title: "Mule B2B Integration",
       description: "EDI, API integration and seamless connectivity solutions.",
       buttonText: "Explore B2B Integration",
       href: "#",
     },
     {
-      icon: <Link2 className="w-6 h-6" />,
+      icon: pi3Image,
       title: "API-led Connectivity",
       description: "App and data integration using APIs",
       buttonText: "Explore API Connectivity",
       href: "#",
     },
     {
-      icon: <Workflow className="w-6 h-6" />,
+      icon: pi4Image,
       title: "Workflow Automation",
       description: "Visual workflow builder and automation",
       buttonText: "Explore Automation",
@@ -88,8 +91,16 @@ const PlatformServices = () => {
             >
               {/* Media Icon */}
               <div className="media-icon mb-4">
-                <div className="text-[#10b981]">
-                  {service.icon}
+                <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'flex-start' }}>
+                  <img 
+                    src={service.icon} 
+                    alt={service.title}
+                    style={{
+                      width: '36px',
+                      height: '36px',
+                      objectFit: 'contain',
+                    }}
+                  />
                 </div>
               </div>
 

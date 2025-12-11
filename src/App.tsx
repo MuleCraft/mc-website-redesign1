@@ -5,6 +5,7 @@ import Clients from "./components/Clients"
 import PlatformServices from "./components/PlatformServices"
 import ImageSection from "./components/ImageSection"
 import ProductSection from "./components/ProductSection"
+import BlogSection from "./components/BlogSection"
 import "./App.css"
 
 function App() {
@@ -17,6 +18,7 @@ function App() {
         <PlatformServices />
         <ImageSection />
         <ProductSection />
+        <BlogSection />
         {/* <Services /> */}
       </main>
       <Footer />

@@ -6,6 +6,7 @@ import {
 } from "react-icons/fa";
 import salesforceLogo from "@/assets/Salesforcelogo.png";
 import MuleCraftName from "./MuleCraftName";
+import CTASection from "./CTASection";
 
 // Helper function to render text with MuleCraftName component
 const renderTextWithMuleCraft = (text: string) => {
@@ -91,7 +92,7 @@ const Footer = () => {
   ];
 
   return (
-    <>
+    <div style={{ position: 'relative', width: '100%' }}>
       <style>{`
         .footer-nav-grid {
           grid-template-columns: repeat(2, auto);
@@ -138,9 +139,9 @@ const Footer = () => {
       `}</style>
       <footer
         className="w-full text-white"
-        style={{ backgroundColor: "rgb(7, 43, 85)" }}
+        style={{ backgroundColor: "rgb(7, 43, 85)", position: 'relative', zIndex: 0 }}
       >
-        <div className="w-full max-w-[1344px] mx-auto  pt-[5rem] pb-4 ">
+        <div className="w-full max-w-[1344px] mx-auto pt-[16rem] md:pt-[17rem] pb-4">
           {/* Top Section */}
           <div className="flex flex-col md:flex-row justify-between items-start mb-6 gap-8">
             {/* Logo and Tagline */}
@@ -277,7 +278,8 @@ const Footer = () => {
           </div>
         </div>
       </footer>
-    </>
+      <CTASection />
+    </div>
   );
 };
 
