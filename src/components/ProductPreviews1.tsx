@@ -365,8 +365,8 @@ export const MuleSoftLPPreview = () => {
             />
             <div>
               <h1 style={{ fontSize: "12px", fontWeight: "bold", color: "#ffffff", margin: 0, letterSpacing: "-0.02em" }}>
-                MuleSoftLP
-              </h1>
+              MuleSoftLP
+            </h1>
               <p style={{ fontSize: "6px", color: "rgba(156, 163, 175, 1)", margin: 0, fontFamily: '"Noto Sans", sans-serif' }}>
                 AI-Powered Integration Learning
               </p>
@@ -408,58 +408,58 @@ export const MuleSoftLPPreview = () => {
         }}
       >
         <div style={{ maxWidth: "100%", margin: "0 auto", position: "relative", zIndex: 10 }}>
-          {/* Large MulesoftLP Text */}
-          <h4
-            style={{
-              fontSize: "clamp(20px, 6vw, 40px)",
-              fontWeight: "600",
-              letterSpacing: "-0.02em",
-              color: "#ffffff",
-              margin: "0 0 0.5rem 0",
-              lineHeight: "0.9",
-              userSelect: "none",
-              display: "block",
+        {/* Large MulesoftLP Text */}
+        <h4
+          style={{
+            fontSize: "clamp(20px, 6vw, 40px)",
+            fontWeight: "600",
+            letterSpacing: "-0.02em",
+            color: "#ffffff",
+            margin: "0 0 0.5rem 0",
+            lineHeight: "0.9",
+            userSelect: "none",
+            display: "block",
               textAlign: "center",
-            }}
-          >
-            MulesoftLP
-          </h4>
+          }}
+        >
+          MulesoftLP
+        </h4>
 
-          <p
-            style={{
-              fontSize: "9px",
-              color: "#d1d5db",
-              margin: "0 0 0.75rem 0",
-              lineHeight: "1.4",
-              maxWidth: "90%",
-              alignSelf: "center",
+        <p
+          style={{
+            fontSize: "9px",
+            color: "#d1d5db",
+            margin: "0 0 0.75rem 0",
+            lineHeight: "1.4",
+            maxWidth: "90%",
+            alignSelf: "center",
               fontFamily: '"Noto Sans", sans-serif',
-            }}
-          >
+          }}
+        >
             Transform your MuleSoft journey with our revolutionary AI-powered learning platform. Generate personalized
             challenges, practice in real-time, and master DataWeave faster than ever before.
-          </p>
+        </p>
 
-          {/* Image Preview */}
-          <div
-            style={{
-              marginTop: "0.5rem",
-              borderRadius: "12px",
-              overflow: "hidden",
+        {/* Image Preview */}
+        <div
+          style={{
+            marginTop: "0.5rem",
+            borderRadius: "12px",
+            overflow: "hidden",
               background: "transparent",
-            }}
-          >
-            <img
+          }}
+        >
+          <img
               src={csi3Image}
               alt="MuleSoft Learning Platform Hero"
-              style={{
-                width: "100%",
-                height: "auto",
-                display: "block",
-                objectFit: "contain",
-              }}
-            />
-          </div>
+            style={{
+              width: "100%",
+              height: "auto",
+              display: "block",
+              objectFit: "contain",
+            }}
+          />
+        </div>
 
           {/* Enhanced Stats */}
           <div
@@ -503,7 +503,7 @@ export const MuleSoftLPPreview = () => {
               <div style={{ textAlign: "left" }}>
                 <div style={{ fontSize: "12px", fontWeight: "bold", color: "#ffffff" }}>1.2K</div>
                 <div style={{ fontSize: "6px", color: "rgba(156, 163, 175, 1)" }}>Active Learners</div>
-              </div>
+      </div>
             </div>
             <div
               style={{
@@ -704,23 +704,23 @@ export const GoosePreview = () => {
                   )}
                 </React.Fragment>
               ))}
-            </div>
+          </div>
             
             {/* CTA Button */}
             <div style={{ marginLeft: "0.75rem" }}>
-              <span
-                style={{
+          <span
+            style={{
                   fontSize: "9px",
                   padding: "0.25rem 0.5rem",
                   background: "linear-gradient(135deg, #A7E0D9 0%, #A788D9 100%)",
-                  color: "#000000",
+              color: "#000000",
                   borderRadius: "12px",
                   fontWeight: "600",
                   display: "inline-block",
-                }}
-              >
-                Schedule Demo
-              </span>
+            }}
+          >
+            Schedule Demo
+          </span>
             </div>
           </div>
         </div>
@@ -769,32 +769,32 @@ export const GoosePreview = () => {
                 backgroundColor: "#A7E0D9",
                 borderRadius: "50%",
                 animation: "pulse 2s ease-in-out infinite",
-              }}
+          }}
             />
-            <span
-              style={{
-                fontSize: "9px",
-                fontWeight: "600",
+          <span
+            style={{
+              fontSize: "9px",
+              fontWeight: "600",
                 color: "#A7E0D9",
                 textTransform: "uppercase",
                 letterSpacing: "0.1em",
-              }}
-            >
+            }}
+          >
               GooseD
-            </span>
+          </span>
           </div>
 
           {/* Main Headline */}
           <div>
-            <h1
-              style={{
-                fontSize: "22px",
+          <h1
+            style={{
+              fontSize: "22px",
                 fontWeight: "500",
                 lineHeight: "1.2",
                 letterSpacing: "-0.01em",
-                margin: 0,
-              }}
-            >
+              margin: 0,
+            }}
+          >
               <span style={{ color: "#ffffff", display: "block", marginBottom: "3px" }}>Deploy, Scale</span>
               <span
                 style={{
@@ -806,7 +806,7 @@ export const GoosePreview = () => {
               >
                 Dominate
               </span>
-            </h1>
+          </h1>
             <p
               style={{
                 fontSize: "8px",
@@ -818,11 +818,11 @@ export const GoosePreview = () => {
             >
               The ultimate DevOps platform that transforms how you build, deploy, and scale applications.
             </p>
-          </div>
+        </div>
 
           {/* Feature Grid */}
-          <div
-            style={{
+        <div
+          style={{
               display: "grid",
               gridTemplateColumns: "repeat(3, 1fr)",
               gap: "0.75rem",
@@ -837,13 +837,13 @@ export const GoosePreview = () => {
                     height: "20px",
                     borderRadius: "10px",
                     background: "linear-gradient(135deg, rgba(167, 224, 217, 0.2) 0%, rgba(167, 136, 217, 0.1) 100%)",
-                    display: "flex",
-                    alignItems: "center",
-                    justifyContent: "center",
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
                   }}
-                >
-                  <div
-                    style={{
+        >
+          <div
+            style={{
                       width: "8px",
                       height: "8px",
                       backgroundColor: "#A7E0D9",
@@ -856,8 +856,8 @@ export const GoosePreview = () => {
                     fontSize: "7px",
                     fontWeight: "500",
                     color: "rgba(255, 255, 255, 0.7)",
-                  }}
-                >
+            }}
+          >
                   {feature}
                 </span>
               </div>
@@ -866,16 +866,16 @@ export const GoosePreview = () => {
         </div>
 
         {/* Right Section - Enhanced Visual */}
-        <div
-          style={{
+            <div
+              style={{
             flex: 1,
-            position: "relative",
+                position: "relative",
             display: "flex",
             alignItems: "center",
             justifyContent: "center",
-            height: "100%",
-          }}
-        >
+                height: "100%",
+              }}
+            >
           {/* Main Background Glow */}
           <div
             style={{
@@ -907,7 +907,7 @@ export const GoosePreview = () => {
                   zIndex: 10,
                 }}
               />
-
+              
               {/* Animated feather elements */}
               <div style={{ position: "absolute", inset: 0, pointerEvents: "none" }}>
                 {/* Feather 1 - Top right */}
@@ -1005,8 +1005,8 @@ export const GoosePreview = () => {
           </div>
 
           {/* Floating Elements */}
-          <div
-            style={{
+    <div
+      style={{
               position: "absolute",
               top: "10px",
               right: "10px",
@@ -1014,14 +1014,14 @@ export const GoosePreview = () => {
               height: "20px",
               border: "2px solid rgba(167, 224, 217, 0.2)",
               borderRadius: "50%",
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "center",
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "center",
               animation: "float 6s ease-in-out infinite",
-            }}
-          >
+      }}
+    >
             <div
-              style={{
+        style={{
                 width: "12px",
                 height: "12px",
                 border: "2px solid rgba(167, 224, 217, 0.3)",
@@ -1053,8 +1053,8 @@ export const GoosePreview = () => {
                 linear-gradient(90deg, rgba(167, 224, 217, 0.1) 1px, transparent 1px)
               `,
               backgroundSize: "40px 40px",
-            }}
-          />
+        }}
+      />
         </div>
       </div>
 
@@ -1148,7 +1148,7 @@ export const AnypointLPPreview = () => {
             height: "100%",
             objectFit: "cover",
             display: "block",
-          }}
+              }}
         />
       </div>
     </div>

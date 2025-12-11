@@ -3,12 +3,14 @@ import { Phone, Mail, MapPin, ArrowRight } from "lucide-react";
 import Navbar from "./Navbar";
 import Footer from "./Footer";
 import BlogSection from "./BlogSection";
+import { supabase } from "../lib/supabase";
 
 const Contact = () => {
   // Scroll to top when component mounts
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
+  
   const [formData, setFormData] = useState({
     firstName: "",
     lastName: "",
@@ -19,18 +21,79 @@ const Contact = () => {
     message: "",
   });
 
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitStatus, setSubmitStatus] = useState<{
+    type: "success" | "error" | null;
+    message: string;
+  }>({ type: null, message: "" });
+
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
     const { name, value } = e.target;
     setFormData((prev) => ({
       ...prev,
       [name]: value,
     }));
+    // Clear status message when user starts typing
+    if (submitStatus.type) {
+      setSubmitStatus({ type: null, message: "" });
+    }
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    // Handle form submission here
-    console.log("Form submitted:", formData);
+    setIsSubmitting(true);
+    setSubmitStatus({ type: null, message: "" });
+
+    try {
+      // Insert data into Supabase
+      const { error } = await supabase
+        .from("contact_submissions")
+        .insert([
+          {
+            first_name: formData.firstName,
+            last_name: formData.lastName,
+            email: formData.email,
+            company: formData.company || null,
+            phone_code: formData.phoneCode,
+            phone_number: formData.phoneNumber || null,
+            message: formData.message,
+          },
+        ]);
+
+      if (error) {
+        throw error;
+      }
+
+      // Success
+      setSubmitStatus({
+        type: "success",
+        message: "Thank you! Your message has been sent successfully. We'll get back to you soon.",
+      });
+
+      // Reset form
+      setFormData({
+        firstName: "",
+        lastName: "",
+        email: "",
+        company: "",
+        phoneCode: "+91",
+        phoneNumber: "",
+        message: "",
+      });
+
+      // Clear success message after 5 seconds
+      setTimeout(() => {
+        setSubmitStatus({ type: null, message: "" });
+      }, 5000);
+    } catch (error: any) {
+      console.error("Error submitting form:", error);
+      setSubmitStatus({
+        type: "error",
+        message: error.message || "Failed to send message. Please try again later.",
+      });
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   const contactInfo = [
@@ -349,35 +412,59 @@ const Contact = () => {
                         />
                       </div>
 
+                      {/* Status Message */}
+                      {submitStatus.type && (
+                        <div
+                          style={{
+                            padding: '0.875rem 1.25rem',
+                            borderRadius: '8px',
+                            backgroundColor: submitStatus.type === 'success' ? '#f0fdf4' : '#fef2f2',
+                            border: `1px solid ${submitStatus.type === 'success' ? '#11b981' : '#ef4444'}`,
+                            color: submitStatus.type === 'success' ? '#11b981' : '#ef4444',
+                            fontFamily: '"Noto Sans", sans-serif',
+                            fontSize: '14px',
+                            lineHeight: '1.5',
+                          }}
+                        >
+                          {submitStatus.message}
+                        </div>
+                      )}
+
                       {/* Submit Button */}
                       <button
                         type="submit"
+                        disabled={isSubmitting}
                         style={{
                           width: '100%',
                           padding: '0.875rem 2rem',
-                          backgroundColor: '#11b981',
+                          backgroundColor: isSubmitting ? '#9ca3af' : '#11b981',
                           color: '#fff',
                           border: 'none',
                           borderRadius: '8px',
                           fontSize: '16px',
                           fontFamily: '"Noto Sans", sans-serif',
                           fontWeight: 600,
-                          cursor: 'pointer',
+                          cursor: isSubmitting ? 'not-allowed' : 'pointer',
                           transition: 'all 0.3s ease',
-                          boxShadow: '0 4px 6px -1px rgba(17, 185, 129, 0.3)',
+                          boxShadow: isSubmitting ? 'none' : '0 4px 6px -1px rgba(17, 185, 129, 0.3)',
+                          opacity: isSubmitting ? 0.7 : 1,
                         }}
                         onMouseEnter={(e) => {
-                          e.currentTarget.style.backgroundColor = '#0ea571';
-                          e.currentTarget.style.transform = 'translateY(-2px)';
-                          e.currentTarget.style.boxShadow = '0 6px 12px -1px rgba(17, 185, 129, 0.4)';
+                          if (!isSubmitting) {
+                            e.currentTarget.style.backgroundColor = '#0ea571';
+                            e.currentTarget.style.transform = 'translateY(-2px)';
+                            e.currentTarget.style.boxShadow = '0 6px 12px -1px rgba(17, 185, 129, 0.4)';
+                          }
                         }}
                         onMouseLeave={(e) => {
-                          e.currentTarget.style.backgroundColor = '#11b981';
-                          e.currentTarget.style.transform = 'translateY(0)';
-                          e.currentTarget.style.boxShadow = '0 4px 6px -1px rgba(17, 185, 129, 0.3)';
+                          if (!isSubmitting) {
+                            e.currentTarget.style.backgroundColor = '#11b981';
+                            e.currentTarget.style.transform = 'translateY(0)';
+                            e.currentTarget.style.boxShadow = '0 4px 6px -1px rgba(17, 185, 129, 0.3)';
+                          }
                         }}
                       >
-                        Submit
+                        {isSubmitting ? 'Sending...' : 'Submit'}
                       </button>
                     </form>
                   </div>
