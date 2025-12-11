@@ -3,7 +3,7 @@
 import { useRef } from "react";
 import { motion } from "motion/react";
 // import Clients from "./Clients";
-import hbg from "../assets/hbg6.png";
+import hbg from "../assets/hbg7.png";
 
 interface HeroProps {
   eyebrow?: string;
@@ -15,7 +15,7 @@ interface HeroProps {
 
 const Hero = ({
   eyebrow = "Enterprise Integration Experts",
-  headline = "Seamless Integration  Powered by MuleSoft",
+  headline = "Seamless Integrations  for Customers",
   description = "We are the dedicated specialists who connect your systems and automate your workflows. No platforms to manage—just custom integrations built by experts to drive your business forward.",
   ctaText = "Talk to an Expert",
   ctaUrl = "#",
