@@ -74,7 +74,7 @@ const Hero = ({
                 <span 
                   style={{ 
                     fontFamily: "'Articulat CF', Arial, sans-serif",
-                    fontWeight: 700,
+                    fontWeight: 300,
                     color: "#000000",
                     fontSize: "18px",
                     lineHeight: "18px"

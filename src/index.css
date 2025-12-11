@@ -21,7 +21,7 @@
 
 @font-face {
   font-family: 'Articulat CF';
-  src: url('/fonts/Articulat CF Normal.ttf') format('truetype');
+  src: url('/fonts/Articulat CF Light.otf') format('opentype');
   font-weight: 300;
   font-style: normal;
   font-display: swap;

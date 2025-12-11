@@ -624,8 +624,8 @@ const Navbar = () => {
               >
                 Mulecra
                 <span
+                  className="text-gradient--animated"
                   style={{
-                    color: "#3E016F",
                     display: "inline-block",
                   }}
                 >
@@ -676,11 +676,11 @@ const Navbar = () => {
                     className="menu_item__link whitespace-nowrap transition-all nav-link"
                     style={{
                       fontFamily: "'Articulat CF', Arial, sans-serif",
-                      color: "#0f001b",
+                      color: "#000000",
                       display: "flex",
                       alignItems: "center",
                       textDecoration: "none",
-                      fontWeight: 500,
+                      fontWeight: 400,
                       fontSize: "1rem",
                       transition: "color .3s ease-in-out",
                       position: "relative",
@@ -913,7 +913,8 @@ const Navbar = () => {
                 minHeight: "auto",
                 borderColor: "#3E016F",
                 color: "#3E016F",
-                fontFamily: "'Articulat CF', sans-serif",
+                fontFamily: "'Articulat CF', Arial, sans-serif",
+                fontWeight: 400,
                 lineHeight: "1.5"
               }}
               onClick={() =>
@@ -934,7 +935,8 @@ const Navbar = () => {
                 height: "auto",
                 minHeight: "auto",
                 backgroundColor: "#3E016F",
-                fontFamily: "'Articulat CF', sans-serif",
+                fontFamily: "'Articulat CF', Arial, sans-serif",
+                fontWeight: 400,
                 lineHeight: "1.5",
                 border: "2px solid transparent"
               }}
